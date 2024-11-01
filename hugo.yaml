@@ -1,5 +1,5 @@
 baseURL: "https://mmestiyak.com"
-title: Meer's Diary
+title: Meer's Log
 paginate: 5
 theme: PaperMod
 
@@ -14,12 +14,11 @@ minify:
 
 params:
   env: production # to enable Google Analytics, OpenGraph, Twitter cards, and schema.
-  title: Meer's Diary
-  description: "Meer's Diary talks on javascript node mongo"
-  keywords: [Blog, Portfolio, PaperMod]
+  title: Meer's Log
+  description: "Meer’s Log explores core JavaScript, Node.js, React, and backend engineering concepts. Dive into practical insights on web development, server-side programming, and mastering Node.js for real-world applications"
+  keywords: [Meer Estiyak, Meer's Log, mmestiyak, JavaScript Expert, Node.js, React Developer, Backend Engineering, Web Development Insights, Software Engineering by Meer, JavaScript and Node Mastery, Tech Blog by Meer]
   social: true
   author: "Meer Estiyak"
-  # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
   DateFormat: "January 2, 2006"
   defaultTheme: light # Options: dark, light
@@ -44,14 +43,14 @@ params:
   assets:
     # disableHLJS: true # to disable highlight.js
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
+    # favicon: "<link / abs url>"
+    # favicon16x16: "<link / abs url>"
+    # favicon32x32: "<link / abs url>"
+    # apple_touch_icon: "<link / abs url>"
+    # safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Meer's Diary"
+    text: "Meer's Log"
     icon: /apple-touch-icon.png
     iconHeight: 35
 
