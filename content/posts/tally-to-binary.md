@@ -1,17 +1,17 @@
 ---
-title: "From Tally to Binary: Mastering How Machines Deal with Data for Better Development"
+title: "Tally to Binary: Understanding Data for Better Development"
 date: "2019-03-11"
-# description: "Elevate your software engineering skills by mastering data representation, from ancient tally marks to modern binary systems, with insights tailored for Node.js development."
+# description: "upgrade your software engineering skills by mastering data representation, from ancient tally marks to modern binary systems, with insights tailored for Node.js development."
 tags: ["nodejs", "binary"]
 categories: ["nodejs"]
 series: ["Node JS"]
 cover:
-image: images/tally-to-binary.webp
-caption: ""
+  image: images/tally-to-binary.webp
+  caption: ""
 ShowToc: true
-TocOpen: true
+TocOpen: false
 math: true
-draft: true
+draft: false
 ---
 
 
@@ -33,17 +33,16 @@ Now, get ready for a quick time travel adventure! Imagine going back hundreds of
 
 As time went on, people adopted the **tally system**. This method used lines to represent numbers: four apples would be marked as `| | | |`. When they reached five, they’d draw a diagonal line across the four, creating a group of five. Cave walls, bones, wood, or stone were used for carving tally marks.
 
-![tally system representation](/assets/images/tallytable.webp)
+![tally system representation](https://raw.githubusercontent.com/mmestiyak/mmestiyak.github.io/refs/heads/main/assets/images/tallytable.webp)
 
 But let’s say you needed to count to a million. Writing all those tally marks would take weeks! And even if you managed to write them, imagine trying to read and understand that enormous collection of lines. Pretty crazy, right? But this is how our counting systems evolved over time. Fascinating, isn’t it?
 
 ### The Decimal System (Base 10)
 
-- Humans adopted base 10, likely due to having ten fingers.
-- Made arithmetic and counting simpler and more manageable.
-- Became the standard for everyday use.
+As early civilizations grew, they got creative with numbers. The Ancient Egyptians, for example, came up with some pretty cool symbols—a coiled rope for 100 and a water lily for 1000.
+![ancient egyptian](https://raw.githubusercontent.com/mmestiyak/mmestiyak.github.io/refs/heads/main/assets/images/egyptian.jpg)
 
-As early civilizations grew, they got creative with numbers. The Ancient Egyptians, for example, came up with some pretty cool symbols—a coiled rope for 100 and a water lily for 1000. But here’s the thing: counting goes on forever, so imagine the nightmare of needing a unique symbol for every single number. That would get out of hand real fast!
+ But here’s the thing: counting goes on forever, so imagine the nightmare of needing a unique symbol for every single number. That would get out of hand real fast!
 
 Then came the brilliant idea of positional notation. With this system, numbers got a serious upgrade: by simply shifting the position of a few symbols, you could represent any number.
 
@@ -94,47 +93,14 @@ Now, let’s talk about images and videos. Every picture you see on your screen 
 So now, I believe you understand why binary is chosen as the fundamental language of computers. In every modern technology you encounter, binary is at its core, serving as the common language that makes it all possible. From storage to sound to wireless connectivity and fiber optics, understanding binary reveals the magic behind the technology we use every day!
 
 
-## Binary in Action
+<!-- ## Binary in Action
 - **What is Binary?**:
   - Explain how binary is a base-2 number system using only 0 and 1.
   - Example: How `1011` translates to decimal (11 in base 10).
 
 - **How Machines Use Binary**:
   - Mention how transistors in hardware use binary states to process information.
-  - Discuss how binary data translates into real-world applications like text encoding (ASCII), image representation (pixels), etc.
+  - Discuss how binary data translates into real-world applications like text encoding (ASCII), image representation (pixels), etc. -->
 
-- **Comparison with the Decimal System**:
-  - Highlight the differences between base 10 and base 2.
-  - Explain why humans are comfortable with base 10 and why machines prefer binary.
 
 ---
-
-## Real-World Applications of Binary Data
-- **Memory and Storage**:
-  - How data is stored using bits and bytes in devices like RAM, hard drives, and SSDs.
-  - Mention the concept of a byte (8 bits) and how it represents 256 values.
-
-- **Audio and Video**:
-  - How sound waves are converted into digital binary data.
-  - Explain how video frames are encoded in binary for display.
-
-- **Screens and Displays**:
-  - How screens use binary to display images and text.
-  - Mention pixel representation and how colors are encoded.
-
----
-
-## Why This Matters for Developers
-- Understanding binary data helps developers optimize performance when working with Buffers and Streams.
-- Mention how Node.js handles binary data efficiently, and preview that upcoming posts will cover these topics in detail.
-
----
-
-## Conclusion
-- Summarize the journey from ancient counting methods to modern binary systems.
-- Reinforce the importance of mastering data concepts to become a better developer.
-
----
-
-## Next in the Series
-- Tease what’s coming next: diving deeper into Buffers, Streams, and practical data handling in Node.js.
