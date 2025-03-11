@@ -1,6 +1,6 @@
 ---
 title: "Tally to Binary: Understanding Data for Better Development"
-date: "2019-03-11"
+date: "2025-03-11"
 # description: "upgrade your software engineering skills by mastering data representation, from ancient tally marks to modern binary systems, with insights tailored for Node.js development."
 tags: ["nodejs", "binary"]
 categories: ["nodejs"]
