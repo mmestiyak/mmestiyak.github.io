@@ -1,5 +1,5 @@
 [
-{% for page in get_section(path="posts/_index.md") %}
+{% for page in get_section(path="logs/_index.md") %}
 {
     "id": {{ page.slug | json_encode | safe }},
     "title": {{ page.title | json_encode | safe }},

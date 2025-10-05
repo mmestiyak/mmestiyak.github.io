@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Simple posts data - we know this works
     const posts = [
-        {% set all_posts = get_section(path="posts/_index.md") %}
+        {% set all_posts = get_section(path="logs/_index.md") %}
         {% for page in all_posts.pages %}
         {
             id: '{{ page.slug }}',
