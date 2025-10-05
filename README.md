@@ -43,7 +43,9 @@ This site is configured for automatic deployment to GitHub Pages using GitHub Ac
 
 1. Go to your repository settings
 2. Navigate to "Pages" section
-3. Under "Source", select "GitHub Actions"
+3. Under "Source", select "Deploy from a branch"
+4. Select "gh-pages" branch and "/ (root)" folder
+5. Configure your custom domain `mmestiyak.com` in the Pages settings
 
 **The workflow will automatically:**
 - Build the site on every push to `main`/`master` branch
