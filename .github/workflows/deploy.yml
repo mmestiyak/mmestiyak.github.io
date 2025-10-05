@@ -1,27 +1,17 @@
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main, master ]
-
-# Grant GITHUB_TOKEN the permissions required to make a Pages deployment
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
+# On every push this script is executed
+on: push
+name: Build and deploy GH Pages
 jobs:
   build:
-    name: Build and Deploy
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
-        
-      - name: Build and Deploy
-        uses: shalzz/zola-deploy-action@v0.21.0
+      - name: build_and_deploy
+        uses: shalzz/zola-deploy-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Target branch
           PAGES_BRANCH: gh-pages
-          BUILD_DIR: .
-          OUT_DIR: public
+          # Use the automatic token for same repo deployment
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
