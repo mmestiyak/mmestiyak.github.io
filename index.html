@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meer&#x27;s Log</title>
+    <meta name="description" content="A simple home on the internet. Software developer, cyclist, boxer, and agro enthusiast.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Zola's built-in search -->
+    <script src="https://mmestiyak.com/elasticlunr.min.js"></script>
+    <script src="https://mmestiyak.com/search_index.en.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#00aaff',
+                        'brand-dark': '#0088cc',
+                        'brand-light': '#33bbff',
+                        'text-primary': '#314043',
+                        'bg-primary': '#f8f6f0'
+                    },
+                    fontFamily: {
+                        'sans': ['Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Monaco', 'monospace']
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="https://mmestiyak.com/style.css">
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mmestiyak.com/atom.xml">
+    
+</head>
+<body class="bg-bg-primary text-text-primary font-sans">
+    <header class="bg-bg-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+            <nav class="flex items-center justify-between py-4 border-t border-b border-gray-200 bg-bg-primary/50">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com" class="text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                    meer's log<span class="text-brand animate-pulse">.</span>
+                </a>
+                <div class="flex items-center space-x-6 text-base text-text-primary">
+                    <a href="https://mmestiyak.com/posts/" class="hover:text-brand transition-colors">logs</a>
+                    <a href="https://mmestiyak.com/categories/" class="hover:text-brand transition-colors">topics</a>
+                    <a href="https://mmestiyak.com/tags/" class="hover:text-brand transition-colors">tags</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Hero Section -->
+    <section class="mb-24">
+        <h1 class="text-3xl font-light text-gray-900 mb-8 leading-tight">
+            Hi <span class="text-brand">👋</span>
+        </h1>
+        
+        <div class="max-w-2xl">
+            <p class="text-lg text-gray-600 leading-relaxed mb-4">
+                I'm Meer. I build <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">software</a> for food, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">cycling</a>, and peace in <span class="font-medium text-gray-900">boxing</span>.
+            </p>
+            
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                From a small, beautiful country called <span class="font-medium text-gray-900">Bangladesh</span>, this site is my logbook of thoughts, lessons, and small moments.
+            </p>
+            
+            <!-- Social Links -->
+            <div class="flex items-center space-x-4 text-sm">
+                <a href="mailto:mmestiyak@gmail.com" class="text-gray-400 transition-colors flex items-center">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/mmestiyak" target="_blank" rel="noopener" class="text-gray-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="text-gray-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="text-gray-400 transition-colors">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7.02 13.828h4.169"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Writings Section -->
+    <section class="mb-20">
+        <h2 class="text-2xl font-light text-gray-900 mb-8">Recent Logs</h2>
+        
+        <div class="space-y-6">
+            
+            <div class="flex items-center justify-between">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;cycling-mountain-biking&#x2F;" class="text-lg font-medium text-text-primary hover:text-brand transition-colors">
+                    Mountain Biking Adventures: Finding Balance in Nature
+                </a>
+                <span class="text-sm text-text-primary/60">
+                    Jan 28, 2024
+                </span>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;agro-urban-farming&#x2F;" class="text-lg font-medium text-text-primary hover:text-brand transition-colors">
+                    Urban Farming: Growing Food in Small Spaces
+                </a>
+                <span class="text-sm text-text-primary/60">
+                    Feb 12, 2024
+                </span>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;javascript-performance-optimization&#x2F;" class="text-lg font-medium text-text-primary hover:text-brand transition-colors">
+                    JavaScript Performance Optimization: Beyond the Basics
+                </a>
+                <span class="text-sm text-text-primary/60">
+                    Feb 18, 2024
+                </span>
+            </div>
+            
+        </div>
+        
+        <div class="mt-12">
+            <a href="https://mmestiyak.com/posts/" class="inline-flex items-center text-sm text-text-primary/70 hover:text-brand transition-colors">
+                View all logs
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+    </main>
+
+    <footer class="bg-bg-primary mt-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+            <div class="text-left">
+                <div class="text-sm text-text-primary/70">
+                    <span>&copy; 2025 Meer Estiyak all rights reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

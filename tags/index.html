@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meer&#x27;s Log</title>
+    <meta name="description" content="A simple home on the internet. Software developer, cyclist, boxer, and agro enthusiast.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Zola's built-in search -->
+    <script src="https://mmestiyak.com/elasticlunr.min.js"></script>
+    <script src="https://mmestiyak.com/search_index.en.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#00aaff',
+                        'brand-dark': '#0088cc',
+                        'brand-light': '#33bbff',
+                        'text-primary': '#314043',
+                        'bg-primary': '#f8f6f0'
+                    },
+                    fontFamily: {
+                        'sans': ['Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Monaco', 'monospace']
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="https://mmestiyak.com/style.css">
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mmestiyak.com/atom.xml">
+    
+</head>
+<body class="bg-bg-primary text-text-primary font-sans">
+    <header class="bg-bg-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+            <nav class="flex items-center justify-between py-4 border-t border-b border-gray-200 bg-bg-primary/50">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com" class="text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                    meer's log<span class="text-brand animate-pulse">.</span>
+                </a>
+                <div class="flex items-center space-x-6 text-base text-text-primary">
+                    <a href="https://mmestiyak.com/posts/" class="hover:text-brand transition-colors">logs</a>
+                    <a href="https://mmestiyak.com/categories/" class="hover:text-brand transition-colors">topics</a>
+                    <a href="https://mmestiyak.com/tags/" class="hover:text-brand transition-colors">tags</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-12">
+        <h1 class="text-3xl font-light text-gray-900 mb-4">Tags</h1>
+        <p class="text-gray-500">Browse all tags on this site.</p>
+    </header>
+
+    
+    <!-- Fluid layout for tags -->
+    <div class="flex flex-wrap gap-2">
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;agriculture&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">agriculture</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;algorithms&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">algorithms</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;baanlaadesh&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">বাংলাদেশ</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;boxing&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">boxing</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;cycling&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">cycling</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;data-structures&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">data-structures</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">4</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;fitness&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">fitness</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">4</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;health&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">health</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;javascript&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">javascript</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;jiibn&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">জীবন</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">3</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;krtjnytaa&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">কৃতজ্ঞতা</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">1</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;low-level&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">low-level</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;memory-management&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">memory-management</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;mental-discipline&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">mental-discipline</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;mindset&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">mindset</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;mnobhaab&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">মনোভাব</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;mountain-biking&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">mountain-biking</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;nature&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">nature</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;optimization&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">optimization</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;performance&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">performance</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;prernnaa&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">প্রেরণা</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">1</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;prkrti&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">প্রকৃতি</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;prograamin&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">প্রোগ্রামিং</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;programming&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">programming</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">4</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;rust&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">rust</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;saaikel&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">সাইকেল</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;sbaasthy&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">স্বাস্থ্য</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;shikssaa&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">শিক্ষা</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;sngraam&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">সংগ্রাম</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">1</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;sphltaa&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">সফলতা</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">1</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;sustainability&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">sustainability</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;systems-programming&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">systems-programming</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;urban-farming&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">urban-farming</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;web-development&#x2F;" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">web-development</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">2</span>
+        </a>
+        
+    </div>
+    
+</div>
+
+    </main>
+
+    <footer class="bg-bg-primary mt-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+            <div class="text-left">
+                <div class="text-sm text-text-primary/70">
+                    <span>&copy; 2025 Meer Estiyak all rights reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

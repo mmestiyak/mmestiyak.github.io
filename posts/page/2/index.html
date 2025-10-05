@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meer&#x27;s Log</title>
+    <meta name="description" content="A simple home on the internet. Software developer, cyclist, boxer, and agro enthusiast.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Zola's built-in search -->
+    <script src="https://mmestiyak.com/elasticlunr.min.js"></script>
+    <script src="https://mmestiyak.com/search_index.en.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#00aaff',
+                        'brand-dark': '#0088cc',
+                        'brand-light': '#33bbff',
+                        'text-primary': '#314043',
+                        'bg-primary': '#f8f6f0'
+                    },
+                    fontFamily: {
+                        'sans': ['Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Monaco', 'monospace']
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="https://mmestiyak.com/style.css">
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mmestiyak.com/atom.xml">
+    
+</head>
+<body class="bg-bg-primary text-text-primary font-sans">
+    <header class="bg-bg-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+            <nav class="flex items-center justify-between py-4 border-t border-b border-gray-200 bg-bg-primary/50">
+                <a href="https:&#x2F;&#x2F;mmestiyak.com" class="text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                    meer's log<span class="text-brand animate-pulse">.</span>
+                </a>
+                <div class="flex items-center space-x-6 text-base text-text-primary">
+                    <a href="https://mmestiyak.com/posts/" class="hover:text-brand transition-colors">logs</a>
+                    <a href="https://mmestiyak.com/categories/" class="hover:text-brand transition-colors">topics</a>
+                    <a href="https://mmestiyak.com/tags/" class="hover:text-brand transition-colors">tags</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-12">
+        <h1 class="text-3xl font-light text-gray-900 mb-4">Logs</h1>
+        <p class="text-gray-500">Thoughts, insights, and discoveries</p>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="mb-8">
+        <div class="relative max-w-md">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search logs..." 
+                class="w-full px-4 py-3 pl-10 pr-4 text-text-primary bg-bg-primary border border-brand rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all duration-200 placeholder:text-text-primary/60"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
+        <div id="search-results" class="mt-4 hidden">
+            <div class="text-sm text-gray-500 mb-4">
+                <span id="search-count">0</span> results found
+            </div>
+        </div>
+    </div>
+
+    <div id="all-posts" class="space-y-6">
+        
+        <article class="py-4 border-b border-gray-100 last:border-0">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h2 class="text-lg font-medium text-gray-900 mb-2">
+                        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;bangla-cycling-thoughts&#x2F;">সাইকেল চালানোর আনন্দ</a>
+                    </h2>
+                    <div class="flex items-center space-x-3 text-sm text-gray-400 mb-2">
+                        <span>Jan 25, 2024</span>
+                        
+                        <span>•</span>
+                        <div class="flex flex-wrap gap-1">
+                            
+                            <a href="/tags/সাইকেল" class="text-gray-400 hover:text-brand transition-colors">সাইকেল</a>, 
+                            
+                            <a href="/tags/প্রকৃতি" class="text-gray-400 hover:text-brand transition-colors">প্রকৃতি</a>, 
+                            
+                            <a href="/tags/স্বাস্থ্য" class="text-gray-400 hover:text-brand transition-colors">স্বাস্থ্য</a>, 
+                            
+                            <a href="/tags/মনোভাব" class="text-gray-400 hover:text-brand transition-colors">মনোভাব</a>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <p class="text-gray-500 text-sm leading-relaxed">সাইকেল চালানোর মাধ্যমে প্রকৃতির সাথে যুক্ত হওয়ার অভিজ্ঞতা এবং এর মানসিক উপকারিতা।</p>
+                    
+                </div>
+            </div>
+        </article>
+        
+        <article class="py-4 border-b border-gray-100 last:border-0">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h2 class="text-lg font-medium text-gray-900 mb-2">
+                        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;boxing-mental-discipline&#x2F;">Boxing and Mental Discipline: Lessons from the Ring</a>
+                    </h2>
+                    <div class="flex items-center space-x-3 text-sm text-gray-400 mb-2">
+                        <span>Feb 05, 2024</span>
+                        
+                        <span>•</span>
+                        <div class="flex flex-wrap gap-1">
+                            
+                            <a href="/tags/boxing" class="text-gray-400 hover:text-brand transition-colors">boxing</a>, 
+                            
+                            <a href="/tags/mental-discipline" class="text-gray-400 hover:text-brand transition-colors">mental-discipline</a>, 
+                            
+                            <a href="/tags/fitness" class="text-gray-400 hover:text-brand transition-colors">fitness</a>, 
+                            
+                            <a href="/tags/mindset" class="text-gray-400 hover:text-brand transition-colors">mindset</a>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <p class="text-gray-500 text-sm leading-relaxed">How boxing training develops mental toughness, focus, and discipline that translates to all areas of life.</p>
+                    
+                </div>
+            </div>
+        </article>
+        
+        <article class="py-4 border-b border-gray-100 last:border-0">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <h2 class="text-lg font-medium text-gray-900 mb-2">
+                        <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;understanding-data-structures&#x2F;">Understanding Data Structures: The Foundation of Efficient Code</a>
+                    </h2>
+                    <div class="flex items-center space-x-3 text-sm text-gray-400 mb-2">
+                        <span>Jan 15, 2024</span>
+                        
+                        <span>•</span>
+                        <div class="flex flex-wrap gap-1">
+                            
+                            <a href="/tags/data-structures" class="text-gray-400 hover:text-brand transition-colors">data-structures</a>, 
+                            
+                            <a href="/tags/programming" class="text-gray-400 hover:text-brand transition-colors">programming</a>, 
+                            
+                            <a href="/tags/algorithms" class="text-gray-400 hover:text-brand transition-colors">algorithms</a>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <p class="text-gray-500 text-sm leading-relaxed">A deep dive into fundamental data structures and their real-world applications in software development.</p>
+                    
+                </div>
+            </div>
+        </article>
+        
+    </div>
+
+    <!-- Pagination -->
+    
+    <nav id="pagination-nav" class="mt-12 flex justify-start">
+        <div class="flex items-center space-x-2">
+            
+            <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;" class="px-3 py-2 text-sm text-gray-500 hover:text-brand transition-colors">← Previous</a>
+            
+            
+            <span class="px-3 py-2 text-sm text-gray-400">
+                Page 2 of 3
+            </span>
+            
+            
+            <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;page&#x2F;3&#x2F;" class="px-3 py-2 text-sm text-gray-500 hover:text-brand transition-colors">Next →</a>
+            
+        </div>
+    </nav>
+    
+</div>
+
+<!-- Simple Search Script -->
+<script>
+// Slugify function to convert Bengali/Unicode text to URL-safe slugs
+function slugify(text) {
+    // Bengali to English transliteration mapping (matching Zola's behavior)
+    const transliterationMap = {
+        'সাইকেল': 'saaikel',
+        'প্রকৃতি': 'prkrti', 
+        'স্বাস্থ্য': 'sbaasthy',
+        'মনোভাব': 'mnobhaab',
+        'প্রোগ্রামিং': 'prograamin',
+        'বাংলাদেশ': 'baanlaadesh',
+        'জীবন': 'jiibn',
+        'শিক্ষা': 'shikssaa',
+        'সফলতা': 'sphltaa',
+        'কৃতজ্ঞতা': 'krtjntaa',
+        'প্রেরণা': 'prrnaa',
+        'সংগ্রাম': 'sngraam'
+    };
+    
+    let result = text.toString().trim();
+    
+    // Check if it's a known Bengali word
+    if (transliterationMap[result]) {
+        return transliterationMap[result];
+    }
+    
+    // Fallback to standard slugify for other text
+    return result
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w\-]+/g, '')
+        .replace(/\-\-+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchCount = document.getElementById('search-count');
+    const allPosts = document.getElementById('all-posts');
+    const paginationNav = document.getElementById('pagination-nav');
+    
+    // Simple posts data - we know this works
+    const posts = [
+        
+        
+        {
+            id: 'cycling-mountain-biking',
+            title: "Mountain Biking Adventures: Finding Balance in Nature",
+            description: "Reflections on mountain biking as both physical exercise and mental therapy, with tips for beginners.",
+            date: '2024-01-28',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;cycling-mountain-biking&#x2F;',
+            tags: ["cycling","mountain-biking","fitness","nature"]
+        },
+        
+        {
+            id: 'agro-urban-farming',
+            title: "Urban Farming: Growing Food in Small Spaces",
+            description: "Exploring sustainable urban agriculture techniques and their benefits for both health and environment.",
+            date: '2024-02-12',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;agro-urban-farming&#x2F;',
+            tags: ["agriculture","urban-farming","sustainability","health"]
+        },
+        
+        {
+            id: 'javascript-performance-optimization',
+            title: "JavaScript Performance Optimization: Beyond the Basics",
+            description: "Advanced techniques for optimizing JavaScript performance, including profiling, memory management, and modern best practices.",
+            date: '2024-02-18',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;javascript-performance-optimization&#x2F;',
+            tags: ["javascript","performance","optimization","web-development"]
+        },
+        
+        {
+            id: 'bangla-cycling-thoughts',
+            title: "সাইকেল চালানোর আনন্দ",
+            description: "সাইকেল চালানোর মাধ্যমে প্রকৃতির সাথে যুক্ত হওয়ার অভিজ্ঞতা এবং এর মানসিক উপকারিতা।",
+            date: '2024-01-25',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;bangla-cycling-thoughts&#x2F;',
+            tags: ["সাইকেল","প্রকৃতি","স্বাস্থ্য","মনোভাব"]
+        },
+        
+        {
+            id: 'boxing-mental-discipline',
+            title: "Boxing and Mental Discipline: Lessons from the Ring",
+            description: "How boxing training develops mental toughness, focus, and discipline that translates to all areas of life.",
+            date: '2024-02-05',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;boxing-mental-discipline&#x2F;',
+            tags: ["boxing","mental-discipline","fitness","mindset"]
+        },
+        
+        {
+            id: 'understanding-data-structures',
+            title: "Understanding Data Structures: The Foundation of Efficient Code",
+            description: "A deep dive into fundamental data structures and their real-world applications in software development.",
+            date: '2024-01-15',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;understanding-data-structures&#x2F;',
+            tags: ["data-structures","programming","algorithms"]
+        },
+        
+        {
+            id: 'bangla-demo-post',
+            title: "প্রোগ্রামিং এবং জীবনের শিক্ষা",
+            description: "কোডিং শেখার পথে পাওয়া কিছু মূল্যবান শিক্ষা এবং অভিজ্ঞতা নিয়ে আলোচনা।",
+            date: '2024-01-30',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;bangla-demo-post&#x2F;',
+            tags: ["প্রোগ্রামিং","শিক্ষা","জীবন","বাংলাদেশ"]
+        },
+        
+        {
+            id: 'rust-memory-management',
+            title: "Rust Memory Management: Ownership Without Garbage Collection",
+            description: "Exploring Rust's unique approach to memory safety through ownership, borrowing, and lifetimes.",
+            date: '2024-01-22',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;rust-memory-management&#x2F;',
+            tags: ["rust","memory-management","systems-programming"]
+        },
+        
+        {
+            id: 'tally-to-binary-understanding-data',
+            title: "Tally to Binary: Understanding Data for Better Development",
+            description: "How understanding data representation at the lowest level makes you a better developer",
+            date: '2025-03-11',
+            url: 'https:&#x2F;&#x2F;mmestiyak.com&#x2F;posts&#x2F;tally-to-binary-understanding-data&#x2F;',
+            tags: ["programming","data-structures","low-level"]
+        }
+        
+    ];
+    
+    // Simple search function that works with both English and Bangla
+    function performSearch(query) {
+        if (query.length < 2) {
+            searchResults.classList.add('hidden');
+            allPosts.classList.remove('hidden');
+            if (paginationNav) paginationNav.classList.remove('hidden');
+            return;
+        }
+        
+        // Simple text search in title, description, and tags
+        const results = posts.filter(post => {
+            const searchText = query.toLowerCase();
+            return (
+                post.title.toLowerCase().includes(searchText) ||
+                post.description.toLowerCase().includes(searchText) ||
+                post.tags.some(tag => tag.toLowerCase().includes(searchText))
+            );
+        });
+        
+        // Hide all posts and pagination
+        allPosts.classList.add('hidden');
+        if (paginationNav) paginationNav.classList.add('hidden');
+        
+        // Show search results
+        searchResults.classList.remove('hidden');
+        searchCount.textContent = results.length;
+        
+        // Clear previous results
+        const resultsContainer = searchResults.querySelector('.results-container');
+        if (resultsContainer) {
+            resultsContainer.remove();
+        }
+        
+        // Create results container
+        const container = document.createElement('div');
+        container.className = 'results-container space-y-6';
+        
+        if (results.length === 0) {
+            container.innerHTML = '<p class="text-gray-500 text-center py-8">No logs found matching your search.</p>';
+        } else {
+            results.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'py-4 border-b border-gray-100 last:border-0';
+                article.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h2 class="text-lg font-medium text-gray-900 mb-2">
+                                <a href="${post.url}">${post.title}</a>
+                            </h2>
+                            <div class="flex items-center space-x-3 text-sm text-gray-400 mb-2">
+                                <span>${post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'No date'}</span>
+                                ${post.tags && post.tags.length > 0 ? `<span>•</span><div class="flex flex-wrap gap-1">${post.tags.map(tag => `<a href="/tags/${slugify(tag)}/" class="text-gray-400 hover:text-brand transition-colors">${tag}</a>`).join(', ')}</div>` : ''}
+                            </div>
+                            ${post.description ? `<p class="text-gray-500 text-sm leading-relaxed">${post.description}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+        
+        searchResults.appendChild(container);
+    }
+    
+    // Search input handler
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(this.value.trim());
+        }, 300);
+    });
+    
+    // Clear search on escape
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            searchResults.classList.add('hidden');
+            allPosts.classList.remove('hidden');
+            if (paginationNav) paginationNav.classList.remove('hidden');
+        }
+    });
+});
+</script>
+
+    </main>
+
+    <footer class="bg-bg-primary mt-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+            <div class="text-left">
+                <div class="text-sm text-text-primary/70">
+                    <span>&copy; 2025 Meer Estiyak all rights reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
