@@ -20,5 +20,5 @@ jobs:
         env:
           # Target branch
           PAGES_BRANCH: gh-pages
-          # Use personal access token for deployment
-          TOKEN: ${{ secrets.TOKEN }}
+          # Use the automatic token for same repo deployment
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
