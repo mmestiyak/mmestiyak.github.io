@@ -2,10 +2,10 @@
 base_url = "https://mmestiyak.com"
 
 # The title of your site
-title = "Meer's Log"
+title = "Meer Estiyak - Software Developer & Content Creator"
 
 # The description of your site
-description = "A simple home on the internet. Software developer, cyclist, boxer, and agro enthusiast."
+description = "Personal blog of Meer Estiyak - Software developer, cyclist, and content creator from Bangladesh. Sharing thoughts on technology, life, and personal growth."
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
@@ -41,4 +41,21 @@ footnote_anchor_prefix = ""
 enable_implicit_figures = true
 
 [extra]
-# Put all your custom variables here
+# SEO and social media
+author = "Meer Estiyak"
+keywords = ["software development", "programming", "cycling", "bangladesh", "technology", "personal blog"]
+twitter = "mmestiyak"
+github = "mmestiyak"
+linkedin = "mmestiyak"
+email = "mmestiyak@gmail.com"
+
+# Analytics (add your tracking ID)
+# google_analytics = "GA_TRACKING_ID"
+
+# Open Graph
+og_image = "https://mmestiyak.com/og-image.jpg"
+og_type = "website"
+og_locale = "en_US"
+
+# Additional SEO
+canonical_url = "https://mmestiyak.com"
