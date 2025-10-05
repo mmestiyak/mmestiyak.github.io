@@ -1,6 +1,6 @@
 # Meer's Log
 
-A personal blog built with [Zola](https://www.getzola.org/) - a fast static sitgenerator.
+A personal blog built with [Zola](https://www.getzola.org/) - a fast stati sitgenerator.
 
 ## Features
 
