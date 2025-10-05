@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-12">
+        <h1 class="text-3xl font-light text-gray-900 mb-4">{{ taxonomy.name | title }}</h1>
+        <p class="text-gray-500">Browse all {{ taxonomy.name }} on this site.</p>
+    </header>
+
+    {% if taxonomy.name == "tags" %}
+    <!-- Fluid layout for tags -->
+    <div class="flex flex-wrap gap-2">
+        {% for term in terms %}
+        <a href="{{ term.permalink }}" class="inline-flex items-center gap-2 px-3 py-2 rounded-md border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium">{{ term.name }}</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-0.5">{{ term.pages | length }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <!-- Fluid layout for categories -->
+    <div class="flex flex-wrap gap-3">
+        {% for term in terms %}
+        <a href="{{ term.permalink }}" class="inline-flex items-center gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-brand/30 hover:text-brand transition-all duration-200 text-sm">
+            <span class="font-medium whitespace-nowrap">{{ term.name }}</span>
+            <span class="text-xs text-gray-400 bg-gray-100 rounded px-2 py-1">{{ term.pages | length }}</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
