@@ -3,19 +3,103 @@
 /* Import Inter font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Subtle background pattern for warm white */
-body {
-    background-color: #fefcfb;
-    background-image: 
-        radial-gradient(circle at 2px 2px, rgba(0,170,255,0.03) 1px, transparent 0);
-    background-size: 40px 40px;
-    position: relative;
+/* Custom utilities for responsive design */
+.line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
-/* Custom prose styles for better typography */
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+/* Safe area support for mobile devices */
+@supports (padding: max(0px)) {
+    .pt-safe-top {
+        padding-top: max(1rem, env(safe-area-inset-top));
+    }
+    
+    .pb-safe-bottom {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+    
+    .pl-safe-left {
+        padding-left: max(1rem, env(safe-area-inset-left));
+    }
+    
+    .pr-safe-right {
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+}
+
+/* Clean, simple background */
+body {
+    background-color: #fafafa;
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* Remove all fancy styling from content areas */
+.max-w-4xl {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0 auto;
+    padding: 0;
+    position: static;
+}
+
+.max-w-4xl::before,
+.max-w-4xl::after {
+    display: none;
+}
+
+/* Optimized Questrial Typography */
 .prose {
-    color: #374151;
+    color: #333333;
     line-height: 1.75;
+    font-size: 1.125rem;
+    font-family: 'Questrial', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+/* Bengali text styling */
+.prose *[lang="bn"], 
+.prose .bengali,
+.prose [data-lang="bn"] {
+    font-family: 'Noto Sans Bengali', 'Questrial', system-ui, sans-serif;
+    line-height: 1.8;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+}
+
+/* Responsive prose sizing */
+@media (min-width: 640px) {
+    .prose {
+        font-size: 1.25rem;
+        line-height: 1.8;
+    }
+}
+
+@media (min-width: 1024px) {
+    .prose {
+        font-size: 1.375rem;
+        line-height: 1.8;
+    }
 }
 
 .prose h1,
@@ -32,38 +116,91 @@ body {
 }
 
 .prose h1 {
-    font-size: 2.25rem;
+    font-size: clamp(2rem, 4.5vw, 2.75rem);
     margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #000000;
+    font-weight: 600;
+    font-family: 'Questrial', system-ui, sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
 .prose h2 {
-    font-size: 1.875rem;
-    border-bottom: 1px solid #e5e7eb;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.5rem;
+    color: #000000;
+    font-weight: 600;
+    font-family: 'Questrial', system-ui, sans-serif;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
 }
 
 .prose h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #000000;
+    font-weight: 600;
+    font-family: 'Questrial', system-ui, sans-serif;
+    line-height: 1.4;
 }
 
 .prose h4 {
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #000000;
+    font-weight: 600;
+    font-family: 'Questrial', system-ui, sans-serif;
+    line-height: 1.4;
+}
+
+/* Bengali headings */
+.prose h1 *[lang="bn"],
+.prose h2 *[lang="bn"],
+.prose h3 *[lang="bn"],
+.prose h4 *[lang="bn"] {
+    font-family: 'Noto Sans Bengali', 'Questrial', system-ui, sans-serif;
+    font-weight: 600;
 }
 
 .prose p {
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-weight: 400;
+}
+
+/* Better paragraph spacing */
+@media (min-width: 640px) {
+    .prose p {
+        margin-top: 1.75rem;
+        margin-bottom: 1.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .prose p {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .prose a {
-    color: #00aaff;
-    text-decoration: none;
+    color: #000000;
+    text-decoration: underline;
     font-weight: 500;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
 }
 
 .prose a:hover {
-    color: #0088cc;
-    text-decoration: underline;
+    color: #333333;
+    text-decoration-thickness: 2px;
 }
 
 .prose strong {
@@ -90,7 +227,15 @@ body {
     margin-top: 1.7142857em;
     margin-bottom: 1.7142857em;
     border-radius: 0.75rem;
-    padding: 1.5rem;
+    padding: 1rem;
+    /* Better mobile scrolling */
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+    .prose pre {
+        padding: 1.5rem;
+    }
 }
 
 .prose pre code {
@@ -106,15 +251,21 @@ body {
 }
 
 .prose blockquote {
-    font-weight: 500;
+    font-weight: 400;
     font-style: italic;
-    color: #111827;
-    border-left-width: 0.25rem;
-    border-left-color: #00aaff;
-    quotes: "\201C""\201D""\2018""\2019";
-    margin-top: 1.6em;
-    margin-bottom: 1.6em;
-    padding-left: 1em;
+    color: #444444;
+    border-left: 4px solid #000000;
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+@media (min-width: 640px) {
+    .prose blockquote {
+        font-size: 1.25rem;
+        padding-left: 2rem;
+    }
 }
 
 .prose ul,
@@ -191,6 +342,63 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Enhanced Typography Improvements */
+body {
+    font-family: 'Questrial', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Better focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #00aaff;
+    outline-offset: 2px;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px rgba(0,170,255,0.1);
+}
+
+/* Enhanced code styling */
+.prose code {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, monospace;
+    font-size: 0.875em;
+    font-weight: 500;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    color: #d63384;
+}
+
+.prose pre {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 640px) {
+    .prose pre {
+        font-size: 0.9375rem;
+        padding: 2rem;
+    }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 640px) {
+    a, button, input, select, textarea {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
@@ -228,9 +436,82 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Enhanced Filter System Styles */
+.topic-filter {
+    transition: all 0.2s ease;
+}
+
+.topic-filter:not(.bg-cyan-500) {
+    background-color: #f9fafb;
+    color: #374151;
+    border-color: #e5e7eb;
+}
+
+.topic-filter:not(.bg-cyan-500):hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.topic-filter.bg-cyan-500 {
+    background-color: #06b6d4;
+    color: white;
+    border-color: #06b6d4;
+}
+
+.topic-filter.bg-cyan-500:hover {
+    background-color: #0891b2;
+    border-color: #0891b2;
+}
+
+/* Sort button active states */
+#sort-newest.bg-gray-100,
+#sort-oldest.bg-gray-100 {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+    color: #374151;
+}
+
+/* Enhanced search input focus */
+#search-input:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
 /* Print styles */
 @media print {
     .no-print {
         display: none !important;
+    }
+    
+    .prose {
+        font-size: 12pt;
+        line-height: 1.6;
+    }
+    
+    .prose h1, .prose h2, .prose h3, .prose h4 {
+        page-break-after: avoid;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .prose a {
+        text-decoration: underline;
+        font-weight: 600;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
     }
 }

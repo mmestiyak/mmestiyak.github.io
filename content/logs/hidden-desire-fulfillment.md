@@ -4,7 +4,7 @@ date = 2024-12-19
 description = "ছোটবেলার লুকানো ইচ্ছে থেকে শুরু করে আর্থিক সফলতা অর্জনের গল্প এবং কৃতজ্ঞতার কথা।"
 [taxonomies]
 tags = ["জীবন", "সফলতা", "কৃতজ্ঞতা", "প্রেরণা", "সংগ্রাম"]
-categories = ["bangla"]
+topics = ["bangla"]
 [extra]
 image = "https://scontent.fdac138-1.fna.fbcdn.net/v/t39.30808-6/487120189_1802890777273660_7179236094850151143_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeG2PVLR209uJEhbnWjWmzWsLY4sAGmkGF8tjiwAaaQYX_0H75gZIYWwnPgZ9EBBmQNbIe5A4tOX8sPSo-_UUygC&_nc_ohc=1aQif2uO-9QQ7kNvwES2E_v&_nc_oc=AdnaugyIgYOENRhHARPAIrA1Zh44ttOr5_D15Gd3ACceDt4DDlgREuTPdIddfxVfpvw&_nc_zt=23&_nc_ht=scontent.fdac138-1.fna&_nc_gid=wkINp6BkuY-gqjeMYqFS_Q&oh=00_AfaSULYzlhEzPvDW4wGeJnxk6joZ6u878ZC4ynTQ0L-ERg&oe=68E4193C"
 +++

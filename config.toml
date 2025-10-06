@@ -19,7 +19,7 @@ generate_feeds = true
 # The taxonomies to be rendered for the site
 taxonomies = [
     { name = "tags" },
-    { name = "categories" }
+    { name = "topics" }
 ]
 
 # Default language for search indexing (important for non-English content)

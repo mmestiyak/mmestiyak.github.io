@@ -2,14 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
     
-    <!-- Google Fonts -->
+    <!-- Enhanced Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+    <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}">
+    <meta property="og:url" content="{% block og_url %}{{ current_url | default(value=config.base_url) }}{% endblock og_url %}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    {% if page.extra.image or config.extra.og_image %}
+    <meta property="og:image" content="{% block og_image %}{{ page.extra.image | default(value=config.extra.og_image) | default(value=config.base_url ~ '/images/og-default.jpg') }}{% endblock og_image %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{% block og_image_alt %}{{ page.title | default(value=config.title) }}{% endblock og_image_alt %}">
+    {% endif %}
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ config.extra.twitter | default(value='') }}">
+    <meta name="twitter:creator" content="@{{ config.extra.twitter | default(value='') }}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock twitter_title %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock twitter_description %}">
+    {% if page.extra.image or config.extra.og_image %}
+    <meta name="twitter:image" content="{% block twitter_image %}{{ page.extra.image | default(value=config.extra.og_image) | default(value=config.base_url ~ '/images/og-default.jpg') }}{% endblock twitter_image %}">
+    {% endif %}
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="{{ config.extra.author | default(value='Meer Estiyak') }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical_url %}{{ current_url | default(value=config.base_url) }}{% endblock canonical_url %}">
+    
+    <!-- Beautiful Typography - Questrial + Noto Sans Bengali -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,15 +49,27 @@
             theme: {
                 extend: {
                     colors: {
-                        brand: '#00aaff',
-                        'brand-dark': '#0088cc',
-                        'brand-light': '#33bbff',
-                        'text-primary': '#314043',
-                        'bg-primary': '#f8f6f0'
+                        brand: '#000000',
+                        'brand-dark': '#333333',
+                        'brand-light': '#666666',
+                        'brand-accent': '#00aaff',
+                        'brand-success': '#10b981',
+                        'text-primary': '#000000',
+                        'text-secondary': '#666666',
+                        'bg-primary': '#ffffff',
+                        'bg-secondary': '#fafafa',
+                        'bg-accent': '#f5f5f5'
                     },
                     fontFamily: {
-                        'sans': ['Questrial', 'system-ui', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'Monaco', 'monospace']
+                        'sans': ['Questrial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'bengali': ['Noto Sans Bengali', 'Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'monospace']
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                        'safe-left': 'env(safe-area-inset-left)',
+                        'safe-right': 'env(safe-area-inset-right)'
                     },
                     backgroundImage: {
                         'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
@@ -47,18 +87,22 @@
     {% endif %}
 </head>
 <body class="bg-bg-primary text-text-primary font-sans">
-    <header class="bg-bg-primary/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-6">
-            <nav class="flex items-center justify-between py-4 border-t border-b border-gray-200 bg-bg-primary/50">
-                <a href="{{ config.base_url }}" class="text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
-                    meer's log<span class="text-brand animate-pulse">.</span>
+    <header class="bg-white sticky top-0 z-50 pt-safe-top">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <nav class="flex items-center justify-center py-4 border-t border-b border-gray-200 bg-white/50">
+                <!-- Left side - Brand -->
+                <a href="{{ config.base_url }}" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                    meer's log<span class="text-cyan-500 animate-pulse">.</span>
                 </a>
-                <div class="flex items-center space-x-6 text-base text-text-primary">
+                
+                <!-- Center - Responsive navigation -->
+                <div class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base text-text-primary ml-8">
                     <a href="{{ get_url(path="@/logs/_index.md") }}" class="hover:text-brand transition-colors">logs</a>
-                    <a href="{{ get_url(path="@/categories/_index.md") }}" class="hover:text-brand transition-colors">topics</a>
+                    <a href="{{ get_url(path="@/topics/_index.md") }}" class="hover:text-brand transition-colors">topics</a>
                     <a href="{{ get_url(path="@/tags/_index.md") }}" class="hover:text-brand transition-colors">tags</a>
                 </div>
             </nav>
+            
         </div>
     </header>
 
@@ -66,8 +110,8 @@
         {% block content %}{% endblock content %}
     </main>
 
-    <footer class="bg-bg-primary mt-20">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <footer class="bg-bg-primary mt-20 pb-safe-bottom">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div class="text-left">
                 <div class="text-sm text-text-primary/70">
                     <span>&copy; {{ now() | date(format="%Y") }} Meer Estiyak all rights reserved</span>
@@ -75,6 +119,7 @@
             </div>
         </div>
     </footer>
+
 
 </body>
 </html>
