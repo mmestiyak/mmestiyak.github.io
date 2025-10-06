@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Meer Estiyak - Software Developer &amp; Content Creator</title>
+    <meta name="description" content="Personal blog of Meer Estiyak - Software developer, cyclist, and content creator from Bangladesh. Sharing thoughts on technology, life, and personal growth.">
+    
+    <!-- Enhanced Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="সাইকেল চালানোর আনন্দ - Meer Estiyak - Software Developer &amp; Content Creator">
+    <meta property="og:description" content="সাইকেল চালানোর মাধ্যমে প্রকৃতির সাথে যুক্ত হওয়ার অভিজ্ঞতা এবং এর মানসিক উপকারিতা।">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;bangla-cycling-thoughts&#x2F;">
+    <meta property="og:site_name" content="Meer Estiyak - Software Developer &amp; Content Creator">
+    
+    <meta property="og:image" content="https:&amp;#x2F;&amp;#x2F;mmestiyak.com&amp;#x2F;og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="সাইকেল চালানোর আনন্দ">
+    
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mmestiyak">
+    <meta name="twitter:creator" content="@mmestiyak">
+    <meta name="twitter:title" content="সাইকেল চালানোর আনন্দ">
+    <meta name="twitter:description" content="সাইকেল চালানোর মাধ্যমে প্রকৃতির সাথে যুক্ত হওয়ার অভিজ্ঞতা এবং এর মানসিক উপকারিতা।">
+    
+    <meta name="twitter:image" content="https:&amp;#x2F;&amp;#x2F;mmestiyak.com&amp;#x2F;og-image.jpg">
+    
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Meer Estiyak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;bangla-cycling-thoughts&#x2F;">
+    
+    <!-- Beautiful Typography - Questrial + Noto Sans Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Zola's built-in search -->
+    <script src="https://mmestiyak.com/elasticlunr.min.js"></script>
+    <script src="https://mmestiyak.com/search_index.en.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#000000',
+                        'brand-dark': '#333333',
+                        'brand-light': '#666666',
+                        'brand-accent': '#00aaff',
+                        'brand-success': '#10b981',
+                        'text-primary': '#000000',
+                        'text-secondary': '#666666',
+                        'bg-primary': '#ffffff',
+                        'bg-secondary': '#fafafa',
+                        'bg-accent': '#f5f5f5'
+                    },
+                    fontFamily: {
+                        'sans': ['Questrial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'bengali': ['Noto Sans Bengali', 'Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'monospace']
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                        'safe-left': 'env(safe-area-inset-left)',
+                        'safe-right': 'env(safe-area-inset-right)'
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="https://mmestiyak.com/style.css">
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mmestiyak.com/atom.xml">
+    
+</head>
+<body class="bg-bg-primary text-text-primary font-sans">
+    <header class="bg-white sticky top-0 z-50 pt-safe-top">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <nav class="flex items-center justify-center py-4 border-t border-b border-gray-200 bg-white/50">
+                <!-- Left side - Brand -->
+                <a href="https:&#x2F;&#x2F;mmestiyak.com" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                    meer's log<span class="text-cyan-500 animate-pulse">.</span>
+                </a>
+                
+                <!-- Center - Responsive navigation -->
+                <div class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base text-text-primary ml-8">
+                    <a href="https://mmestiyak.com/logs/" class="hover:text-brand transition-colors">logs</a>
+                    <a href="https://mmestiyak.com/topics/" class="hover:text-brand transition-colors">topics</a>
+                    <a href="https://mmestiyak.com/tags/" class="hover:text-brand transition-colors">tags</a>
+                </div>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+    <article class="py-6 sm:py-8">
+        <header class="mb-8 sm:mb-12">
+            
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">সাইকেল চালানোর আনন্দ</h1>
+            
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-500 mb-4 sm:mb-6">
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <time datetime="2024-01-25">January 25, 2024</time>
+                    
+                    <span class="hidden sm:inline">•</span>
+                    <span>1 min read</span>
+                    
+                </div>
+                <span class="hidden sm:inline">•</span>
+                <span class="text-gray-600">Meer Estiyak</span>
+            </div>
+            
+            
+            <!-- Topics at the top -->
+            
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-6">
+                <span class="text-gray-400 font-medium text-sm">Topics:</span>
+                <div class="flex flex-wrap gap-2">
+                    
+                    <a href="https://mmestiyak.com/topics/bangla/" class="text-sm text-gray-700 hover:text-black transition-colors">
+                        bangla
+                    </a>
+                    
+                </div>
+            </div>
+            
+        </header>
+        
+        <div class="prose prose-base sm:prose-lg lg:prose-xl max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-blockquote:border-l-brand prose-blockquote:bg-brand/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700">
+            <p>সাইকেল চালানো শুধু একটি ব্যায়াম নয়, এটি একটি ধ্যানের মতো।</p>
+<h2 id="skaaler-raaidd">সকালের রাইড</h2>
+<p>যখন সকালে সাইকেল নিয়ে বের হই, তখন মনে হয় পুরো পৃথিবী আমার। রাস্তার দুপাশের গাছপালা, পাখির ডাক, সবকিছুই যেন জীবন্ত।</p>
+<h2 id="prkrtir-saathe-snyog">প্রকৃতির সাথে সংযোগ</h2>
+<p>সাইকেল চালানোর সময় প্রকৃতির সাথে সরাসরি সংযোগ হয়। বাতাসের স্পর্শ, সূর্যের আলো, সবকিছুই অনুভব করা যায়।</p>
+<h2 id="maansik-sbaasthyer-upkaaritaa">মানসিক স্বাস্থ্যের উপকারিতা</h2>
+<h3 id="caap-kme">চাপ কমে</h3>
+<p>সাইকেল চালানোর সময় মনের সব চিন্তা দূর হয়ে যায়।</p>
+<h3 id="srjnshiiltaa-baadd-e">সৃজনশীলতা বাড়ে</h3>
+<p>প্রকৃতির মধ্যে থাকলে নতুন নতুন আইডিয়া আসে।</p>
+<h3 id="aatmbishbaas-baadd-e">আত্মবিশ্বাস বাড়ে</h3>
+<p>নিয়মিত সাইকেল চালালে শারীরিক এবং মানসিক শক্তি বাড়ে।</p>
+<h2 id="ddhaakaar-raastaay-saaikel">ঢাকার রাস্তায় সাইকেল</h2>
+<p>ঢাকার রাস্তায় সাইকেল চালানো চ্যালেঞ্জিং। কিন্তু সঠিক রুট এবং সময় বেছে নিলে এটি সম্ভব।</p>
+<h2 id="praamrsh">পরামর্শ</h2>
+<p>যারা সাইকেল চালানো শুরু করতে চান:</p>
+<ol>
+<li><strong>সহজ রুট দিয়ে শুরু করুন</strong> - প্রথমে কম ট্রাফিকের রাস্তা বেছে নিন</li>
+<li><strong>নিরাপত্তা গিয়ার ব্যবহার করুন</strong> - হেলমেট এবং রিফ্লেক্টিভ জ্যাকেট পরুন</li>
+<li><strong>নিয়মিত চালান</strong> - সপ্তাহে অন্তত ৩-৪ দিন চালান</li>
+<li><strong>গ্রুপ রাইডে যোগ দিন</strong> - অন্যান্য সাইকেলিস্টদের সাথে চালান</li>
+</ol>
+<h2 id="shess-kthaa">শেষ কথা</h2>
+<p>সাইকেল চালানো শুধু একটি শখ নয়, এটি একটি জীবনযাপনের পদ্ধতি। এটি আমাদের প্রকৃতির কাছাকাছি নিয়ে যায় এবং মানসিক শান্তি দেয়।</p>
+<p>আপনিও কি সাইকেল চালান? আপনার অভিজ্ঞতা শেয়ার করুন।</p>
+
+        </div>
+        
+        <!-- Tags at the bottom -->
+        
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="flex flex-wrap gap-2 text-sm">
+                
+                <a href="https://mmestiyak.com/tags/saaikel/" class="text-gray-600 hover:text-black transition-colors">
+                    #সাইকেল
+                </a>
+                
+                <a href="https://mmestiyak.com/tags/prkrti/" class="text-gray-600 hover:text-black transition-colors">
+                    #প্রকৃতি
+                </a>
+                
+                <a href="https://mmestiyak.com/tags/sbaasthy/" class="text-gray-600 hover:text-black transition-colors">
+                    #স্বাস্থ্য
+                </a>
+                
+                <a href="https://mmestiyak.com/tags/mnobhaab/" class="text-gray-600 hover:text-black transition-colors">
+                    #মনোভাব
+                </a>
+                
+            </div>
+        </div>
+        
+        
+        <!-- Article Footer -->
+        <footer class="mt-12 pt-8 border-t border-gray-200">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="text-sm text-gray-500">
+                    <p>Published on <time datetime="2024-01-25">January 25, 2024</time></p>
+                </div>
+                
+                <!-- Share buttons -->
+                <div class="flex items-center gap-3">
+                    <span class="text-sm text-gray-500">Share:</span>
+                    <a href="https://twitter.com/intent/tweet?text=%E0%A6%B8%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%87%E0%A6%B2%20%E0%A6%9A%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%A8%E0%A7%8B%E0%A6%B0%20%E0%A6%86%E0%A6%A8%E0%A6%A8%E0%A7%8D%E0%A6%A6&url=https%3A&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;bangla-cycling-thoughts&#x2F;" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand transition-colors" aria-label="Share on Twitter">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;bangla-cycling-thoughts&#x2F;" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand transition-colors" aria-label="Share on LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </article>
+</div>
+
+    </main>
+
+    <footer class="bg-bg-primary mt-20 pb-safe-bottom">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-left">
+                <div class="text-sm text-text-primary/70">
+                    <span>&copy; 2025 Meer Estiyak all rights reserved</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>
