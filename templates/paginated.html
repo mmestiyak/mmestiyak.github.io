@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
 
     <!-- Simple Search Only -->
-    <div class="mb-12">
-        <div class="relative max-w-2xl mb-8">
+    <div class="mb-8 sm:mb-10">
+        <div class="relative max-w-2xl mb-6 sm:mb-8">
             <input 
                 type="text" 
                 id="search-input" 
@@ -32,23 +32,23 @@
             </button>
         </div>
         
-        <!-- Results Summary -->
-        <div id="results-summary" class="mb-6 hidden">
-            <div class="text-sm text-gray-600">
-                <span id="results-count">0</span>
+            <!-- Results Summary -->
+            <div id="results-summary" class="mb-4 sm:mb-6 hidden">
+                <div class="text-sm text-gray-600">
+                    <span id="results-count">0</span>
             </div>
         </div>
     </div>
 
-    <div id="all-posts" class="space-y-4 sm:space-y-6">
+    <div id="all-posts" class="space-y-3 sm:space-y-4">
         {% for page in paginator.pages %}
-        <article class="py-6 border-b border-gray-200 last:border-0">
-            <div class="flex items-start justify-between">
+        <article class="py-4 sm:py-5 border-b border-gray-200 last:border-0">
+            <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                    <h2 class="text-lg font-medium text-gray-900 mb-1">
+                    <h2 class="text-base sm:text-lg font-medium text-gray-900 mb-1">
                         <a href="{{ page.permalink }}" class="hover:text-gray-600 transition-colors">{{ page.title }}</a>
                     </h2>
-                    <div class="flex items-center gap-2 text-sm text-gray-500">
+                    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
                         <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
                         {% if page.reading_time %}
                         <span>•</span>
@@ -57,9 +57,9 @@
                     </div>
                 </div>
                 {% if page.taxonomies.topics %}
-                <div class="flex gap-1 ml-4">
+                <div class="flex gap-1 flex-shrink-0 self-start">
                     {% for topic in page.taxonomies.topics %}
-                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors">
+                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap">
                         {{ topic }}
                     </a>
                     {% endfor %}
@@ -221,7 +221,7 @@ class SimpleSearch {
         const tagUrls = post.tagUrls || {};
         
         const topicsHtml = topics.length > 0 ? topics.map(topic => 
-            `<a href="${topicUrls[topic] || '#'}" class="px-2 py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors">${topic}</a>`
+            `<a href="${topicUrls[topic] || '#'}" class="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap flex-shrink-0">${topic}</a>`
         ).join('') : '';
         
         const readingTime = post.readingTime ? 
@@ -241,19 +241,19 @@ class SimpleSearch {
         }
         
         return `
-            <article class="py-6 border-b border-gray-200 last:border-0">
-                    <div class="flex items-start justify-between">
+            <article class="py-4 sm:py-5 border-b border-gray-200 last:border-0">
+                <div class="flex items-start justify-between gap-4">
                     <div class="flex-1 min-w-0">
-                        <h2 class="text-lg font-medium text-gray-900 mb-1">
+                        <h2 class="text-base sm:text-lg font-medium text-gray-900 mb-1">
                             <a href="${post.url}" class="hover:text-gray-600 transition-colors">${post.title}</a>
                             </h2>
-                        <div class="flex items-center gap-2 text-sm text-gray-500">
+                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
                             <time datetime="${post.date || ''}">${formattedDate}</time>
                             ${readingTime}
                         </div>
                     </div>
                     ${topics.length > 0 ? `
-                    <div class="flex gap-1 ml-4">
+                    <div class="flex gap-1 flex-shrink-0 self-start">
                         ${topicsHtml}
                     </div>
                     ` : ''}

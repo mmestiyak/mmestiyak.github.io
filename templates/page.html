@@ -13,20 +13,20 @@
 
 {% block content %}
 
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
-    <article class="py-6 sm:py-8">
-        <header class="mb-8 sm:mb-12">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+    <article class="py-4 sm:py-6">
+        <header class="mb-6 sm:mb-8">
             {% if page.extra.image %}
-            <div class="mb-6 sm:mb-8 -mx-4 sm:mx-0">
+            <div class="mb-4 sm:mb-6 -mx-4 sm:mx-0">
                 <div class="relative overflow-hidden rounded-none sm:rounded-lg shadow-none sm:shadow-lg">
                     <img src="{{ page.extra.image }}" alt="{{ page.title }}" class="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
             </div>
             {% endif %}
-            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">{{ page.title }}</h1>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 leading-tight">{{ page.title }}</h1>
             {% if page.date %}
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-500 mb-4 sm:mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm sm:text-base text-gray-500 mb-3 sm:mb-4">
                 <div class="flex items-center gap-2 sm:gap-4">
                     <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
                     {% if page.reading_time %}
@@ -41,7 +41,7 @@
             
             <!-- Topics at the top -->
             {% if page.taxonomies.topics %}
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 mb-4">
                 <span class="text-gray-400 font-medium text-sm">Topics:</span>
                 <div class="flex flex-wrap gap-2">
                     {% for topic in page.taxonomies.topics %}
@@ -54,13 +54,75 @@
             {% endif %}
         </header>
         
-        <div class="prose prose-base sm:prose-lg lg:prose-xl max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-blockquote:border-l-brand prose-blockquote:bg-brand/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700">
+        <div class="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:text-gray-900 prose-headings:font-bold prose-p:text-gray-700 prose-p:leading-normal prose-a:text-brand prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-code:text-gray-800 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-blockquote:border-l-brand prose-blockquote:bg-brand/5 prose-blockquote:py-2 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-ul:text-gray-700 prose-ol:text-gray-700 prose-li:text-gray-700" id="post-content">
             {{ page.content | safe }}
         </div>
+
+        <script>
+        // Add right-side anchor links to headings and smooth-scroll with sticky header offset
+        (function() {
+            const contentEl = document.getElementById('post-content');
+            if (!contentEl) return;
+
+            const headerOffset = 100; // approx nav height
+            const slugify = (text) => text.toLowerCase().trim()
+                .replace(/[^\w\s-]/g, '')
+                .replace(/[\s_-]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+
+            const headings = contentEl.querySelectorAll('h2, h3, h4, h5, h6');
+            headings.forEach(h => {
+                if (!h.id) {
+                    h.id = slugify(h.textContent);
+                }
+                // Skip if already has anchor-link
+                if (h.querySelector('.anchor-link')) return;
+                const a = document.createElement('a');
+                a.href = `#${h.id}`;
+                a.className = 'anchor-link';
+                a.setAttribute('aria-label', 'Copy link to this section');
+                a.textContent = '🔗';
+                h.appendChild(a);
+            });
+
+            function scrollToId(id) {
+                const target = document.getElementById(id);
+                if (!target) return;
+                const rect = target.getBoundingClientRect();
+                const y = window.pageYOffset + rect.top - headerOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+                target.tabIndex = -1;
+                target.focus({ preventScroll: true });
+            }
+
+            // Smooth scroll behavior when clicking anchor links
+            contentEl.addEventListener('click', (e) => {
+                const link = e.target.closest('a.anchor-link');
+                if (!link) return;
+                e.preventDefault();
+                const id = link.getAttribute('href').slice(1);
+                window.history.replaceState(null, '', `#${id}`);
+                scrollToId(id);
+            });
+
+            // On initial load with hash
+            if (window.location.hash) {
+                const id = decodeURIComponent(window.location.hash.slice(1));
+                setTimeout(() => scrollToId(id), 0);
+            }
+
+            // Handle back/forward
+            window.addEventListener('hashchange', () => {
+                const id = decodeURIComponent(window.location.hash.slice(1));
+                if (!id) return;
+                scrollToId(id);
+            });
+        })();
+        </script>
         
         <!-- Tags at the bottom -->
         {% if page.taxonomies.tags %}
-        <div class="mt-8 pt-6 border-t border-gray-200">
+        <div class="mt-6 pt-4 border-t border-gray-200">
             <div class="flex flex-wrap gap-2 text-sm">
                 {% for tag in page.taxonomies.tags %}
                 <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="text-gray-600 hover:text-black transition-colors">
@@ -72,7 +134,7 @@
         {% endif %}
         
         <!-- Article Footer -->
-        <footer class="mt-12 pt-8 border-t border-gray-200">
+        <footer class="mt-8 pt-6 border-t border-gray-200">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div class="text-sm text-gray-500">
                     <p>Published on <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time></p>

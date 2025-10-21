@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
     <!-- Hero Section -->
-    <section class="mb-16 sm:mb-20 lg:mb-24">
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-6 sm:mb-8 leading-tight">
-            Hi <span class="text-brand text-3xl sm:text-4xl lg:text-5xl">👋</span>
+    <section class="mb-12 sm:mb-16 lg:mb-20">
+        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6 leading-tight">
+            Hello <span class="text-brand text-3xl sm:text-4xl lg:text-5xl"></span>
         </h1>
         
         <div class="max-w-2xl">
@@ -13,7 +13,7 @@
                 I'm Meer. I build <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">software</a> for food, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">cycling</a>, and peace in <span class="font-medium text-gray-900">boxing</span>.
             </p>
             
-            <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
+            <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-6">
                 From a small, beautiful country called <span class="font-medium text-gray-900">Bangladesh</span>, this site is my logbook of thoughts, lessons, and small moments.
             </p>
             
@@ -44,8 +44,8 @@
     </section>
 
     <!-- Recent Writings Section -->
-    <section class="mb-16 sm:mb-20">
-        <h2 class="text-xl sm:text-2xl font-light text-gray-900 mb-6 sm:mb-8">
+    <section class="mb-12 sm:mb-16">
+        <h2 class="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">
             Recent Logs
         </h2>
         {% set posts = get_section(path="logs/_index.md") %}
@@ -64,8 +64,8 @@
             {% endfor %}
         </div>
         
-        <div class="mt-8 sm:mt-12">
-            <a href="{{ get_url(path="@/logs/_index.md") }}" class="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-200">
+        <div class="mt-6 sm:mt-8">
+            <a href="{{ get_url(path="@/logs/_index.md") }}" class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-200">
                 View all logs
                 <svg class="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
