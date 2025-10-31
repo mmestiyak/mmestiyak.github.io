@@ -1,16 +1,36 @@
 {% extends "base.html" %}
 
+{% block title %}Meer Estiyak — Software Developer & Writer{% endblock title %}
+{% block description %}Personal site and logs by Meer Estiyak: software development, programming, cycling, and thoughts from Bangladesh.{% endblock description %}
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Meer Estiyak",
+  "url": "{{ config.base_url }}",
+  "sameAs": [
+    "https://github.com/{{ config.extra.github }}",
+    "https://www.linkedin.com/in/{{ config.extra.linkedin }}",
+    "https://twitter.com/{{ config.extra.twitter }}"
+  ]
+}
+</script>
+{% endblock head_extra %}
+
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
     <!-- Hero Section -->
     <section class="mb-12 sm:mb-16 lg:mb-20">
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6 leading-tight">
-            Hello <span class="text-brand text-3xl sm:text-4xl lg:text-5xl"></span>
-        </h1>
-        
+        <!-- <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-4 sm:mb-6 leading-tight">
+            Hello & Welcome
+        </h1> -->
+        <!-- <h2 class="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">
+           Hello!
+        </h2> -->
         <div class="max-w-2xl">
             <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-4">
-                I'm Meer. I build <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">software</a> for food, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">cycling</a>, and peace in <span class="font-medium text-gray-900">boxing</span>.
+                I'm Meer Estiyak. I build <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">software</a> for food, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">cycling</a>, and peace in <span class="font-medium text-gray-900">boxing</span>.
             </p>
             
             <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-6">

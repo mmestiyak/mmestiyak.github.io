@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}{{ taxonomy.name | capitalize }} — {{ config.title }}{% endblock title %}
+{% block description %}Browse all {{ taxonomy.name }} used on {{ config.title }}.{% endblock description %}
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
     <header class="mb-6 sm:mb-8">

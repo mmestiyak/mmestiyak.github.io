@@ -15,7 +15,7 @@ zola build --output-dir public
 echo "📝 Committing changes..."
 git add .
 git commit -m "Deploy: $(date)" || echo "No changes to commit"
-git push origin main
+git push origin master
 
 echo "✅ Deployment complete!"
 echo "🌐 Your site should be available at: https://$(git config --get remote.origin.url | sed 's/.*github.com[:/]\([^.]*\).*/\1/').github.io"

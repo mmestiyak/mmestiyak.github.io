@@ -1,15 +1,44 @@
 {% extends "base.html" %}
 
+{% block title %}{{ page.title }} - {{ config.title }}{% endblock title %}
+{% block description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) }}{% endblock description %}
 {% block og_title %}{{ page.title }} - {{ config.title }}{% endblock og_title %}
-{% block og_description %}{{ page.description | default(value=page.content | striptags | truncate(length=160)) }}{% endblock og_description %}
+{% block og_description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) }}{% endblock og_description %}
 {% block og_type %}article{% endblock og_type %}
 {% block og_url %}{{ page.permalink }}{% endblock og_url %}
 {% block og_image %}{{ page.extra.image | default(value=config.extra.og_image) }}{% endblock og_image %}
 {% block og_image_alt %}{{ page.title }}{% endblock og_image_alt %}
 {% block twitter_title %}{{ page.title }}{% endblock twitter_title %}
-{% block twitter_description %}{{ page.description | default(value=page.content | striptags | truncate(length=160)) }}{% endblock twitter_description %}
+{% block twitter_description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) }}{% endblock twitter_description %}
 {% block twitter_image %}{{ page.extra.image | default(value=config.extra.og_image) }}{% endblock twitter_image %}
 {% block canonical_url %}{{ page.permalink }}{% endblock canonical_url %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.permalink }}"
+  },
+  "headline": {{ page.title | json_encode | safe }},
+  {% set desc = page.description | default(value="") %}
+  {% if not desc %}{% set desc = page.content | striptags | truncate(length=160) %}{% endif %}
+  {% set authorName = config.extra.author | default(value="Meer Estiyak") %}
+  {% set imageUrl = page.extra.image | default(value="") %}
+  {% if not imageUrl %}{% set imageUrl = config.extra.og_image | default(value="") %}{% endif %}
+  "description": {{ desc | json_encode | safe }},
+  "datePublished": "{{ page.date }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ authorName | json_encode | safe }},
+    "url": "{{ config.base_url }}"
+  },
+  "image": {{ imageUrl | json_encode | safe }}
+}
+</script>
+{% endblock head_extra %}
 
 {% block content %}
 
@@ -158,4 +187,140 @@
         </footer>
     </article>
 </div>
+{% set logs = get_section(path="logs/_index.md") %}
+{% if logs.pages | length > 1 %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-12">
+    <div class="mt-10 pt-6 border-t border-gray-200">
+        <h2 class="text-lg sm:text-xl font-light text-gray-900 mb-4">Related logs</h2>
+        {% set shown = 0 %}
+        {% set used_slugs = [] %}
+        {% set used_dates = [] %}
+        <div class="space-y-3">
+        {# 1) Manual overrides #}
+        {% if page.extra and page.extra.related and page.extra.related | length > 0 %}
+            {% for s in page.extra.related %}
+                {% if shown < 3 %}
+                    {% for p in logs.pages %}
+                        {% if p.slug == s and p.permalink != page.permalink and p.slug not in used_slugs %}
+                            {% set d = p.date | date(format="%Y-%m-%d") %}
+                            {% if d not in used_dates %}
+                            <article class="py-3 border-b border-gray-100 last:border-0">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="text-base font-medium text-gray-900">
+                                            <a href="{{ p.permalink }}" class="hover:underline">{{ p.title }}</a>
+                                        </h3>
+                                        <div class="text-xs sm:text-sm text-gray-500">
+                                            <time datetime="{{ p.date }}">{{ p.date | date(format="%b %d, %Y") }}</time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            {% set used_slugs = used_slugs | concat(with=p.slug) %}
+                            {% set used_dates = used_dates | concat(with=d) %}
+                            {% set shown = shown + 1 %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {# 2) Prefer by topics #}
+        {% if shown < 3 and page.taxonomies.topics %}
+            {% for p in logs.pages %}
+                {% if shown < 3 and p.permalink != page.permalink and p.slug not in used_slugs %}
+                    {% set match = false %}
+                    {% for t in page.taxonomies.topics %}
+                        {% if p.taxonomies.topics and (t in p.taxonomies.topics) %}
+                            {% set match = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if match %}
+                        {% set d = p.date | date(format="%Y-%m-%d") %}
+                        {% if d not in used_dates %}
+                        <article class="py-3 border-b border-gray-100 last:border-0">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-base font-medium text-gray-900">
+                                        <a href="{{ p.permalink }}" class="hover:underline">{{ p.title }}</a>
+                                    </h3>
+                                    <div class="text-xs sm:text-sm text-gray-500">
+                                        <time datetime="{{ p.date }}">{{ p.date | date(format="%b %d, %Y") }}</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% set used_slugs = used_slugs | concat(with=p.slug) %}
+                        {% set used_dates = used_dates | concat(with=d) %}
+                        {% set shown = shown + 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {# 3) Then by tags #}
+        {% if shown < 3 and page.taxonomies.tags %}
+            {% for p in logs.pages %}
+                {% if shown < 3 and p.permalink != page.permalink and p.slug not in used_slugs %}
+                    {% set match = false %}
+                    {% for t in page.taxonomies.tags %}
+                        {% if p.taxonomies.tags and (t in p.taxonomies.tags) %}
+                            {% set match = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if match %}
+                        {% set d = p.date | date(format="%Y-%m-%d") %}
+                        {% if d not in used_dates %}
+                        <article class="py-3 border-b border-gray-100 last:border-0">
+                            <div class="flex items-start justify-between gap-4">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-base font-medium text-gray-900">
+                                        <a href="{{ p.permalink }}" class="hover:underline">{{ p.title }}</a>
+                                    </h3>
+                                    <div class="text-xs sm:text-sm text-gray-500">
+                                        <time datetime="{{ p.date }}">{{ p.date | date(format="%b %d, %Y") }}</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        {% set used_slugs = used_slugs | concat(with=p.slug) %}
+                        {% set used_dates = used_dates | concat(with=d) %}
+                        {% set shown = shown + 1 %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        {# 4) Backfill with recent #}
+        {% if shown < 3 %}
+            {% for p in logs.pages %}
+                {% if shown < 3 and p.permalink != page.permalink and p.slug not in used_slugs %}
+                    {% set d = p.date | date(format="%Y-%m-%d") %}
+                    {% if d not in used_dates %}
+                    <article class="py-3 border-b border-gray-100 last:border-0">
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1 min-w-0">
+                                <h3 class="text-base font-medium text-gray-900">
+                                    <a href="{{ p.permalink }}" class="hover:underline">{{ p.title }}</a>
+                                </h3>
+                                <div class="text-xs sm:text-sm text-gray-500">
+                                    <time datetime="{{ p.date }}">{{ p.date | date(format="%b %d, %Y") }}</time>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    {% set used_slugs = used_slugs | concat(with=p.slug) %}
+                    {% set used_dates = used_dates | concat(with=d) %}
+                    {% set shown = shown + 1 %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock content %}

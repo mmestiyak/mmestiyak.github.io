@@ -2,10 +2,10 @@
 base_url = "https://mmestiyak.com"
 
 # The title of your site
-title = "Meer Estiyak - Software Developer & Content Creator"
+title = "Meer's Log"
 
 # The description of your site
-description = "Personal blog of Meer Estiyak - Software developer, cyclist, and content creator from Bangladesh. Sharing thoughts on technology, life, and personal growth."
+description = "Thoughts on tech, software, cycling, MMA, and everything that shapes my journey."
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
@@ -43,11 +43,29 @@ enable_implicit_figures = true
 [extra]
 # SEO and social media
 author = "Meer Estiyak"
-keywords = ["software development", "programming", "cycling", "bangladesh", "technology", "personal blog"]
+keywords = [
+    "Meer Estiyak",
+    "meer estiyak",
+    "mmestiyak",
+    "teammeer",
+    "software development",
+    "programming",
+    "technology",
+    "cycling",
+    "MMA",
+    "Bangladesh",
+    "personal blog"
+]
 twitter = "mmestiyak"
 github = "mmestiyak"
 linkedin = "mmestiyak"
 email = "mmestiyak@gmail.com"
+
+# Optional: alternate names for SEO/entity matching
+aliases = ["Meer Estiyak", "mmestiyak", "teammeer"]
+
+# Google Analytics 4
+google_analytics = "G-33V0WBXVRM"
 
 # Analytics (add your tracking ID)
 # google_analytics = "GA_TRACKING_ID"

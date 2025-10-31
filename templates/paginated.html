@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %}Logs — {{ config.title }}{% if paginator and paginator.current_index > 1 %} — Page {{ paginator.current_index }}{% endif %}{% endblock title %}
+{% block description %}All logs by Meer Estiyak on software development, programming, and more.{% endblock description %}
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
 

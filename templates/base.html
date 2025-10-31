@@ -85,6 +85,16 @@
     {% if config.generate_feeds %}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="atom.xml") }}">
     {% endif %}
+    {% if config.extra.google_analytics %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.google_analytics }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} 
+        gtag('js', new Date());
+        gtag('config', '{{ config.extra.google_analytics }}');
+    </script>
+    {% endif %}
+    {% block head_extra %}{% endblock head_extra %}
 </head>
 <body class="bg-bg-primary text-text-primary font-sans">
     <header class="bg-white sticky top-0 z-50 pt-safe-top">
