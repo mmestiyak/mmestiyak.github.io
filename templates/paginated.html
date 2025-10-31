@@ -35,11 +35,11 @@
         </div>
         
             <!-- Results Summary -->
-            <div id="results-summary" class="mb-4 sm:mb-6 hidden">
+            <!-- <div id="results-summary" class="mb-4 sm:mb-6 hidden">
                 <div class="text-sm text-gray-600">
                     <span id="results-count">0</span>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div id="all-posts" class="space-y-3 sm:space-y-4">
@@ -61,7 +61,7 @@
                 {% if page.taxonomies.topics %}
                 <div class="flex gap-1 flex-shrink-0 self-start">
                     {% for topic in page.taxonomies.topics %}
-                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap">
+                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="inline-flex items-center px-2 py-0.5 text-xs leading-none text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap">
                         {{ topic }}
                     </a>
                     {% endfor %}

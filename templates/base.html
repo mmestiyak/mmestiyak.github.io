@@ -99,17 +99,21 @@
 <body class="bg-bg-primary text-text-primary font-sans">
     <header class="bg-white sticky top-0 z-50 pt-safe-top">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-            <nav class="flex items-center py-4 border-t border-b border-gray-200 bg-white/50">
+            <nav class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 py-3 sm:py-4 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
                 <!-- Left side - Brand -->
-                <a href="{{ config.base_url }}" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight">
+                <a href="{{ config.base_url }}" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight py-2">
                     meer's log<span class="text-cyan-500 animate-pulse">.</span>
                 </a>
                 
                 <!-- Center - Responsive navigation -->
-                <div class="flex items-center space-x-3 sm:space-x-6 text-sm sm:text-base text-text-primary mx-auto">
-                    <a href="{{ get_url(path="@/logs/_index.md") }}" class="hover:text-brand transition-colors">logs</a>
-                    <a href="{{ get_url(path="@/topics/_index.md") }}" class="hover:text-brand transition-colors">topics</a>
-                    <a href="{{ get_url(path="@/tags/_index.md") }}" class="hover:text-brand transition-colors">tags</a>
+                <div class="flex items-center gap-3 sm:gap-6 text-base text-text-primary">
+                    {% set cur = current_url | default(value="") %}
+                    {% set logs_url = get_url(path="@/logs/_index.md") %}
+                    {% set topics_url = get_url(path="@/topics/_index.md") %}
+                    {% set tags_url = get_url(path="@/tags/_index.md") %}
+                    <a href="{{ logs_url }}" class="px-3 py-2 rounded transition-colors {% if logs_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">logs</a>
+                    <a href="{{ topics_url }}" class="px-3 py-2 rounded transition-colors {% if topics_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">topics</a>
+                    <a href="{{ tags_url }}" class="px-3 py-2 rounded transition-colors {% if tags_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">tags</a>
                 </div>
                 
                 <!-- Right side - Empty spacer for balance -->
@@ -125,9 +129,14 @@
 
     <footer class="bg-bg-primary mt-12 sm:mt-16 pb-safe-bottom">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-            <div class="text-left">
-                <div class="text-sm text-text-primary/70">
-                    <span>&copy; {{ now() | date(format="%Y") }} Meer Estiyak all rights reserved</span>
+            <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 text-sm text-text-primary/80 text-center sm:text-left">
+                <div>
+                    <span>&copy; {{ now() | date(format="%Y") }} Meer Estiyak</span>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
+                    <a href="mailto:{{ config.extra.email }}" class="hover:text-brand transition-colors">Email</a>
+                    <a href="https://github.com/{{ config.extra.github }}" class="hover:text-brand transition-colors">GitHub</a>
+                    <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" class="hover:text-brand transition-colors">LinkedIn</a>
                 </div>
             </div>
         </div>
