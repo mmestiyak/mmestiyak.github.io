@@ -4,7 +4,7 @@ date = 2025-11-16
 description = "Turn a simple Google Sheet into a live store. Zero code, 0% commission, built for WhatsApp. Here's how Kommercly helps you stop building and start selling fast."
 reading_time = 4
 [taxonomies]
-tags = ["product", "ecommerce", "no-code", "whatsapp"]
+tags = ["product", "ecommerce", "no-code", "whatsapp", "kommercly"]
 topics = ["product"]
 +++
 
