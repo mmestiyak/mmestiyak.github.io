@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>বাংলা — Meer&#x27;s Log</title>
+    <meta name="description" content="বাংলা ভাষায় লেখা">
+    
+    <!-- Enhanced Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Meer&#x27;s Log">
+    <meta property="og:description" content="Thoughts on tech, software, cycling, MMA, and everything that shapes my journey.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https:&#x2F;&#x2F;mmestiyak.com&#x2F;topics&#x2F;bangla&#x2F;">
+    <meta property="og:site_name" content="Meer&#x27;s Log">
+    
+    <meta property="og:image" content="https:&amp;#x2F;&amp;#x2F;mmestiyak.com&amp;#x2F;og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Meer&amp;#x27;s Log">
+    
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mmestiyak">
+    <meta name="twitter:creator" content="@mmestiyak">
+    <meta name="twitter:title" content="Meer&#x27;s Log">
+    <meta name="twitter:description" content="Thoughts on tech, software, cycling, MMA, and everything that shapes my journey.">
+    
+    <meta name="twitter:image" content="https:&amp;#x2F;&amp;#x2F;mmestiyak.com&amp;#x2F;og-image.jpg">
+    
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="Meer Estiyak">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;topics&#x2F;bangla&#x2F;">
+    
+    <!-- Beautiful Typography - Questrial + Noto Sans Bengali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Zola's built-in search -->
+    <script src="https://mmestiyak.com/elasticlunr.min.js"></script>
+    <script src="https://mmestiyak.com/search_index.en.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#000000',
+                        'brand-dark': '#333333',
+                        'brand-light': '#666666',
+                        'brand-accent': '#00aaff',
+                        'brand-success': '#10b981',
+                        'text-primary': '#000000',
+                        'text-secondary': '#666666',
+                        'bg-primary': '#ffffff',
+                        'bg-secondary': '#fafafa',
+                        'bg-accent': '#f5f5f5'
+                    },
+                    fontFamily: {
+                        'sans': ['Questrial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'bengali': ['Noto Sans Bengali', 'Questrial', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'monospace']
+                    },
+                    spacing: {
+                        'safe-top': 'env(safe-area-inset-top)',
+                        'safe-bottom': 'env(safe-area-inset-bottom)',
+                        'safe-left': 'env(safe-area-inset-left)',
+                        'safe-right': 'env(safe-area-inset-right)'
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS for additional styling -->
+    <link rel="stylesheet" href="https://mmestiyak.com/style.css">
+    
+    
+    
+    
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://mmestiyak.com/atom.xml">
+    
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-33V0WBXVRM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);} 
+        gtag('js', new Date());
+        gtag('config', 'G-33V0WBXVRM');
+    </script>
+    
+    
+</head>
+<body class="bg-bg-primary text-text-primary font-sans">
+    <header class="bg-white sticky top-0 z-50 pt-safe-top">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <nav class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 py-3 sm:py-4 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
+                <!-- Left side - Brand -->
+                <a href="https:&#x2F;&#x2F;mmestiyak.com" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight py-2">
+                    meer's log<span class="text-cyan-500 animate-pulse">.</span>
+                </a>
+                
+                <!-- Center - Responsive navigation -->
+                <div class="flex items-center gap-3 sm:gap-6 text-base text-text-primary">
+                    
+                    
+                    
+                    
+                    <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;" class="px-3 py-2 rounded transition-colors hover:text-brand hover:bg-gray-100">logs</a>
+                    <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;topics&#x2F;" class="px-3 py-2 rounded transition-colors text-brand underline">topics</a>
+                    <a href="https:&#x2F;&#x2F;mmestiyak.com&#x2F;tags&#x2F;" class="px-3 py-2 rounded transition-colors hover:text-brand hover:bg-gray-100">tags</a>
+                </div>
+                
+                <!-- Right side - Empty spacer for balance -->
+                <div class="w-0 sm:w-20"></div>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="min-h-screen">
+        
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-12">
+        <h1 class="text-3xl font-light text-gray-900 mb-4">বাংলা</h1>
+        
+        <p class="text-gray-500">বাংলা ভাষায় লেখা</p>
+        
+    </header>
+
+    <!-- Search Bar -->
+    <div class="mb-8">
+        <div class="relative max-w-md">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Search logs..." 
+                class="w-full px-4 py-3 pl-10 pr-4 text-text-primary bg-bg-primary border border-brand rounded-lg focus:outline-none focus:ring-2 focus:ring-brand/20 transition-all duration-200 placeholder:text-text-primary/60"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="h-5 w-5 text-text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+        </div>
+        <div id="search-results" class="mt-4 hidden">
+            <div class="text-sm text-gray-500 mb-4">
+                <span id="search-count">0</span> results found
+            </div>
+        </div>
+    </div>
+
+    <div id="all-posts" class="space-y-6">
+        
+    </div>
+</div>
+
+<!-- Simple Search Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    const searchCount = document.getElementById('search-count');
+    const allPosts = document.getElementById('all-posts');
+    
+    // Simple posts data - we know this works
+    const posts = [
+        
+    ];
+    
+    // Simple search function that works with both English and Bangla
+    function performSearch(query) {
+        if (query.length < 2) {
+            searchResults.classList.add('hidden');
+            allPosts.classList.remove('hidden');
+            return;
+        }
+        
+        // Simple text search in title, description, and tags
+        const results = posts.filter(post => {
+            const searchText = query.toLowerCase();
+            return (
+                post.title.toLowerCase().includes(searchText) ||
+                post.description.toLowerCase().includes(searchText) ||
+                post.tags.some(tag => tag.toLowerCase().includes(searchText))
+            );
+        });
+        
+        // Hide all posts
+        allPosts.classList.add('hidden');
+        
+        // Show search results
+        searchResults.classList.remove('hidden');
+        searchCount.textContent = results.length;
+        
+        // Clear previous results
+        const resultsContainer = searchResults.querySelector('.results-container');
+        if (resultsContainer) {
+            resultsContainer.remove();
+        }
+        
+        // Create results container
+        const container = document.createElement('div');
+        container.className = 'results-container space-y-6';
+        
+        if (results.length === 0) {
+            container.innerHTML = '<p class="text-gray-500 text-center py-8">No logs found matching your search.</p>';
+        } else {
+            results.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'py-4 border-b border-gray-100 last:border-0';
+                article.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                            <h2 class="text-lg font-medium text-gray-900 mb-2">
+                                <a href="${post.url}">${post.title}</a>
+                            </h2>
+                            <div class="flex items-center space-x-3 text-sm text-gray-400 mb-2">
+                                <span>${post.date ? new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'No date'}</span>
+                                ${post.tags && post.tags.length > 0 ? `<span>•</span><div class="flex flex-wrap gap-1">${post.tags.map(tag => `<a href="/tags/${slugify(tag)}/" class="text-gray-400 hover:text-brand transition-colors">${tag}</a>`).join(', ')}</div>` : ''}
+                            </div>
+                            ${post.description ? `<p class="text-gray-500 text-sm leading-relaxed">${post.description}</p>` : ''}
+                        </div>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+        
+        searchResults.appendChild(container);
+    }
+    
+    // Search input handler
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(this.value.trim());
+        }, 300);
+    });
+    
+    // Clear search on escape
+    searchInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            this.value = '';
+            searchResults.classList.add('hidden');
+            allPosts.classList.remove('hidden');
+        }
+    });
+});
+</script>
+
+    </main>
+
+    <footer class="bg-bg-primary mt-12 sm:mt-16 pb-safe-bottom">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+            <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 text-sm text-text-primary/80 text-center sm:text-left">
+                <div>
+                    <span>&copy; 2025 Meer Estiyak</span>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
+                    <a href="mailto:mmestiyak@gmail.com" class="hover:text-brand transition-colors">Email</a>
+                    <a href="https://github.com/mmestiyak" class="hover:text-brand transition-colors">GitHub</a>
+                    <a href="https://linkedin.com/in/mmestiyak" class="hover:text-brand transition-colors">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

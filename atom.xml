@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Meer&#x27;s Log</title>
+    <subtitle>Thoughts on tech, software, cycling, MMA, and everything that shapes my journey.</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://mmestiyak.com/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://mmestiyak.com"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-11-16T00:00:00+00:00</updated>
+    <id>https://mmestiyak.com/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Launch a WhatsApp-First Store in Minutes with Kommercly</title>
+        <published>2025-11-16T00:00:00+00:00</published>
+        <updated>2025-11-16T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmestiyak.com/logs/whatsapp-first-store-in-minutes-with-kommercly/"/>
+        <id>https://mmestiyak.com/logs/whatsapp-first-store-in-minutes-with-kommercly/</id>
+        
+        <content type="html" xml:base="https://mmestiyak.com/logs/whatsapp-first-store-in-minutes-with-kommercly/">&lt;p&gt;I built Kommercly to make launching online instant. Agencies take weeks. DIY tools burn time and money on themes, apps, and invoices. Meanwhile buyers are already asking “price?” on WhatsApp. Kommercly is a no-code WhatsApp store builder that turns your Google Sheet into a live store fast — built for no-code ecommerce and fast online store launches in Bangladesh and beyond.&lt;&#x2F;p&gt;
+&lt;p&gt;Copy our Google Sheet template, add your store info and products, paste the link - Kommercly puts a WhatsApp-ready store live in minutes with product names, prices, and images. No code. No developer. 0% fees.&lt;&#x2F;p&gt;
+&lt;p&gt;If you can manage a Google Sheet, you can launch in minutes. Free 3-month trial. No card. Nothing to lose.&lt;&#x2F;p&gt;
+&lt;p&gt;Jump to: &lt;a href=&quot;https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;whatsapp-first-store-in-minutes-with-kommercly&#x2F;#get-live-in-3-steps&quot;&gt;Get Live in 3 Steps&lt;&#x2F;a&gt; · &lt;a href=&quot;https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;whatsapp-first-store-in-minutes-with-kommercly&#x2F;#see-it&quot;&gt;See It&lt;&#x2F;a&gt; · &lt;a href=&quot;https:&#x2F;&#x2F;mmestiyak.com&#x2F;logs&#x2F;whatsapp-first-store-in-minutes-with-kommercly&#x2F;#quick-faqs&quot;&gt;Quick FAQs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;kommercly.com&#x2F;?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=whatsapp-first-store#create-store&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Create your store (free 3-month trial)&lt;&#x2F;a&gt; · &lt;a href=&quot;https:&#x2F;&#x2F;stellify.kommercly.com&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;See demo&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;!-- CTA kept to two placements: top and bottom --&gt;
+&lt;h2 id=&quot;built-for-speed-not-settings&quot;&gt;Built For Speed, Not Settings&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;WhatsApp-first&lt;&#x2F;strong&gt;: Meet customers where they already buy. Deep link conversations, no heavy checkout.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Google Sheet as source&lt;&#x2F;strong&gt;: Edit a row, refresh, you’re live.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Go live instantly&lt;&#x2F;strong&gt;: Most stores are ready before the coffee cools.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;what-changes-for-you&quot;&gt;What Changes For You&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;From DM chaos to trackable orders in under 2 minutes&lt;&#x2F;li&gt;
+&lt;li&gt;Share one clean link instead of screenshots and price lists&lt;&#x2F;li&gt;
+&lt;li&gt;Keep 100% of sales — no commissions or surprise bills&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;kommercly-vs-alternatives-quick&quot;&gt;Kommercly vs Alternatives (Quick)&lt;&#x2F;h2&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Aspect&lt;&#x2F;th&gt;&lt;th&gt;Kommercly&lt;&#x2F;th&gt;&lt;th&gt;Agency build&lt;&#x2F;th&gt;&lt;th&gt;DIY platforms&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Time to launch&lt;&#x2F;td&gt;&lt;td&gt;Minutes&lt;&#x2F;td&gt;&lt;td&gt;Weeks&lt;&#x2F;td&gt;&lt;td&gt;Days to weeks&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Cost to start&lt;&#x2F;td&gt;&lt;td&gt;Free&lt;&#x2F;td&gt;&lt;td&gt;$$$$&lt;&#x2F;td&gt;&lt;td&gt;Monthly fees&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Setup complexity&lt;&#x2F;td&gt;&lt;td&gt;Low&lt;&#x2F;td&gt;&lt;td&gt;High&lt;&#x2F;td&gt;&lt;td&gt;Medium-High&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Where you sell&lt;&#x2F;td&gt;&lt;td&gt;WhatsApp&lt;&#x2F;td&gt;&lt;td&gt;Website&lt;&#x2F;td&gt;&lt;td&gt;Website&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Order management&lt;&#x2F;td&gt;&lt;td&gt;Google Sheets&lt;&#x2F;td&gt;&lt;td&gt;Varies&lt;&#x2F;td&gt;&lt;td&gt;Apps&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Ownership&lt;&#x2F;td&gt;&lt;td&gt;You&lt;&#x2F;td&gt;&lt;td&gt;Agency&lt;&#x2F;td&gt;&lt;td&gt;Platform&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;h2 id=&quot;why-whatsapp-first-matters&quot;&gt;Why WhatsApp-First Matters&lt;&#x2F;h2&gt;
+&lt;p&gt;Your customers already live in WhatsApp. Meeting them there means fewer drop-offs and faster replies. Kommercly is designed for that reality:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Share your store link, collect orders via WhatsApp, and keep the conversation going.&lt;&#x2F;li&gt;
+&lt;li&gt;No heavy storefront setup - just clean product pages fed from your Google Sheet.&lt;&#x2F;li&gt;
+&lt;li&gt;Export clean data when you need to plug into spreadsheets, ERPs, or reports.&lt;&#x2F;li&gt;
+&lt;li&gt;Receive orders in WhatsApp and auto-log each order to your Google Sheet.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;keep-orders-in-one-place-google-sheets&quot;&gt;Keep Orders In One Place (Google Sheets)&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Orders log to your Google Sheet&lt;&#x2F;li&gt;
+&lt;li&gt;Track status without new tools&lt;&#x2F;li&gt;
+&lt;li&gt;No paperwork, no messy DMs&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;what-you-get-without-the-bloat&quot;&gt;What You Get (Without the Bloat)&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Keep every sale&lt;&#x2F;strong&gt; - 0% platform fee&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Go live in minutes&lt;&#x2F;strong&gt; - average setup under 2 minutes&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;No code&lt;&#x2F;strong&gt; - if you can edit a Google Sheet, you can run the store&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Clean defaults&lt;&#x2F;strong&gt; - a template that looks good out of the box&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Free 3-month trial (no card)&lt;&#x2F;strong&gt; - perfect for pilots, validation, and vendor onboarding&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;get-live-in-3-steps&quot;&gt;Get Live In 3 Steps&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Copy the template&lt;&#x2F;strong&gt;&lt;br &#x2F;&gt;
+Use the ready-made Google Sheet to add your store info and products.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Choose a subdomain&lt;&#x2F;strong&gt;&lt;br &#x2F;&gt;
+Pick something like &lt;code&gt;mystore.kommercly.com&lt;&#x2F;code&gt;, paste your sheet link, add contact details.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Go live&lt;&#x2F;strong&gt;&lt;br &#x2F;&gt;
+Publish, share your link, and accept orders directly through WhatsApp.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;No plugins. No theme maze. No app store bill surprise.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;kommercly.com&#x2F;?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=whatsapp-first-store#create-store&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Go live now →&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;a-quick-win&quot;&gt;A Quick Win&lt;&#x2F;h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Alhamdulillah, I have used the service for our Morubhumi clothing brand, and I really liked their system. I believe our customers will like it too. I recommend everyone to try it.”
+— &lt;strong&gt;MoruBhumi&lt;&#x2F;strong&gt;, rising clothing brand in Bangladesh&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Kommercly gives you one thing others don’t: speed. A working store now, so you can focus on selling.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;see-it&quot;&gt;See It&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Demo: &lt;a href=&quot;https:&#x2F;&#x2F;stellify.kommercly.com&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;stellify.kommercly.com&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Create: &lt;a href=&quot;https:&#x2F;&#x2F;kommercly.com&#x2F;?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=whatsapp-first-store#create-store&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;kommercly.com&#x2F;#create-store&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Live store (MoruBhumi): &lt;a href=&quot;https:&#x2F;&#x2F;morubhumi.kommercly.com&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;morubhumi.kommercly.com&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;connect&quot;&gt;Connect&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Facebook: &lt;a href=&quot;https:&#x2F;&#x2F;www.facebook.com&#x2F;kommercly&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;facebook.com&#x2F;kommercly&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;LinkedIn: &lt;a href=&quot;https:&#x2F;&#x2F;www.linkedin.com&#x2F;company&#x2F;110026166&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;linkedin.com&#x2F;company&#x2F;110026166&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;quick-faqs&quot;&gt;Quick FAQs&lt;&#x2F;h2&gt;
+&lt;details&gt;
+  &lt;summary&gt;Do I need coding skills?&lt;&#x2F;summary&gt;
+  No. You update products in Google Sheets; Kommercly does the rest.
+ &lt;&#x2F;details&gt;
+&lt;details&gt;
+  &lt;summary&gt;Can I customize the look?&lt;&#x2F;summary&gt;
+  Yes. Start with clean templates, then evolve as you grow.
+ &lt;&#x2F;details&gt;
+&lt;details&gt;
+  &lt;summary&gt;Is there a free plan?&lt;&#x2F;summary&gt;
+  Yes. Try the 3-month free plan - no card required.
+ &lt;&#x2F;details&gt;
+&lt;h2 id=&quot;what-s-shipping-next&quot;&gt;What’s Shipping Next&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Custom domains&lt;&#x2F;li&gt;
+&lt;li&gt;Rich catalogs (variants, options)&lt;&#x2F;li&gt;
+&lt;li&gt;Lightweight analytics you actually use&lt;&#x2F;li&gt;
+&lt;li&gt;Easy transfer to client accounts (agency handoff)&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;stop-building-start-selling&quot;&gt;Stop Building. Start Selling.&lt;&#x2F;h2&gt;
+&lt;p&gt;If you’ve been stuck between DM sales chaos and overbuilt storefronts, Kommercly is the fast lane. Start with a sheet. Share your link. Take orders on WhatsApp. Improve as you go.&lt;&#x2F;p&gt;
+&lt;p&gt;Go live now: &lt;a href=&quot;https:&#x2F;&#x2F;kommercly.com&#x2F;?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=whatsapp-first-store#create-store&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Create your store&lt;&#x2F;a&gt; · &lt;a href=&quot;https:&#x2F;&#x2F;stellify.kommercly.com&#x2F;&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;See demo&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;No card • Cancel anytime • You own the data&lt;&#x2F;p&gt;
+&lt;p&gt;Built with care by a developer who hates unnecessary complexity.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;want-help-30-minute-personal-setup&quot;&gt;Want help? 30-minute personal setup&lt;&#x2F;h2&gt;
+&lt;p&gt;Prefer I set it up for you end-to-end? I’ll get your store live in ~30 minutes.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;WhatsApp: &lt;a href=&quot;https:&#x2F;&#x2F;wa.me&#x2F;8801300886298?text=Hi%20Meer%2C%20I%20want%20a%2030-min%20Kommercly%20setup%20from%20the%20blog.&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;Message me on WhatsApp&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Email: &lt;a href=&quot;mailto:meer@kommercly.com?subject=Kommercly%2030-min%20setup&amp;body=Store%20name%3A%0ASheet%20link%3A%0AWhatsApp%3A%0A&quot;&gt;meer@kommercly.com&lt;&#x2F;a&gt; or &lt;a href=&quot;mailto:support@kommercly.com?subject=Kommercly%2030-min%20setup&amp;body=Store%20name%3A%0ASheet%20link%3A%0AWhatsApp%3A%0A&quot;&gt;support@kommercly.com&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>My 16-Year-Old Brother Just Shipped His First npm Package</title>
+        <published>2025-10-21T00:00:00+00:00</published>
+        <updated>2025-10-21T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmestiyak.com/logs/brothers-first-npm-package/"/>
+        <id>https://mmestiyak.com/logs/brothers-first-npm-package/</id>
+        
+        <content type="html" xml:base="https://mmestiyak.com/logs/brothers-first-npm-package/">&lt;p&gt;Most 16-year-olds are busy with exams, friends, and figuring out life.&lt;&#x2F;p&gt;
+&lt;p&gt;My brother just shipped his first npm package.&lt;&#x2F;p&gt;
+&lt;p&gt;Not a tutorial project. Not a hello-world clone.&lt;&#x2F;p&gt;
+&lt;p&gt;A real solution to a real problem he faced while working at a game development and experience company.&lt;&#x2F;p&gt;
+&lt;p&gt;And honestly? I couldn&#x27;t be more proud.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-problem-when-3d-galleries-kill-your-browser&quot;&gt;The Problem: When 3D Galleries Kill Your Browser&lt;&#x2F;h2&gt;
+&lt;p&gt;Picture this: You&#x27;re building a product gallery for 3D models. Beautiful, interactive, cutting-edge.&lt;&#x2F;p&gt;
+&lt;p&gt;Then you load 100+ models for preview.&lt;&#x2F;p&gt;
+&lt;p&gt;Your browser gasps for air. RAM spikes. Fans scream. The page becomes unusable.&lt;&#x2F;p&gt;
+&lt;p&gt;Why? Because rendering full 3D models with WebGL for simple previews is like using a sledgehammer to crack a nut.&lt;&#x2F;p&gt;
+&lt;p&gt;Most people would accept this as &quot;just how it works.&quot;&lt;&#x2F;p&gt;
+&lt;p&gt;My brother didn&#x27;t.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-solution-3d-models-without-the-weight&quot;&gt;The Solution: 3D Models Without the Weight&lt;&#x2F;h2&gt;
+&lt;p&gt;Instead of rendering full 3D scenes, he created &lt;strong&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;teammeer&#x2F;3dtostrip&quot;&gt;3dtostrip&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;. It&#x27;s a package that converts any 3D model (GLB, GLTF, OBJ, FBX) into a lightweight sprite strip.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s the genius part:&lt;&#x2F;p&gt;
+&lt;p&gt;The package captures 18 frames of a 360° rotation of your 3D model and stitches them into a single image. Then, using simple CSS and positioning, it gives users smooth interactive rotation on hover. &lt;strong&gt;Without WebGL, without heavy rendering, without killing the browser.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;From megabytes of 3D data to kilobytes of optimized images.&lt;&#x2F;p&gt;
+&lt;p&gt;Same visual experience. A fraction of the resource cost.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-makes-this-different&quot;&gt;What Makes This Different&lt;&#x2F;h2&gt;
+&lt;p&gt;This isn&#x27;t just code. It&#x27;s problem-solving in action.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;he-identified-a-real-pain-point&quot;&gt;He Identified a Real Pain Point&lt;&#x2F;h3&gt;
+&lt;p&gt;While working on a project, he saw firsthand how 3D model galleries crashed browsers and frustrated users. Instead of complaining, he built a fix.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;he-built-what-was-missing&quot;&gt;He Built What Was Missing&lt;&#x2F;h3&gt;
+&lt;p&gt;There were no lightweight alternatives. No quick previews without full WebGL setup. So he created one.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;he-made-it-open-source&quot;&gt;He Made It Open Source&lt;&#x2F;h3&gt;
+&lt;p&gt;At 16, he could&#x27;ve kept this private, used it for his own projects, and moved on.&lt;&#x2F;p&gt;
+&lt;p&gt;Instead, he published it to npm, wrote detailed documentation, and made it available for anyone to use.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-impressed-me-technically&quot;&gt;What Impressed Me Technically&lt;&#x2F;h2&gt;
+&lt;p&gt;What stands out isn&#x27;t just that he built it. It&#x27;s how well he built it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Smart Defaults, Full Control&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Works out of the box with zero configuration&lt;&#x2F;li&gt;
+&lt;li&gt;But gives developers full control over lighting, resolution, aspect ratios, and compression&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Performance First&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Smart file size limits (50MB max per file)&lt;&#x2F;li&gt;
+&lt;li&gt;Configurable quality presets (mobile, desktop, 4K, print)&lt;&#x2F;li&gt;
+&lt;li&gt;Built-in compression options&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;Developer Experience&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clean React hooks API (&lt;code&gt;useSpriteStripGenerator&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;Ready-to-use viewer component (&lt;code&gt;SpriteStripViewer&lt;&#x2F;code&gt;)&lt;&#x2F;li&gt;
+&lt;li&gt;TypeScript support&lt;&#x2F;li&gt;
+&lt;li&gt;Comprehensive documentation&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;This isn&#x27;t amateur hour. This is production-grade work.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;self-taught-at-16&quot;&gt;Self-Taught at 16&lt;&#x2F;h2&gt;
+&lt;p&gt;Here&#x27;s what hits different:&lt;&#x2F;p&gt;
+&lt;p&gt;He taught himself everything.&lt;&#x2F;p&gt;
+&lt;p&gt;No bootcamp. No CS degree. Just curiosity, documentation, and the determination to solve real problems.&lt;&#x2F;p&gt;
+&lt;p&gt;While others were watching tutorials, he was shipping solutions.&lt;&#x2F;p&gt;
+&lt;p&gt;While others were building todo apps, he was tackling production-level challenges.&lt;&#x2F;p&gt;
+&lt;p&gt;At 16.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;why-this-matters&quot;&gt;Why This Matters&lt;&#x2F;h2&gt;
+&lt;p&gt;It&#x27;s easy to dismiss this as &quot;just another package.&quot;&lt;&#x2F;p&gt;
+&lt;p&gt;But look closer:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;He solved a real problem&lt;&#x2F;strong&gt;, not a theoretical one from a course&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;He shipped a complete solution&lt;&#x2F;strong&gt;, not just a proof of concept&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;He made it reusable&lt;&#x2F;strong&gt;, not just for himself, but for the community&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;He documented it properly&lt;&#x2F;strong&gt;, because good code without docs is useless&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;He did all of this at 16&lt;&#x2F;strong&gt;, when most people are still figuring out what they want to do&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This is what the next generation of developers looks like.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;what-i-learned-from-watching-him&quot;&gt;What I Learned From Watching Him&lt;&#x2F;h2&gt;
+&lt;p&gt;Honestly? He&#x27;s teaching me as much as I&#x27;m teaching him.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;age-is-just-a-number&quot;&gt;Age Is Just a Number&lt;&#x2F;h3&gt;
+&lt;p&gt;You don&#x27;t need years of experience to contribute meaningfully. You need a problem, curiosity, and the will to figure it out.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;real-problems-beat-tutorials&quot;&gt;Real Problems Beat Tutorials&lt;&#x2F;h3&gt;
+&lt;p&gt;Following tutorials has its place. But real growth happens when you face real problems and build real solutions.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;shipping-beats-perfecting&quot;&gt;Shipping Beats Perfecting&lt;&#x2F;h3&gt;
+&lt;p&gt;He could&#x27;ve spent months &quot;perfecting&quot; this before releasing. Instead, he shipped v1.0, got it out there, and can iterate based on real feedback.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;share-your-work&quot;&gt;Share Your Work&lt;&#x2F;h3&gt;
+&lt;p&gt;Making it open source means others can learn, contribute, and build on his work. That&#x27;s how communities grow.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-future&quot;&gt;The Future&lt;&#x2F;h2&gt;
+&lt;p&gt;I don&#x27;t know where this leads.&lt;&#x2F;p&gt;
+&lt;p&gt;Maybe this package helps dozens of developers. Maybe hundreds. Maybe it becomes the standard for 3D preview optimization.&lt;&#x2F;p&gt;
+&lt;p&gt;Or maybe it&#x27;s just the first of many solutions he&#x27;ll ship.&lt;&#x2F;p&gt;
+&lt;p&gt;What I do know is this:&lt;&#x2F;p&gt;
+&lt;p&gt;While others are still asking &quot;am I ready?&quot;, he&#x27;s already building.&lt;&#x2F;p&gt;
+&lt;p&gt;While others wait for permission, he&#x27;s creating value.&lt;&#x2F;p&gt;
+&lt;p&gt;While others worry about credentials, he&#x27;s proving himself through his work.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;&#x2F;h2&gt;
+&lt;p&gt;I&#x27;m writing this not just because he&#x27;s my brother.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m writing this because his story is a reminder:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;You don&#x27;t need permission to solve problems. You just need to start.&quot;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;The gap between &quot;I have an idea&quot; and &quot;I shipped a solution&quot; is just action.&lt;&#x2F;p&gt;
+&lt;p&gt;He saw a problem at work.&lt;br &#x2F;&gt;
+He built a solution.&lt;br &#x2F;&gt;
+He packaged it properly.&lt;br &#x2F;&gt;
+He documented it well.&lt;br &#x2F;&gt;
+He made it open source.&lt;br &#x2F;&gt;
+He published it to npm.&lt;&#x2F;p&gt;
+&lt;p&gt;All before turning 17.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re working with 3D models and need lightweight previews, check out &lt;strong&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;teammeer&#x2F;3dtostrip&quot;&gt;3dtostrip&lt;&#x2F;a&gt;&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re a young developer wondering if you&#x27;re &quot;ready&quot; to contribute, this is your sign.&lt;&#x2F;p&gt;
+&lt;p&gt;You don&#x27;t need to be older. You don&#x27;t need more experience.&lt;&#x2F;p&gt;
+&lt;p&gt;You just need a problem worth solving and the courage to ship.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;em&gt;Proud of you, Tahmid. Keep building.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Package:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;@teammeer.com&#x2F;3dtostrip&quot;&gt;npm - @teammeer.com&#x2F;3dtostrip&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;strong&gt;Source Code:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;teammeer&#x2F;3dtostrip&quot;&gt;GitHub - teammeer&#x2F;3dtostrip&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;strong&gt;Demo:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;3dtostrip.teammeer.com&#x2F;&quot;&gt;3dtostrip.teammeer.com&lt;&#x2F;a&gt;&lt;br &#x2F;&gt;
+&lt;strong&gt;Connect:&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;tahmidly&#x2F;&quot;&gt;LinkedIn - Meer Tahmid&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>The Finest Watch Money Can Buy</title>
+        <published>2025-10-10T00:00:00+00:00</published>
+        <updated>2025-10-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmestiyak.com/logs/casio-f91w-finest-watch/"/>
+        <id>https://mmestiyak.com/logs/casio-f91w-finest-watch/</id>
+        
+        <content type="html" xml:base="https://mmestiyak.com/logs/casio-f91w-finest-watch/">&lt;p&gt;Most people dream of owning a luxury watch. Something Swiss, mechanical, and heavy enough to remind you how expensive it was.&lt;&#x2F;p&gt;
+&lt;p&gt;But for me, the finest watch money can buy costs around fifteen dollars.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s the Casio F91W. A tiny, feather-light rectangle that&#x27;s been ticking quietly since 1989. No fancy sensors, no app, no charging cable. Just time.&lt;&#x2F;p&gt;
+&lt;p&gt;And that&#x27;s exactly why I love it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;silent-and-weightless&quot;&gt;Silent and Weightless&lt;&#x2F;h2&gt;
+&lt;p&gt;When I first put it on, I was surprised by how little I felt.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s so lightweight that during my cycling sessions, I sometimes forget it&#x27;s even there. No bulky strap pressing against my wrist, no notifications breaking my focus. Just that small digital display waiting quietly whenever I glance down.&lt;&#x2F;p&gt;
+&lt;p&gt;It doesn&#x27;t try to impress. It doesn&#x27;t beg for attention.&lt;&#x2F;p&gt;
+&lt;p&gt;Yet somehow, it says more by staying silent.&lt;&#x2F;p&gt;
+&lt;p&gt;That&#x27;s the kind of energy I want more of in my life and work. Things that serve a purpose without shouting about it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;no-maintenance-no-distractions&quot;&gt;No Maintenance, No Distractions&lt;&#x2F;h2&gt;
+&lt;p&gt;There&#x27;s peace in owning something that doesn&#x27;t need your attention.&lt;&#x2F;p&gt;
+&lt;p&gt;The F91W doesn&#x27;t need charging. It doesn&#x27;t need syncing. It doesn&#x27;t even need to be polished.&lt;&#x2F;p&gt;
+&lt;p&gt;You put it on once, and it quietly becomes part of your routine. Like good habits, or clean code.&lt;&#x2F;p&gt;
+&lt;p&gt;It reminds me that not everything in life has to be &quot;upgraded.&quot; Sometimes, dependability is the upgrade.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;on-the-road-with-simplicity&quot;&gt;On the Road With Simplicity&lt;&#x2F;h2&gt;
+&lt;p&gt;I cycle a lot, and one of my favorite things about the F91W is that I don&#x27;t have to think about it.&lt;&#x2F;p&gt;
+&lt;p&gt;When I&#x27;m riding, the last thing I want is another smart device tracking, buzzing, or reminding me.&lt;&#x2F;p&gt;
+&lt;p&gt;The Casio just exists. It gives me time. That&#x27;s all.&lt;&#x2F;p&gt;
+&lt;p&gt;But that simple act has a deeper meaning. It grounds me in the present. It keeps me connected to the real world, not another digital one.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;how-a-simple-watch-made-me-more-productive&quot;&gt;How a Simple Watch Made Me More Productive&lt;&#x2F;h2&gt;
+&lt;p&gt;The less &quot;smart&quot; this watch is, the smarter my days have become.&lt;&#x2F;p&gt;
+&lt;p&gt;A few small habits I&#x27;ve built around it:&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-50-minute-focus-rule&quot;&gt;The 50-Minute Focus Rule&lt;&#x2F;h3&gt;
+&lt;p&gt;I work in deep focus for about 50 minutes. Before I start, I glance at my watch. Not a timer, not a phone. When I check it again, it&#x27;s time to stretch, breathe, and reset.&lt;&#x2F;p&gt;
+&lt;p&gt;No alarms. No noise. Just awareness.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mindful-breaks&quot;&gt;Mindful Breaks&lt;&#x2F;h3&gt;
+&lt;p&gt;I&#x27;ve stopped relying on random notifications to tell me when to pause. Instead, I make a conscious choice: &quot;One more task until 3:00.&quot;&lt;&#x2F;p&gt;
+&lt;p&gt;That small act of awareness gives my day rhythm and control.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;tech-free-time&quot;&gt;Tech-Free Time&lt;&#x2F;h3&gt;
+&lt;p&gt;Before cycling, I leave my phone behind. The Casio keeps time for me. That&#x27;s all I need.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s my reminder that not every moment has to be optimized or tracked to be meaningful.&lt;&#x2F;p&gt;
+&lt;p&gt;The simplicity of this watch quietly reshaped how I manage time. Not through data, but through discipline.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;final-thoughts&quot;&gt;Final Thoughts&lt;&#x2F;h2&gt;
+&lt;p&gt;I didn&#x27;t choose the Casio F91W because it&#x27;s fancy.&lt;&#x2F;p&gt;
+&lt;p&gt;I chose it because it reflects something I want to live by:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;Simplicity isn&#x27;t the opposite of progress. It&#x27;s the foundation of it.&quot;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;The F91W reminds me that silence can be powerful.&lt;&#x2F;p&gt;
+&lt;p&gt;That reliability is underrated.&lt;&#x2F;p&gt;
+&lt;p&gt;And that sometimes, the finest tools in life are the ones that disappear when you use them.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s not just a watch.&lt;&#x2F;p&gt;
+&lt;p&gt;It&#x27;s a reminder. To stay grounded, stay present, and let simplicity do its quiet work.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Tally to Binary: Understanding Data for Better Development</title>
+        <published>2025-03-11T00:00:00+00:00</published>
+        <updated>2025-03-11T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://mmestiyak.com/logs/tally-to-binary/"/>
+        <id>https://mmestiyak.com/logs/tally-to-binary/</id>
+        
+        <content type="html" xml:base="https://mmestiyak.com/logs/tally-to-binary/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;&#x2F;h2&gt;
+&lt;p&gt;To write good software, you need a solid grip on data.&lt;&#x2F;p&gt;
+&lt;p&gt;Every video you watch, every song you listen to, every message you read — they all feel different on the surface.
+But inside your device, they’re the same thing: binary, just 0s and 1s making everything come alive.&lt;&#x2F;p&gt;
+&lt;p&gt;This is a gentle walk from ancient counting to the heart of modern machines.
+No heavy theory, just the thread that ties it all together.&lt;&#x2F;p&gt;
+&lt;p&gt;Let’s start where counting began.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;a-brief-history-of-counting-from-tally-marks-to-binary&quot;&gt;A Brief History of Counting: From Tally Marks to Binary&lt;&#x2F;h2&gt;
+&lt;p&gt;Imagine a shepherd at dusk. One sheep, one stone in the pouch. Two sheep, two stones. Counting was touch, memory, and trust.&lt;&#x2F;p&gt;
+&lt;p&gt;Soon, people carved &lt;strong&gt;tally marks&lt;&#x2F;strong&gt; instead: four lines for four apples—&lt;code&gt;||||&lt;&#x2F;code&gt;. At five, a diagonal slash grouped them. Cave walls, bones, wood—whatever held a scratch.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;mmestiyak&#x2F;mmestiyak.github.io&#x2F;refs&#x2F;heads&#x2F;main&#x2F;assets&#x2F;images&#x2F;tallytable.webp&quot; alt=&quot;tally system representation&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now imagine counting to a million. Weeks of lines. A forest of scratches. Impossible to read, impossible to share.&lt;&#x2F;p&gt;
+&lt;p&gt;So we shrank the world of counting into symbols and signs.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;the-decimal-system-base-10&quot;&gt;The Decimal System (Base 10)&lt;&#x2F;h3&gt;
+&lt;p&gt;Early symbols tried to help. Egyptians used a coiled rope for 100, a lotus for 1,000.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;mmestiyak&#x2F;mmestiyak.github.io&#x2F;refs&#x2F;heads&#x2F;main&#x2F;assets&#x2F;images&#x2F;egyptian.jpg&quot; alt=&quot;ancient egyptian&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;But unique symbols for every number? Chaos.&lt;&#x2F;p&gt;
+&lt;p&gt;The breakthrough: &lt;strong&gt;reuse digits by position&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Enter &lt;strong&gt;base 10&lt;&#x2F;strong&gt;—ten symbols (0–9), each place a power of ten.&lt;br &#x2F;&gt;
+Rightmost digit: ×10⁰. Next: ×10¹. And so on.&lt;&#x2F;p&gt;
+&lt;p&gt;Let’s see it in action with &lt;strong&gt;319&lt;&#x2F;strong&gt;:&lt;&#x2F;p&gt;
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;Digit&lt;&#x2F;th&gt;&lt;th&gt;3&lt;&#x2F;th&gt;&lt;th&gt;1&lt;&#x2F;th&gt;&lt;th&gt;9&lt;&#x2F;th&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;thead&gt;&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;Place&lt;&#x2F;td&gt;&lt;td&gt;10²&lt;&#x2F;td&gt;&lt;td&gt;10¹&lt;&#x2F;td&gt;&lt;td&gt;10⁰&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;tr&gt;&lt;td&gt;Value&lt;&#x2F;td&gt;&lt;td&gt;3×100&lt;&#x2F;td&gt;&lt;td&gt;1×10&lt;&#x2F;td&gt;&lt;td&gt;9×1&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;
+&lt;&#x2F;tbody&gt;&lt;&#x2F;table&gt;
+&lt;p&gt;→ &lt;strong&gt;300 + 10 + 9 = 319&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Same trick works with any base.&lt;br &#x2F;&gt;
+The base just changes the rhythm.&lt;&#x2F;p&gt;
+&lt;p&gt;And computers? They dance to the beat of &lt;strong&gt;two&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;binary-base-2-the-machine-s-native-tongue&quot;&gt;Binary (Base 2): The Machine’s Native Tongue&lt;&#x2F;h2&gt;
+&lt;p&gt;Why two? Because hardware is honest.&lt;&#x2F;p&gt;
+&lt;p&gt;At the switch level, a transistor is either conducting or not.
+Using two well‑separated voltage ranges (low and high) gives strong noise margins, making circuits faster, cheaper, and more reliable.
+More than two states are possible in theory, but they are harder to separate, more error‑prone, and waste more power—so base 2 wins in practice.&lt;&#x2F;p&gt;
+&lt;p&gt;A transistor is a switch: on or off.&lt;br &#x2F;&gt;
+A hard drive magnetizes a spot: north or south.&lt;br &#x2F;&gt;
+A Wi-Fi signal peaks or dips.&lt;br &#x2F;&gt;
+A pixel glows red, green, blue—at different strengths.&lt;&#x2F;p&gt;
+&lt;p&gt;All of it: &lt;strong&gt;0 or 1&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;That simplicity scales. Billions of switches breathe in unison, and from that rhythm, apps, games, and cat videos emerge.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Storage&lt;&#x2F;strong&gt;: Patterns etched in silicon or spinning disks.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Audio&lt;&#x2F;strong&gt;: Waveforms sampled into numbers, then back to sound.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Wireless&lt;&#x2F;strong&gt;: 0s and 1s riding invisible waves.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Images&lt;&#x2F;strong&gt;: Millions of pixels, each a mix of red, green, blue.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Binary isn’t just low-level—it’s &lt;strong&gt;universal&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;from-bits-to-what-we-see&quot;&gt;From Bits to What We See&lt;&#x2F;h2&gt;
+&lt;p&gt;Binary strings get long. So we compress again.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;hex-shorthand-for-bytes&quot;&gt;Hex: Shorthand for Bytes&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1 bit = 0 or 1&lt;&#x2F;li&gt;
+&lt;li&gt;1 byte = 8 bits&lt;&#x2F;li&gt;
+&lt;li&gt;1 hex digit = 4 bits&lt;br &#x2F;&gt;
+→ &lt;strong&gt;2 hex digits = 1 byte&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;So &lt;code&gt;0x41&lt;&#x2F;code&gt; = &lt;code&gt;01000001&lt;&#x2F;code&gt; in binary = one byte.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;text-from-codes-to-characters&quot;&gt;Text: From Codes to Characters&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ASCII&lt;&#x2F;strong&gt; gave early English 128 characters. &lt;code&gt;A&lt;&#x2F;code&gt; = 65 = &lt;code&gt;0x41&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Unicode&lt;&#x2F;strong&gt; gave every script a number (a &lt;em&gt;code point&lt;&#x2F;em&gt;). &lt;code&gt;A&lt;&#x2F;code&gt; = U+0041.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;UTF-8&lt;&#x2F;strong&gt; packs those code points into 1–4 bytes—so the world’s writing fits in files.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Same &lt;code&gt;A&lt;&#x2F;code&gt;? Still &lt;code&gt;0x41&lt;&#x2F;code&gt; in UTF-8. Backward compatible. Smart.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;color-24-bits-of-magic&quot;&gt;Color: 24 Bits of Magic&lt;&#x2F;h3&gt;
+&lt;p&gt;Each pixel often gets 24 bits:&lt;br &#x2F;&gt;
+8 for red, 8 for green, 8 for blue.&lt;&#x2F;p&gt;
+&lt;p&gt;2⁸ = 256 levels per channel&lt;br &#x2F;&gt;
+→ &lt;strong&gt;256 × 256 × 256 = 16,777,216 colors&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;That’s why your screen feels alive.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;We began with stones and scratches.&lt;&#x2F;li&gt;
+&lt;li&gt;Place value let us reuse digits—first in base 10, then base 2.&lt;&#x2F;li&gt;
+&lt;li&gt;Hardware speaks binary because it must: on or off, nothing in between.&lt;&#x2F;li&gt;
+&lt;li&gt;Storage, sound, images, and networks follow the same pattern.&lt;&#x2F;li&gt;
+&lt;li&gt;We compact with hex, encode text with UTF-8, paint with 24-bit color.&lt;&#x2F;li&gt;
+&lt;li&gt;A single byte like &lt;code&gt;0x41&lt;&#x2F;code&gt; becomes the &lt;code&gt;A&lt;&#x2F;code&gt; you just read.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The journey from tally mark to pixel is one of &lt;strong&gt;compression, reuse, and translation&lt;&#x2F;strong&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Next time, we’ll put it into practice:&lt;br &#x2F;&gt;
+reading binary files, decoding UTF-8 by hand, building a tiny image from scratch—all in simple, runnable snippets.&lt;&#x2F;p&gt;
+&lt;p&gt;If this sparked curiosity, stick around. The fun is just beginning.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Thanks for reading. See you in the next one.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
