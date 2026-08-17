@@ -4,20 +4,30 @@ The whole site is files. **Adding content = adding a file. Publishing = `git pus
 GitHub Actions builds and deploys automatically. You never edit HTML/templates
 to post — templates render whatever exists in `content/`.
 
-## Admin panel (post from any browser, no code)
+## Admin panels (post without code) — two options
 
-The repo has a `.pages.yml` config for **Pages CMS** — a free admin panel that
-commits to GitHub for you:
+### Option A: self-hosted Sveltia CMS — works offline & during GitHub outages
 
-1. Push this repo to GitHub (the config must be on `master`).
-2. Go to **https://app.pagescms.org**, sign in with GitHub, grant access to
-   this repo only.
-3. You get forms for **Moments** (upload photos + caption), **Logs**,
-   **Projects**, and **Experience**. Saving = commit = live in ~1–2 minutes.
+Ships inside the repo at `/admin/`:
 
-Works great on a phone. Two rules: don't edit the `_index` entries from the
-panel (they hold section settings), and remember publishing takes a minute —
-it's a git commit + build, not instant.
+1. `make serve`, then open **http://127.0.0.1:1111/admin/** in Chrome/Edge.
+2. Click **"Work with Local Repository"** and pick the repo folder (one time).
+3. Post Moments/Logs/Projects/Experience through forms — files are written
+   straight to disk. Review with `git diff`, publish with `git push`.
+
+No login, no GitHub dependency, fully yours. The same panel exists on the live
+site (**mmestiyak.com/admin/**) and works from anywhere via **"Sign In Using
+Access Token"** — paste a GitHub fine-grained personal access token (this repo
+only, Contents: read/write) once per device.
+
+### Option B: hosted Pages CMS
+
+`.pages.yml` configures **https://app.pagescms.org** — sign in with GitHub,
+grant this repo, get the same forms in a hosted dashboard. Nice on phones.
+Depends on GitHub + Pages CMS being up.
+
+For both: don't edit the `_index` entries (they hold section settings), and
+remember publishing takes a minute — it's a git commit + build, not instant.
 
 ## Cheat sheet
 

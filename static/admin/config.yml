@@ -1,0 +1,136 @@
+# Sveltia CMS configuration (Decap-compatible)
+# Local use: run `make serve`, open http://127.0.0.1:1111/admin/ in
+# Chrome/Edge, click "Work with Local Repository", pick the repo folder.
+# Changes are written straight to disk — review with `git diff`, then push.
+
+backend:
+  name: github
+  repo: mmestiyak/mmestiyak.github.io
+  branch: master
+
+site_url: https://mmestiyak.com
+media_folder: static/images
+public_folder: /images
+
+collections:
+  - name: moments
+    label: Moments
+    label_singular: Moment
+    folder: content/moments
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - label: Categorize
+        name: taxonomies
+        widget: object
+        fields:
+          - { label: "Topics (farm, training, project, work…)", name: topics, widget: list, required: false }
+          - { label: Tags, name: tags, widget: list, required: false }
+      - label: Photos
+        name: extra
+        widget: object
+        fields:
+          - label: "Photos (first is the cover)"
+            name: photos
+            widget: list
+            required: false
+            field: { label: Photo, name: photo, widget: image }
+      - { label: Caption, name: body, widget: markdown, required: false }
+
+  - name: logs
+    label: Logs
+    label_singular: Log
+    folder: content/logs
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description (lists + SEO)", name: description, widget: text, required: false }
+      - label: Categorize
+        name: taxonomies
+        widget: object
+        fields:
+          - { label: Topics, name: topics, widget: list, required: false }
+          - { label: Tags, name: tags, widget: list, required: false }
+      - label: Extras
+        name: extra
+        widget: object
+        required: false
+        fields:
+          - { label: "Header image (optional)", name: image, widget: image, required: false }
+      - { label: Post, name: body, widget: markdown }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: "One-line description", name: description, widget: text }
+      - { label: "Draft (hidden while checked)", name: draft, widget: boolean, required: false }
+      - label: Categorize
+        name: taxonomies
+        widget: object
+        fields:
+          - { label: Topics, name: topics, widget: list, required: false }
+          - { label: Tags, name: tags, widget: list, required: false }
+      - label: Details
+        name: extra
+        widget: object
+        fields:
+          - { label: "Year started", name: year, widget: number, value_type: int }
+          - { label: "Status (Live, Operating, Building…)", name: status, widget: string, required: false }
+          - { label: "Your role", name: role, widget: string, required: false }
+          - { label: "Live URL", name: live_url, widget: string, required: false }
+          - { label: "Source URL", name: source_url, widget: string, required: false }
+          - { label: "Stack / tools", name: tech_stack, widget: list, required: false }
+          - { label: "Highlights (numbers beat adjectives)", name: highlights, widget: list, required: false }
+          - { label: "Cover image", name: image, widget: image, required: false }
+      - { label: "Longer story", name: body, widget: markdown, required: false }
+
+  - name: experience
+    label: Experience
+    label_singular: Role
+    folder: content/experience
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title (e.g. Software Developer — Company)", name: title, widget: string }
+      - { label: "One-line summary", name: description, widget: text, required: false }
+      - { label: "Order (1 shows first)", name: weight, widget: number, value_type: int }
+      - label: Categorize
+        name: taxonomies
+        widget: object
+        fields:
+          - { label: Topics, name: topics, widget: list, required: false }
+          - { label: Tags, name: tags, widget: list, required: false }
+      - label: Details
+        name: extra
+        widget: object
+        fields:
+          - { label: Company, name: company, widget: string }
+          - { label: Role, name: role, widget: string, required: false }
+          - { label: "Started (e.g. 2022-08)", name: date_start, widget: string }
+          - { label: "Ended (or present)", name: date_end, widget: string, default: present }
+          - { label: Location, name: location, widget: string, required: false }
+          - { label: Highlights, name: highlights, widget: list, required: false }
+      - { label: "Longer story", name: body, widget: markdown, required: false }
