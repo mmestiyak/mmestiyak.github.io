@@ -7,30 +7,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: '#000000',
-        'brand-dark': '#333333',
-        'brand-light': '#666666',
-        'brand-accent': '#00aaff',
-        'brand-success': '#10b981',
-        'text-primary': '#000000',
-        'text-secondary': '#666666',
-        'bg-primary': '#ffffff',
-        'bg-secondary': '#fafafa',
-        'bg-accent': '#f5f5f5'
+        /* Timeless palette: warm paper, warm ink, one deep green accent */
+        paper: '#FBFAF7',
+        ink: '#1C1B18',
+        faded: '#6E6A61',
+        line: '#E7E3DA',
+        tint: '#F3F1EA',
+        accent: '#3A5A40',
+        'accent-dark': '#2E4733',
+        /* Legacy aliases so older class names keep working */
+        brand: '#3A5A40',
+        'brand-dark': '#2E4733',
+        'brand-light': '#6E6A61',
+        'brand-accent': '#3A5A40',
+        'brand-success': '#3A5A40',
+        'text-primary': '#1C1B18',
+        'text-secondary': '#6E6A61',
+        'bg-primary': '#FBFAF7',
+        'bg-secondary': '#F3F1EA',
+        'bg-accent': '#F3F1EA'
       },
       fontFamily: {
-        'sans': ['Questrial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        'bengali': ['Noto Sans Bengali', 'Questrial', 'system-ui', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'monospace']
+        'serif': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
+        'sans': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
+        'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
       },
       spacing: {
         'safe-top': 'env(safe-area-inset-top)',
         'safe-bottom': 'env(safe-area-inset-bottom)',
         'safe-left': 'env(safe-area-inset-left)',
         'safe-right': 'env(safe-area-inset-right)'
-      },
-      backgroundImage: {
-        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
       }
     }
   },

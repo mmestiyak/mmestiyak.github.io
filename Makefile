@@ -4,7 +4,7 @@ help: ## Show this command list
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
-serve: ## Start local dev server (no build step needed — CDN handles CSS)
+serve: ## Start local dev server (uses committed static/tailwind.css)
 	zola serve
 
 build: ## Build site for production
@@ -42,9 +42,9 @@ moment: ## New photo moment: make moment t="Caption title" (then drop photos in 
 clean: ## Remove build artifacts
 	rm -rf public
 
-# --- Optional: Tailwind CLI pipeline ---
-# Requires: npm install && npm run build:css
-# Then uncomment <link> in templates/partials/head.html and comment out the CDN <script>
+# --- Tailwind CLI pipeline (the site uses compiled CSS, no CDN) ---
+# static/tailwind.css is committed. After changing any Tailwind classes in
+# templates/, run `make css` and commit the regenerated file.
 
 css: ## Build Tailwind CSS (requires npm install first)
 	npx tailwindcss -i ./src/input.css -o ./static/tailwind.css --minify

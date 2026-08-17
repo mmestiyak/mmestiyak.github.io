@@ -106,6 +106,13 @@ Keep photos under ~300 KB when you can (export at 1600px wide, JPG/WebP).
 - `portrait` in `config.toml` — your photo on home + about
 - `about_photos` in `config.toml` — the 4-photo strip on the about page
 
+## If you ever edit templates (not needed for posting)
+
+The site's CSS is compiled and committed (`static/tailwind.css`) and fonts are
+self-hosted (`static/fonts/`) — zero external dependencies. Posting content
+never requires rebuilding CSS. Only if you change Tailwind **classes in
+templates/** run `make css` (needs `npm install` once) and commit the result.
+
 ## Posting from your phone
 
 Open the repo on github.com → navigate to the folder → **Add file → Upload

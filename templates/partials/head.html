@@ -1,53 +1,8 @@
-<!-- Typography: Newsreader (classic editorial serif) + Noto Serif Bengali -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Typography: Newsreader + Noto Serif Bengali, self-hosted (no external requests).
+     Tokens live in tailwind.config.js; after editing template classes run: make css -->
+<link rel="stylesheet" href="{{ get_url(path="fonts/fonts.css") }}">
+<link rel="stylesheet" href="{{ get_url(path="tailwind.css") }}">
 
-<!-- Tailwind CSS (CDN for dev — switch to compiled when running npm run build:css) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    /* Timeless palette: warm paper, warm ink, one deep green accent */
-                    paper: '#FBFAF7',
-                    ink: '#1C1B18',
-                    faded: '#6E6A61',
-                    line: '#E7E3DA',
-                    tint: '#F3F1EA',
-                    accent: '#3A5A40',
-                    'accent-dark': '#2E4733',
-                    /* Legacy aliases so older class names keep working */
-                    brand: '#3A5A40',
-                    'brand-dark': '#2E4733',
-                    'brand-light': '#6E6A61',
-                    'brand-accent': '#3A5A40',
-                    'brand-success': '#3A5A40',
-                    'text-primary': '#1C1B18',
-                    'text-secondary': '#6E6A61',
-                    'bg-primary': '#FBFAF7',
-                    'bg-secondary': '#F3F1EA',
-                    'bg-accent': '#F3F1EA'
-                },
-                fontFamily: {
-                    'serif': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
-                    'sans': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
-                    'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
-                    'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
-                },
-                spacing: {
-                    'safe-top': 'env(safe-area-inset-top)',
-                    'safe-bottom': 'env(safe-area-inset-bottom)',
-                    'safe-left': 'env(safe-area-inset-left)',
-                    'safe-right': 'env(safe-area-inset-right)'
-                }
-            }
-        }
-    }
-</script>
-<!-- Compiled Tailwind CSS (uncomment after running: npm run build:css) -->
-<!-- <link rel="stylesheet" href="{{ get_url(path="tailwind.css") }}"> -->
 <!-- Zola's built-in search -->
 <script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
 <script src="{{ get_url(path="search_index.en.js") }}"></script>
