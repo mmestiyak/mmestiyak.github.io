@@ -1,36 +1,3 @@
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<!-- Enhanced Open Graph / Social Media Meta Tags -->
-{% set og_img = page.extra.image | default(value=config.extra.og_image) | default(value="") %}
-{% if og_img and og_img is not starting_with("http") %}{% set og_img = config.base_url ~ og_img %}{% endif %}
-<meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
-<meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
-<meta property="og:type" content="{% block og_type %}website{% endblock og_type %}">
-<meta property="og:url" content="{% block og_url %}{{ current_url | default(value=config.base_url) }}{% endblock og_url %}">
-<meta property="og:site_name" content="{{ config.title }}">
-{% if og_img %}
-<meta property="og:image" content="{{ og_img }}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{% block og_image_alt %}{{ page.title | default(value=config.title) }}{% endblock og_image_alt %}">
-{% endif %}
-
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@{{ config.extra.twitter | default(value='') }}">
-<meta name="twitter:creator" content="@{{ config.extra.twitter | default(value='') }}">
-<meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock twitter_title %}">
-<meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock twitter_description %}">
-{% if og_img %}
-<meta name="twitter:image" content="{{ og_img }}">
-{% endif %}
-
-<!-- Additional SEO Meta Tags -->
-<meta name="author" content="{{ config.extra.author | default(value='Meer Estiyak') }}">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="{% block canonical_url %}{{ current_url | default(value=config.base_url) }}{% endblock canonical_url %}">
-
 <!-- Typography: Newsreader (classic editorial serif) + Noto Serif Bengali -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,4 +67,3 @@
     gtag('config', '{{ config.extra.google_analytics }}');
 </script>
 {% endif %}
-{% block head_extra %}{% endblock head_extra %}

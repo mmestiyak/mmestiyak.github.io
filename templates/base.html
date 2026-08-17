@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html lang="{% block html_lang %}en{% endblock html_lang %}">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+
+    <!-- Open Graph / social meta (blocks live here in the parent template) -->
+    {% set og_img = config.extra.og_image | default(value="") %}
+    {% set og_alt = config.title %}
+    {% if page is defined %}
+    {% set og_img = page.extra.image | default(value=og_img) %}
+    {% set og_alt = page.title | default(value=og_alt) %}
+    {% endif %}
+    {% if og_img and og_img | truncate(length=4, end="") != "http" %}{% set og_img = config.base_url ~ og_img %}{% endif %}
+    <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
+    <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
+    <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}">
+    <meta property="og:url" content="{% block og_url %}{{ current_url | default(value=config.base_url) }}{% endblock og_url %}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    {% if og_img %}
+    <meta property="og:image" content="{{ og_img }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ og_alt }}">
+    {% endif %}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@{{ config.extra.twitter | default(value='') }}">
+    <meta name="twitter:creator" content="@{{ config.extra.twitter | default(value='') }}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock twitter_title %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock twitter_description %}">
+    {% if og_img %}
+    <meta name="twitter:image" content="{{ og_img }}">
+    {% endif %}
+
+    <meta name="author" content="{{ config.extra.author | default(value='Meer Estiyak') }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{% block canonical_url %}{{ current_url | default(value=config.base_url) }}{% endblock canonical_url %}">
+
     {% include "partials/head.html" %}
+    {% block head_extra %}{% endblock head_extra %}
 </head>
 <body class="bg-paper text-ink font-serif">
     {% include "partials/nav.html" %}

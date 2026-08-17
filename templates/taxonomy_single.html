@@ -12,7 +12,7 @@
     <header class="mb-10 sm:mb-12">
         <p class="font-mono text-xs uppercase tracking-[0.18em] text-faded mb-2">{{ taxonomy.name }}</p>
         <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">{{ term.name }}</h1>
-        <p class="font-mono text-xs text-faded">{{ term.pages | length }} {{ term.pages | length | pluralize(singular="entry", plural="entries") }}</p>
+        <p class="font-mono text-xs text-faded">{{ term.pages | length }} {% if term.pages | length == 1 %}entry{% else %}entries{% endif %}</p>
     </header>
 
     <div>
@@ -31,7 +31,8 @@
                 {% if page.taxonomies.tags %}
                 <span aria-hidden="true">·</span>
                 <div class="flex flex-wrap gap-x-2">
-                    {% for tag in page.taxonomies.tags | slice(end=3) %}
+                    {% for tag in page.taxonomies.tags %}
+                    {% if loop.index > 3 %}{% break %}{% endif %}
                     <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="hover:text-accent transition-colors">#{{ tag }}</a>
                     {% endfor %}
                     {% if page.taxonomies.tags | length > 3 %}

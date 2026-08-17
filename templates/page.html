@@ -7,7 +7,6 @@
 {% block og_description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) }}{% endblock og_description %}
 {% block og_type %}article{% endblock og_type %}
 {% block og_url %}{{ page.permalink }}{% endblock og_url %}
-{% block og_image_alt %}{{ page.title }}{% endblock og_image_alt %}
 {% block twitter_title %}{{ page.title }}{% endblock twitter_title %}
 {% block twitter_description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) }}{% endblock twitter_description %}
 {% block canonical_url %}{{ page.permalink }}{% endblock canonical_url %}

@@ -72,7 +72,8 @@
         </div>
         {% set posts = get_section(path="logs/_index.md") %}
         <div>
-            {% for post in posts.pages | slice(end=4) %}
+            {% for post in posts.pages %}
+            {% if loop.index > 4 %}{% break %}{% endif %}
             <article class="group border-b border-line last:border-0 py-4">
                 <a href="{{ post.permalink }}" class="block">
                     <div class="flex items-baseline justify-between gap-4">
@@ -105,7 +106,8 @@
             <a href="{{ moments.permalink }}" class="font-mono text-xs text-faded hover:text-accent transition-colors">all moments →</a>
         </div>
         <div class="grid grid-cols-4 gap-2 sm:gap-3">
-            {% for m in moments.pages | slice(end=4) %}
+            {% for m in moments.pages %}
+            {% if loop.index > 4 %}{% break %}{% endif %}
             {% set cover = m.assets | sort | first %}
             <a href="{{ m.permalink }}" class="group block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
                 {% if cover %}

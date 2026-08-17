@@ -9,7 +9,7 @@
                 <a href="https://github.com/{{ config.extra.github }}" class="hover:text-accent transition-colors">github</a>
                 <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" class="hover:text-accent transition-colors">linkedin</a>
                 <a href="https://www.strava.com/athletes/111868234" class="hover:text-accent transition-colors">strava</a>
-                <a href="{{ get_url(path="@/topics/_index.md") }}" class="hover:text-accent transition-colors">topics</a>
+                <a href="{{ config.base_url }}/topics/" class="hover:text-accent transition-colors">topics</a>
                 {% if config.generate_feeds %}<a href="{{ get_url(path="atom.xml") }}" class="hover:text-accent transition-colors">rss</a>{% endif %}
             </div>
         </div>
