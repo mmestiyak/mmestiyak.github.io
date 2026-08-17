@@ -8,44 +8,42 @@
 {% endif %}
 {% endblock head_extra %}
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-    <header class="mb-6 sm:mb-8">
-        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-light text-gray-900 mb-2 sm:mb-3">{{ term.name }}</h1>
-        <p class="text-gray-500 text-sm sm:text-base">{{ term.pages | length }} {{ term.pages | length | pluralize(singular="log", plural="logs") }} tagged with "{{ term.name }}"</p>
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-12">
+        <p class="font-mono text-xs uppercase tracking-[0.18em] text-faded mb-2">{{ taxonomy.name }}</p>
+        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">{{ term.name }}</h1>
+        <p class="font-mono text-xs text-faded">{{ term.pages | length }} {{ term.pages | length | pluralize(singular="entry", plural="entries") }}</p>
     </header>
 
-    <div class="space-y-3 sm:space-y-4">
+    <div>
         {% for page in term.pages %}
-        <article class="group py-3 sm:py-4 border-b border-gray-100 last:border-0 hover:bg-gray-50/50 transition-colors rounded-lg px-2 sm:px-3 -mx-2 sm:mx-0">
-            <div class="flex-1 min-w-0">
-                    <h2 class="text-base sm:text-lg font-medium text-gray-900 mb-1.5 group-hover:text-brand transition-colors">
-                        <a href="{{ page.permalink }}" class="hover:underline">{{ page.title }}</a>
-                    </h2>
-                    
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-400 mb-1.5">
-                        <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
-                        {% if page.reading_time %}
-                        <span class="hidden sm:inline">•</span>
-                        <span>{{ page.reading_time }} min read</span>
-                        {% endif %}
-                        {% if page.taxonomies.tags %}
-                        <span class="hidden sm:inline">•</span>
-                        <div class="flex flex-wrap gap-1">
-                            {% for tag in page.taxonomies.tags | slice(end=3) %}
-                            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="text-gray-500 hover:text-black transition-colors">#{{ tag }}</a>
-                            {% endfor %}
-                            {% if page.taxonomies.tags | length > 3 %}
-                            <span class="text-gray-300">+{{ page.taxonomies.tags | length - 3 }} more</span>
-                            {% endif %}
-                        </div>
-                        {% endif %}
-                    </div>
-                    
-                    {% if page.description %}
-                    <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 sm:line-clamp-3">{{ page.description }}</p>
+        <article class="py-4 sm:py-5 border-b border-line last:border-0">
+            <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                <a href="{{ page.permalink }}" class="hover:text-accent transition-colors">{{ page.title }}</a>
+            </h2>
+
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-faded mb-1.5">
+                {% if page.date %}<time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>{% endif %}
+                {% if page.reading_time %}
+                <span aria-hidden="true">·</span>
+                <span>{{ page.reading_time }} min</span>
+                {% endif %}
+                {% if page.taxonomies.tags %}
+                <span aria-hidden="true">·</span>
+                <div class="flex flex-wrap gap-x-2">
+                    {% for tag in page.taxonomies.tags | slice(end=3) %}
+                    <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="hover:text-accent transition-colors">#{{ tag }}</a>
+                    {% endfor %}
+                    {% if page.taxonomies.tags | length > 3 %}
+                    <span class="text-faded/60">+{{ page.taxonomies.tags | length - 3 }} more</span>
                     {% endif %}
                 </div>
+                {% endif %}
             </div>
+
+            {% if page.description %}
+            <p class="text-sm sm:text-base text-faded leading-relaxed line-clamp-2 sm:line-clamp-3">{{ page.description }}</p>
+            {% endif %}
         </article>
         {% endfor %}
     </div>

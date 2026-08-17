@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ config.title }}{% endblock title %}
+{% block description %}{% set fb = page.content | striptags | truncate(length=160) %}{{ page.description | default(value=fb) | default(value=page.title) }}{% endblock description %}
+{% block og_title %}{{ page.title }} — {{ config.title }}{% endblock og_title %}
+{% block og_type %}article{% endblock og_type %}
+{% block og_url %}{{ page.permalink }}{% endblock og_url %}
+{% block canonical_url %}{{ page.permalink }}{% endblock canonical_url %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+    <article>
+        <!-- Photos: colocated files in the moment's folder, or extra.photos
+             paths (how the Pages CMS admin panel posts them) -->
+        {% set photos = page.assets | sort %}
+        {% if photos | length > 0 %}
+        <div class="space-y-3 mb-5">
+            {% for photo in photos %}
+            <img src="{{ page.path }}{{ photo | split(pat="/") | last }}" alt="{{ page.title }}" class="w-full rounded-sm border border-line" {% if not loop.first %}loading="lazy"{% endif %}>
+            {% endfor %}
+        </div>
+        {% elif page.extra.photos %}
+        <div class="space-y-3 mb-5">
+            {% for photo in page.extra.photos %}
+            <img src="{{ photo }}" alt="{{ page.title }}" class="w-full rounded-sm border border-line" {% if not loop.first %}loading="lazy"{% endif %}>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Caption -->
+        <div class="mb-2 font-mono text-xs text-faded flex flex-wrap items-center gap-x-3 gap-y-1">
+            {% if page.date %}<time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>{% endif %}
+            {% if page.taxonomies.topics %}
+            <span aria-hidden="true">·</span>
+            {% for topic in page.taxonomies.topics %}
+            <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="text-accent hover:text-accent-dark transition-colors">{{ topic }}</a>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <h1 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-3">{{ page.title }}</h1>
+
+        {% if page.content %}
+        <div class="prose max-w-none">
+            {{ page.content | safe }}
+        </div>
+        {% endif %}
+
+        {% if page.taxonomies.tags %}
+        <div class="mt-5 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="text-faded hover:text-accent transition-colors">#{{ tag }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Newer / Older navigation -->
+        <nav class="mt-10 pt-5 border-t border-line flex items-center justify-between font-mono text-xs">
+            <div>
+                {% set newer = page.lower | default(value=false) %}
+                {% if newer %}
+                <a href="{{ newer.permalink }}" class="text-faded hover:text-accent transition-colors">← {{ newer.title | truncate(length=28) }}</a>
+                {% endif %}
+            </div>
+            <a href="{{ get_url(path="@/moments/_index.md") }}" class="text-faded hover:text-accent transition-colors">all</a>
+            <div class="text-right">
+                {% set older = page.higher | default(value=false) %}
+                {% if older %}
+                <a href="{{ older.permalink }}" class="text-faded hover:text-accent transition-colors">{{ older.title | truncate(length=28) }} →</a>
+                {% endif %}
+            </div>
+        </nav>
+    </article>
+</div>
+{% endblock content %}

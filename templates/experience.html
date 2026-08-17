@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Experience — {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description | default(value="Work history") }}{% endblock description %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-14">
+        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">Experience</h1>
+        <p class="text-base sm:text-lg text-faded">{{ section.description | default(value="5+ years building production software that powers real businesses.") }}</p>
+    </header>
+
+    <div>
+        {% set roles = section.pages %}
+        {% for page in roles %}
+        <article class="py-8 sm:py-10 border-b border-line last:border-0">
+            <div class="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ page.extra.company | default(value=page.title) }}</h2>
+                    <div class="font-mono text-xs text-faded space-y-0.5">
+                        <p>{{ page.extra.date_start | default(value="") }} — {{ page.extra.date_end | default(value="present") }}</p>
+                        {% if page.extra.role %}<p>{{ page.extra.role }}</p>{% endif %}
+                        {% if page.extra.location %}<p>{{ page.extra.location }}</p>{% endif %}
+                    </div>
+                </div>
+                <div>
+                    {% if page.description %}
+                    <p class="text-base sm:text-lg text-ink leading-relaxed mb-3">{{ page.description }}</p>
+                    {% endif %}
+
+                    {% if page.extra.highlights %}
+                    <ul class="space-y-1.5 mb-4">
+                        {% for highlight in page.extra.highlights %}
+                        <li class="text-sm sm:text-base text-faded leading-relaxed flex items-start gap-2">
+                            <span class="text-accent mt-0.5 flex-shrink-0">—</span>
+                            <span>{{ highlight }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if page.taxonomies.tags %}
+                    <div class="flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-faded">
+                        {% for tag in page.taxonomies.tags %}
+                        <span>{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

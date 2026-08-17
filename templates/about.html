@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}About — {{ config.title }}{% endblock title %}
+{% block description %}Meer Estiyak — software developer, cattle farmer, cyclist, and fighter from Bangladesh.{% endblock description %}
+
+{% block head_extra %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Meer Estiyak",
+  "jobTitle": "Software Developer & Founder",
+  "description": "Software developer, cattle farmer, cyclist, and fighter from Bangladesh. Builder of Kommercly.",
+  "url": "{{ config.base_url }}",
+  "sameAs": [
+    "https://github.com/{{ config.extra.github }}",
+    "https://www.linkedin.com/in/{{ config.extra.linkedin }}",
+    "https://twitter.com/{{ config.extra.twitter }}"
+  ],
+  "knowsAbout": ["Node.js", "React", "Next.js", "TypeScript", "MongoDB", "PostgreSQL", "Agriculture", "Ecommerce"]
+}
+</script>
+{% endblock head_extra %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+    <!-- Identity -->
+    <section class="mb-12 sm:mb-16">
+        {% if config.extra.portrait %}
+        <img src="{{ config.extra.portrait }}" alt="Meer Estiyak" class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm border border-line mb-6">
+        {% endif %}
+        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-6 leading-tight">
+            Hi, I'm Meer.
+        </h1>
+        <div class="space-y-5 text-lg sm:text-xl text-ink leading-relaxed">
+            <p>
+                I write software, raise cattle, run a silage business, ride long distances, and train to fight.
+                That list sounds scattered until you notice it's all the same thing: systems that only work
+                if you show up every day.
+            </p>
+            <p class="text-faded">
+                You can't cram a harvest. You can't skip feeding cattle. You can't fake a fight camp.
+                Software is no different — real products come from patient, daily, unglamorous work.
+                That's how I build.
+            </p>
+            <p>
+                By profession I'm a full-stack JavaScript developer — 5+ years of Node.js, React, Next.js and
+                TypeScript in production for startups and growing companies. I also build my own things:
+                <a href="https://kommercly.com" target="_blank" rel="noopener" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">Kommercly</a>,
+                a WhatsApp-first store builder made for entrepreneurs like the ones I grew up around in Bangladesh —
+                because I'm not just the developer of that customer, I <em>am</em> that customer.
+            </p>
+        </div>
+    </section>
+
+    {% if config.extra.about_photos %}
+    <!-- Life in photos -->
+    <section class="mb-12 sm:mb-16">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+            {% for photo in config.extra.about_photos %}
+            <img src="{{ photo }}" alt="Life of Meer" loading="lazy" class="aspect-square w-full object-cover rounded-sm border border-line">
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- What working with me looks like -->
+    <section class="mb-12 sm:mb-16">
+        <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded mb-6 pb-3 border-b border-line">What working with me looks like</h2>
+        <div class="space-y-6">
+            <div>
+                <h3 class="text-lg font-semibold text-ink mb-1">Full-stack ownership</h3>
+                <p class="text-base text-faded leading-relaxed">Clean, maintainable code across the stack — modular, documented, and built for long-term stability and easy handoff.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-ink mb-1">Backends that don't fall over</h3>
+                <p class="text-base text-faded leading-relaxed">Node.js APIs with proper authentication, error handling, and database design (MongoDB, PostgreSQL) that grow without breaking.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-ink mb-1">Frontends that feel fast</h3>
+                <p class="text-base text-faded leading-relaxed">React and Next.js (SSR/SSG/ISR), mobile-first, optimized for performance and SEO.</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-ink mb-1">End-to-end delivery</h3>
+                <p class="text-base text-faded leading-relaxed">Integration, deployment, and the edge cases — I handle the whole path to production, like someone who has to fix things at 5 a.m. before the cattle are fed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toolkit -->
+    <section class="mb-12 sm:mb-16">
+        <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded mb-6 pb-3 border-b border-line">Toolkit</h2>
+        <div class="flex flex-wrap gap-x-4 gap-y-2 font-mono text-sm text-faded">
+            {% set skills = [
+                "Node.js (Express/NestJS)",
+                "React & Next.js",
+                "TypeScript",
+                "MongoDB",
+                "PostgreSQL",
+                "React Native",
+                "JWT / OAuth",
+                "AWS / Vercel",
+                "Docker",
+                "REST APIs",
+                "Vue.js",
+                "Blockly / Arduino",
+                "Git / CI/CD",
+                "AI-assisted workflows"
+            ] %}
+            {% for skill in skills %}
+            <span>{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="pt-8 border-t border-line">
+        <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-3">Let's build something</h2>
+        <p class="text-base sm:text-lg text-faded mb-5 leading-relaxed">
+            If you want a developer who takes ownership and treats your product like a working farm —
+            something that has to keep running, season after season — let's talk.
+        </p>
+        <div class="flex flex-wrap items-center gap-5 font-mono text-sm">
+            <a href="mailto:{{ config.extra.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
+            <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">linkedin</a>
+            <a href="https://github.com/{{ config.extra.github }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">github</a>
+        </div>
+    </section>
+
+</div>
+{% endblock content %}

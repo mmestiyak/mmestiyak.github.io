@@ -5,7 +5,7 @@ base_url = "https://mmestiyak.com"
 title = "Meer's Log"
 
 # The description of your site
-description = "Thoughts on tech, software, cycling, MMA, and everything that shapes my journey."
+description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
@@ -30,15 +30,10 @@ default_language = "en"
 index_format = "elasticlunr_javascript"
 
 [markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-
-# Enable footnotes
-footnote_anchor_prefix = ""
-
-# Enable tables
-enable_implicit_figures = true
+# Syntax highlighting — enabled by default
+render_emoji = true
+bottom_footnotes = true
+github_alerts = true
 
 [extra]
 # SEO and social media
@@ -53,6 +48,10 @@ keywords = [
     "technology",
     "cycling",
     "MMA",
+    "boxing",
+    "cattle farming",
+    "silage",
+    "Kommercly",
     "Bangladesh",
     "personal blog"
 ]
@@ -63,6 +62,14 @@ email = "mmestiyak@gmail.com"
 
 # Optional: alternate names for SEO/entity matching
 aliases = ["Meer Estiyak", "mmestiyak", "teammeer"]
+
+# Portrait shown on home + about once set (e.g. "/images/portrait.jpg" after
+# dropping portrait.jpg into static/images/). Empty = hidden.
+portrait = ""
+
+# Photo strip on the about page (e.g. ["/images/farm.jpg", "/images/ride.jpg"]).
+# Empty = hidden.
+about_photos = []
 
 # Google Analytics 4
 google_analytics = "G-33V0WBXVRM"

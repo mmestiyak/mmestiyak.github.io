@@ -1,21 +1,18 @@
 #!/bin/bash
 
-# Deploy script for Zola site
-# This script builds the site and deploys to GitHub Pages
+# Local build script for Zola site
+# Deployment is handled automatically by GitHub Actions on push to master.
+# Use this script to verify the site builds cleanly before pushing.
 
 set -e
 
-echo "🚀 Starting deployment..."
-
-# Build the site
 echo "📦 Building site with Zola..."
-zola build --output-dir public
+zola build
 
-# Add, commit, and push changes
-echo "📝 Committing changes..."
-git add .
-git commit -m "Deploy: $(date)" || echo "No changes to commit"
-git push origin master
-
-echo "✅ Deployment complete!"
-echo "🌐 Your site should be available at: https://$(git config --get remote.origin.url | sed 's/.*github.com[:/]\([^.]*\).*/\1/').github.io"
+echo ""
+echo "✅ Build complete. Output in public/"
+echo "🚀 To deploy, push to master (GitHub Actions handles the rest):"
+echo "   git push origin master"
+echo ""
+echo "📝 For local development:"
+echo "   make serve"

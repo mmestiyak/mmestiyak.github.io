@@ -1,0 +1,235 @@
+# Pages CMS configuration — https://pagescms.org
+# Admin panel for posting without touching code:
+# sign in at https://app.pagescms.org with GitHub and pick this repo.
+#
+# Note: don't edit the "_index" entries from the panel — they hold section
+# settings, not posts.
+
+media:
+  input: static/images
+  output: /images
+
+content:
+  - name: moments
+    label: Moments
+    description: Photo posts — like Instagram, but yours forever.
+    icon: camera
+    type: collection
+    path: content/moments
+    format: toml-frontmatter
+    filename: '{year}-{month}-{day}-{primary}.md'
+    view:
+      fields: [title, date]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title (caption headline)
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        default: '{{ now }}'
+      - name: taxonomies
+        label: Categorize
+        type: object
+        fields:
+          - name: topics
+            label: Topics (farm, training, project, work…)
+            type: string
+            list: true
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+      - name: extra
+        label: Photos
+        type: object
+        fields:
+          - name: photos
+            label: Photos (first one is the cover)
+            type: image
+            list: true
+      - name: body
+        label: Caption
+        type: rich-text
+
+  - name: logs
+    label: Logs
+    description: Written posts — thoughts, lessons, stories.
+    icon: notebook-pen
+    type: collection
+    path: content/logs
+    format: toml-frontmatter
+    filename: '{primary}.md'
+    subfolders: true
+    view:
+      fields: [title, date]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        default: '{{ now }}'
+      - name: description
+        label: Description (shows in lists + search results)
+        type: text
+      - name: taxonomies
+        label: Categorize
+        type: object
+        fields:
+          - name: topics
+            label: Topics
+            type: string
+            list: true
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+      - name: extra
+        label: Extras
+        type: object
+        fields:
+          - name: image
+            label: Header image (optional, also used for link previews)
+            type: image
+      - name: body
+        label: Post
+        type: rich-text
+
+  - name: projects
+    label: Projects
+    description: Ventures — software, farm, silage, whatever you run.
+    icon: hammer
+    type: collection
+    path: content/projects
+    format: toml-frontmatter
+    filename: '{primary}.md'
+    view:
+      fields: [title]
+    fields:
+      - name: title
+        label: Name
+        type: string
+        required: true
+      - name: description
+        label: One-line description
+        type: text
+      - name: draft
+        label: Draft (hidden from the site while checked)
+        type: boolean
+      - name: taxonomies
+        label: Categorize
+        type: object
+        fields:
+          - name: topics
+            label: Topics
+            type: string
+            list: true
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+      - name: extra
+        label: Details
+        type: object
+        fields:
+          - name: year
+            label: Year started
+            type: number
+          - name: status
+            label: Status (Live, Operating, Building…)
+            type: string
+          - name: role
+            label: Your role
+            type: string
+          - name: live_url
+            label: Live URL
+            type: string
+          - name: source_url
+            label: Source URL
+            type: string
+          - name: tech_stack
+            label: Stack / tools
+            type: string
+            list: true
+          - name: highlights
+            label: Highlights (numbers beat adjectives)
+            type: string
+            list: true
+          - name: image
+            label: Cover image
+            type: image
+      - name: body
+        label: Longer story
+        type: rich-text
+
+  - name: experience
+    label: Experience
+    description: Jobs and roles.
+    icon: briefcase
+    type: collection
+    path: content/experience
+    format: toml-frontmatter
+    filename: '{primary}.md'
+    view:
+      fields: [title]
+    fields:
+      - name: title
+        label: Title (e.g. "Software Developer — Company")
+        type: string
+        required: true
+      - name: description
+        label: One-line summary
+        type: text
+      - name: weight
+        label: Order (1 shows first)
+        type: number
+      - name: taxonomies
+        label: Categorize
+        type: object
+        fields:
+          - name: topics
+            label: Topics
+            type: string
+            list: true
+          - name: tags
+            label: Tags
+            type: string
+            list: true
+      - name: extra
+        label: Details
+        type: object
+        fields:
+          - name: company
+            label: Company
+            type: string
+          - name: role
+            label: Role
+            type: string
+          - name: date_start
+            label: Started (e.g. 2022-08)
+            type: string
+          - name: date_end
+            label: Ended (or "present")
+            type: string
+          - name: location
+            label: Location
+            type: string
+          - name: highlights
+            label: Highlights
+            type: string
+            list: true
+      - name: body
+        label: Longer story
+        type: rich-text

@@ -1,0 +1,25 @@
+<header class="bg-paper/95 backdrop-blur-sm sticky top-0 z-50 pt-safe-top border-b border-line">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4 py-3 sm:py-4">
+            <!-- Wordmark -->
+            <a href="{{ config.base_url }}" class="font-mono text-lg sm:text-xl text-ink hover:text-accent transition-colors tracking-tight py-1">
+                meer's log<span class="text-accent">.</span>
+            </a>
+
+            <!-- Navigation -->
+            <div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-mono text-[13px] sm:text-sm">
+                {% set cur = current_url | default(value="") %}
+                {% set logs_url = get_url(path="@/logs/_index.md") %}
+                {% set moments_url = get_url(path="@/moments/_index.md") %}
+                {% set projects_url = get_url(path="@/projects/_index.md") %}
+                {% set experience_url = get_url(path="@/experience/_index.md") %}
+                {% set about_url = get_url(path="@/about.md") %}
+                <a href="{{ logs_url }}" class="px-1.5 sm:px-2.5 py-2 text-[12px] sm:text-sm transition-colors {% if logs_url in cur %}text-accent underline underline-offset-4{% else %}text-faded hover:text-ink{% endif %}">logs</a>
+                <a href="{{ moments_url }}" class="px-1.5 sm:px-2.5 py-2 text-[12px] sm:text-sm transition-colors {% if moments_url in cur %}text-accent underline underline-offset-4{% else %}text-faded hover:text-ink{% endif %}">moments</a>
+                <a href="{{ projects_url }}" class="px-1.5 sm:px-2.5 py-2 text-[12px] sm:text-sm transition-colors {% if projects_url in cur %}text-accent underline underline-offset-4{% else %}text-faded hover:text-ink{% endif %}">projects</a>
+                <a href="{{ experience_url }}" class="px-1.5 sm:px-2.5 py-2 text-[12px] sm:text-sm transition-colors {% if experience_url in cur %}text-accent underline underline-offset-4{% else %}text-faded hover:text-ink{% endif %}">experience</a>
+                <a href="{{ about_url }}" class="px-1.5 sm:px-2.5 py-2 text-[12px] sm:text-sm transition-colors {% if about_url in cur %}text-accent underline underline-offset-4{% else %}text-faded hover:text-ink{% endif %}">about</a>
+            </div>
+        </nav>
+    </div>
+</header>

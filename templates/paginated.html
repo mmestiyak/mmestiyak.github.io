@@ -3,28 +3,33 @@
 {% block title %}Logs — {{ config.title }}{% if paginator and paginator.current_index > 1 %} — Page {{ paginator.current_index }}{% endif %}{% endblock title %}
 {% block description %}All logs by Meer Estiyak on software development, programming, and more.{% endblock description %}
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
-    <!-- Simple Search Only -->
+    <header class="mb-8 sm:mb-10">
+        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">Logs</h1>
+        <p class="text-base sm:text-lg text-faded">{{ section.description | default(value="Thoughts, lessons, and experiences — in chronological order.") }}</p>
+    </header>
+
+    <!-- Search -->
     <div class="mb-8 sm:mb-10">
-        <div class="relative max-w-2xl mb-6 sm:mb-8">
-            <input 
-                type="text" 
-                id="search-input" 
-                placeholder="Search posts..." 
-                class="w-full px-4 py-3 pl-10 pr-10 text-base text-gray-900 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-400 transition-all duration-200 placeholder:text-gray-400"
+        <div class="relative max-w-xl">
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search logs..."
+                class="w-full px-4 py-2.5 pl-10 pr-10 font-mono text-sm text-ink bg-paper border border-line rounded-sm focus:outline-none focus:border-accent transition-colors placeholder:text-faded/70"
                 aria-label="Search through all blog posts"
                 autocomplete="off"
                 spellcheck="false"
             >
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="h-4 w-4 text-faded" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
             </div>
-            <button 
-                id="clear-search" 
-                class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 transition-colors hidden"
+            <button
+                id="clear-search"
+                class="absolute inset-y-0 right-0 pr-3 flex items-center text-faded hover:text-ink transition-colors hidden"
                 aria-label="Clear search"
                 onclick="window.simpleSearch.clearSearch()"
             >
@@ -33,35 +38,28 @@
                 </svg>
             </button>
         </div>
-        
-            <!-- Results Summary -->
-            <!-- <div id="results-summary" class="mb-4 sm:mb-6 hidden">
-                <div class="text-sm text-gray-600">
-                    <span id="results-count">0</span>
-            </div>
-        </div> -->
     </div>
 
-    <div id="all-posts" class="space-y-3 sm:space-y-4">
+    <div id="all-posts">
         {% for page in paginator.pages %}
-        <article class="py-4 sm:py-5 border-b border-gray-200 last:border-0">
+        <article class="py-4 sm:py-5 border-b border-line last:border-0">
             <div class="flex items-start justify-between gap-4">
                 <div class="flex-1 min-w-0">
-                    <h2 class="text-base sm:text-lg font-medium text-gray-900 mb-1">
-                        <a href="{{ page.permalink }}" class="hover:text-gray-600 transition-colors">{{ page.title }}</a>
+                    <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                        <a href="{{ page.permalink }}" class="hover:text-accent transition-colors">{{ page.title }}</a>
                     </h2>
-                    <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
-                        <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
+                    <div class="flex items-center gap-2 font-mono text-xs text-faded">
+                        {% if page.date %}<time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>{% endif %}
                         {% if page.reading_time %}
-                        <span>•</span>
+                        <span aria-hidden="true">·</span>
                         <span>{{ page.reading_time }} min</span>
                         {% endif %}
                     </div>
                 </div>
                 {% if page.taxonomies.topics %}
-                <div class="flex gap-1 flex-shrink-0 self-start">
+                <div class="flex gap-2 flex-shrink-0 self-start">
                     {% for topic in page.taxonomies.topics %}
-                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="inline-flex items-center px-2 py-0.5 text-xs leading-none text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap">
+                    <a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="font-mono text-xs text-faded hover:text-accent transition-colors whitespace-nowrap">
                         {{ topic }}
                     </a>
                     {% endfor %}
@@ -75,17 +73,17 @@
     <!-- Pagination -->
     {% if paginator.number_pagers > 1 %}
     <nav id="pagination-nav" class="mt-8 sm:mt-12 flex justify-center sm:justify-start">
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center space-x-2 font-mono text-xs">
             {% if paginator.previous %}
-            <a href="{{ paginator.previous }}" class="px-3 py-2 text-sm text-gray-500 hover:text-brand transition-colors hover:bg-brand/5 rounded-md">← Previous</a>
+            <a href="{{ paginator.previous }}" class="px-3 py-2 text-faded hover:text-accent transition-colors">← previous</a>
             {% endif %}
-            
-            <span class="px-3 py-2 text-sm text-gray-400">
-                Page {{ paginator.current_index }} of {{ paginator.number_pagers }}
+
+            <span class="px-3 py-2 text-faded/70">
+                page {{ paginator.current_index }} of {{ paginator.number_pagers }}
             </span>
-            
+
             {% if paginator.next %}
-            <a href="{{ paginator.next }}" class="px-3 py-2 text-sm text-gray-500 hover:text-brand transition-colors hover:bg-brand/5 rounded-md">Next →</a>
+            <a href="{{ paginator.next }}" class="px-3 py-2 text-faded hover:text-accent transition-colors">next →</a>
             {% endif %}
         </div>
     </nav>
@@ -195,7 +193,7 @@ class SimpleSearch {
             } else {
                 message = 'No logs available.';
             }
-            container.innerHTML = `<div class="text-center py-12 text-gray-500">${message}</div>`;
+            container.innerHTML = `<div class="text-center py-12 text-faded italic">${message}</div>`;
             if (resultsSummary) {
                 resultsSummary.classList.remove('hidden');
             }
@@ -222,12 +220,12 @@ class SimpleSearch {
         const topicUrls = post.topicUrls || {};
         const tagUrls = post.tagUrls || {};
         
-        const topicsHtml = topics.length > 0 ? topics.map(topic => 
-            `<a href="${topicUrls[topic] || '#'}" class="px-1.5 py-0.5 sm:px-2 sm:py-1 text-xs text-gray-600 bg-gray-100 rounded hover:bg-gray-200 transition-colors whitespace-nowrap flex-shrink-0">${topic}</a>`
+        const topicsHtml = topics.length > 0 ? topics.map(topic =>
+            `<a href="${topicUrls[topic] || '#'}" class="font-mono text-xs text-faded hover:text-accent transition-colors whitespace-nowrap flex-shrink-0">${topic}</a>`
         ).join('') : '';
         
-        const readingTime = post.readingTime ? 
-            `<span>•</span><span>${post.readingTime} min read</span>` : '';
+        const readingTime = post.readingTime ?
+            `<span aria-hidden="true">·</span><span>${post.readingTime} min</span>` : '';
         
         // Safe date parsing
         let formattedDate = 'No date';
@@ -243,19 +241,19 @@ class SimpleSearch {
         }
         
         return `
-            <article class="py-4 sm:py-5 border-b border-gray-200 last:border-0">
+            <article class="py-4 sm:py-5 border-b border-line last:border-0">
                 <div class="flex items-start justify-between gap-4">
                     <div class="flex-1 min-w-0">
-                        <h2 class="text-base sm:text-lg font-medium text-gray-900 mb-1">
-                            <a href="${post.url}" class="hover:text-gray-600 transition-colors">${post.title}</a>
+                        <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                            <a href="${post.url}" class="hover:text-accent transition-colors">${post.title}</a>
                             </h2>
-                        <div class="flex items-center gap-2 text-xs sm:text-sm text-gray-500">
+                        <div class="flex items-center gap-2 font-mono text-xs text-faded">
                             <time datetime="${post.date || ''}">${formattedDate}</time>
                             ${readingTime}
                         </div>
                     </div>
                     ${topics.length > 0 ? `
-                    <div class="flex gap-1 flex-shrink-0 self-start">
+                    <div class="flex gap-2 flex-shrink-0 self-start">
                         ${topicsHtml}
                     </div>
                     ` : ''}
@@ -316,7 +314,7 @@ class SimpleSearch {
         
         // Previous button
         if (this.currentPage > 1) {
-            paginationHTML += `<button onclick="simpleSearch.goToPage(${this.currentPage - 1})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">←</button>`;
+            paginationHTML += `<button onclick="simpleSearch.goToPage(${this.currentPage - 1})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">←</button>`;
         }
         
         // Page numbers - show all pages if 5 or fewer, otherwise show smart pagination
@@ -324,9 +322,9 @@ class SimpleSearch {
             // Show all pages
             for (let i = 1; i <= totalPages; i++) {
                 if (i === this.currentPage) {
-                    paginationHTML += `<span class="px-3 py-2 text-sm bg-gray-900 text-white rounded-md">${i}</span>`;
+                    paginationHTML += `<span class="px-3 py-2 font-mono text-xs bg-ink text-paper rounded-sm">${i}</span>`;
                 } else {
-                    paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${i}</button>`;
+                    paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${i}</button>`;
                 }
             }
         } else {
@@ -335,45 +333,45 @@ class SimpleSearch {
                 // Show first 4 pages + ... + last page
                 for (let i = 1; i <= 4; i++) {
                     if (i === this.currentPage) {
-                        paginationHTML += `<span class="px-3 py-2 text-sm bg-gray-900 text-white rounded-md">${i}</span>`;
+                        paginationHTML += `<span class="px-3 py-2 font-mono text-xs bg-ink text-paper rounded-sm">${i}</span>`;
                     } else {
-                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${i}</button>`;
+                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${i}</button>`;
                     }
                 }
-                paginationHTML += `<span class="px-2 py-2 text-sm text-gray-400">...</span>`;
-                paginationHTML += `<button onclick="simpleSearch.goToPage(${totalPages})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${totalPages}</button>`;
+                paginationHTML += `<span class="px-2 py-2 font-mono text-xs text-faded/70">...</span>`;
+                paginationHTML += `<button onclick="simpleSearch.goToPage(${totalPages})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${totalPages}</button>`;
             } else if (this.currentPage >= totalPages - 2) {
                 // Show first page + ... + last 4 pages
-                paginationHTML += `<button onclick="simpleSearch.goToPage(1)" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">1</button>`;
-                paginationHTML += `<span class="px-2 py-2 text-sm text-gray-400">...</span>`;
+                paginationHTML += `<button onclick="simpleSearch.goToPage(1)" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">1</button>`;
+                paginationHTML += `<span class="px-2 py-2 font-mono text-xs text-faded/70">...</span>`;
                 for (let i = totalPages - 3; i <= totalPages; i++) {
                     if (i === this.currentPage) {
-                        paginationHTML += `<span class="px-3 py-2 text-sm bg-gray-900 text-white rounded-md">${i}</span>`;
+                        paginationHTML += `<span class="px-3 py-2 font-mono text-xs bg-ink text-paper rounded-sm">${i}</span>`;
                     } else {
-                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${i}</button>`;
+                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${i}</button>`;
                     }
                 }
             } else {
                 // Show first page + ... + current-1, current, current+1 + ... + last page
-                paginationHTML += `<button onclick="simpleSearch.goToPage(1)" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">1</button>`;
-                paginationHTML += `<span class="px-2 py-2 text-sm text-gray-400">...</span>`;
+                paginationHTML += `<button onclick="simpleSearch.goToPage(1)" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">1</button>`;
+                paginationHTML += `<span class="px-2 py-2 font-mono text-xs text-faded/70">...</span>`;
                 
                 for (let i = this.currentPage - 1; i <= this.currentPage + 1; i++) {
                     if (i === this.currentPage) {
-                        paginationHTML += `<span class="px-3 py-2 text-sm bg-gray-900 text-white rounded-md">${i}</span>`;
+                        paginationHTML += `<span class="px-3 py-2 font-mono text-xs bg-ink text-paper rounded-sm">${i}</span>`;
                     } else {
-                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${i}</button>`;
+                        paginationHTML += `<button onclick="simpleSearch.goToPage(${i})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${i}</button>`;
                     }
                 }
                 
-                paginationHTML += `<span class="px-2 py-2 text-sm text-gray-400">...</span>`;
-                paginationHTML += `<button onclick="simpleSearch.goToPage(${totalPages})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">${totalPages}</button>`;
+                paginationHTML += `<span class="px-2 py-2 font-mono text-xs text-faded/70">...</span>`;
+                paginationHTML += `<button onclick="simpleSearch.goToPage(${totalPages})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">${totalPages}</button>`;
             }
         }
         
         // Next button
         if (this.currentPage < totalPages) {
-            paginationHTML += `<button onclick="simpleSearch.goToPage(${this.currentPage + 1})" class="px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors">→</button>`;
+            paginationHTML += `<button onclick="simpleSearch.goToPage(${this.currentPage + 1})" class="px-3 py-2 font-mono text-xs text-faded hover:text-ink transition-colors">→</button>`;
         }
         
         paginationHTML += '</div>';

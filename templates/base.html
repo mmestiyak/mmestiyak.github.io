@@ -1,149 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{% block html_lang %}en{% endblock html_lang %}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
-    
-    <!-- Enhanced Open Graph / Social Media Meta Tags -->
-    <meta property="og:title" content="{% block og_title %}{{ config.title }}{% endblock og_title %}">
-    <meta property="og:description" content="{% block og_description %}{{ config.description }}{% endblock og_description %}">
-    <meta property="og:type" content="{% block og_type %}website{% endblock og_type %}">
-    <meta property="og:url" content="{% block og_url %}{{ current_url | default(value=config.base_url) }}{% endblock og_url %}">
-    <meta property="og:site_name" content="{{ config.title }}">
-    {% if page.extra.image or config.extra.og_image %}
-    <meta property="og:image" content="{% block og_image %}{{ page.extra.image | default(value=config.extra.og_image) | default(value=config.base_url ~ '/images/og-default.jpg') }}{% endblock og_image %}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="{% block og_image_alt %}{{ page.title | default(value=config.title) }}{% endblock og_image_alt %}">
-    {% endif %}
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@{{ config.extra.twitter | default(value='') }}">
-    <meta name="twitter:creator" content="@{{ config.extra.twitter | default(value='') }}">
-    <meta name="twitter:title" content="{% block twitter_title %}{{ config.title }}{% endblock twitter_title %}">
-    <meta name="twitter:description" content="{% block twitter_description %}{{ config.description }}{% endblock twitter_description %}">
-    {% if page.extra.image or config.extra.og_image %}
-    <meta name="twitter:image" content="{% block twitter_image %}{{ page.extra.image | default(value=config.extra.og_image) | default(value=config.base_url ~ '/images/og-default.jpg') }}{% endblock twitter_image %}">
-    {% endif %}
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="author" content="{{ config.extra.author | default(value='Meer Estiyak') }}">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="{% block canonical_url %}{{ current_url | default(value=config.base_url) }}{% endblock canonical_url %}">
-    
-    <!-- Beautiful Typography - Questrial + Noto Sans Bengali -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Questrial&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Zola's built-in search -->
-    <script src="{{ get_url(path="elasticlunr.min.js") }}"></script>
-    <script src="{{ get_url(path="search_index.en.js") }}"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: '#000000',
-                        'brand-dark': '#333333',
-                        'brand-light': '#666666',
-                        'brand-accent': '#00aaff',
-                        'brand-success': '#10b981',
-                        'text-primary': '#000000',
-                        'text-secondary': '#666666',
-                        'bg-primary': '#ffffff',
-                        'bg-secondary': '#fafafa',
-                        'bg-accent': '#f5f5f5'
-                    },
-                    fontFamily: {
-                        'sans': ['Questrial', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-                        'bengali': ['Noto Sans Bengali', 'Questrial', 'system-ui', 'sans-serif'],
-                        'mono': ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'monospace']
-                    },
-                    spacing: {
-                        'safe-top': 'env(safe-area-inset-top)',
-                        'safe-bottom': 'env(safe-area-inset-bottom)',
-                        'safe-left': 'env(safe-area-inset-left)',
-                        'safe-right': 'env(safe-area-inset-right)'
-                    },
-                    backgroundImage: {
-                        'paper-texture': "url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\" viewBox=\"0 0 60 60\"><defs><pattern id=\"grid\" width=\"60\" height=\"60\" patternUnits=\"userSpaceOnUse\"><path d=\"M 60 0 L 0 0 0 60\" fill=\"none\" stroke=\"%23f0f0f0\" stroke-width=\"0.5\"/></pattern></defs><rect width=\"60\" height=\"60\" fill=\"%23fefefe\"/><rect width=\"60\" height=\"60\" fill=\"url(%23grid)\"/></svg>')"
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Custom CSS for additional styling -->
-    <link rel="stylesheet" href="{{ get_url(path="style.css") }}">
-    
-    
-    
-    {% if config.generate_feeds %}
-        <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="atom.xml") }}">
-    {% endif %}
-    {% if config.extra.google_analytics %}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config.extra.google_analytics }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);} 
-        gtag('js', new Date());
-        gtag('config', '{{ config.extra.google_analytics }}');
-    </script>
-    {% endif %}
-    {% block head_extra %}{% endblock head_extra %}
+    {% include "partials/head.html" %}
 </head>
-<body class="bg-bg-primary text-text-primary font-sans">
-    <header class="bg-white sticky top-0 z-50 pt-safe-top">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-            <nav class="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 py-3 sm:py-4 border-b border-gray-200 bg-white/80 backdrop-blur-sm">
-                <!-- Left side - Brand -->
-                <a href="{{ config.base_url }}" class="text-xl sm:text-2xl font-mono text-text-primary hover:text-brand transition-colors tracking-tight py-2">
-                    meer's log<span class="text-cyan-500 animate-pulse">.</span>
-                </a>
-                
-                <!-- Center - Responsive navigation -->
-                <div class="flex items-center gap-3 sm:gap-6 text-base text-text-primary">
-                    {% set cur = current_url | default(value="") %}
-                    {% set logs_url = get_url(path="@/logs/_index.md") %}
-                    {% set topics_url = get_url(path="@/topics/_index.md") %}
-                    {% set tags_url = get_url(path="@/tags/_index.md") %}
-                    <a href="{{ logs_url }}" class="px-3 py-2 rounded transition-colors {% if logs_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">logs</a>
-                    <a href="{{ topics_url }}" class="px-3 py-2 rounded transition-colors {% if topics_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">topics</a>
-                    <a href="{{ tags_url }}" class="px-3 py-2 rounded transition-colors {% if tags_url in cur %}text-brand underline{% else %}hover:text-brand hover:bg-gray-100{% endif %}">tags</a>
-                </div>
-                
-                <!-- Right side - Empty spacer for balance -->
-                <div class="w-0 sm:w-20"></div>
-            </nav>
-            
-        </div>
-    </header>
+<body class="bg-paper text-ink font-serif">
+    {% include "partials/nav.html" %}
 
     <main class="min-h-screen">
         {% block content %}{% endblock content %}
     </main>
 
-    <footer class="bg-bg-primary mt-12 sm:mt-16 pb-safe-bottom">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-            <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-3 text-sm text-text-primary/80 text-center sm:text-left">
-                <div>
-                    <span>&copy; {{ now() | date(format="%Y") }} Meer Estiyak</span>
-                </div>
-                <div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-                    <a href="mailto:{{ config.extra.email }}" class="hover:text-brand transition-colors">Email</a>
-                    <a href="https://github.com/{{ config.extra.github }}" class="hover:text-brand transition-colors">GitHub</a>
-                    <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" class="hover:text-brand transition-colors">LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
+    {% include "partials/footer.html" %}
 </body>
 </html>

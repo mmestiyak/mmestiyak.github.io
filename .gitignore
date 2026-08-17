@@ -1,6 +1,9 @@
 # Zola build output
 public/
 
+# Node.js
+node_modules/
+
 # OS generated files
 .DS_Store
 .DS_Store?
@@ -23,3 +26,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+# Claude Code local config
+.claude/

@@ -19,81 +19,107 @@
 {% endblock head_extra %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-    <!-- Hero Section -->
-    <section class="mb-12 sm:mb-16 lg:mb-20">
-        <div class="max-w-2xl">
-            <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-3 sm:mb-4">
-                I'm Meer Estiyak. I build <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">software</a> for food, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="font-medium text-gray-900 hover:text-brand transition-colors underline">cycling</a>, and peace in <span class="font-medium text-gray-900">boxing</span>.
-            </p>
-            
-            <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-5 sm:mb-7">
-                From a small, beautiful country called <span class="font-medium text-gray-900">Bangladesh</span>, this site is my logbook of thoughts, lessons, and small moments.
-            </p>
-            
-            <!-- Social Links -->
-            <div class="flex items-center space-x-4 sm:space-x-6">
-                <a href="mailto:mmestiyak@gmail.com" class="text-gray-400 hover:text-brand transition-colors inline-flex items-center justify-center" aria-label="Email">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/mmestiyak" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand transition-colors inline-flex items-center justify-center" aria-label="LinkedIn">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <a href="https://github.com/mmestiyak" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand transition-colors inline-flex items-center justify-center" aria-label="GitHub">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
-                </a>
-                <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="text-gray-400 hover:text-brand transition-colors inline-flex items-center justify-center" aria-label="Strava">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7.02 13.828h4.169"/>
-                    </svg>
-                </a>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+    <!-- Intro -->
+    <section class="mb-14 sm:mb-20">
+        <div class="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-8">
+            <div class="max-w-xl">
+                <p class="text-xl sm:text-2xl text-ink leading-relaxed mb-4">
+                    I'm Meer Estiyak. I build <a href="{{ get_url(path="@/projects/_index.md") }}" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">software</a> for food, raise <a href="{{ get_url(path="@/about.md") }}" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">cattle</a> for a living, seek clarity in <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">cycling</a>, and peace in boxing.
+                </p>
+                <p class="text-lg sm:text-xl text-faded leading-relaxed mb-6">
+                    From a small, beautiful country called Bangladesh — this site is the logbook of all of it: thoughts, lessons, and small moments.
+                </p>
+
+                <!-- Social Links -->
+                <div class="flex items-center gap-5">
+                    <a href="mailto:{{ config.extra.email }}" class="text-faded hover:text-accent transition-colors inline-flex items-center justify-center" aria-label="Email">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" target="_blank" rel="noopener" class="text-faded hover:text-accent transition-colors inline-flex items-center justify-center" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/{{ config.extra.github }}" target="_blank" rel="noopener" class="text-faded hover:text-accent transition-colors inline-flex items-center justify-center" aria-label="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.strava.com/athletes/111868234" target="_blank" rel="noopener" class="text-faded hover:text-accent transition-colors inline-flex items-center justify-center" aria-label="Strava">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7.02 13.828h4.169"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
+            {% if config.extra.portrait %}
+            <div class="flex-shrink-0">
+                <img src="{{ config.extra.portrait }}" alt="Meer Estiyak" class="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-sm border border-line" loading="eager">
+            </div>
+            {% endif %}
         </div>
     </section>
 
-    <!-- Recent Writings Section -->
-    <section class="mb-12 sm:mb-16">
-        <h2 class="text-xl sm:text-2xl font-light text-gray-900 mb-4 sm:mb-6">
-            Recent Logs
-        </h2>
+    <!-- Recent Logs -->
+    <section class="mb-14 sm:mb-20">
+        <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
+            <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded">Recent logs</h2>
+            <a href="{{ get_url(path="@/logs/_index.md") }}" class="font-mono text-xs text-faded hover:text-accent transition-colors">all logs →</a>
+        </div>
         {% set posts = get_section(path="logs/_index.md") %}
-        <div class="space-y-3 sm:space-y-4">
-            {% for post in posts.pages | slice(end=3) %}
-            <article class="group border-b border-gray-100 last:border-0 py-3">
+        <div>
+            {% for post in posts.pages | slice(end=4) %}
+            <article class="group border-b border-line last:border-0 py-4">
                 <a href="{{ post.permalink }}" class="block">
-                    <div class="flex items-start justify-between gap-4">
+                    <div class="flex items-baseline justify-between gap-4">
                         <div class="flex-1 min-w-0">
-                            <h3 class="text-base sm:text-lg font-medium text-text-primary group-hover:text-brand transition-colors">
+                            <h3 class="text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
                                 {{ post.title }}
                             </h3>
-                            <p class="mt-1 text-sm text-gray-500 line-clamp-2">
+                            <p class="mt-1 text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
                                 {{ post.description | default(value=(post.content | striptags | truncate(length=140))) }}
                             </p>
                         </div>
-                        <span class="text-xs sm:text-sm text-text-primary/60 whitespace-nowrap">
+                        {% if post.date %}
+                        <span class="font-mono text-xs text-faded whitespace-nowrap">
                             {{ post.date | date(format="%b %d, %Y") }}
                         </span>
+                        {% endif %}
                     </div>
                 </a>
             </article>
             {% endfor %}
         </div>
-        
-        <div class="mt-6 sm:mt-8">
-            <a href="{{ get_url(path="@/logs/_index.md") }}" class="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors text-sm font-medium border border-gray-200">
-                View all logs
-                <svg class="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
+    </section>
+
+    <!-- Recent Moments -->
+    {% set moments = get_section(path="moments/_index.md") %}
+    {% if moments.pages | length > 0 %}
+    <section class="mb-8">
+        <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
+            <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded">Moments</h2>
+            <a href="{{ moments.permalink }}" class="font-mono text-xs text-faded hover:text-accent transition-colors">all moments →</a>
+        </div>
+        <div class="grid grid-cols-4 gap-2 sm:gap-3">
+            {% for m in moments.pages | slice(end=4) %}
+            {% set cover = m.assets | sort | first %}
+            <a href="{{ m.permalink }}" class="group block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
+                {% if cover %}
+                <img src="{{ m.path }}{{ cover | split(pat="/") | last }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+                {% elif m.extra.photos %}
+                <img src="{{ m.extra.photos | first }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+                {% else %}
+                <span class="w-full h-full flex items-center justify-center p-2 text-center italic text-xs sm:text-sm text-faded leading-snug">{{ m.title }}</span>
+                {% endif %}
             </a>
+            {% endfor %}
         </div>
     </section>
+    {% endif %}
 
 </div>
 {% endblock content %}

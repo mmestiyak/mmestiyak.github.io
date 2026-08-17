@@ -1,0 +1,13 @@
+{
+  "name": "mmestiyak-blog",
+  "description": "Meer's Log — personal blog built with Zola",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./static/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./static/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
