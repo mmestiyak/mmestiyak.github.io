@@ -1,6 +1,6 @@
 +++
 title = "The Finest Watch Money Can Buy"
-date = 2025-10-10
+date = "2025-10-10"
 description = "Most people dream of luxury Swiss watches. But for me, the finest watch money can buy costs around fifteen dollars. It's the Casio F91W, a tiny, feather-light rectangle that's been ticking quietly since 1989."
 reading_time = 4
 [taxonomies]

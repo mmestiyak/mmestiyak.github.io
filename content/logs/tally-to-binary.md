@@ -1,6 +1,6 @@
 +++
 title = "Tally to Binary: Understanding Data for Better Development"
-date = 2025-03-11
+date = "2025-03-11"
 description = "Upgrade your engineering by mastering data representation, from tally marks to binary, with practical insights ahead."
 reading_time = 9
 [taxonomies]

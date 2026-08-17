@@ -1,6 +1,6 @@
 +++
 title = "Morning ride before the heat"
-date = 2026-08-10
+date = "2026-08-10"
 description = "Sample moment — replace the photo and this caption with your own."
 [taxonomies]
 topics = ["training"]

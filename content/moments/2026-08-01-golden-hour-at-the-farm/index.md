@@ -1,6 +1,6 @@
 +++
 title = "Golden hour at the farm"
-date = 2026-08-01
+date = "2026-08-01"
 description = "Sample moment — replace the photo and this caption with your own."
 [taxonomies]
 topics = ["farm"]

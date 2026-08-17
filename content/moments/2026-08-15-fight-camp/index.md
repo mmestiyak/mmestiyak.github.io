@@ -1,6 +1,6 @@
 +++
 title = "Evening at fight camp"
-date = 2026-08-15
+date = "2026-08-15"
 description = "Sample moment — replace the photo and this caption with your own."
 [taxonomies]
 topics = ["training"]

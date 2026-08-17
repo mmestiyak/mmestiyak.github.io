@@ -25,7 +25,7 @@ log: ## New log post: make log t="My post title"
 	d=`date +%Y-%m-%d`; \
 	f="content/logs/$$slug.md"; \
 	test ! -e "$$f" || { echo "already exists: $$f"; exit 1; }; \
-	printf '+++\ntitle = "%s"\ndate = %s\ndescription = ""\n[taxonomies]\ntags = []\ntopics = []\n+++\n\nWrite here.\n' "$(t)" "$$d" > "$$f"; \
+	printf '+++\ntitle = "%s"\ndate = "%s"\ndescription = ""\n[taxonomies]\ntags = []\ntopics = []\n+++\n\nWrite here.\n' "$(t)" "$$d" > "$$f"; \
 	echo "created $$f"
 
 moment: ## New photo moment: make moment t="Caption title" (then drop photos in the folder)
@@ -35,7 +35,7 @@ moment: ## New photo moment: make moment t="Caption title" (then drop photos in 
 	dir="content/moments/$$d-$$slug"; \
 	test ! -e "$$dir" || { echo "already exists: $$dir"; exit 1; }; \
 	mkdir -p "$$dir"; \
-	printf '+++\ntitle = "%s"\ndate = %s\n[taxonomies]\ntags = []\ntopics = []\n+++\n\nCaption goes here (optional).\n' "$(t)" "$$d" > "$$dir/index.md"; \
+	printf '+++\ntitle = "%s"\ndate = "%s"\n[taxonomies]\ntags = []\ntopics = []\n+++\n\nCaption goes here (optional).\n' "$(t)" "$$d" > "$$dir/index.md"; \
 	echo "created $$dir"; \
 	echo "→ now drop your photo(s) into that folder (photo.jpg, 01.jpg 02.jpg ...)"
 
