@@ -2,12 +2,12 @@
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav class="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4 py-3 sm:py-4">
             <!-- Wordmark -->
-            <a href="{{ config.base_url }}" class="font-mono text-lg sm:text-xl text-ink hover:text-accent transition-colors tracking-tight py-1">
-                meer's log<span class="text-accent">.</span>
+            <a href="{{ config.base_url }}" class="font-serif font-semibold text-xl sm:text-2xl text-ink hover:text-accent transition-colors tracking-tight py-1">
+                Meer's Log<span class="text-accent">.</span>
             </a>
 
             <!-- Navigation -->
-            <div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-mono text-[13px] sm:text-sm">
+            <div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-serif text-[13px] sm:text-sm">
                 {% set cur = current_url | default(value="") %}
                 {% set logs_url = get_url(path="@/logs/_index.md") %}
                 {% set moments_url = get_url(path="@/moments/_index.md") %}

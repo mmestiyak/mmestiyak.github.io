@@ -175,8 +175,9 @@ body {
 }
 
 .prose figcaption {
-    font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
-    font-size: 0.75rem;
+    font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, serif;
+    font-style: italic;
+    font-size: 0.875rem;
     color: #6E6A61;
     text-align: center;
     margin-top: -1.25rem;

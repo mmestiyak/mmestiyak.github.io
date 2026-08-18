@@ -9,7 +9,7 @@
         <p class="text-base sm:text-lg text-faded">Everything on this site, by {{ taxonomy.name }}.</p>
     </header>
 
-    <div class="flex flex-wrap gap-x-5 gap-y-3 font-mono text-sm">
+    <div class="flex flex-wrap gap-x-5 gap-y-3 font-serif text-sm">
         {% for term in terms %}
         <a href="{{ term.permalink }}" class="group inline-flex items-baseline gap-1.5 text-ink hover:text-accent transition-colors">
             <span class="underline decoration-line group-hover:decoration-accent underline-offset-4">{{ term.name }}</span>

@@ -10,9 +10,9 @@
 {% block content %}
 <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
     <header class="mb-10 sm:mb-12">
-        <p class="font-mono text-xs uppercase tracking-[0.18em] text-faded mb-2">{{ taxonomy.name }}</p>
+        <p class="font-serif text-xs uppercase tracking-[0.18em] text-faded mb-2">{{ taxonomy.name }}</p>
         <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">{{ term.name }}</h1>
-        <p class="font-mono text-xs text-faded">{{ term.pages | length }} {% if term.pages | length == 1 %}entry{% else %}entries{% endif %}</p>
+        <p class="font-serif text-xs text-faded">{{ term.pages | length }} {% if term.pages | length == 1 %}entry{% else %}entries{% endif %}</p>
     </header>
 
     <div>
@@ -22,7 +22,7 @@
                 <a href="{{ page.permalink }}" class="hover:text-accent transition-colors">{{ page.title }}</a>
             </h2>
 
-            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs text-faded mb-1.5">
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 font-serif italic text-xs text-faded mb-1.5">
                 {% if page.date %}<time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>{% endif %}
                 {% if page.reading_time %}
                 <span aria-hidden="true">·</span>

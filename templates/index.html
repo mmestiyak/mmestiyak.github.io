@@ -67,8 +67,8 @@
     <!-- Recent Logs -->
     <section class="mb-14 sm:mb-20">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded">Recent logs</h2>
-            <a href="{{ get_url(path="@/logs/_index.md") }}" class="font-mono text-xs text-faded hover:text-accent transition-colors">all logs →</a>
+            <h2 class="font-serif text-xs uppercase tracking-[0.18em] text-faded">Recent logs</h2>
+            <a href="{{ get_url(path="@/logs/_index.md") }}" class="font-serif text-xs text-faded hover:text-accent transition-colors">all logs →</a>
         </div>
         {% set posts = get_section(path="logs/_index.md") %}
         <div>
@@ -86,7 +86,7 @@
                             </p>
                         </div>
                         {% if post.date %}
-                        <span class="font-mono text-xs text-faded whitespace-nowrap">
+                        <span class="font-serif italic text-xs text-faded whitespace-nowrap">
                             {{ post.date | date(format="%b %d, %Y") }}
                         </span>
                         {% endif %}
@@ -102,8 +102,8 @@
     {% if moments.pages | length > 0 %}
     <section class="mb-8">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faded">Moments</h2>
-            <a href="{{ moments.permalink }}" class="font-mono text-xs text-faded hover:text-accent transition-colors">all moments →</a>
+            <h2 class="font-serif text-xs uppercase tracking-[0.18em] text-faded">Moments</h2>
+            <a href="{{ moments.permalink }}" class="font-serif text-xs text-faded hover:text-accent transition-colors">all moments →</a>
         </div>
         <div class="grid grid-cols-4 gap-2 sm:gap-3">
             {% for m in moments.pages %}

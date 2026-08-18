@@ -25,7 +25,7 @@
             <span class="w-full h-full flex items-center justify-center p-3 text-center italic text-xs sm:text-base text-faded leading-snug">{{ m.title }}</span>
             {% endif %}
             {% if m.date %}
-            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 font-mono text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 font-serif italic text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
                 {{ m.date | date(format="%b %d, %Y") }}
             </span>
             {% endif %}

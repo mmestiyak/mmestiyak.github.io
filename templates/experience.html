@@ -17,7 +17,7 @@
             <div class="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
                 <div>
                     <h2 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ page.extra.company | default(value=page.title) }}</h2>
-                    <div class="font-mono text-xs text-faded space-y-0.5">
+                    <div class="font-serif text-xs text-faded space-y-0.5">
                         <p>{{ page.extra.date_start | default(value="") }} — {{ page.extra.date_end | default(value="present") }}</p>
                         {% if page.extra.role %}<p>{{ page.extra.role }}</p>{% endif %}
                         {% if page.extra.location %}<p>{{ page.extra.location }}</p>{% endif %}
@@ -40,7 +40,7 @@
                     {% endif %}
 
                     {% if page.taxonomies.tags %}
-                    <div class="flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-faded">
+                    <div class="flex flex-wrap gap-x-3 gap-y-1 font-serif text-xs text-faded">
                         {% for tag in page.taxonomies.tags %}
                         <span>{{ tag }}</span>
                         {% endfor %}
