@@ -33,6 +33,15 @@ capitalizeListTitles = false
   startLevel = 2
   endLevel = 4
 
+# Publish only the derivatives Hugo generates for each use — never the
+# full-size originals sitting in moment folders. Keeps the built site light
+# however big the photos you drop in are.
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+  [cascade.target]
+    path = "{/moments/**}"
+
 [params]
 description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."
 author = "Meer Estiyak"

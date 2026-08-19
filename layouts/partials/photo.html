@@ -1,13 +1,14 @@
+{{- /* Width-constrained photo from a page-bundle resource. See thumb.html on
+       why the original's .RelPermalink is only read in the passthrough case. */ -}}
 {{- $r := .res -}}
 {{- $w := .width | default 1400 -}}
-{{- $url := $r.RelPermalink -}}
-{{- if eq $r.ResourceType "image" -}}
-  {{- $sub := $r.MediaType.SubType -}}
-  {{- if and (ne $sub "svg") (ne $sub "gif") -}}
-    {{- $img := $r -}}
-    {{- if gt $r.Width $w -}}{{- $img = $r.Resize (printf "%dx webp q82" $w) -}}
-    {{- else -}}{{- $img = $r.Resize (printf "%dx webp q82" $r.Width) -}}{{- end -}}
-    {{- $url = $img.RelPermalink -}}
-  {{- end -}}
+{{- $sub := "" -}}
+{{- if eq $r.ResourceType "image" -}}{{- $sub = $r.MediaType.SubType -}}{{- end -}}
+{{- $url := "" -}}
+{{- if and (eq $r.ResourceType "image") (ne $sub "svg") (ne $sub "gif") -}}
+  {{- $target := cond (gt $r.Width $w) $w $r.Width -}}
+  {{- $url = ($r.Resize (printf "%dx webp q82" $target)).RelPermalink -}}
+{{- else -}}
+  {{- $url = $r.RelPermalink -}}
 {{- end -}}
 {{- return $url -}}

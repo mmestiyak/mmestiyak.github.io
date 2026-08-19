@@ -1,3 +1,7 @@
+{{- /* A photo referenced by path (frontmatter extra.photos / extra.image /
+       config params). Absolute URLs pass through; image_base wins when set;
+       otherwise files under assets/ get resized and anything else passes
+       through as a plain path. */ -}}
 {{- $path := .path -}}
 {{- $w := .width | default 0 -}}
 {{- $out := $path -}}
@@ -9,14 +13,11 @@
   {{- $rel := strings.TrimPrefix "/" $path -}}
   {{- with resources.Get $rel -}}
     {{- $r := . -}}
-    {{- if eq $r.ResourceType "image" -}}
-      {{- $sub := $r.MediaType.SubType -}}
-      {{- if and (ne $sub "svg") (ne $sub "gif") (gt $w 0) -}}
-        {{- $target := cond (gt $r.Width $w) $w $r.Width -}}
-        {{- $out = ($r.Resize (printf "%dx webp q82" $target)).RelPermalink -}}
-      {{- else -}}
-        {{- $out = $r.RelPermalink -}}
-      {{- end -}}
+    {{- $sub := "" -}}
+    {{- if eq $r.ResourceType "image" -}}{{- $sub = $r.MediaType.SubType -}}{{- end -}}
+    {{- if and (eq $r.ResourceType "image") (ne $sub "svg") (ne $sub "gif") (gt $w 0) -}}
+      {{- $target := cond (gt $r.Width $w) $w $r.Width -}}
+      {{- $out = ($r.Resize (printf "%dx webp q82" $target)).RelPermalink -}}
     {{- else -}}
       {{- $out = $r.RelPermalink -}}
     {{- end -}}

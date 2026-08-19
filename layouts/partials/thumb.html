@@ -1,10 +1,15 @@
+{{- /* Square thumbnail from a page-bundle resource.
+       Note: reading .RelPermalink on a resource publishes that file, so the
+       original is only touched in the passthrough branch — otherwise every
+       full-size original would ship in the built site. */ -}}
 {{- $r := .res -}}
 {{- $size := .size | default 600 -}}
-{{- $url := $r.RelPermalink -}}
-{{- if eq $r.ResourceType "image" -}}
-  {{- $sub := $r.MediaType.SubType -}}
-  {{- if and (ne $sub "svg") (ne $sub "gif") -}}
-    {{- $url = ($r.Fill (printf "%dx%d webp q80 Center" $size $size)).RelPermalink -}}
-  {{- end -}}
+{{- $sub := "" -}}
+{{- if eq $r.ResourceType "image" -}}{{- $sub = $r.MediaType.SubType -}}{{- end -}}
+{{- $url := "" -}}
+{{- if and (eq $r.ResourceType "image") (ne $sub "svg") (ne $sub "gif") -}}
+  {{- $url = ($r.Fill (printf "%dx%d webp q80 Center" $size $size)).RelPermalink -}}
+{{- else -}}
+  {{- $url = $r.RelPermalink -}}
 {{- end -}}
 {{- return $url -}}
