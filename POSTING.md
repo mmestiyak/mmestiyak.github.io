@@ -57,6 +57,21 @@ fine-grained token limited to `mmestiyak/mmestiyak.github.io` with
 **Contents: Read and write**. Save it in your password manager, paste it once
 per device, done. Revoke it on GitHub any time.
 
+**How long a token lasts on a device.** Two separate clocks:
+
+- *The token itself* expires when you told GitHub it should — fine-grained
+  tokens allow up to a year (or no expiration, if you accept that tradeoff).
+- *The browser copy* lives in localStorage for `mmestiyak.com`. Chrome, Edge
+  and Firefox keep it until the token expires or you clear site data. **Safari
+  is the exception:** it wipes script-writable storage after roughly a week of
+  not visiting the site, so on iPhone Safari expect to paste again now and then.
+
+That's why the password manager matters more than the expiry you pick — re-entry
+becomes a Face ID autofill. Nothing else on `/admin/` can read the token: that
+page loads only the local CMS bundle, with no analytics or third-party scripts.
+If a device is ever lost, revoke the token on GitHub and it's dead everywhere;
+its only power is writing to this one repo.
+
 **OAuth route — the real GitHub authorize button (~15 min, one time, free).**
 
 1. Deploy [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to
