@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#E7EAE0"/>
+  <rect x="40" y="40" width="1120" height="1120" fill="none" stroke="#3A5A40" stroke-width="4" stroke-dasharray="12 12"/>
+  <circle cx="600" cy="470" r="138" fill="#3A5A40" opacity="0.25"/>
+  <path d="M0 830 Q300 800 600 810 T1200 790 L1200 1200 L0 1200 Z" fill="#3A5A40" opacity="0.35"/>
+  <text x="600" y="1010" font-family="Menlo, monospace" font-size="42" fill="#3A5A40" text-anchor="middle">sample 04 — loading</text>
+</svg>

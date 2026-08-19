@@ -7,29 +7,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        /* Timeless palette: warm paper, warm ink, one deep green accent */
-        paper: '#FBFAF7',
-        ink: '#1C1B18',
-        faded: '#6E6A61',
-        line: '#E7E3DA',
-        tint: '#F3F1EA',
-        accent: '#3A5A40',
-        'accent-dark': '#2E4733',
-        /* Legacy aliases so older class names keep working */
-        brand: '#3A5A40',
-        'brand-dark': '#2E4733',
-        'brand-light': '#6E6A61',
-        'brand-accent': '#3A5A40',
-        'brand-success': '#3A5A40',
-        'text-primary': '#1C1B18',
-        'text-secondary': '#6E6A61',
-        'bg-primary': '#FBFAF7',
-        'bg-secondary': '#F3F1EA',
-        'bg-accent': '#F3F1EA'
+        /* Channels live in CSS variables (assets/css/style.css) so the whole
+           palette can flip for dark mode without touching a single template.
+           The rgb(... / <alpha-value>) form keeps Tailwind opacity utilities
+           like bg-ink/50 working. */
+        paper: 'rgb(var(--c-paper) / <alpha-value>)',
+        ink: 'rgb(var(--c-ink) / <alpha-value>)',
+        faded: 'rgb(var(--c-faded) / <alpha-value>)',
+        line: 'rgb(var(--c-line) / <alpha-value>)',
+        tint: 'rgb(var(--c-tint) / <alpha-value>)',
+        accent: 'rgb(var(--c-accent) / <alpha-value>)',
+        'accent-dark': 'rgb(var(--c-accent-strong) / <alpha-value>)',
+        /* legacy aliases kept so older class names still resolve */
+        brand: 'rgb(var(--c-accent) / <alpha-value>)',
+        'text-primary': 'rgb(var(--c-ink) / <alpha-value>)',
+        'text-secondary': 'rgb(var(--c-faded) / <alpha-value>)',
+        'bg-primary': 'rgb(var(--c-paper) / <alpha-value>)',
+        'bg-secondary': 'rgb(var(--c-tint) / <alpha-value>)',
       },
       fontFamily: {
-        'serif': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
-        'sans': ['Newsreader', 'Noto Serif Bengali', 'Georgia', 'Times New Roman', 'serif'],
+        'serif': ['"Source Serif 4"', 'Noto Serif Bengali', 'Charter', 'Georgia', 'serif'],
+        'sans': ['"Source Sans 3"', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
         'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
       },

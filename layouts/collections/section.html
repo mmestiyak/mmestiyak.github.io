@@ -1,0 +1,39 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-12">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Collections</h1>
+        <p class="text-base sm:text-lg text-faded">{{ or .Description "Sets of photographs — a trip, a season, an occasion." }}</p>
+    </header>
+
+    {{/* Unlisted collections are reachable by their URL but never listed here */}}
+    {{ $sets := where .RegularPages "Params.unlisted" "!=" true }}
+    {{ if not $sets }}
+    <p class="text-faded italic">No collections yet — the first one is coming.</p>
+    {{ else }}
+    <div class="space-y-10 sm:space-y-14">
+        {{ range $sets }}
+        {{ $n := 0 }}
+        {{ with .Resources.ByType "image" }}{{ $n = len . }}{{ end }}
+        {{ if and (eq $n 0) .Params.extra.photos }}{{ $n = len .Params.extra.photos }}{{ end }}
+        {{ $cover := "" }}
+        {{ with .Resources.ByType "image" }}{{ $cover = partial "thumb.html" (dict "res" (index . 0) "size" 900) }}{{ end }}
+        {{ if and (not $cover) .Params.extra.photos }}{{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 900) }}{{ end }}
+
+        <article class="border-b border-line last:border-0 pb-10 sm:pb-14 last:pb-0">
+            <a href="{{ .RelPermalink }}" class="group block">
+                {{ with $cover }}
+                <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy" class="w-full max-h-80 object-cover rounded-sm border border-line mb-4 group-hover:opacity-95 transition-opacity">
+                {{ end }}
+                <div class="dateline text-sm mb-1 flex flex-wrap items-center gap-x-3">
+                    {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2006" }}</time>{{ end }}
+                    {{ if gt $n 0 }}<span aria-hidden="true">·</span><span>{{ $n }} photographs</span>{{ end }}
+                </div>
+                <h2 class="display text-xl sm:text-2xl font-semibold text-ink group-hover:text-accent transition-colors leading-snug mb-2">{{ .Title }}</h2>
+                {{ with .Description }}<p class="text-base sm:text-lg text-faded leading-relaxed">{{ . }}</p>{{ end }}
+            </a>
+        </article>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}

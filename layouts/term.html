@@ -3,11 +3,12 @@
     <header class="mb-10 sm:mb-12">
         <p class="label text-faded mb-2">{{ .Data.Singular }}</p>
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
-        <p class="dateline text-sm">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }}</p>
+        {{ $shown := where .Pages "Params.unlisted" "!=" true }}
+        <p class="dateline text-sm">{{ len $shown }} {{ cond (eq (len $shown) 1) "entry" "entries" }}</p>
     </header>
 
     <div>
-        {{ range .Pages }}
+        {{ range $shown }}
         <article class="py-4 sm:py-5 border-b border-line last:border-0">
             <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
                 <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>

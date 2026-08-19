@@ -33,13 +33,14 @@
     <meta name="twitter:description" content="{{ $desc }}">
 
     <meta name="author" content="{{ site.Params.author }}">
-    <meta name="robots" content="index, follow">
+    {{ if .Params.unlisted }}<meta name="robots" content="noindex, nofollow">
+    {{ else }}<meta name="robots" content="index, follow">{{ end }}
     <link rel="canonical" href="{{ .Permalink }}">
 
     {{ partial "head.html" . }}
     {{ block "head_extra" . }}{{ end }}
 </head>
-<body class="bg-paper text-ink font-serif">
+<body class="bg-paper text-ink font-sans">
     {{ partial "nav.html" . }}
 
     <main class="min-h-screen">

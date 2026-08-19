@@ -40,7 +40,7 @@ capitalizeListTitles = false
   [cascade.build]
     publishResources = false
   [cascade.target]
-    path = "{/moments/**}"
+    path = "{/moments/**,/collections/**}"
 
 [params]
 description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."

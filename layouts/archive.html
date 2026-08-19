@@ -6,7 +6,8 @@
     </header>
 
     {{/* Writing and photographs, merged into one chronological stream */}}
-    {{ $entries := where site.RegularPages "Section" "in" (slice "logs" "moments") }}
+    {{ $entries := where site.RegularPages "Section" "in" (slice "logs" "moments" "collections") }}
+    {{ $entries = where $entries "Params.unlisted" "!=" true }}
     {{ if not $entries }}
     <p class="text-faded italic">The archive is empty — for now.</p>
     {{ else }}
@@ -15,10 +16,11 @@
         <h2 class="year-rule text-2xl sm:text-3xl text-faded mb-3 pb-2 border-b border-line">{{ .Key }}</h2>
         {{ range .Pages }}
         {{ $isPhoto := eq .Section "moments" }}
+        {{ $isSet := eq .Section "collections" }}
         <article class="flex items-baseline gap-4 py-2.5 border-b border-line/50 last:border-0">
             <time datetime="{{ .Date.Format "2006-01-02" }}" class="dateline text-sm w-14 sm:w-16 flex-shrink-0">{{ .Date.Format "Jan 02" }}</time>
             <div class="flex-1 min-w-0 flex items-center gap-2.5">
-                {{ if $isPhoto }}
+                {{ if or $isPhoto $isSet }}
                 {{ $thumb := "" }}
                 {{ with (.Resources.ByType "image") }}{{ $thumb = partial "thumb.html" (dict "res" (index . 0) "size" 96) }}{{ end }}
                 {{ if and (not $thumb) .Params.extra.photos }}{{ $thumb = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 96) }}{{ end }}
@@ -28,6 +30,7 @@
                 {{ end }}
                 <a href="{{ .RelPermalink }}" class="text-base sm:text-lg text-ink hover:text-accent transition-colors">{{ .Title }}</a>
                 {{ if $isPhoto }}<span class="label text-faded flex-shrink-0" title="A photo moment">photo</span>{{ end }}
+                {{ if $isSet }}<span class="label text-faded flex-shrink-0" title="A photo collection">collection</span>{{ end }}
             </div>
             {{ with .GetTerms "topics" }}
             <span class="hidden sm:block flex-shrink-0">

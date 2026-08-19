@@ -1,8 +1,26 @@
 /* ==========================================================================
    Meer's Log — timeless editorial styles
    Palette: paper #FBFAF7 · ink #1C1B18 · faded #6E6A61 · line #E7E3DA · accent #3A5A40
-   Type: Newsreader (serif) for reading · system mono for dates, labels, code
+   Type: Source Serif 4 — a screen-reading serif with a tall x-height and
+   low stroke contrast, so it stays clean at body sizes · Noto Serif Bengali
    ========================================================================== */
+
+/* ==========================================================================
+   Palette — one light set, deliberately. Warm paper rather than white, warm
+   near-black rather than pure black, one green accent. Kept as variables so
+   a palette change is one edit here instead of a hunt through templates.
+   ========================================================================== */
+:root {
+    --c-paper: 251 250 247;      /* warm paper            */
+    --c-ink:    28  27  24;      /* warm near-black text  */
+    --c-faded: 110 106  97;      /* secondary text        */
+    --c-line:  231 227 218;      /* hairlines             */
+    --c-tint:  243 241 234;      /* subtle fills          */
+    --c-accent: 58  90  64;      /* deep farm green       */
+    --c-accent-strong: 46 71 51;
+    --c-prose: 38 36 31;         /* body copy, a touch softer than headings */
+}
+
 
 /* Utility: line clamps */
 .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
@@ -19,13 +37,13 @@
 
 /* Ground */
 body {
-    background-color: #FBFAF7;
-    color: #1C1B18;
+    background-color: rgb(var(--c-paper));
+    color: rgb(var(--c-ink));
     min-height: 100vh;
     min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Newsreader is a variable font with an optical-size axis: let the browser
+    /* Source Serif 4 carries an optical-size axis: let the browser
        pick the right cut for each size, the way metal type had separate cuts */
     font-optical-sizing: auto;
     font-kerning: normal;
@@ -69,8 +87,8 @@ body {
 }
 
 ::selection {
-    background: #3A5A40;
-    color: #FBFAF7;
+    background: rgb(var(--c-accent));
+    color: rgb(var(--c-paper));
 }
 
 /* Anchor link styling for headings */
@@ -140,35 +158,43 @@ body {
    ========================================================================== */
 
 .prose {
-    color: #26241F;
-    font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, 'Times New Roman', serif;
-    font-size: 1.1875rem;      /* 19px */
-    line-height: 1.7;
+    color: rgb(var(--c-prose));
+    font-family: 'Source Sans 3', 'Noto Serif Bengali', system-ui, sans-serif;
+    font-size: 1.125rem;       /* 18px on small screens */
+    line-height: 1.6;
     font-weight: 400;
-    /* Avoid orphans/rivers where supported; ignored elsewhere */
+    /* Measure, not pixels: ~66 characters per line is the readable range,
+       and it stays right whatever the font size becomes. */
+    max-width: 66ch;
+    margin-left: auto;
+    margin-right: auto;
     text-wrap: pretty;
     hanging-punctuation: first last;
 }
 
 @media (min-width: 640px) {
-    .prose { font-size: 1.25rem; line-height: 1.7; } /* 20px */
+    .prose { font-size: 1.1875rem; line-height: 1.62; } /* 19px */
+}
+
+@media (min-width: 1024px) {
+    .prose { font-size: 1.25rem; line-height: 1.65; }   /* 20px */
 }
 
 /* Bengali text inherits the serif Bengali face via the font stack; tune rhythm */
 .prose *[lang="bn"], .prose .bengali, .prose [data-lang="bn"] {
     font-family: 'Noto Serif Bengali', Georgia, serif;
-    line-height: 2;
+    line-height: 1.95;
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    color: #1C1B18;
-    font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, serif;
+    color: rgb(var(--c-ink));
+    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
     font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.015em;
+    line-height: 1.25;
+    letter-spacing: -0.006em;   /* Source Serif needs far less tightening */
     text-wrap: balance;
-    margin-top: 2.5rem;
-    margin-bottom: 0.75rem;
+    margin-top: 1.9em;
+    margin-bottom: 0.5em;
 }
 
 .prose h1 { font-size: clamp(1.875rem, 4vw, 2.5rem); margin-top: 0; margin-bottom: 1.25rem; }
@@ -177,9 +203,11 @@ body {
 .prose h4 { font-size: clamp(1.125rem, 2vw, 1.25rem); }
 
 .prose p {
-    margin-top: 1.375rem;
-    margin-bottom: 1.375rem;
+    margin-top: 0;
+    margin-bottom: 0.9em;      /* one comfortable line of separation */
 }
+
+.prose p + p { margin-top: 0; }
 
 .prose a {
     color: #1C1B18;
@@ -235,7 +263,7 @@ body {
 }
 
 .prose figcaption {
-    font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, serif;
+    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
     font-style: italic;
     font-size: 0.875rem;
     color: #6E6A61;
@@ -337,3 +365,37 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     }
     html { scroll-behavior: auto; }
 }
+
+/* ==========================================================================
+   Serif for display, sans for reading — headings anywhere on the site, not
+   just inside .prose, so section titles and card titles match article titles.
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6, .display {
+    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
+    font-variant-numeric: normal;
+}
+
+/* Small caps and datelines read better in the sans at these sizes */
+.label, .dateline { font-family: 'Source Sans 3', 'Noto Serif Bengali', system-ui, sans-serif; }
+.year-rule { font-family: 'Source Serif 4', Charter, Georgia, serif; }
+
+/* Links inside prose: accent underline, ink text, no wobble on hover */
+.prose a { color: rgb(var(--c-ink)); text-decoration-color: rgb(var(--c-accent)); }
+.prose a:hover { color: rgb(var(--c-accent)); }
+.prose strong { color: rgb(var(--c-ink)); }
+.prose blockquote { color: rgb(var(--c-faded)); border-left-color: rgb(var(--c-line)); }
+.prose hr { border-top-color: rgb(var(--c-line)); }
+.prose code {
+    background-color: rgb(var(--c-tint));
+    color: rgb(var(--c-accent-strong));
+    border-color: rgb(var(--c-line));
+}
+.prose pre { border-color: rgb(var(--c-line)); }
+.prose thead { border-bottom-color: rgb(var(--c-line)); }
+.prose tbody tr { border-bottom-color: rgb(var(--c-line)); }
+.prose li::marker { color: rgb(var(--c-faded)); }
+.prose figcaption { color: rgb(var(--c-faded)); }
+
+
+::-webkit-scrollbar-track { background: rgb(var(--c-tint)); }
+::-webkit-scrollbar-thumb { background: rgb(var(--c-line)); }
