@@ -143,6 +143,24 @@ t="..."` scaffolds the folder for you.
 Three **sample moments** ship with the redesign (marked "sample" in the
 image) — replace their SVGs with real photos or delete the folders.
 
+## Photo sets — a moment *is* a collection
+
+There is no separate "collections" area. A moment holds as many photographs as
+you like, and it changes shape by itself:
+
+- **Up to 4 photos** — stacked full width, like a photo essay.
+- **5 or more** — the lead photo, then your story, then the rest as a contact
+  sheet where each thumbnail opens full size.
+
+Force it either way with `gallery = true` or `gallery = false` in the
+frontmatter. The moments grid shows a photo count on any set, so nobody has to
+scroll to discover there is more than one.
+
+> **Dates and publishing:** a post dated in the future is not built. Dates are
+> read in Bangladesh time (`timeZone` in `hugo.toml`), so "today" means today
+> here — not tomorrow in UTC. If a new post ever fails to appear, check the
+> date first.
+
 ## Logs (written posts)
 
 One markdown file in `content/logs/`. `make log t="Title"` scaffolds it.

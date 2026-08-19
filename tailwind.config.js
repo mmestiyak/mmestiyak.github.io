@@ -18,6 +18,7 @@ module.exports = {
         tint: 'rgb(var(--c-tint) / <alpha-value>)',
         accent: 'rgb(var(--c-accent) / <alpha-value>)',
         'accent-dark': 'rgb(var(--c-accent-strong) / <alpha-value>)',
+        spark: 'rgb(var(--c-spark) / <alpha-value>)',
         /* legacy aliases kept so older class names still resolve */
         brand: 'rgb(var(--c-accent) / <alpha-value>)',
         'text-primary': 'rgb(var(--c-ink) / <alpha-value>)',

@@ -37,14 +37,33 @@
         <div class="prose">{{ . }}</div>
         {{ end }}
 
-        {{/* The rest of the set */}}
+        {{/* The rest of the set. A handful of photographs read best stacked
+             full width; a larger set becomes a contact sheet — so a moment
+             turns into a collection on its own, by size. Override either way
+             with `gallery = true` / `gallery = false` in the frontmatter. */}}
+        {{ $gallery := gt $n 4 }}
+        {{ if isset .Params "gallery" }}{{ $gallery = .Params.gallery }}{{ end }}
         {{ if gt $n 1 }}
-        <div id="photographs" class="mt-8 pt-6 border-t border-line space-y-3 scroll-mt-24">
-            <p class="label text-faded">{{ $n }} photographs</p>
-            {{ range $i, $src := $srcs }}
-            {{ if $i }}
-            <img src="{{ $src }}" alt="{{ $.Title }} — {{ add $i 1 }}" loading="lazy" class="w-full rounded-sm border border-line">
-            {{ end }}
+        <div id="photographs" class="mt-8 pt-6 border-t border-line scroll-mt-24">
+            <p class="label text-faded mb-3">{{ $n }} photographs{{ if $gallery }} — tap any to open full size{{ end }}</p>
+            {{ if $gallery }}
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 sm:gap-2">
+                {{ range $i, $src := $srcs }}
+                {{ if $i }}
+                <a href="{{ $src }}" class="group block aspect-square overflow-hidden rounded-sm border border-line bg-tint" title="Photograph {{ add $i 1 }} of {{ $n }}">
+                    <img src="{{ $src }}" alt="{{ $.Title }} — {{ add $i 1 }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+                </a>
+                {{ end }}
+                {{ end }}
+            </div>
+            {{ else }}
+            <div class="space-y-3">
+                {{ range $i, $src := $srcs }}
+                {{ if $i }}
+                <img src="{{ $src }}" alt="{{ $.Title }} — {{ add $i 1 }}" loading="lazy" class="w-full rounded-sm border border-line">
+                {{ end }}
+                {{ end }}
+            </div>
             {{ end }}
         </div>
         {{ end }}

@@ -11,14 +11,19 @@
    a palette change is one edit here instead of a hunt through templates.
    ========================================================================== */
 :root {
-    --c-paper: 251 250 247;      /* warm paper            */
-    --c-ink:    28  27  24;      /* warm near-black text  */
-    --c-faded: 110 106  97;      /* secondary text        */
-    --c-line:  231 227 218;      /* hairlines             */
-    --c-tint:  243 241 234;      /* subtle fills          */
-    --c-accent: 58  90  64;      /* deep farm green       */
-    --c-accent-strong: 46 71 51;
-    --c-prose: 38 36 31;         /* body copy, a touch softer than headings */
+    --c-paper: 251 250 247;      /* warm paper, not white          */
+    --c-ink:    27  29  28;      /* near-black, a hair cooler now  */
+    --c-faded: 108 113 110;      /* secondary text                 */
+    --c-line:  229 231 227;      /* hairlines                      */
+    --c-tint:  237 244 241;      /* faintest mint wash for fills   */
+    --c-accent: 15 118 110;      /* teal — 5.2:1 on paper, so it is
+                                    safe for link text at any size */
+    --c-accent-strong: 17 94 89; /* deeper teal for hover (7.3:1)  */
+    --c-spark:   6 182 212;      /* bright cyan: only ever used where
+                                    contrast does not carry meaning
+                                    — the wordmark dot, selection,
+                                    a badge over a photo            */
+    --c-prose:  38  41  40;      /* body copy                      */
 }
 
 
@@ -87,8 +92,8 @@ body {
 }
 
 ::selection {
-    background: rgb(var(--c-accent));
-    color: rgb(var(--c-paper));
+    background: rgb(var(--c-spark) / 0.28);
+    color: rgb(var(--c-ink));
 }
 
 /* Anchor link styling for headings */

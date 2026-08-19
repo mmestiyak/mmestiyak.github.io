@@ -1,4 +1,4 @@
-{{- $pages := where site.RegularPages "Section" "in" (slice "logs" "moments" "collections") -}}
+{{- $pages := where site.RegularPages "Section" "in" (slice "logs" "moments") -}}
 {{- $pages = where $pages "Params.unlisted" "!=" true -}}
 {{- $limit := 40 -}}
 {{- if gt (len $pages) $limit }}{{ $pages = first $limit $pages }}{{ end -}}

@@ -1,6 +1,10 @@
 baseURL = "https://mmestiyak.com"
 title = "Meer's Log"
 languageCode = "en"
+# Dates in frontmatter are written in local time, so parse them that way.
+# Without this, a post dated "today" is read as midnight UTC — which is still
+# the future in Bangladesh (UTC+6), and Hugo silently refuses to build it.
+timeZone = "Asia/Dhaka"
 defaultContentLanguage = "en"
 enableRobotsTXT = false          # we ship our own static/robots.txt
 enableEmoji = true
@@ -40,7 +44,7 @@ capitalizeListTitles = false
   [cascade.build]
     publishResources = false
   [cascade.target]
-    path = "{/moments/**,/collections/**}"
+    path = "{/moments/**}"
 
 [params]
 description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."

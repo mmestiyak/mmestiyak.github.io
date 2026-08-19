@@ -3,13 +3,13 @@
         <nav class="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4 py-3 sm:py-4">
             <!-- Wordmark -->
             <a href="{{ "/" | relURL }}" class="font-serif font-semibold text-xl sm:text-2xl text-ink hover:text-accent transition-colors tracking-tight py-1">
-                Meer's Log<span class="text-accent">.</span>
+                Meer's Log<span class="text-spark">.</span>
             </a>
 
             <!-- Navigation -->
             <div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-serif text-[13px] sm:text-sm">
                 {{ $cur := .RelPermalink }}
-                {{ range $i, $item := slice (slice "logs" "/logs/") (slice "moments" "/moments/") (slice "collections" "/collections/") (slice "archive" "/archive/") (slice "projects" "/projects/") (slice "about" "/about/") }}
+                {{ range $i, $item := slice (slice "logs" "/logs/") (slice "moments" "/moments/") (slice "archive" "/archive/") (slice "projects" "/projects/") (slice "about" "/about/") }}
                     {{ $label := index $item 0 }}
                     {{ $url := index $item 1 }}
                     {{ $active := hasPrefix $cur $url }}
