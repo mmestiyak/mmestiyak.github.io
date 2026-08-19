@@ -27,11 +27,11 @@
                 {{ end }}
                 {{ end }}
                 <a href="{{ .RelPermalink }}" class="text-base sm:text-lg text-ink hover:text-accent transition-colors">{{ .Title }}</a>
-                {{ if $isPhoto }}<span class="label flex-shrink-0" title="A photo moment">photo</span>{{ end }}
+                {{ if $isPhoto }}<span class="label text-faded flex-shrink-0" title="A photo moment">photo</span>{{ end }}
             </div>
             {{ with .GetTerms "topics" }}
             <span class="hidden sm:block flex-shrink-0">
-                {{ range . }}<a href="{{ .RelPermalink }}" class="label hover:text-accent transition-colors">{{ .LinkTitle }}</a>{{ end }}
+                {{ range . }}<a href="{{ .RelPermalink }}" class="label text-faded hover:text-accent transition-colors">{{ .LinkTitle }}</a>{{ end }}
             </span>
             {{ end }}
         </article>

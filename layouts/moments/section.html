@@ -16,11 +16,18 @@
         {{ if and (not $cover) .Params.extra.photos }}
           {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 600) }}
         {{ end }}
+        {{/* how many photos this moment holds, so the grid can say so */}}
+        {{ $n := 0 }}
+        {{ with .Resources.ByType "image" }}{{ $n = len . }}{{ end }}
+        {{ if and (eq $n 0) .Params.extra.photos }}{{ $n = len .Params.extra.photos }}{{ end }}
         <a href="{{ .RelPermalink }}" class="group relative block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
             {{ if $cover }}
             <img src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
             {{ else }}
             <span class="w-full h-full flex items-center justify-center p-3 text-center italic text-xs sm:text-base text-faded leading-snug">{{ .Title }}</span>
+            {{ end }}
+            {{ if gt $n 1 }}
+            <span class="absolute top-1.5 right-1.5 px-1.5 py-0.5 label text-paper bg-ink/55 rounded-sm leading-none" title="{{ $n }} photographs">{{ $n }}</span>
             {{ end }}
             {{ if not .Date.IsZero }}
             <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 dateline text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">

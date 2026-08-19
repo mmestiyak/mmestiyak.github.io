@@ -35,7 +35,7 @@ moment: ## New photo moment: make moment t="Caption title" (then drop photos in 
 	dir="content/moments/$$d-$$slug"; \
 	test ! -e "$$dir" || { echo "already exists: $$dir"; exit 1; }; \
 	mkdir -p "$$dir"; \
-	printf '+++\ntitle = "%s"\ndate = "%s"\nslug = "%s"\ntags = []\ntopics = []\n+++\n\nCaption goes here (optional).\n' "$(t)" "$$d" "$$slug" > "$$dir/index.md"; \
+	printf '+++\ntitle = "%s"\ndate = "%s"\ntags = []\ntopics = []\n+++\n\nCaption goes here (optional).\n' "$(t)" "$$d" > "$$dir/index.md"; \
 	echo "created $$dir"; \
 	echo "→ now drop your photo(s) in that folder (any size — Hugo resizes them)"
 

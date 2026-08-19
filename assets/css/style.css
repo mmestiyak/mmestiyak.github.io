@@ -37,13 +37,14 @@ body {
    ========================================================================== */
 
 /* Section labels: true small caps, the book/newspaper way (not fake uppercase) */
+/* Typography only — colour is left to the utility class at each use site, so
+   a label can sit on paper or on ink without fighting the stylesheet. */
 .label {
     font-variant-caps: all-small-caps;
     font-variant-numeric: oldstyle-nums;
     letter-spacing: 0.09em;
     font-size: 0.9375rem;
     line-height: 1;
-    color: #6E6A61;
 }
 
 /* Datelines and meta: italic with oldstyle figures, so numerals sit in the

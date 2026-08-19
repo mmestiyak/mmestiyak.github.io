@@ -60,8 +60,8 @@
     {{ with site.GetPage "/logs" }}
     <section class="mb-14 sm:mb-20">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="label">Recent logs</h2>
-            <a href="{{ .RelPermalink }}" class="label hover:text-accent transition-colors">all logs →</a>
+            <h2 class="label text-faded">Recent logs</h2>
+            <a href="{{ .RelPermalink }}" class="label text-faded hover:text-accent transition-colors">all logs →</a>
         </div>
         <div>
             {{ range first 4 .RegularPagesRecursive }}
@@ -95,8 +95,8 @@
     {{ if $moments }}
     <section class="mb-8">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="label">Moments</h2>
-            <a href="{{ .RelPermalink }}" class="label hover:text-accent transition-colors">all moments →</a>
+            <h2 class="label text-faded">Moments</h2>
+            <a href="{{ .RelPermalink }}" class="label text-faded hover:text-accent transition-colors">all moments →</a>
         </div>
         <div class="grid grid-cols-4 gap-1 sm:gap-1.5">
             {{ range first 4 $moments }}
