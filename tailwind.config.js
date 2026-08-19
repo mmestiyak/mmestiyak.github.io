@@ -27,8 +27,8 @@ module.exports = {
         'bg-secondary': 'rgb(var(--c-tint) / <alpha-value>)',
       },
       fontFamily: {
-        'serif': ['"Source Serif 4"', 'Noto Serif Bengali', 'Charter', 'Georgia', 'serif'],
-        'sans': ['"Source Sans 3"', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
+        'serif': ['Alegreya', 'Noto Serif Bengali', 'Charter', 'Georgia', 'serif'],
+        'sans': ['"Alegreya Sans"', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
         'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
       },

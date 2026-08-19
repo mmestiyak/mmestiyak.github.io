@@ -1,8 +1,9 @@
 /* ==========================================================================
    Meer's Log — timeless editorial styles
    Palette: paper #FBFAF7 · ink #1C1B18 · faded #6E6A61 · line #E7E3DA · accent #3A5A40
-   Type: Source Serif 4 — a screen-reading serif with a tall x-height and
-   low stroke contrast, so it stays clean at body sizes · Noto Serif Bengali
+   Type: Alegreya Sans for reading, Alegreya for display — a superfamily built
+   for long-form literature: humanist, faintly calligraphic, calm to sit with
+   · Noto Serif Bengali for Bangla
    ========================================================================== */
 
 /* ==========================================================================
@@ -11,19 +12,17 @@
    a palette change is one edit here instead of a hunt through templates.
    ========================================================================== */
 :root {
-    --c-paper: 251 250 247;      /* warm paper, not white          */
-    --c-ink:    27  29  28;      /* near-black, a hair cooler now  */
-    --c-faded: 108 113 110;      /* secondary text                 */
-    --c-line:  229 231 227;      /* hairlines                      */
-    --c-tint:  237 244 241;      /* faintest mint wash for fills   */
-    --c-accent: 15 118 110;      /* teal — 5.2:1 on paper, so it is
-                                    safe for link text at any size */
-    --c-accent-strong: 17 94 89; /* deeper teal for hover (7.3:1)  */
-    --c-spark:   6 182 212;      /* bright cyan: only ever used where
-                                    contrast does not carry meaning
-                                    — the wordmark dot, selection,
-                                    a badge over a photo            */
-    --c-prose:  38  41  40;      /* body copy                      */
+    --c-paper: 247 242 237;      /* warm cream — noticeably not white, which
+                                    is most of why a page feels calm         */
+    --c-ink:    43  41  37;      /* headings and UI: warm near-black         */
+    --c-prose:  87  83  78;      /* body copy: a soft warm grey at 6.9:1, not
+                                    near-black. Softness is the calm.        */
+    --c-faded: 122 117 110;      /* meta text                                */
+    --c-line:  230 224 216;      /* hairlines                                */
+    --c-tint:  240 240 234;      /* fills                                    */
+    --c-accent: 15 118 110;      /* teal, 4.9:1 on cream                     */
+    --c-accent-strong: 17 94 89;
+    --c-spark:   6 182 212;      /* decorative only                          */
 }
 
 
@@ -48,7 +47,7 @@ body {
     min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* Source Serif 4 carries an optical-size axis: let the browser
+    /* Let the browser pick optical sizes where a face offers them
        pick the right cut for each size, the way metal type had separate cuts */
     font-optical-sizing: auto;
     font-kerning: normal;
@@ -164,13 +163,13 @@ body {
 
 .prose {
     color: rgb(var(--c-prose));
-    font-family: 'Source Sans 3', 'Noto Serif Bengali', system-ui, sans-serif;
-    font-size: 1.125rem;       /* 18px on small screens */
+    font-family: 'Alegreya Sans', 'Noto Serif Bengali', system-ui, sans-serif;
+    font-size: 1.1875rem;      /* 19px */
     line-height: 1.6;
     font-weight: 400;
     /* Measure, not pixels: ~66 characters per line is the readable range,
        and it stays right whatever the font size becomes. */
-    max-width: 66ch;
+    max-width: 68ch;
     margin-left: auto;
     margin-right: auto;
     text-wrap: pretty;
@@ -178,11 +177,11 @@ body {
 }
 
 @media (min-width: 640px) {
-    .prose { font-size: 1.1875rem; line-height: 1.62; } /* 19px */
+    .prose { font-size: 1.25rem; line-height: 1.6; }    /* 20px */
 }
 
 @media (min-width: 1024px) {
-    .prose { font-size: 1.25rem; line-height: 1.65; }   /* 20px */
+    .prose { font-size: 1.3125rem; line-height: 1.62; } /* 21px */
 }
 
 /* Bengali text inherits the serif Bengali face via the font stack; tune rhythm */
@@ -193,35 +192,39 @@ body {
 
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
     color: rgb(var(--c-ink));
-    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
+    font-family: 'Alegreya', 'Noto Serif Bengali', Charter, Georgia, serif;
     font-weight: 600;
     line-height: 1.25;
-    letter-spacing: -0.006em;   /* Source Serif needs far less tightening */
+    letter-spacing: -0.004em;   /* Alegreya sets tight already */
     text-wrap: balance;
-    margin-top: 1.9em;
-    margin-bottom: 0.5em;
+    margin-top: 2.1em;         /* clear air above a heading, little below —
+                                  it should belong to what follows it */
+    margin-bottom: 0.45em;
 }
 
-.prose h1 { font-size: clamp(1.875rem, 4vw, 2.5rem); margin-top: 0; margin-bottom: 1.25rem; }
-.prose h2 { font-size: clamp(1.5rem, 3vw, 1.875rem); }
-.prose h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+.prose h1 { font-size: clamp(1.75rem, 3.4vw, 2.125rem); margin-top: 0; margin-bottom: 1rem; }
+.prose h2 { font-size: clamp(1.375rem, 2.4vw, 1.625rem); }
+.prose h3 { font-size: clamp(1.1875rem, 2vw, 1.375rem); }
 .prose h4 { font-size: clamp(1.125rem, 2vw, 1.25rem); }
 
 .prose p {
     margin-top: 0;
-    margin-bottom: 0.9em;      /* one comfortable line of separation */
+    margin-bottom: 1.2em;      /* generous, so paragraphs breathe */
 }
 
 .prose p + p { margin-top: 0; }
 
 .prose a {
-    color: #1C1B18;
+    color: rgb(var(--c-ink));
     text-decoration: underline;
-    text-decoration-color: #3A5A40;
     text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
-    transition: color 0.15s ease;
+    text-underline-offset: 3.5px;
+    text-decoration-color: rgb(var(--c-accent) / 0.45);
+    font-weight: 500;
+    transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
+
+.prose a:hover { text-decoration-color: rgb(var(--c-accent)); }
 
 .prose a:hover {
     color: #3A5A40;
@@ -268,7 +271,7 @@ body {
 }
 
 .prose figcaption {
-    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
+    font-family: 'Alegreya', 'Noto Serif Bengali', Charter, Georgia, serif;
     font-style: italic;
     font-size: 0.875rem;
     color: #6E6A61;
@@ -376,13 +379,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    just inside .prose, so section titles and card titles match article titles.
    ========================================================================== */
 h1, h2, h3, h4, h5, h6, .display {
-    font-family: 'Source Serif 4', 'Noto Serif Bengali', Charter, Georgia, serif;
+    font-family: 'Alegreya', 'Noto Serif Bengali', Charter, Georgia, serif;
     font-variant-numeric: normal;
 }
 
 /* Small caps and datelines read better in the sans at these sizes */
-.label, .dateline { font-family: 'Source Sans 3', 'Noto Serif Bengali', system-ui, sans-serif; }
-.year-rule { font-family: 'Source Serif 4', Charter, Georgia, serif; }
+.label, .dateline { font-family: 'Alegreya Sans', 'Noto Serif Bengali', system-ui, sans-serif; }
+.year-rule { font-family: 'Alegreya', Charter, Georgia, serif; }
 
 /* Links inside prose: accent underline, ink text, no wobble on hover */
 .prose a { color: rgb(var(--c-ink)); text-decoration-color: rgb(var(--c-accent)); }
