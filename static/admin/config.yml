@@ -1,12 +1,33 @@
 # Sveltia CMS configuration (Decap-compatible)
-# Local use: run `make serve`, open http://localhost:1313/admin/ in
-# Chrome/Edge, click "Work with Local Repository", pick the repo folder.
-# Changes are written straight to disk — review with `git diff`, then push.
+#
+# THREE WAYS TO SIGN IN
+#
+# 1. On this Mac — no auth at all:
+#    `make serve`, open http://localhost:1313/admin/ in Chrome/Edge, click
+#    "Work with Local Repository", pick the repo folder once. Edits are
+#    written straight to disk; review with `git diff`, publish with `git push`.
+#
+# 2. From anywhere (phone included) — access token, no server needed:
+#    open https://mmestiyak.com/admin/ and click "Sign In Using Access Token".
+#    Create the token at github.com → Settings → Developer settings →
+#    Personal access tokens → Fine-grained tokens:
+#      Repository access: only mmestiyak/mmestiyak.github.io
+#      Permissions: Contents = Read and write
+#      Expiration: 1 year (re-create it when it lapses)
+#    Paste it once per device. Nothing else to set up.
+#
+# 3. From anywhere — real "Sign in with GitHub" button (optional, ~20 min):
+#    a static site cannot keep an OAuth client secret, so this needs one tiny
+#    free proxy. Deploy https://github.com/sveltia/sveltia-cms-auth to
+#    Cloudflare Workers, create a GitHub OAuth App whose callback is that
+#    worker URL, set the worker's GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET /
+#    ALLOWED_DOMAINS(=mmestiyak.com), then uncomment base_url below.
 
 backend:
   name: github
   repo: mmestiyak/mmestiyak.github.io
   branch: master
+  # base_url: https://YOUR-WORKER-NAME.workers.dev   # option 3 only
 
 site_url: https://mmestiyak.com
 media_folder: assets/images

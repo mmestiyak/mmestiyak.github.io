@@ -19,10 +19,36 @@ Ships inside the repo at `/admin/`:
 3. Post Moments/Logs/Projects/Experience through forms — files are written
    straight to disk. Review with `git diff`, publish with `git push`.
 
-No login, no GitHub dependency, fully yours. The same panel exists on the live
-site (**mmestiyak.com/admin/**) and works from anywhere via **"Sign In Using
-Access Token"** — paste a GitHub fine-grained personal access token (this repo
-only, Contents: read/write) once per device.
+No login, no GitHub dependency, fully yours.
+
+**The same panel is live at [mmestiyak.com/admin/](https://mmestiyak.com/admin/)**
+(hidden from search engines) and works from any device — phone included. Signing
+in there, easiest first:
+
+| Where | How | Setup |
+| --- | --- | --- |
+| This Mac | "Work with Local Repository" | none — edits files directly |
+| Any device | "Sign In Using Access Token" | ~5 min, no server |
+| Any device | "Sign in with GitHub" button | ~20 min, needs a free Cloudflare Worker |
+
+**Access token route (recommended to start).** On github.com go to *Settings →
+Developer settings → Personal access tokens → Fine-grained tokens → Generate
+new token*:
+
+- Repository access: **only** `mmestiyak/mmestiyak.github.io`
+- Permissions: **Contents → Read and write**
+- Expiration: 1 year
+
+Copy it, open `mmestiyak.com/admin/`, click **Sign In Using Access Token**,
+paste. Done — once per device. Treat the token like a password: it can write to
+this one repo and nothing else, and you can revoke it on GitHub any time.
+
+**OAuth route (nicer, optional).** A static site can't hold an OAuth client
+secret, so it needs one tiny free proxy: deploy
+[sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to Cloudflare
+Workers, create a GitHub OAuth App pointing at it, then uncomment `base_url`
+in `static/admin/config.yml`. After that it's just a "Sign in with GitHub"
+button, no tokens to manage.
 
 ### Option B: hosted Pages CMS
 
