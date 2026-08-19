@@ -31,24 +31,51 @@ in there, easiest first:
 | Any device | "Sign In Using Access Token" | ~5 min, no server |
 | Any device | "Sign in with GitHub" button | ~20 min, needs a free Cloudflare Worker |
 
-**Access token route (recommended to start).** On github.com go to *Settings →
-Developer settings → Personal access tokens → Fine-grained tokens → Generate
-new token*:
+**Why there's no one-click "Authorize with GitHub" out of the box.** Clicking
+"Sign in with GitHub" on a GitHub Pages site sends you to Netlify's OAuth
+endpoint and returns *Not Found* — that endpoint only serves Netlify-hosted
+sites. OAuth needs a client secret, and a static site has nowhere to keep one.
+Per Sveltia's docs, PKCE (which would remove that need) is unimplemented
+because GitHub paused the feature, and there is no GitHub App or device-flow
+option. So the choice is a token, or one small proxy.
 
-- Repository access: **only** `mmestiyak/mmestiyak.github.io`
-- Permissions: **Contents → Read and write**
-- Expiration: 1 year
+**About biometrics / passkeys.** The panel itself can't verify a passkey —
+WebAuthn needs a server, and this site has none. But you get Face ID / Touch ID
+either way:
 
-Copy it, open `mmestiyak.com/admin/`, click **Sign In Using Access Token**,
-paste. Done — once per device. Treat the token like a password: it can write to
-this one repo and nothing else, and you can revoke it on GitHub any time.
+- *Token route:* save the token in iCloud Keychain (or 1Password) and autofill
+  it with Face ID. And the token is stored in the browser afterwards, so you
+  stay signed in — you rarely re-enter it.
+- *OAuth route:* the login happens on github.com, where your passkey / Face ID
+  already works. That's the real "authorize with GitHub" experience.
 
-**OAuth route (nicer, optional).** A static site can't hold an OAuth client
-secret, so it needs one tiny free proxy: deploy
-[sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to Cloudflare
-Workers, create a GitHub OAuth App pointing at it, then uncomment `base_url`
-in `static/admin/config.yml`. After that it's just a "Sign in with GitHub"
-button, no tokens to manage.
+**Access token route — works right now, no setup.** Open
+[mmestiyak.com/admin/](https://mmestiyak.com/admin/) and click **"Sign in with
+Token"**. The dialog links straight to GitHub's token page with the right
+scopes pre-selected, so you don't have to hunt for settings. Prefer a
+fine-grained token limited to `mmestiyak/mmestiyak.github.io` with
+**Contents: Read and write**. Save it in your password manager, paste it once
+per device, done. Revoke it on GitHub any time.
+
+**OAuth route — the real GitHub authorize button (~15 min, one time, free).**
+
+1. Deploy [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to
+   Cloudflare Workers (free tier). Note the worker URL.
+2. On GitHub: *Settings → Developer settings → OAuth Apps → New OAuth App*.
+   Homepage `https://mmestiyak.com`, callback
+   `https://YOUR-WORKER.workers.dev/callback`.
+3. In the worker's settings add `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`,
+   and `ALLOWED_DOMAINS=mmestiyak.com`.
+4. Uncomment `base_url` in `static/admin/config.yml` and set it to the worker
+   URL, then push.
+
+After that, `/admin/` shows a working "Sign in with GitHub" button and GitHub
+handles the biometrics.
+
+**Or skip all of it:** [Pages CMS](https://app.pagescms.org) (configured by
+`.pages.yml`) has GitHub sign-in built in via its own GitHub App — zero setup,
+biometrics through GitHub's own login. The tradeoff is that it's a hosted panel
+on someone else's domain instead of yours.
 
 ### Option B: hosted Pages CMS
 
