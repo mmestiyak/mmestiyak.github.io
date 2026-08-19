@@ -6,52 +6,54 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write        # needed to push the built site to gh-pages
 
 concurrency:
-  group: pages
+  group: deploy
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      # Pin the version so a Hugo release can never break a deploy unannounced.
+      # Pinned so a Hugo release can never break a deploy unannounced.
       HUGO_VERSION: 0.152.0
+      PAGES_BRANCH: gh-pages
     steps:
-      - name: Install Hugo (extended — needed for WebP image processing)
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Hugo (extended — required for WebP image processing)
         run: |
           curl -sLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i hugo.deb
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0        # for .Lastmod / git info if ever enabled
-
-      - name: Configure Pages
-        id: pages
-        uses: actions/configure-pages@v5
+          hugo version
 
       - name: Build
         env:
           HUGO_ENVIRONMENT: production
         run: hugo --minify --gc --baseURL "https://mmestiyak.com/"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
+      - name: Sanity-check the build before publishing
+        run: |
+          test -s public/index.html
+          test -s public/CNAME
+          test -f public/.nojekyll
+          test -s public/atom.xml
+          test -s public/archive/index.html
+          test -s public/moments/index.html
+          grep -q 'allPosts=\[{' public/logs/index.html          # search index present
+          grep -q 'href=/css/tailwind\.' public/index.html         # fingerprinted css linked
+          test -n "$(find public -name '*.html' -newermt '-1 hour' -print -quit)"
+          echo "build looks sane"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Publish to ${{ env.PAGES_BRANCH }}
+        run: |
+          cd public
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA::7}: ${GITHUB_WORKFLOW}"
+          git push -f -q "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${PAGES_BRANCH}
+          echo "published to ${PAGES_BRANCH}"
