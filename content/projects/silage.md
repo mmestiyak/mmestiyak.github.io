@@ -2,7 +2,6 @@
 title = "Silage Business"
 description = "Feed production and supply — agriculture as a supply-chain business"
 draft = true
-[taxonomies]
 tags = ["farming", "silage", "operations"]
 topics = ["farm"]
 [extra]

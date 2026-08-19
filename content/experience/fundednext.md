@@ -2,7 +2,6 @@
 title = "Frontend Developer — FundedNext"
 weight = 1
 description = "Prop trading firm with 364,600+ accounts, $150M+ paid out, 4.5/5 Trustpilot from 55k+ reviews"
-[taxonomies]
 tags = ["react", "nextjs", "typescript", "trading", "fintech"]
 topics = ["work"]
 [extra]

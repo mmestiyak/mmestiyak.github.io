@@ -1,0 +1,10 @@
+{{- $r := .res -}}
+{{- $size := .size | default 600 -}}
+{{- $url := $r.RelPermalink -}}
+{{- if eq $r.ResourceType "image" -}}
+  {{- $sub := $r.MediaType.SubType -}}
+  {{- if and (ne $sub "svg") (ne $sub "gif") -}}
+    {{- $url = ($r.Fill (printf "%dx%d webp q80 Center" $size $size)).RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+{{- return $url -}}

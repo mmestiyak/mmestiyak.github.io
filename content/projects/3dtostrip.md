@@ -1,7 +1,6 @@
 +++
 title = "3dtostrip"
 description = "Convert any 3D model into lightweight sprite strips for browser preview — no WebGL needed"
-[taxonomies]
 tags = ["3d", "npm", "open-source", "tooling"]
 topics = ["project"]
 [extra]

@@ -1,4 +1,4 @@
-# Zola build output
+# Hugo build output
 public/
 
 # Node.js
@@ -29,3 +29,8 @@ Thumbs.db
 
 # Claude Code local config
 .claude/
+
+# Hugo image/asset cache (regenerated on build)
+resources/_gen/
+.hugo_build.lock
+public_hugo/

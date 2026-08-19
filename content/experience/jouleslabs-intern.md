@@ -2,7 +2,6 @@
 title = "Software Developer Intern — JoulesLabs"
 weight = 4
 description = "Mobile app development with React Native"
-[taxonomies]
 tags = ["react-native", "redux", "mobile", "javascript"]
 topics = ["work"]
 [extra]

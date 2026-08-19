@@ -1,7 +1,6 @@
 +++
 title = "Kommercly"
 description = "WhatsApp-first no-code store builder — turn a Google Sheet into a live store in minutes"
-[taxonomies]
 tags = ["ecommerce", "no-code", "whatsapp", "product"]
 topics = ["project"]
 [extra]

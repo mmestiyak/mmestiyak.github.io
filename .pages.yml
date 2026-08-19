@@ -6,7 +6,7 @@
 # settings, not posts.
 
 media:
-  input: static/images
+  input: assets/images
   output: /images
 
 content:
@@ -33,18 +33,14 @@ content:
         label: Date
         type: date
         default: '{{ now }}'
-      - name: taxonomies
-        label: Categorize
-        type: object
-        fields:
-          - name: topics
-            label: Topics (farm, training, project, work…)
-            type: string
-            list: true
-          - name: tags
-            label: Tags
-            type: string
-            list: true
+      - name: topics
+        label: Topics (farm, training, project, work…)
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: extra
         label: Photos
         type: object
@@ -84,18 +80,14 @@ content:
       - name: description
         label: Description (shows in lists + search results)
         type: text
-      - name: taxonomies
-        label: Categorize
-        type: object
-        fields:
-          - name: topics
-            label: Topics
-            type: string
-            list: true
-          - name: tags
-            label: Tags
-            type: string
-            list: true
+      - name: topics
+        label: Topics
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: extra
         label: Extras
         type: object
@@ -128,18 +120,14 @@ content:
       - name: draft
         label: Draft (hidden from the site while checked)
         type: boolean
-      - name: taxonomies
-        label: Categorize
-        type: object
-        fields:
-          - name: topics
-            label: Topics
-            type: string
-            list: true
-          - name: tags
-            label: Tags
-            type: string
-            list: true
+      - name: topics
+        label: Topics
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: extra
         label: Details
         type: object
@@ -195,18 +183,14 @@ content:
       - name: weight
         label: Order (1 shows first)
         type: number
-      - name: taxonomies
-        label: Categorize
-        type: object
-        fields:
-          - name: topics
-            label: Topics
-            type: string
-            list: true
-          - name: tags
-            label: Tags
-            type: string
-            list: true
+      - name: topics
+        label: Topics
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
       - name: extra
         label: Details
         type: object

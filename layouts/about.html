@@ -1,9 +1,4 @@
-{% extends "base.html" %}
-
-{% block title %}About — {{ config.title }}{% endblock title %}
-{% block description %}Meer Estiyak — software developer, cattle farmer, cyclist, and fighter from Bangladesh.{% endblock description %}
-
-{% block head_extra %}
+{{ define "head_extra" }}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -11,28 +6,26 @@
   "name": "Meer Estiyak",
   "jobTitle": "Software Developer & Founder",
   "description": "Software developer, cattle farmer, cyclist, and fighter from Bangladesh. Builder of Kommercly.",
-  "url": "{{ config.base_url }}",
+  "url": "{{ site.BaseURL }}",
   "sameAs": [
-    "https://github.com/{{ config.extra.github }}",
-    "https://www.linkedin.com/in/{{ config.extra.linkedin }}",
-    "https://twitter.com/{{ config.extra.twitter }}"
+    "https://github.com/{{ site.Params.github }}",
+    "https://www.linkedin.com/in/{{ site.Params.linkedin }}",
+    "https://twitter.com/{{ site.Params.twitter }}"
   ],
   "knowsAbout": ["Node.js", "React", "Next.js", "TypeScript", "MongoDB", "PostgreSQL", "Agriculture", "Ecommerce"]
 }
 </script>
-{% endblock head_extra %}
+{{ end }}
 
-{% block content %}
+{{ define "main" }}
 <div class="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
 
-    <!-- Identity -->
     <section class="mb-12 sm:mb-16">
-        {% if config.extra.portrait %}
-        <img src="{{ config.extra.portrait }}" alt="Meer Estiyak" class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm border border-line mb-6">
-        {% endif %}
-        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-6 leading-tight">
-            Hi, I'm Meer.
-        </h1>
+        {{ with site.Params.portrait }}
+        {{ $src := partial "img-src.html" (dict "path" . "width" 400) }}
+        <img src="{{ $src }}" alt="Meer Estiyak" class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm border border-line mb-6">
+        {{ end }}
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-6 leading-tight">Hi, I'm Meer.</h1>
         <div class="space-y-5 text-lg sm:text-xl text-ink leading-relaxed">
             <p>
                 I write software, raise cattle, run a silage business, ride long distances, and train to fight.
@@ -46,7 +39,9 @@
             </p>
             <p>
                 By profession I'm a full-stack JavaScript developer — 5+ years of Node.js, React, Next.js and
-                TypeScript in production for startups and growing companies. I also build my own things:
+                TypeScript in production for startups and growing companies (the
+                <a href="{{ "/experience/" | relURL }}" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">full history</a>
+                is here). I also build my own things:
                 <a href="https://kommercly.com" target="_blank" rel="noopener" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">Kommercly</a>,
                 a WhatsApp-first store builder made for entrepreneurs like the ones I grew up around in Bangladesh —
                 because I'm not just the developer of that customer, I <em>am</em> that customer.
@@ -54,18 +49,17 @@
         </div>
     </section>
 
-    {% if config.extra.about_photos %}
-    <!-- Life in photos -->
+    {{ with site.Params.about_photos }}
     <section class="mb-12 sm:mb-16">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-            {% for photo in config.extra.about_photos %}
-            <img src="{{ photo }}" alt="Life of Meer" loading="lazy" class="aspect-square w-full object-cover rounded-sm border border-line">
-            {% endfor %}
+            {{ range . }}
+            {{ $src := partial "img-src.html" (dict "path" . "width" 600) }}
+            <img src="{{ $src }}" alt="Life of Meer" loading="lazy" class="aspect-square w-full object-cover rounded-sm border border-line">
+            {{ end }}
         </div>
     </section>
-    {% endif %}
+    {{ end }}
 
-    <!-- What working with me looks like -->
     <section class="mb-12 sm:mb-16">
         <h2 class="label mb-6 pb-3 border-b border-line">What working with me looks like</h2>
         <div class="space-y-6">
@@ -88,33 +82,15 @@
         </div>
     </section>
 
-    <!-- Toolkit -->
     <section class="mb-12 sm:mb-16">
         <h2 class="label mb-6 pb-3 border-b border-line">Toolkit</h2>
         <div class="flex flex-wrap gap-x-4 gap-y-2 font-serif text-sm text-faded">
-            {% set skills = [
-                "Node.js (Express/NestJS)",
-                "React & Next.js",
-                "TypeScript",
-                "MongoDB",
-                "PostgreSQL",
-                "React Native",
-                "JWT / OAuth",
-                "AWS / Vercel",
-                "Docker",
-                "REST APIs",
-                "Vue.js",
-                "Blockly / Arduino",
-                "Git / CI/CD",
-                "AI-assisted workflows"
-            ] %}
-            {% for skill in skills %}
-            <span>{{ skill }}</span>
-            {% endfor %}
+            {{ range slice "Node.js (Express/NestJS)" "React & Next.js" "TypeScript" "MongoDB" "PostgreSQL" "React Native" "JWT / OAuth" "AWS / Vercel" "Docker" "REST APIs" "Vue.js" "Blockly / Arduino" "Git / CI/CD" "AI-assisted workflows" }}
+            <span>{{ . }}</span>
+            {{ end }}
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="pt-8 border-t border-line">
         <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-3">Let's build something</h2>
         <p class="text-base sm:text-lg text-faded mb-5 leading-relaxed">
@@ -122,11 +98,11 @@
             something that has to keep running, season after season — let's talk.
         </p>
         <div class="flex flex-wrap items-center gap-5 font-serif text-sm">
-            <a href="mailto:{{ config.extra.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
-            <a href="https://linkedin.com/in/{{ config.extra.linkedin }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">linkedin</a>
-            <a href="https://github.com/{{ config.extra.github }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">github</a>
+            <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
+            <a href="https://linkedin.com/in/{{ site.Params.linkedin }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">linkedin</a>
+            <a href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">github</a>
         </div>
     </section>
 
 </div>
-{% endblock content %}
+{{ end }}

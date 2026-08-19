@@ -1,0 +1,64 @@
+baseURL = "https://mmestiyak.com"
+title = "Meer's Log"
+languageCode = "en"
+defaultContentLanguage = "en"
+enableRobotsTXT = false          # we ship our own static/robots.txt
+enableEmoji = true
+enableGitInfo = false
+summaryLength = 30
+capitalizeListTitles = false
+
+# Keep the feed at its old URL (/atom.xml) so existing subscribers survive
+[outputFormats.RSS]
+  mediaType = "application/rss+xml"
+  baseName = "atom"
+
+[pagination]
+  pagerSize = 3
+
+[taxonomies]
+  tag = "tags"
+  topic = "topics"
+
+[markup.goldmark.renderer]
+  unsafe = true                  # allow raw HTML in markdown, like Zola did
+[markup.goldmark.extensions]
+  strikethrough = true
+[markup.goldmark.extensions.extras.subscript]
+  enable = true
+[markup.goldmark.parser]
+  [markup.goldmark.parser.attribute]
+    block = true
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 4
+
+[params]
+description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."
+author = "Meer Estiyak"
+keywords = [
+  "Meer Estiyak", "meer estiyak", "mmestiyak", "teammeer",
+  "software development", "programming", "technology",
+  "cycling", "MMA", "boxing", "cattle farming", "silage",
+  "Kommercly", "Bangladesh", "personal blog",
+]
+twitter = "mmestiyak"
+github = "mmestiyak"
+linkedin = "mmestiyak"
+strava = "https://www.strava.com/athletes/111868234"
+email = "mmestiyak@gmail.com"
+
+# Portrait on home + about (e.g. "/images/portrait.jpg"). Empty = hidden.
+portrait = ""
+
+# Photo strip on the about page. Empty = hidden.
+about_photos = []
+
+# Where photos are served from. Empty = from this repo.
+# Set to a CDN origin (e.g. "https://img.mmestiyak.com") and every
+# repo-relative photo path is served from there — no post edits needed.
+# NOTE: setting this also skips Hugo's image processing for those paths.
+image_base = ""
+
+og_image = "https://mmestiyak.com/og-image.jpg"
+google_analytics = "G-33V0WBXVRM"

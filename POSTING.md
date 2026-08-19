@@ -4,13 +4,17 @@ The whole site is files. **Adding content = adding a file. Publishing = `git pus
 GitHub Actions builds and deploys automatically. You never edit HTML/templates
 to post — templates render whatever exists in `content/`.
 
+The site is built with **Hugo**. Photos are resized automatically at build
+time, so you can drop full-size phone photos straight in — no exporting, no
+resizing, no size limit to remember.
+
 ## Admin panels (post without code) — two options
 
 ### Option A: self-hosted Sveltia CMS — works offline & during GitHub outages
 
 Ships inside the repo at `/admin/`:
 
-1. `make serve`, then open **http://127.0.0.1:1111/admin/** in Chrome/Edge.
+1. `make serve`, then open **http://localhost:1313/admin/** in Chrome/Edge.
 2. Click **"Work with Local Repository"** and pick the repo folder (one time).
 3. Post Moments/Logs/Projects/Experience through forms — files are written
    straight to disk. Review with `git diff`, publish with `git push`.
@@ -38,7 +42,7 @@ remember publishing takes a minute — it's a git commit + build, not instant.
 | A new project / venture      | Copy any file in `content/projects/`, edit, push                 |
 | A new job / role             | Copy any file in `content/experience/`, edit, push               |
 | A Bangla post                | Same as a log, put it in `content/logs/বাংলা/`                    |
-| A photo inside a written post| Put file in `static/images/`, write `![alt](/images/file.jpg)`   |
+| A photo inside a written post| Put file in `assets/images/`, write `![alt](/images/file.jpg)`   |
 
 ## Moments (Instagram-style photo posts)
 
@@ -56,8 +60,7 @@ content/moments/2026-08-20-first-silage-cut/
 ```toml
 +++
 title = "First silage cut of the season"
-date = 2026-08-20
-[taxonomies]
+date = "2026-08-20"
 topics = ["farm"]      # farm | training | project | work — anything you like
 tags = ["silage"]
 +++
@@ -78,7 +81,7 @@ One markdown file in `content/logs/`. `make log t="Title"` scaffolds it.
 Set a `description` (used in lists + SEO), pick `topics`/`tags` freely — new
 topic names (e.g. `farm`, `training`) create their own pages automatically.
 
-Optional header image for a log: drop the image in `static/images/` and add:
+Optional header image for a log: drop the image in `assets/images/` and add:
 
 ```toml
 [extra]
@@ -93,8 +96,9 @@ numbers, delete `draft = true`, and they go live. Fields that render:
 `year`, `status`, `role`, `tech_stack`, `highlights`, `live_url`, `source_url`,
 `image` — all under `[extra]`.
 
-> **Important Zola rule:** custom fields must live under `[extra]`, not at the
-> top of the frontmatter — top-level custom keys are silently ignored.
+> **Convention:** project/experience detail fields live under `[extra]`
+> (`year`, `status`, `role`, `highlights`, …), while `title`, `date`,
+> `description`, `draft`, `weight`, `tags`, and `topics` sit at the top level.
 
 ## Experience
 
@@ -104,24 +108,33 @@ Custom fields under `[extra]`: `company`, `role`, `date_start`, `date_end`,
 
 ## Photos — the three mechanisms
 
-1. `static/images/foo.jpg` → available site-wide at `/images/foo.jpg`
+1. `assets/images/foo.jpg` → referenced as `/images/foo.jpg` (auto-resized)
 2. Colocated: image files next to a post's `index.md` (how moments work)
 3. `[extra] image = "..."` in frontmatter → header image + social share card
 
-Keep photos under ~300 KB when you can (export at 1600px wide, JPG/WebP).
+**No need to resize anything.** Hugo generates WebP derivatives at the sizes
+each page needs (grid thumbnails, full-width views, archive thumbs), so a 4 MB
+phone photo becomes a handful of small files automatically. Just keep the
+originals reasonable — full-resolution phone photos are fine.
 
 ## One-time setup still pending
 
-- `static/images/og-image.jpg` — 1200×630 photo used for social link previews
-- `portrait` in `config.toml` — your photo on home + about
-- `about_photos` in `config.toml` — the 4-photo strip on the about page
+- `static/og-image.jpg` — 1200×630 photo used for social link previews
+- `portrait` in `hugo.toml` — your photo on home + about
+  (e.g. `portrait = "/images/portrait.jpg"` with the file in `assets/images/`)
+- `about_photos` in `hugo.toml` — the 4-photo strip on the about page
+
+Photos you reference by path can live in either place:
+`assets/images/` (Hugo resizes them — preferred) or `static/` (served as-is).
 
 ## If you ever edit templates (not needed for posting)
 
-The site's CSS is compiled and committed (`static/tailwind.css`) and fonts are
-self-hosted (`static/fonts/`) — zero external dependencies. Posting content
+The site's CSS is compiled and committed (`assets/css/tailwind.css`) and fonts
+are self-hosted (`static/fonts/`) — zero external dependencies. Posting content
 never requires rebuilding CSS. Only if you change Tailwind **classes in
-templates/** run `make css` (needs `npm install` once) and commit the result.
+`layouts/`** run `make css` (needs `npm install` once) and commit the result.
+Templates live in `layouts/`; stylesheets are fingerprinted so visitors can
+never get a stale cached design.
 
 ## Posting from your phone
 

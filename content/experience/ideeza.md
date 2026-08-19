@@ -2,7 +2,6 @@
 title = "Software Developer — IDEEZA"
 weight = 2
 description = "Full-stack engineering beyond conventional boundaries — hardware integration, no-code tools, and backend architecture"
-[taxonomies]
 tags = ["nodejs", "react", "blockly", "arduino", "raspberry-pi", "no-code", "bluetooth"]
 topics = ["work"]
 [extra]

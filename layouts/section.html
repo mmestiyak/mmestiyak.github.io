@@ -1,0 +1,28 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-12">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
+        {{ with .Description }}<p class="text-base sm:text-lg text-faded">{{ . }}</p>{{ end }}
+    </header>
+
+    <div>
+        {{ range .RegularPagesRecursive }}
+        <article class="py-4 sm:py-5 border-b border-line last:border-0">
+            <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>
+            </h2>
+            <div class="flex items-center gap-2 dateline text-xs mb-1.5">
+                {{ if not .Date.IsZero }}<span>{{ .Date.Format "Jan 02, 2006" }}</span>{{ end }}
+                {{ with .GetTerms "tags" }}
+                <span aria-hidden="true">·</span>
+                <div class="flex flex-wrap gap-x-2">
+                    {{ range . }}<a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .LinkTitle }}</a>{{ end }}
+                </div>
+                {{ end }}
+            </div>
+            {{ with .Description }}<p class="text-sm sm:text-base text-faded leading-relaxed">{{ . }}</p>{{ end }}
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

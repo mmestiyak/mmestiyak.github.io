@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-14">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Experience</h1>
+        <p class="text-base sm:text-lg text-faded">{{ or .Description "5+ years building production software that powers real businesses." }}</p>
+    </header>
+
+    <div>
+        {{ range .RegularPages.ByWeight }}
+        <article class="py-8 sm:py-10 border-b border-line last:border-0">
+            <div class="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ or .Params.extra.company .Title }}</h2>
+                    <div class="font-serif text-xs text-faded space-y-0.5">
+                        <p>{{ or .Params.extra.date_start "" }} — {{ or .Params.extra.date_end "present" }}</p>
+                        {{ with .Params.extra.role }}<p>{{ . }}</p>{{ end }}
+                        {{ with .Params.extra.location }}<p>{{ . }}</p>{{ end }}
+                    </div>
+                </div>
+                <div>
+                    {{ with .Description }}<p class="text-base sm:text-lg text-ink leading-relaxed mb-3">{{ . }}</p>{{ end }}
+
+                    {{ with .Params.extra.highlights }}
+                    <ul class="space-y-1.5 mb-4">
+                        {{ range . }}
+                        <li class="text-sm sm:text-base text-faded leading-relaxed flex items-start gap-2">
+                            <span class="text-accent mt-0.5 flex-shrink-0">—</span>
+                            <span>{{ . }}</span>
+                        </li>
+                        {{ end }}
+                    </ul>
+                    {{ end }}
+
+                    {{ with .Params.tags }}
+                    <div class="flex flex-wrap gap-x-3 gap-y-1 font-serif text-xs text-faded">
+                        {{ range . }}<span>{{ . }}</span>{{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

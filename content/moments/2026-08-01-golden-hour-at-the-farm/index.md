@@ -2,7 +2,7 @@
 title = "Golden hour at the farm"
 date = "2026-08-01"
 description = "Sample moment — replace the photo and this caption with your own."
-[taxonomies]
+slug = "golden-hour-at-the-farm"
 topics = ["farm"]
 tags = ["cattle", "sample"]
 +++

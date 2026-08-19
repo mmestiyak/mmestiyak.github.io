@@ -1,0 +1,26 @@
+<!-- Typography: Newsreader + Noto Serif Bengali, self-hosted (no external requests) -->
+<link rel="stylesheet" href="{{ "fonts/fonts.css" | relURL }}">
+
+{{/* Stylesheets are fingerprinted, so a design change can never serve stale CSS.
+     Tokens live in tailwind.config.js; after editing layout classes run: make css */}}
+{{ with resources.Get "css/tailwind.css" }}
+  {{ $css := . | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}
+{{ with resources.Get "css/style.css" }}
+  {{ $css := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+{{ end }}
+
+{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ .Permalink }}">
+{{ end }}
+{{ with site.Params.google_analytics }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ . }}');
+</script>
+{{ end }}

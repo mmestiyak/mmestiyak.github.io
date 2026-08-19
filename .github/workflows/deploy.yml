@@ -1,21 +1,57 @@
 name: Build and deploy GH Pages
-on: push
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    env:
+      # Pin the version so a Hugo release can never break a deploy unannounced.
+      HUGO_VERSION: 0.152.0
     steps:
+      - name: Install Hugo (extended — needed for WebP image processing)
+        run: |
+          curl -sLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i hugo.deb
+
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0        # for .Lastmod / git info if ever enabled
 
-      - name: Build and Deploy
-        uses: shalzz/zola-deploy-action@master
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
         env:
-          PAGES_BRANCH: gh-pages
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HUGO_ENVIRONMENT: production
+        run: hugo --minify --gc --baseURL "https://mmestiyak.com/"
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

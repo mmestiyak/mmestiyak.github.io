@@ -2,7 +2,6 @@
 title = "The Cattle Farm"
 description = "A working cattle farm — the oldest production system I run"
 draft = true
-[taxonomies]
 tags = ["farming", "cattle", "operations"]
 topics = ["farm"]
 [extra]

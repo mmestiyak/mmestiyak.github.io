@@ -1,0 +1,25 @@
+{{- $path := .path -}}
+{{- $w := .width | default 0 -}}
+{{- $out := $path -}}
+{{- if strings.HasPrefix $path "http" -}}
+  {{- $out = $path -}}
+{{- else if site.Params.image_base -}}
+  {{- $out = printf "%s%s" (strings.TrimSuffix "/" site.Params.image_base) $path -}}
+{{- else -}}
+  {{- $rel := strings.TrimPrefix "/" $path -}}
+  {{- with resources.Get $rel -}}
+    {{- $r := . -}}
+    {{- if eq $r.ResourceType "image" -}}
+      {{- $sub := $r.MediaType.SubType -}}
+      {{- if and (ne $sub "svg") (ne $sub "gif") (gt $w 0) -}}
+        {{- $target := cond (gt $r.Width $w) $w $r.Width -}}
+        {{- $out = ($r.Resize (printf "%dx webp q82" $target)).RelPermalink -}}
+      {{- else -}}
+        {{- $out = $r.RelPermalink -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $out = $r.RelPermalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

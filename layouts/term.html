@@ -1,0 +1,31 @@
+{{ define "main" }}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-12">
+        <p class="label mb-2">{{ .Data.Singular }}</p>
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
+        <p class="dateline text-sm">{{ len .Pages }} {{ cond (eq (len .Pages) 1) "entry" "entries" }}</p>
+    </header>
+
+    <div>
+        {{ range .Pages }}
+        <article class="py-4 sm:py-5 border-b border-line last:border-0">
+            <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>
+            </h2>
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 dateline text-xs mb-1.5">
+                {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>{{ end }}
+                {{ with .ReadingTime }}<span aria-hidden="true">·</span><span>{{ . }} min</span>{{ end }}
+                {{ with .GetTerms "tags" }}
+                <span aria-hidden="true">·</span>
+                <div class="flex flex-wrap gap-x-2">
+                    {{ range first 3 . }}<a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">#{{ .LinkTitle }}</a>{{ end }}
+                    {{ if gt (len .) 3 }}<span class="text-faded/60">+{{ sub (len .) 3 }} more</span>{{ end }}
+                </div>
+                {{ end }}
+            </div>
+            {{ with .Description }}<p class="text-sm sm:text-base text-faded leading-relaxed line-clamp-2 sm:line-clamp-3">{{ . }}</p>{{ end }}
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

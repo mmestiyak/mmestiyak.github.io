@@ -1,13 +1,15 @@
 #!/bin/bash
 
-# Local build script for Zola site
+# Local build check for the Hugo site.
 # Deployment is handled automatically by GitHub Actions on push to master.
-# Use this script to verify the site builds cleanly before pushing.
 
 set -e
 
-echo "📦 Building site with Zola..."
-zola build
+echo "🎨 Building CSS..."
+npm run build:css
+
+echo "📦 Building site with Hugo..."
+hugo --minify --gc
 
 echo ""
 echo "✅ Build complete. Output in public/"

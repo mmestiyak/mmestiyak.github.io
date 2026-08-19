@@ -2,7 +2,6 @@
 title = "Software Developer — JoulesLabs"
 weight = 3
 description = "Started as intern, rose to lead the entire Frontend team"
-[taxonomies]
 tags = ["nextjs", "react-native", "vuejs", "javascript", "team-lead", "mentoring"]
 topics = ["work"]
 [extra]

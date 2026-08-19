@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <header class="mb-8 sm:mb-10">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Moments</h1>
+        <p class="text-base sm:text-lg text-faded">{{ or .Description "Small moments, in photos." }}</p>
+    </header>
+
+    {{ $moments := .RegularPages }}
+    {{ if not $moments }}
+    <p class="text-faded italic">Nothing here yet — the first moment is coming.</p>
+    {{ else }}
+    <div class="grid grid-cols-3 gap-1 sm:gap-1.5">
+        {{ range $moments }}
+        {{ $cover := "" }}
+        {{ with (.Resources.ByType "image") }}{{ $cover = partial "thumb.html" (dict "res" (index . 0) "size" 600) }}{{ end }}
+        {{ if and (not $cover) .Params.extra.photos }}
+          {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 600) }}
+        {{ end }}
+        <a href="{{ .RelPermalink }}" class="group relative block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
+            {{ if $cover }}
+            <img src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+            {{ else }}
+            <span class="w-full h-full flex items-center justify-center p-3 text-center italic text-xs sm:text-base text-faded leading-snug">{{ .Title }}</span>
+            {{ end }}
+            {{ if not .Date.IsZero }}
+            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 dateline text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                {{ .Date.Format "Jan 02, 2006" }}
+            </span>
+            {{ end }}
+        </a>
+        {{ end }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}

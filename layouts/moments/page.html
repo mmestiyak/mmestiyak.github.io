@@ -1,0 +1,55 @@
+{{ define "main" }}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+    <article>
+        {{/* Photos: colocated bundle images (auto-resized) or extra.photos paths */}}
+        {{ $imgs := .Resources.ByType "image" }}
+        {{ if $imgs }}
+        <div class="space-y-3 mb-5">
+            {{ range $i, $r := $imgs }}
+            {{ $src := partial "photo.html" (dict "res" $r "width" 1400) }}
+            <img src="{{ $src }}" alt="{{ $.Title }}" class="w-full rounded-sm border border-line"{{ if $i }} loading="lazy"{{ end }}>
+            {{ end }}
+        </div>
+        {{ else if .Params.extra.photos }}
+        <div class="space-y-3 mb-5">
+            {{ range $i, $p := .Params.extra.photos }}
+            {{ $src := partial "img-src.html" (dict "path" $p "width" 1400) }}
+            <img src="{{ $src }}" alt="{{ $.Title }}" class="w-full rounded-sm border border-line"{{ if $i }} loading="lazy"{{ end }}>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="mb-2 dateline text-sm flex flex-wrap items-center gap-x-3 gap-y-1">
+            {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 02, 2006" }}</time>{{ end }}
+            {{ with .GetTerms "topics" }}
+            <span aria-hidden="true">·</span>
+            {{ range . }}<a href="{{ .RelPermalink }}" class="text-accent hover:text-accent-dark transition-colors">{{ .LinkTitle }}</a>{{ end }}
+            {{ end }}
+        </div>
+
+        <h1 class="display text-xl sm:text-2xl font-semibold text-ink leading-snug mb-3">{{ .Title }}</h1>
+
+        {{ with .Content }}
+        <div class="prose max-w-none">{{ . }}</div>
+        {{ end }}
+
+        {{ with .GetTerms "tags" }}
+        <p class="mt-5 dateline text-sm">
+            Filed under
+            {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}" class="hover:text-accent transition-colors underline decoration-line underline-offset-4">{{ $t.LinkTitle }}</a>{{ end }}.
+        </p>
+        {{ end }}
+
+        <!-- Newer / Older -->
+        <nav class="mt-10 pt-5 border-t border-line flex items-center justify-between font-serif text-xs">
+            <div>
+                {{ with .Next }}<a href="{{ .RelPermalink }}" class="text-faded hover:text-accent transition-colors">← {{ .Title | truncate 28 }}</a>{{ end }}
+            </div>
+            <a href="{{ "/moments/" | relURL }}" class="text-faded hover:text-accent transition-colors">all</a>
+            <div class="text-right">
+                {{ with .Prev }}<a href="{{ .RelPermalink }}" class="text-faded hover:text-accent transition-colors">{{ .Title | truncate 28 }} →</a>{{ end }}
+            </div>
+        </nav>
+    </article>
+</div>
+{{ end }}

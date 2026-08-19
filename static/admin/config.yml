@@ -1,5 +1,5 @@
 # Sveltia CMS configuration (Decap-compatible)
-# Local use: run `make serve`, open http://127.0.0.1:1111/admin/ in
+# Local use: run `make serve`, open http://localhost:1313/admin/ in
 # Chrome/Edge, click "Work with Local Repository", pick the repo folder.
 # Changes are written straight to disk — review with `git diff`, then push.
 
@@ -9,7 +9,7 @@ backend:
   branch: master
 
 site_url: https://mmestiyak.com
-media_folder: static/images
+media_folder: assets/images
 public_folder: /images
 
 collections:
@@ -26,12 +26,8 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
-      - label: Categorize
-        name: taxonomies
-        widget: object
-        fields:
-          - { label: "Topics (farm, training, project, work…)", name: topics, widget: list, required: false }
-          - { label: Tags, name: tags, widget: list, required: false }
+      - { label: "Topics (farm, training, project, work…)", name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
       - label: Photos
         name: extra
         widget: object
@@ -57,12 +53,8 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
       - { label: "Description (lists + SEO)", name: description, widget: text, required: false }
-      - label: Categorize
-        name: taxonomies
-        widget: object
-        fields:
-          - { label: Topics, name: topics, widget: list, required: false }
-          - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
       - label: Extras
         name: extra
         widget: object
@@ -84,12 +76,8 @@ collections:
       - { label: Name, name: title, widget: string }
       - { label: "One-line description", name: description, widget: text }
       - { label: "Draft (hidden while checked)", name: draft, widget: boolean, required: false }
-      - label: Categorize
-        name: taxonomies
-        widget: object
-        fields:
-          - { label: Topics, name: topics, widget: list, required: false }
-          - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
       - label: Details
         name: extra
         widget: object
@@ -117,12 +105,8 @@ collections:
       - { label: "Title (e.g. Software Developer — Company)", name: title, widget: string }
       - { label: "One-line summary", name: description, widget: text, required: false }
       - { label: "Order (1 shows first)", name: weight, widget: number, value_type: int }
-      - label: Categorize
-        name: taxonomies
-        widget: object
-        fields:
-          - { label: Topics, name: topics, widget: list, required: false }
-          - { label: Tags, name: tags, widget: list, required: false }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
       - label: Details
         name: extra
         widget: object
