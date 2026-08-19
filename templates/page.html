@@ -44,12 +44,14 @@
     <article>
         <header class="mb-8 sm:mb-10">
             {% if page.extra.image %}
+            {% set hero = page.extra.image %}
+            {% if config.extra.image_base and hero | truncate(length=1, end="") == "/" %}{% set hero = config.extra.image_base ~ hero %}{% endif %}
             <div class="mb-6 sm:mb-8 -mx-4 sm:mx-0">
-                <img src="{{ page.extra.image }}" alt="{{ page.title }}" class="w-full max-h-[28rem] object-cover rounded-none sm:rounded-sm border-y sm:border border-line">
+                <img src="{{ hero }}" alt="{{ page.title }}" class="w-full max-h-[28rem] object-cover rounded-none sm:rounded-sm border-y sm:border border-line">
             </div>
             {% endif %}
-            <h1 class="text-3xl sm:text-4xl font-semibold text-ink mb-4 leading-tight tracking-tight">{{ page.title }}</h1>
-            <div class="font-serif italic text-sm text-faded flex flex-wrap items-center gap-x-3 gap-y-1">
+            <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-4 leading-tight">{{ page.title }}</h1>
+            <div class="dateline text-sm flex flex-wrap items-center gap-x-3 gap-y-1">
                 {% if page.date %}
                 <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
                 {% if page.reading_time %}<span aria-hidden="true">·</span><span>{{ page.reading_time }} min read</span>{% endif %}
@@ -134,7 +136,7 @@
         <!-- Tags at the bottom -->
         {% if page.taxonomies.tags %}
         <div class="mt-8 pt-5 border-t border-line">
-            <p class="font-serif italic text-sm text-faded">
+            <p class="dateline text-sm">
                 Filed under
                 {% for tag in page.taxonomies.tags %}<a href="{{ get_taxonomy_url(kind="tags", name=tag) }}" class="hover:text-accent transition-colors underline decoration-line underline-offset-4">{{ tag }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.
             </p>

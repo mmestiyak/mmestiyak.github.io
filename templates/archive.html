@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}Archive — {{ config.title }}{% endblock title %}
+{% block description %}Everything on this site, year by year — writing and photographs.{% endblock description %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <header class="mb-10 sm:mb-14">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Archive</h1>
+        <p class="text-base sm:text-lg text-faded">Everything, year by year — what I wrote and what I saw.</p>
+    </header>
+
+    {% set logs = get_section(path="logs/_index.md") %}
+    {% set moments = get_section(path="moments/_index.md") %}
+
+    {# The 0.23 template engine has no way to merge two page lists, so the
+       archive walks a year range and pulls from each stream per year. #}
+    {% set_global min_year = 9999 %}
+    {% set_global max_year = 0 %}
+    {% for p in logs.pages %}
+        {% if p.year and p.year < min_year %}{% set_global min_year = p.year %}{% endif %}
+        {% if p.year and p.year > max_year %}{% set_global max_year = p.year %}{% endif %}
+    {% endfor %}
+    {% for p in moments.pages %}
+        {% if p.year and p.year < min_year %}{% set_global min_year = p.year %}{% endif %}
+        {% if p.year and p.year > max_year %}{% set_global max_year = p.year %}{% endif %}
+    {% endfor %}
+
+    {% if max_year == 0 %}
+    <p class="text-faded italic">The archive is empty — for now.</p>
+    {% else %}
+    {% set span_end = max_year + 1 %}
+    {% for year in range(start=min_year, end=span_end) | reverse %}
+
+        {% set_global year_count = 0 %}
+        {% for p in logs.pages %}{% if p.year == year %}{% set_global year_count = year_count + 1 %}{% endif %}{% endfor %}
+        {% for p in moments.pages %}{% if p.year == year %}{% set_global year_count = year_count + 1 %}{% endif %}{% endfor %}
+
+        {% if year_count > 0 %}
+        <section class="mb-12 sm:mb-16">
+            <h2 class="year-rule text-2xl sm:text-3xl text-faded mb-3 pb-2 border-b border-line">{{ year }}</h2>
+
+            {# Writing #}
+            {% for p in logs.pages %}
+            {% if p.year == year %}
+            <article class="flex items-baseline gap-4 py-2.5 border-b border-line/50 last:border-0">
+                <time datetime="{{ p.date }}" class="dateline text-sm w-14 sm:w-16 flex-shrink-0">{{ p.date | date(format="%b %d") }}</time>
+                <a href="{{ p.permalink }}" class="flex-1 min-w-0 text-base sm:text-lg text-ink hover:text-accent transition-colors">{{ p.title }}</a>
+                {% if p.taxonomies.topics %}
+                <span class="hidden sm:block flex-shrink-0">
+                    {% for topic in p.taxonomies.topics %}<a href="{{ get_taxonomy_url(kind="topics", name=topic) }}" class="label hover:text-accent transition-colors">{{ topic }}</a>{% endfor %}
+                </span>
+                {% endif %}
+            </article>
+            {% endif %}
+            {% endfor %}
+
+            {# Photographs from the same year #}
+            {% set_global photo_count = 0 %}
+            {% for p in moments.pages %}{% if p.year == year %}{% set_global photo_count = photo_count + 1 %}{% endif %}{% endfor %}
+            {% if photo_count > 0 %}
+            <div class="mt-5">
+                <p class="label mb-2">{{ photo_count }} {% if photo_count == 1 %}photograph{% else %}photographs{% endif %}</p>
+                <div class="grid grid-cols-4 sm:grid-cols-6 gap-1 sm:gap-1.5">
+                    {% for m in moments.pages %}
+                    {% if m.year == year %}
+                    {% set cover = m.assets | sort | first %}
+                    {% set thumb = "" %}
+                    {% if cover %}{% set fname = cover | split(pat="/") | last %}{% set thumb = m.path ~ fname %}
+                    {% elif m.extra.photos %}{% set thumb = m.extra.photos | first %}
+                        {% if config.extra.image_base and thumb | truncate(length=1, end="") == "/" %}{% set thumb = config.extra.image_base ~ thumb %}{% endif %}
+                    {% endif %}
+                    <a href="{{ m.permalink }}" title="{{ m.title }} — {{ m.date | date(format="%b %d") }}" class="group block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
+                        {% if thumb %}
+                        <img src="{{ thumb }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+                        {% else %}
+                        <span class="w-full h-full flex items-center justify-center p-1 text-center italic text-[10px] text-faded leading-tight">{{ m.title }}</span>
+                        {% endif %}
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    <p class="mt-4 dateline text-sm">
+        Also browsable by subject on the
+        <a href="{{ config.base_url }}/topics/" class="hover:text-accent transition-colors underline decoration-line underline-offset-4">topics</a> page.
+    </p>
+</div>
+{% endblock content %}

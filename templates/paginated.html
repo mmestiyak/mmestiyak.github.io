@@ -6,7 +6,7 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
 
     <header class="mb-8 sm:mb-10">
-        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">Logs</h1>
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Logs</h1>
         <p class="text-base sm:text-lg text-faded">{{ section.description | default(value="Thoughts, lessons, and experiences — in chronological order.") }}</p>
     </header>
 
@@ -48,7 +48,7 @@
                     <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
                         <a href="{{ page.permalink }}" class="hover:text-accent transition-colors">{{ page.title }}</a>
                     </h2>
-                    <div class="flex items-center gap-2 font-serif italic text-xs text-faded">
+                    <div class="flex items-center gap-2 dateline text-xs">
                         {% if page.date %}<time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>{% endif %}
                         {% if page.reading_time %}
                         <span aria-hidden="true">·</span>
@@ -247,7 +247,7 @@ class SimpleSearch {
                         <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
                             <a href="${post.url}" class="hover:text-accent transition-colors">${post.title}</a>
                             </h2>
-                        <div class="flex items-center gap-2 font-serif italic text-xs text-faded">
+                        <div class="flex items-center gap-2 dateline text-xs">
                             <time datetime="${post.date || ''}">${formattedDate}</time>
                             ${readingTime}
                         </div>

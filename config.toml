@@ -71,6 +71,12 @@ portrait = ""
 # Empty = hidden.
 about_photos = []
 
+# Where photos are served from. Empty = from this repo (/images/...).
+# Set this to a CDN origin — e.g. "https://img.mmestiyak.com" — and every
+# repo-relative photo path in every post is served from there instead, with
+# no post edits. Absolute URLs in posts are always left untouched.
+image_base = ""
+
 # Google Analytics 4
 google_analytics = "G-33V0WBXVRM"
 

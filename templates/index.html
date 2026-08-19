@@ -70,8 +70,8 @@
     <!-- Recent Logs -->
     <section class="mb-14 sm:mb-20">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="font-serif text-xs uppercase tracking-[0.18em] text-faded">Recent logs</h2>
-            <a href="{{ get_url(path="@/logs/_index.md") }}" class="font-serif text-xs text-faded hover:text-accent transition-colors">all logs →</a>
+            <h2 class="label">Recent logs</h2>
+            <a href="{{ get_url(path="@/logs/_index.md") }}" class="label hover:text-accent transition-colors">all logs →</a>
         </div>
         {% set posts = get_section(path="logs/_index.md") %}
         <div>
@@ -89,7 +89,7 @@
                             </p>
                         </div>
                         {% if post.date %}
-                        <span class="font-serif italic text-xs text-faded whitespace-nowrap">
+                        <span class="dateline text-xs whitespace-nowrap">
                             {{ post.date | date(format="%b %d, %Y") }}
                         </span>
                         {% endif %}
@@ -105,10 +105,10 @@
     {% if moments.pages | length > 0 %}
     <section class="mb-8">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
-            <h2 class="font-serif text-xs uppercase tracking-[0.18em] text-faded">Moments</h2>
-            <a href="{{ moments.permalink }}" class="font-serif text-xs text-faded hover:text-accent transition-colors">all moments →</a>
+            <h2 class="label">Moments</h2>
+            <a href="{{ moments.permalink }}" class="label hover:text-accent transition-colors">all moments →</a>
         </div>
-        <div class="grid grid-cols-4 gap-2 sm:gap-3">
+        <div class="grid grid-cols-4 gap-1 sm:gap-1.5">
             {% for m in moments.pages %}
             {% if loop.index > 4 %}{% break %}{% endif %}
             {% set cover = m.assets | sort | first %}
@@ -116,7 +116,9 @@
                 {% if cover %}
                 <img src="{{ m.path }}{{ cover | split(pat="/") | last }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
                 {% elif m.extra.photos %}
-                <img src="{{ m.extra.photos | first }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+                {% set csrc = m.extra.photos | first %}
+                {% if config.extra.image_base and csrc | truncate(length=1, end="") == "/" %}{% set csrc = config.extra.image_base ~ csrc %}{% endif %}
+                <img src="{{ csrc }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
                 {% else %}
                 <span class="w-full h-full flex items-center justify-center p-2 text-center italic text-xs sm:text-sm text-faded leading-snug">{{ m.title }}</span>
                 {% endif %}

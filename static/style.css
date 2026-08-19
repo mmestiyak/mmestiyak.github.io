@@ -25,6 +25,46 @@ body {
     min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* Newsreader is a variable font with an optical-size axis: let the browser
+       pick the right cut for each size, the way metal type had separate cuts */
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    font-variant-ligatures: common-ligatures contextual;
+}
+
+/* ==========================================================================
+   Editorial utilities — used across templates instead of repeated classes
+   ========================================================================== */
+
+/* Section labels: true small caps, the book/newspaper way (not fake uppercase) */
+.label {
+    font-variant-caps: all-small-caps;
+    font-variant-numeric: oldstyle-nums;
+    letter-spacing: 0.09em;
+    font-size: 0.9375rem;
+    line-height: 1;
+    color: #6E6A61;
+}
+
+/* Datelines and meta: italic with oldstyle figures, so numerals sit in the
+   text like a printed page instead of shouting */
+.dateline {
+    font-style: italic;
+    font-variant-numeric: oldstyle-nums;
+    color: #6E6A61;
+}
+
+/* Display headings: let the browser break lines like a typesetter would */
+.display {
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+}
+
+/* Year rules in the archive */
+.year-rule {
+    font-variant-numeric: oldstyle-nums;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.06em;
 }
 
 ::selection {
@@ -91,12 +131,15 @@ body {
     color: #26241F;
     font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, 'Times New Roman', serif;
     font-size: 1.1875rem;      /* 19px */
-    line-height: 1.75;
+    line-height: 1.7;
     font-weight: 400;
+    /* Avoid orphans/rivers where supported; ignored elsewhere */
+    text-wrap: pretty;
+    hanging-punctuation: first last;
 }
 
 @media (min-width: 640px) {
-    .prose { font-size: 1.25rem; line-height: 1.75; } /* 20px */
+    .prose { font-size: 1.25rem; line-height: 1.7; } /* 20px */
 }
 
 /* Bengali text inherits the serif Bengali face via the font stack; tune rhythm */
@@ -109,10 +152,11 @@ body {
     color: #1C1B18;
     font-family: 'Newsreader', 'Noto Serif Bengali', Georgia, serif;
     font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    margin-top: 2.25rem;
-    margin-bottom: 0.875rem;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .prose h1 { font-size: clamp(1.875rem, 4vw, 2.5rem); margin-top: 0; margin-bottom: 1.25rem; }
@@ -142,15 +186,19 @@ body {
 
 .prose em { font-style: italic; }
 
+/* Quotations: indented and italic, the way books set them — no colored bar */
 .prose blockquote {
     font-style: italic;
     color: #4A473F;
-    border-left: 2px solid #3A5A40;
-    margin: 2rem 0;
-    padding-left: 1.5rem;
-    font-size: 1.125rem;
-    line-height: 1.75;
+    margin: 2rem 0 2rem 0;
+    padding-left: 1.75rem;
+    border-left: 1px solid #E7E3DA;
+    font-size: 1.0625em;
+    line-height: 1.65;
 }
+
+.prose blockquote p:first-child { margin-top: 0; }
+.prose blockquote p:last-child { margin-bottom: 0; }
 
 .prose ul, .prose ol {
     margin-top: 1.25rem;

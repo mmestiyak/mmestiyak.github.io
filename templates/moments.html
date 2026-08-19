@@ -6,26 +6,28 @@
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
     <header class="mb-8 sm:mb-10">
-        <h1 class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight mb-2">Moments</h1>
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Moments</h1>
         <p class="text-base sm:text-lg text-faded">{{ section.description | default(value="Small moments, in photos.") }}</p>
     </header>
 
     {% if section.pages | length == 0 %}
     <p class="text-faded italic">Nothing here yet — the first moment is coming.</p>
     {% else %}
-    <div class="grid grid-cols-3 gap-1.5 sm:gap-2">
+    <div class="grid grid-cols-3 gap-1 sm:gap-1.5">
         {% for m in section.pages %}
         {% set cover = m.assets | sort | first %}
         <a href="{{ m.permalink }}" class="group relative block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
             {% if cover %}
             <img src="{{ m.path }}{{ cover | split(pat="/") | last }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
             {% elif m.extra.photos %}
-            <img src="{{ m.extra.photos | first }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
+            {% set csrc = m.extra.photos | first %}
+            {% if config.extra.image_base and csrc | truncate(length=1, end="") == "/" %}{% set csrc = config.extra.image_base ~ csrc %}{% endif %}
+            <img src="{{ csrc }}" alt="{{ m.title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
             {% else %}
             <span class="w-full h-full flex items-center justify-center p-3 text-center italic text-xs sm:text-base text-faded leading-snug">{{ m.title }}</span>
             {% endif %}
             {% if m.date %}
-            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 font-serif italic text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 dateline text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
                 {{ m.date | date(format="%b %d, %Y") }}
             </span>
             {% endif %}
