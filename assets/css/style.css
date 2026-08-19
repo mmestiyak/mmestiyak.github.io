@@ -106,7 +106,18 @@ body {
     text-decoration: none;
 }
 
-@media (pointer: coarse) {
+/* Anchor links are a desktop affordance. On narrow screens there is no hover
+   to reveal them and no margin to hold them, so hide them rather than pin a
+   link glyph to the edge of the viewport beside every heading. */
+@media (max-width: 767px) {
+    .prose h1[id] .anchor-link, .prose h2[id] .anchor-link, .prose h3[id] .anchor-link,
+    .prose h4[id] .anchor-link, .prose h5[id] .anchor-link, .prose h6[id] .anchor-link {
+        display: none;
+    }
+}
+
+/* Touch devices with room for them (tablets and up): always visible. */
+@media (pointer: coarse) and (min-width: 768px) {
     .prose h1[id] .anchor-link, .prose h2[id] .anchor-link, .prose h3[id] .anchor-link,
     .prose h4[id] .anchor-link, .prose h5[id] .anchor-link, .prose h6[id] .anchor-link {
         opacity: 1;
