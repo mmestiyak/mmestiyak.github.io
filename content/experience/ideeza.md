@@ -13,12 +13,11 @@ date_end = "present"
 location = "Netanya, Israel · Remote"
 highlights = [
     "Build custom Blockly blocks that compile to Arduino and Raspberry Pi firmware, letting non-programmers drive real hardware",
-    "Lead creation of a no-code APK generator with Bluetooth, Wi-Fi communication channels",
-    # TODO(meer): "Contribute to backend architecture decisions and API design"
-    # says nothing a reader can evaluate. Replace with one decision you actually
-    # made and what it bought: which datastore, which boundary, what it fixed.
-    "Contribute to backend architecture decisions and API design",
-    "Engineer end-to-end systems from hardware integration to deployment"
+    "Lead creation of a no-code APK generator with Bluetooth and Wi-Fi communication channels",
+    "Own the whole path on these systems, from hardware integration through backend and API design to deployment",
+    # Worth adding when you have a minute: one backend decision you actually
+    # made and what it bought (which datastore, which boundary, what it fixed).
+    # A named tradeoff is the single strongest line you could put on this job.
 ]
 +++
 
