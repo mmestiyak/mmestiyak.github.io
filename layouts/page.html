@@ -30,8 +30,9 @@
                 {{ end }}
                 {{ with .GetTerms "topics" }}
                 <span aria-hidden="true">·</span>
-                {{ range . }}
-                <a href="{{ .RelPermalink }}" class="text-faded hover:text-accent transition-colors">{{ .LinkTitle }}</a>
+                {{ range $i, $t := . }}
+                {{ if $i }}<span aria-hidden="true">·</span>{{ end }}
+                <a href="{{ $t.RelPermalink }}" class="text-faded hover:text-accent transition-colors">{{ $t.LinkTitle }}</a>
                 {{ end }}
                 {{ end }}
             </div>
