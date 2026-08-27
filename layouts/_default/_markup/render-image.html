@@ -1,0 +1,8 @@
+{{- /* Inline markdown images: ![alt](/images/file.jpg).
+       Resolves the path through img-src (assets/ files get resized to webp,
+       static/ and absolute URLs pass through), so posts can reference
+       /images/foo.jpg with the file living in assets/images/. */ -}}
+{{- $src := partial "img-src.html" (dict "path" .Destination "width" 1400) -}}
+<img src="{{ $src }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }}
+     loading="lazy" decoding="async"
+     class="w-full h-auto rounded-md border border-line my-8">

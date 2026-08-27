@@ -19,6 +19,7 @@
 
 {{ define "main" }}
 <div class="page px-4 sm:px-6 py-10 sm:py-16">
+  <div class="max-w-[34rem] mx-auto">
 
     <section class="mb-12 sm:mb-16">
         {{ with site.Params.portrait }}
@@ -31,15 +32,15 @@
         {{/* The short answer, before the long one. Someone who reads only the
              next two lines should still leave knowing what I do and whether
              I'm available; the story below is for whoever wants it. */}}
-        <p class="text-lg sm:text-xl text-ink leading-relaxed mb-2 max-w-[34rem]">
+        <p class="text-lg sm:text-xl text-ink leading-relaxed mb-2">
             Full-stack engineer, five years in production: Node.js, React, Next.js,
             TypeScript, Postgres, plus hardware integration work at IDEEZA. Remote from
             Bangladesh. I also run a cattle and silage farm, which is where most of what
             I believe about software came from.
         </p>
         {{ with site.Params.availability }}
-        <p class="font-sans text-sm text-faded mb-8 max-w-[34rem]">
-            <span class="text-accent">·</span> {{ . }}
+        <p class="font-sans text-sm text-faded mb-8">
+            <span class="status-dot align-middle mr-1.5" aria-hidden="true"></span>{{ . }}
             <a href="{{ "/resume/" | relURL }}" class="ml-1 text-ink link">resume</a>
         </p>
         {{ end }}
@@ -67,19 +68,19 @@
         <div class="space-y-6">
             <div>
                 <h3 class="text-lg font-semibold text-ink mb-1">No skipped days</h3>
-                <p class="text-base text-faded leading-relaxed">Cattle, fight camps, and production systems all fail the day you skip. So I don't skip.</p>
+                <p class="text-[1.0625rem] text-faded leading-relaxed">Cattle, fight camps, and production systems all fail the day you skip. So I don't skip.</p>
             </div>
             <div>
                 <h3 class="text-lg font-semibold text-ink mb-1">End to end, whatever it is</h3>
-                <p class="text-base text-faded leading-relaxed">From database to deployment; from seed to silage to doorstep. I own the whole path, not a slice of it.</p>
+                <p class="text-[1.0625rem] text-faded leading-relaxed">From database to deployment; from seed to silage to doorstep. I own the whole path, not a slice of it.</p>
             </div>
             <div>
                 <h3 class="text-lg font-semibold text-ink mb-1">Simple survives</h3>
-                <p class="text-base text-faded leading-relaxed">Minimal code, minimal business, minimal life. Whatever cannot stay simple eventually breaks, or breaks you.</p>
+                <p class="text-[1.0625rem] text-faded leading-relaxed">Minimal code, minimal business, minimal life. Whatever cannot stay simple eventually breaks, or breaks you.</p>
             </div>
             <div>
                 <h3 class="text-lg font-semibold text-ink mb-1">Built for seasons</h3>
-                <p class="text-base text-faded leading-relaxed">Products that outlive their launch week, a farm that outlasts the season, fitness that outlasts one fight. The long run is the only run.</p>
+                <p class="text-[1.0625rem] text-faded leading-relaxed">Products that outlive their launch week, a farm that outlasts the season, fitness that outlasts one fight. The long run is the only run.</p>
             </div>
         </div>
     </section>
@@ -87,10 +88,10 @@
     <section class="mb-12 sm:mb-16">
         <h2 class="label text-faded mb-6 pb-3 border-b border-line">The worlds I move in</h2>
         <div class="space-y-4">
-            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">Software.</strong> Node.js, React, Next.js, TypeScript, Vue and Nuxt, MongoDB, PostgreSQL. Full-stack and production-grade, five years of it.</p>
-            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">Business.</strong> <a href="https://kommercly.com" target="_blank" rel="noopener" class="link">Kommercly</a> for WhatsApp commerce; <a href="https://khamarvest.com" target="_blank" rel="noopener" class="link">Khamarvest</a> and its <a href="https://silage.khamarvest.com" target="_blank" rel="noopener" class="link">silage supply</a> on the agro side.</p>
-            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">The land.</strong> Cattle and maize silage today; a village of tech-integrated farming someday.</p>
-            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">The body.</strong> Long rides, MMA (two club fights, two wins), swimming. Horses and marksmanship are next.</p>
+            <p class="text-[1.0625rem] text-faded leading-relaxed"><strong class="text-ink font-semibold">Software.</strong> Node.js, React, Next.js, TypeScript, Vue and Nuxt, MongoDB, PostgreSQL. Full-stack and production-grade, five years of it.</p>
+            <p class="text-[1.0625rem] text-faded leading-relaxed"><strong class="text-ink font-semibold">Business.</strong> <a href="https://kommercly.com" target="_blank" rel="noopener" class="link">Kommercly</a> for WhatsApp commerce; <a href="https://khamarvest.com" target="_blank" rel="noopener" class="link">Khamarvest</a> and its <a href="https://silage.khamarvest.com" target="_blank" rel="noopener" class="link">silage supply</a> on the agro side.</p>
+            <p class="text-[1.0625rem] text-faded leading-relaxed"><strong class="text-ink font-semibold">The land.</strong> Cattle and maize silage today; a village of tech-integrated farming someday.</p>
+            <p class="text-[1.0625rem] text-faded leading-relaxed"><strong class="text-ink font-semibold">The body.</strong> Long rides, MMA (two club fights, two wins), swimming. Horses and marksmanship are next.</p>
         </div>
     </section>
 
@@ -107,5 +108,6 @@
         </div>
     </section>
 
+  </div>
 </div>
 {{ end }}
