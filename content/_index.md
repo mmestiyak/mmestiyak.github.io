@@ -1,6 +1,4 @@
 +++
-title = "Meer's Log"
-description = "A simple home on the internet"
+title = "Meer Estiyak"
+description = "Meer Estiyak, full-stack software engineer in Bangladesh. Five years in production with Node.js, React, Next.js and TypeScript. Currently at IDEEZA, building software that talks to hardware."
 +++
-
-Welcome to my little corner of the internet. This is where I share thoughts on software development, cycling adventures, boxing training, and agricultural experiments.

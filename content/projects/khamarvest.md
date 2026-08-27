@@ -4,7 +4,9 @@ description = "Agro farm built with a small founding team: cattle and maize sila
 tags = ["farming", "cattle", "silage", "operations"]
 topics = ["farm"]
 [extra]
+year = 2024
 status = "Operating"
+stack_label = "What it involves"
 role = "Co-founder"
 live_url = "https://khamarvest.com"
 highlights = [

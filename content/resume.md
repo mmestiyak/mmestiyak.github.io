@@ -15,11 +15,11 @@ layout = "resume"
 # things you really use (Python? Redis? Docker? AWS? Postgres depth?) and
 # delete anything you would not want to be interviewed on.
 # ---------------------------------------------------------------------------
-headline = "Full-stack software engineer · 5 years in production"
+headline = "Full-stack software engineer · 5 years in production · Node.js, React, TypeScript"
 location = "Bangladesh · remote, UTC+6"
 skills = [
   { group = "Languages",  items = "TypeScript, JavaScript, SQL" },
-  { group = "Frontend",   items = "React, Next.js, React Native, Vue, Redux, Tailwind" },
+  { group = "Frontend",   items = "React, Next.js, React Native, Vue, Nuxt, Vuex, Redux, Tailwind" },
   { group = "Backend",    items = "Node.js, RESTful API design" },
   { group = "Data",       items = "PostgreSQL, MongoDB" },
   { group = "Platform",   items = "Git, GitHub Actions, CI/CD" },

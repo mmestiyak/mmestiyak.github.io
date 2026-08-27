@@ -4,7 +4,9 @@ description = "Pure maize silage, produced and delivered across Bangladesh. More
 tags = ["farming", "silage", "operations"]
 topics = ["farm"]
 [extra]
+year = 2025
 status = "Operating"
+stack_label = "What it involves"
 role = "Co-founder"
 live_url = "https://silage.khamarvest.com"
 highlights = [

@@ -1,12 +1,12 @@
 +++
 title = "About"
-description = "Self-made software engineer and Khamarvest co-founder from Bangladesh: building since seventeen, riding long roads, fighting in MMA. This site is my cloud home."
+description = "Self-taught software engineer from Bangladesh, full-stack in Node.js and React, currently at IDEEZA. Khamarvest co-founder. Building since seventeen, riding long roads, fighting in MMA."
 layout = "about"
 +++
 
 I'm from Bangladesh, the country of rivers.
 
-At seventeen, I needed a way to support my family, test my potential, and carve out a path. That's when I found software engineering. Through countless stormy, lonely, sleepless nights of learning I kept grinding, never entirely sure where it would lead. Sustained by the belief of my family and friends, that restless teenage necessity turned me into a self-taught engineer. Eventually, it worked out better than I ever thought. Today, I work full-time as a remote software engineer on [enterprise-grade applications](/work/) used around the world. Beside the job, my brother and I build software businesses of our own. The current one is [Kommercly](https://kommercly.com), a WhatsApp-first store builder (a lighter Shopify, you could say) that turns your Google Sheet into a live store in minutes. Stop building, start selling.
+At seventeen, I needed a way to support my family, test my potential, and carve out a path. That's when I found software engineering. Through countless stormy, lonely, sleepless nights of learning I kept grinding, never entirely sure where it would lead. Sustained by the belief of my family and friends, that restless teenage necessity turned me into a self-taught engineer. Eventually, it worked out better than I ever thought. Today I work full-time and remote as a software developer at [IDEEZA](/work/), building software that reaches into hardware: custom Blockly blocks that compile to Arduino and Raspberry Pi firmware, and a no-code APK generator. Before that, at JoulesLabs, I built the front end of FundedNext, a prop trading firm, and Crowdfundly, an enterprise SaaS fundraising platform, and went from intern to leading the frontend team in eight months. Beside the job, my brother and I build software businesses of our own. The current one is [Kommercly](https://kommercly.com), a WhatsApp-first store builder (a lighter Shopify, you could say) that turns your Google Sheet into a live store in minutes. Stop building, start selling.
 
 But the land pulled me back, too. I co-founded [**Khamarvest**](https://khamarvest.com) with a few others, an agro-business seeded by the trust of my colleagues. What started as an idea is now a reality of cattle farming and maize silage production running side by side. The dream is a village of integrated farming where tradition meets modern engineering, and the land gives everything it can.
 

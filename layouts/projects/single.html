@@ -85,9 +85,12 @@
     </section>
     {{ end }}
 
+    {{/* tech_stack is reused by the farm projects, where "Built with" would
+         read as nonsense ("Built with: Cattle, Silage, Feed planning"). Let a
+         project name its own label; software keeps the default. */}}
     {{ with .Params.extra.tech_stack }}
     <section class="mb-9">
-        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Built with</h2>
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">{{ or $.Params.extra.stack_label "Built with" }}</h2>
         <p class="font-sans text-sm text-faded">{{ delimit . ", " }}</p>
     </section>
     {{ end }}
