@@ -1,21 +1,21 @@
 +++
-title = "Software Developer — JoulesLabs"
-weight = 3
-description = "Started as intern, rose to lead the entire Frontend team"
-tags = ["nextjs", "react-native", "vuejs", "javascript", "team-lead", "mentoring"]
+title = "Software Developer · JoulesLabs"
+weight = 2
+description = "From intern to leading the entire Frontend team in eight months"
+tags = ["nextjs", "vuejs", "nuxt", "react-native", "javascript", "team-lead", "fintech"]
 topics = ["work"]
 [extra]
 company = "JoulesLabs"
-role = "Full-time"
+role = "Software Developer"
+employment = "Full-time"
 date_start = "2021-12"
 date_end = "2022-08"
 highlights = [
-    "Started as intern, rose to lead the entire Frontend team",
-    "Successfully handled multiple projects simultaneously as team lead",
-    "Mentored developers and introduced latest web standards & optimal technologies",
-    "Conducted tech sessions emphasizing conceptual understanding and practical relevance",
-    "Developed and maintained modern Next.js frontends and React Native mobile apps",
-    "Collaborated on API integration and RESTful API design"
+    "Promoted from intern to leading the frontend team in eight months",
+    "Built and maintained the FundedNext web frontend in Next.js, for a prop trading firm now serving 364,600+ funded accounts and $150M+ in payouts",
+    "Built the frontend for Crowdfundly, an enterprise-grade SaaS fundraising platform, in Nuxt and Vue",
+    "Collaborated with the backend team on API integration and RESTful API design",
+    "Mentored developers and ran internal tech sessions on web fundamentals",
 ]
 +++
 

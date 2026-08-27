@@ -2,12 +2,12 @@
 #
 # THREE WAYS TO SIGN IN
 #
-# 1. On this Mac — no auth at all:
+# 1. On this Mac, no auth at all:
 #    `make serve`, open http://localhost:1313/admin/ in Chrome/Edge, click
 #    "Work with Local Repository", pick the repo folder once. Edits are
 #    written straight to disk; review with `git diff`, publish with `git push`.
 #
-# 2. From anywhere (phone included) — access token, no server needed:
+# 2. From anywhere (phone included), access token, no server needed:
 #    open https://mmestiyak.com/admin/ and click "Sign In Using Access Token".
 #    Create the token at github.com → Settings → Developer settings →
 #    Personal access tokens → Fine-grained tokens:
@@ -16,7 +16,7 @@
 #      Expiration: 1 year (re-create it when it lapses)
 #    Paste it once per device. Nothing else to set up.
 #
-# 3. From anywhere — real "Sign in with GitHub" button (optional, ~20 min):
+# 3. From anywhere, real "Sign in with GitHub" button (optional, ~20 min):
 #    a static site cannot keep an OAuth client secret, so this needs one tiny
 #    free proxy. Deploy https://github.com/sveltia/sveltia-cms-auth to
 #    Cloudflare Workers, create a GitHub OAuth App whose callback is that
@@ -34,6 +34,18 @@ media_folder: assets/images
 public_folder: /images
 
 collections:
+  - name: pages
+    label: Pages
+    files:
+      - label: "About, the story"
+        name: about
+        file: content/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: "Meta description (search results / link previews)", name: description, widget: text }
+          - { label: Layout, name: layout, widget: hidden, default: about }
+          - { label: "The story", name: body, widget: markdown }
+
   - name: moments
     label: Moments
     label_singular: Moment
@@ -108,6 +120,13 @@ collections:
           - { label: "Your role", name: role, widget: string, required: false }
           - { label: "Live URL", name: live_url, widget: string, required: false }
           - { label: "Source URL", name: source_url, widget: string, required: false }
+          - label: "Extra links (e.g. a sub-site)"
+            name: links
+            widget: list
+            required: false
+            fields:
+              - { label: "Label", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
           - { label: "Stack / tools", name: tech_stack, widget: list, required: false }
           - { label: "Highlights (numbers beat adjectives)", name: highlights, widget: list, required: false }
           - { label: "Cover image", name: image, widget: image, required: false }
@@ -123,7 +142,7 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}}"
     fields:
-      - { label: "Title (e.g. Software Developer — Company)", name: title, widget: string }
+      - { label: "Title (e.g. Software Developer, Company)", name: title, widget: string }
       - { label: "One-line summary", name: description, widget: text, required: false }
       - { label: "Order (1 shows first)", name: weight, widget: number, value_type: int }
       - { label: Topics, name: topics, widget: list, required: false }

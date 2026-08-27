@@ -1,0 +1,123 @@
+{{ define "main" }}
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10 sm:mb-14">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
+        <p class="text-base sm:text-lg text-faded">{{ .Description }}</p>
+
+        {{/* Whether I am looking, and the one-page version, at the top of the
+             page rather than the bottom: this is the page people arrive on
+             from a job application, and both answers are why they came. */}}
+        {{ with site.Params.availability }}
+        <div class="mt-6 pt-5 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p class="font-sans text-sm text-ink"><span class="text-accent">·</span> {{ . }}</p>
+            <div class="flex items-center gap-5 font-sans text-sm whitespace-nowrap">
+                <a href="{{ "/resume/" | relURL }}" class="text-ink link">one-page resume</a>
+                <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
+            </div>
+        </div>
+        {{ end }}
+    </header>
+
+    {{/* Projects, the things I make */}}
+    {{ with site.GetPage "/projects" }}
+    <section class="mb-14 sm:mb-20">
+        <h2 class="label text-faded pb-3 border-b border-line">Projects</h2>
+        <div>
+            {{ range sort .RegularPages "Params.extra.year" "desc" }}
+            <article class="py-8 sm:py-10 border-b border-line last:border-0">
+                <div class="grid sm:grid-cols-[1fr_2fr] gap-4 sm:gap-8">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ .Title }}</h3>
+                        <div class="font-sans text-xs text-faded space-y-0.5">
+                            {{ with .Params.extra.year }}<p>{{ . }}</p>{{ end }}
+                            {{ with .Params.extra.role }}<p>{{ . }}</p>{{ end }}
+                            {{ with .Params.extra.status }}<p class="text-accent">{{ . }}</p>{{ end }}
+                        </div>
+                        <div class="flex items-center flex-wrap gap-4 mt-3 font-sans text-xs">
+                            {{ with .Params.extra.live_url }}
+                            <a href="{{ . }}" target="_blank" rel="noopener" class="text-ink link">live ↗</a>
+                            {{ end }}
+                            {{ with .Params.extra.source_url }}
+                            <a href="{{ . }}" target="_blank" rel="noopener" class="text-ink link">source ↗</a>
+                            {{ end }}
+                            {{ range .Params.extra.links }}
+                            <a href="{{ .url }}" target="_blank" rel="noopener" class="text-ink link">{{ .label }} ↗</a>
+                            {{ end }}
+                        </div>
+                    </div>
+                    <div>
+                        {{ with .Params.extra.image }}
+                        {{ $src := partial "img-src.html" (dict "path" . "width" 900) }}
+                        <img src="{{ $src }}" alt="{{ $.Title }}" loading="lazy" class="w-full max-h-64 object-cover rounded-md border border-line mb-4">
+                        {{ end }}
+                        <p class="max-w-[36rem] text-base sm:text-lg text-ink leading-relaxed mb-3">{{ .Description }}</p>
+
+                        {{ with .Params.extra.highlights }}
+                        <ul class="space-y-1.5 mb-4">
+                            {{ range . }}
+                            <li class="text-sm sm:text-base text-faded leading-relaxed flex items-start gap-2">
+                                <span class="text-accent mt-0.5 flex-shrink-0">·</span>
+                                <span>{{ . }}</span>
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+
+                        {{ with .Params.extra.tech_stack }}
+                        <div class="flex flex-wrap gap-x-3 gap-y-1 font-sans text-xs text-faded">
+                            {{ range . }}<span>{{ . }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* Experience, where the craft was earned */}}
+    {{ with site.GetPage "/experience" }}
+    <section>
+        <h2 class="label text-faded pb-3 border-b border-line">Experience</h2>
+        <div>
+            {{ range .RegularPages.ByWeight }}
+            <article class="py-8 sm:py-10 border-b border-line last:border-0">
+                <div class="grid sm:grid-cols-[1fr_2fr] gap-3 sm:gap-8">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ or .Params.extra.company .Title }}</h3>
+                        <div class="font-sans text-xs text-faded space-y-0.5">
+                            <p>{{ or .Params.extra.date_start "" }} – {{ or .Params.extra.date_end "present" }}</p>
+                            {{ with .Params.extra.role }}<p>{{ . }}</p>{{ end }}
+                            {{ with .Params.extra.employment }}<p>{{ . }}</p>{{ end }}
+                            {{ with .Params.extra.location }}<p>{{ . }}</p>{{ end }}
+                        </div>
+                    </div>
+                    <div>
+                        {{ with .Description }}<p class="max-w-[36rem] text-base sm:text-lg text-ink leading-relaxed mb-3">{{ . }}</p>{{ end }}
+
+                        {{ with .Params.extra.highlights }}
+                        <ul class="space-y-1.5 mb-4">
+                            {{ range . }}
+                            <li class="text-sm sm:text-base text-faded leading-relaxed flex items-start gap-2">
+                                <span class="text-accent mt-0.5 flex-shrink-0">·</span>
+                                <span>{{ . }}</span>
+                            </li>
+                            {{ end }}
+                        </ul>
+                        {{ end }}
+
+                        {{ with .Params.tags }}
+                        <div class="flex flex-wrap gap-x-3 gap-y-1 font-sans text-xs text-faded">
+                            {{ range . }}<span>{{ . }}</span>{{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+</div>
+{{ end }}

@@ -17,13 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     env:
       # Pinned so a Hugo release can never break a deploy unannounced.
-      HUGO_VERSION: 0.152.0
+      # Keep this equal to the Hugo you develop on (`hugo version`), when the
+      # two drift you are no longer testing what you deploy. Bumping this and
+      # the `locale` key in hugo.toml are a single change: `locale` replaced the
+      # deprecated `languageCode` in 0.158, so an older pin cannot parse it.
+      HUGO_VERSION: 0.165.0
       PAGES_BRANCH: gh-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Hugo (extended — required for WebP image processing)
+      - name: Install Hugo (extended, required for WebP image processing)
         run: |
           curl -sLo hugo.deb "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
           sudo dpkg -i hugo.deb
@@ -42,7 +46,13 @@ jobs:
           test -s public/atom.xml
           test -s public/archive/index.html
           test -s public/moments/index.html
-          grep -q 'allPosts=\[{' public/logs/index.html          # search index present
+          grep -q '<article' public/logs/index.html               # log list rendered
+          test -s public/work/index.html                            # work page present
+          test -s public/resume/index.html                           # resume route present
+          grep -q 'JoulesLabs' public/resume/index.html              # resume rendered from content/experience
+          grep -q '<img' public/index.html                           # portrait actually shipped
+          test -s public/og-image.jpg                               # social card ships
+          test -s public/favicon.svg                                # tab icon ships
           grep -q 'href=/css/tailwind\.' public/index.html         # fingerprinted css linked
           test -n "$(find public -name '*.html' -newermt '-1 hour' -print -quit)"
           echo "build looks sane"

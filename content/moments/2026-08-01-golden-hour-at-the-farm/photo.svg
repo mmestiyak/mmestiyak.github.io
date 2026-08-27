@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
-  <rect width="1080" height="1080" fill="#E7EAE0"/>
-  <rect x="40" y="40" width="1000" height="1000" fill="none" stroke="#3A5A40" stroke-width="3" stroke-dasharray="10 10"/>
-  <circle cx="540" cy="400" r="90" fill="#D9BE8C"/>
-  <path d="M0 760 Q270 690 540 740 T1080 720 L1080 1080 L0 1080 Z" fill="#B9C4A8"/>
-  <text x="540" y="880" font-family="Menlo, Consolas, monospace" font-size="34" fill="#3A5A40" text-anchor="middle">sample — replace with your photo</text>
-  <text x="540" y="935" font-family="Menlo, Consolas, monospace" font-size="26" fill="#6E6A61" text-anchor="middle">golden hour at the farm</text>
-</svg>

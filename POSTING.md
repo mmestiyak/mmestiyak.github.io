@@ -1,55 +1,68 @@
-# How to post — without ever touching templates
+# How to post, without ever touching templates
+
+## The whole site in eight lines
+
+| I want to… | Do this |
+| --- | --- |
+| See the site locally | `make serve` → http://localhost:1313 |
+| Write a log | `make log t="Title"` → edit the file → push. Or /admin/ → Logs |
+| Post photos (a moment) | `make moment t="Title"` → drop phone photos in the folder → push. Or /admin/ → Moments |
+| Edit my story | edit `content/about.md`. Or /admin/ → Pages → About |
+| Add a project / job | copy a file in `content/projects/` or `content/experience/` → shows on /work/ |
+| Show my portrait / about photos | set `portrait` / `about_photos` in `hugo.toml` (paths like `/images/x.jpg`, files in `assets/images/`) |
+| Publish everything | `git add -A && git commit -m "…" && git push`, CI builds, checks, deploys |
+| Change how it looks | `assets/css/style.css` (tokens at top) + layouts; then `make css` and commit |
 
 The whole site is files. **Adding content = adding a file. Publishing = `git push`.**
 GitHub Actions builds and deploys automatically. You never edit HTML/templates
-to post — templates render whatever exists in `content/`.
+to post, templates render whatever exists in `content/`.
 
 The site is built with **Hugo**. Photos are resized automatically at build
-time, so you can drop full-size phone photos straight in — no exporting, no
+time, so you can drop full-size phone photos straight in, no exporting, no
 resizing, no size limit to remember.
 
-## Admin panels (post without code) — two options
+## Admin panels (post without code), two options
 
-### Option A: self-hosted Sveltia CMS — works offline & during GitHub outages
+### Option A: self-hosted Sveltia CMS, works offline & during GitHub outages
 
 Ships inside the repo at `/admin/`:
 
 1. `make serve`, then open **http://localhost:1313/admin/** in Chrome/Edge.
 2. Click **"Work with Local Repository"** and pick the repo folder (one time).
-3. Post Moments/Logs/Projects/Experience through forms — files are written
+3. Post Moments/Logs/Projects/Experience through forms, files are written
    straight to disk. Review with `git diff`, publish with `git push`.
 
 No login, no GitHub dependency, fully yours.
 
 **The same panel is live at [mmestiyak.com/admin/](https://mmestiyak.com/admin/)**
-(hidden from search engines) and works from any device — phone included. Signing
+(hidden from search engines) and works from any device, phone included. Signing
 in there, easiest first:
 
 | Where | How | Setup |
 | --- | --- | --- |
-| This Mac | "Work with Local Repository" | none — edits files directly |
+| This Mac | "Work with Local Repository" | none, edits files directly |
 | Any device | "Sign In Using Access Token" | ~5 min, no server |
 | Any device | "Sign in with GitHub" button | ~20 min, needs a free Cloudflare Worker |
 
 **Why there's no one-click "Authorize with GitHub" out of the box.** Clicking
 "Sign in with GitHub" on a GitHub Pages site sends you to Netlify's OAuth
-endpoint and returns *Not Found* — that endpoint only serves Netlify-hosted
+endpoint and returns *Not Found*, that endpoint only serves Netlify-hosted
 sites. OAuth needs a client secret, and a static site has nowhere to keep one.
 Per Sveltia's docs, PKCE (which would remove that need) is unimplemented
 because GitHub paused the feature, and there is no GitHub App or device-flow
 option. So the choice is a token, or one small proxy.
 
-**About biometrics / passkeys.** The panel itself can't verify a passkey —
+**About biometrics / passkeys.** The panel itself can't verify a passkey,
 WebAuthn needs a server, and this site has none. But you get Face ID / Touch ID
 either way:
 
 - *Token route:* save the token in iCloud Keychain (or 1Password) and autofill
   it with Face ID. And the token is stored in the browser afterwards, so you
-  stay signed in — you rarely re-enter it.
+  stay signed in, you rarely re-enter it.
 - *OAuth route:* the login happens on github.com, where your passkey / Face ID
   already works. That's the real "authorize with GitHub" experience.
 
-**Access token route — works right now, no setup.** Open
+**Access token route, works right now, no setup.** Open
 [mmestiyak.com/admin/](https://mmestiyak.com/admin/) and click **"Sign in with
 Token"**. The dialog links straight to GitHub's token page with the right
 scopes pre-selected, so you don't have to hunt for settings. Prefer a
@@ -59,20 +72,20 @@ per device, done. Revoke it on GitHub any time.
 
 **How long a token lasts on a device.** Two separate clocks:
 
-- *The token itself* expires when you told GitHub it should — fine-grained
+- *The token itself* expires when you told GitHub it should, fine-grained
   tokens allow up to a year (or no expiration, if you accept that tradeoff).
 - *The browser copy* lives in localStorage for `mmestiyak.com`. Chrome, Edge
   and Firefox keep it until the token expires or you clear site data. **Safari
   is the exception:** it wipes script-writable storage after roughly a week of
   not visiting the site, so on iPhone Safari expect to paste again now and then.
 
-That's why the password manager matters more than the expiry you pick — re-entry
+That's why the password manager matters more than the expiry you pick, re-entry
 becomes a Face ID autofill. Nothing else on `/admin/` can read the token: that
 page loads only the local CMS bundle, with no analytics or third-party scripts.
 If a device is ever lost, revoke the token on GitHub and it's dead everywhere;
 its only power is writing to this one repo.
 
-**OAuth route — the real GitHub authorize button (~15 min, one time, free).**
+**OAuth route, the real GitHub authorize button (~15 min, one time, free).**
 
 1. Deploy [sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to
    Cloudflare Workers (free tier). Note the worker URL.
@@ -88,18 +101,18 @@ After that, `/admin/` shows a working "Sign in with GitHub" button and GitHub
 handles the biometrics.
 
 **Or skip all of it:** [Pages CMS](https://app.pagescms.org) (configured by
-`.pages.yml`) has GitHub sign-in built in via its own GitHub App — zero setup,
+`.pages.yml`) has GitHub sign-in built in via its own GitHub App, zero setup,
 biometrics through GitHub's own login. The tradeoff is that it's a hosted panel
 on someone else's domain instead of yours.
 
 ### Option B: hosted Pages CMS
 
-`.pages.yml` configures **https://app.pagescms.org** — sign in with GitHub,
+`.pages.yml` configures **https://app.pagescms.org**, sign in with GitHub,
 grant this repo, get the same forms in a hosted dashboard. Nice on phones.
 Depends on GitHub + Pages CMS being up.
 
 For both: don't edit the `_index` entries (they hold section settings), and
-remember publishing takes a minute — it's a git commit + build, not instant.
+remember publishing takes a minute, it's a git commit + build, not instant.
 
 ## Cheat sheet
 
@@ -129,11 +142,11 @@ content/moments/2026-08-20-first-silage-cut/
 +++
 title = "First silage cut of the season"
 date = "2026-08-20"
-topics = ["farm"]      # farm | training | project | work — anything you like
+topics = ["farm"]      # farm | training | project | work, anything you like
 tags = ["silage"]
 +++
 
-Optional caption — anything here shows under the photo.
+Optional caption, anything here shows under the photo.
 ```
 
 That's it. The grid page (/moments/), the home-page strip, topic pages, and the
@@ -141,15 +154,15 @@ RSS feed all pick it up automatically. Newest-first by date. `make moment
 t="..."` scaffolds the folder for you.
 
 Three **sample moments** ship with the redesign (marked "sample" in the
-image) — replace their SVGs with real photos or delete the folders.
+image), replace their SVGs with real photos or delete the folders.
 
-## Photo sets — a moment *is* a collection
+## Photo sets, a moment *is* a collection
 
 There is no separate "collections" area. A moment holds as many photographs as
 you like, and it changes shape by itself:
 
-- **Up to 4 photos** — stacked full width, like a photo essay.
-- **5 or more** — the lead photo, then your story, then the rest as a contact
+- **Up to 4 photos**, stacked full width, like a photo essay.
+- **5 or more**, the lead photo, then your story, then the rest as a contact
   sheet where each thumbnail opens full size.
 
 Force it either way with `gallery = true` or `gallery = false` in the
@@ -158,13 +171,13 @@ scroll to discover there is more than one.
 
 > **Dates and publishing:** a post dated in the future is not built. Dates are
 > read in Bangladesh time (`timeZone` in `hugo.toml`), so "today" means today
-> here — not tomorrow in UTC. If a new post ever fails to appear, check the
+> here, not tomorrow in UTC. If a new post ever fails to appear, check the
 > date first.
 
 ## Logs (written posts)
 
 One markdown file in `content/logs/`. `make log t="Title"` scaffolds it.
-Set a `description` (used in lists + SEO), pick `topics`/`tags` freely — new
+Set a `description` (used in lists + SEO), pick `topics`/`tags` freely, new
 topic names (e.g. `farm`, `training`) create their own pages automatically.
 
 Optional header image for a log: drop the image in `assets/images/` and add:
@@ -177,10 +190,10 @@ image = "/images/my-cover.jpg"   # shows above the post + in WhatsApp/social pre
 ## Projects & ventures
 
 One file per venture in `content/projects/`. The farm and silage business
-already have **draft entries** (`farm.md`, `silage.md`) — fill in the TODO
+already have **draft entries** (`farm.md`, `silage.md`), fill in the TODO
 numbers, delete `draft = true`, and they go live. Fields that render:
 `year`, `status`, `role`, `tech_stack`, `highlights`, `live_url`, `source_url`,
-`image` — all under `[extra]`.
+`image`, all under `[extra]`.
 
 > **Convention:** project/experience detail fields live under `[extra]`
 > (`year`, `status`, `role`, `highlights`, …), while `title`, `date`,
@@ -192,7 +205,7 @@ One file per role in `content/experience/`. `weight = 1` shows first.
 Custom fields under `[extra]`: `company`, `role`, `date_start`, `date_end`,
 `location`, `highlights`.
 
-## Photos — the three mechanisms
+## Photos, the three mechanisms
 
 1. `assets/images/foo.jpg` → referenced as `/images/foo.jpg` (auto-resized)
 2. Colocated: image files next to a post's `index.md` (how moments work)
@@ -201,22 +214,22 @@ Custom fields under `[extra]`: `company`, `role`, `date_start`, `date_end`,
 **No need to resize anything.** Hugo generates WebP derivatives at the sizes
 each page needs (grid thumbnails, full-width views, archive thumbs), so a 4 MB
 phone photo becomes a handful of small files automatically. Just keep the
-originals reasonable — full-resolution phone photos are fine.
+originals reasonable, full-resolution phone photos are fine.
 
 ## One-time setup still pending
 
-- `static/og-image.jpg` — 1200×630 photo used for social link previews
-- `portrait` in `hugo.toml` — your photo on home + about
+- `static/og-image.jpg`, 1200×630 photo used for social link previews
+- `portrait` in `hugo.toml`, your photo on home + about
   (e.g. `portrait = "/images/portrait.jpg"` with the file in `assets/images/`)
-- `about_photos` in `hugo.toml` — the 4-photo strip on the about page
+- `about_photos` in `hugo.toml`, the 4-photo strip on the about page
 
 Photos you reference by path can live in either place:
-`assets/images/` (Hugo resizes them — preferred) or `static/` (served as-is).
+`assets/images/` (Hugo resizes them, preferred) or `static/` (served as-is).
 
 ## If you ever edit templates (not needed for posting)
 
 The site's CSS is compiled and committed (`assets/css/tailwind.css`) and fonts
-are self-hosted (`static/fonts/`) — zero external dependencies. Posting content
+are self-hosted (`static/fonts/`), zero external dependencies. Posting content
 never requires rebuilding CSS. Only if you change Tailwind **classes in
 `layouts/`** run `make css` (needs `npm install` once) and commit the result.
 Templates live in `layouts/`; stylesheets are fingerprinted so visitors can

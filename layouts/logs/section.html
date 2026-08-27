@@ -1,30 +1,21 @@
 {{ define "main" }}
 {{ $all := .RegularPagesRecursive }}
 {{ $paginator := .Paginate $all }}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
 
     <header class="mb-8 sm:mb-10">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
-        <p class="text-base sm:text-lg text-faded">{{ or .Description "Thoughts, lessons, and experiences — in chronological order." }}</p>
+        <p class="text-base sm:text-lg text-faded">{{ or .Description "Thoughts, lessons, and experiences, in chronological order." }}</p>
+        {{/* The other ways in: everything by date, or by subject */}}
+        <p class="dateline text-sm mt-3">
+            Everything, including photographs, is in the
+            <a href="{{ "/archive/" | relURL }}" class="text-faded hover:text-accent transition-colors underline decoration-line underline-offset-4">archive</a>.
+            {{ with site.Taxonomies.topics }} Or by subject:
+            {{ $i := 0 }}{{ range $name, $taxonomy := . }}{{ if $i }}, {{ end }}<a href="{{ $taxonomy.Page.RelPermalink }}" class="text-faded hover:text-accent transition-colors underline decoration-line underline-offset-4">{{ $taxonomy.Page.LinkTitle }}</a>{{ $i = add $i 1 }}{{ end }}.{{ end }}
+        </p>
     </header>
 
-    <!-- Search -->
-    <div class="mb-8 sm:mb-10">
-        <div class="relative max-w-xl">
-            <input type="text" id="search-input" placeholder="Search logs..."
-                class="w-full px-4 py-2.5 pl-10 pr-10 font-serif text-sm text-ink bg-paper border border-line rounded-sm focus:outline-none focus:border-accent transition-colors placeholder:text-faded/70"
-                aria-label="Search through all blog posts" autocomplete="off" spellcheck="false">
-            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg class="h-4 w-4 text-faded" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-            <button id="clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-faded hover:text-ink transition-colors hidden"
-                aria-label="Clear search" onclick="window.simpleSearch.clearSearch()">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-    </div>
-
-    <div id="all-posts">
+    <div>
         {{ range $paginator.Pages }}
         <article class="py-4 sm:py-5 border-b border-line last:border-0">
             <div class="flex items-start justify-between gap-4">
@@ -32,15 +23,18 @@
                     <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
                         <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>
                     </h2>
-                    <div class="flex items-center gap-2 dateline text-xs">
+                    <div class="flex items-center gap-2 dateline text-xs mb-1">
                         {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>{{ end }}
                         {{ with .ReadingTime }}<span aria-hidden="true">·</span><span>{{ . }} min</span>{{ end }}
                     </div>
+                    {{ with or .Description (.Summary | plainify | truncate 140) }}
+                    <p class="max-w-[30rem] text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">{{ . }}</p>
+                    {{ end }}
                 </div>
                 {{ with .GetTerms "topics" }}
                 <div class="flex gap-2 flex-shrink-0 self-start">
                     {{ range . }}
-                    <a href="{{ .RelPermalink }}" class="font-serif text-xs text-faded hover:text-accent transition-colors whitespace-nowrap">{{ .LinkTitle }}</a>
+                    <a href="{{ .RelPermalink }}" class="font-sans text-xs text-faded hover:text-accent transition-colors whitespace-nowrap">{{ .LinkTitle }}</a>
                     {{ end }}
                 </div>
                 {{ end }}
@@ -49,10 +43,9 @@
         {{ end }}
     </div>
 
-    <!-- Pagination (JS takes over once loaded) -->
     {{ if gt $paginator.TotalPages 1 }}
-    <nav id="pagination-nav" class="mt-8 sm:mt-12 flex justify-center sm:justify-start">
-        <div class="flex items-center space-x-2 font-serif text-xs">
+    <nav class="mt-8 sm:mt-12 flex justify-center sm:justify-start">
+        <div class="flex items-center space-x-2 font-sans text-xs">
             {{ with $paginator.Prev }}<a href="{{ .URL }}" class="px-3 py-2 text-faded hover:text-accent transition-colors">← previous</a>{{ end }}
             <span class="px-3 py-2 text-faded/70">page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
             {{ with $paginator.Next }}<a href="{{ .URL }}" class="px-3 py-2 text-faded hover:text-accent transition-colors">next →</a>{{ end }}
@@ -60,185 +53,4 @@
     </nav>
     {{ end }}
 </div>
-
-{{/* Build the client-side index from all logs (including subsections like বাংলা) */}}
-{{ $posts := slice }}
-{{ range $p := $all }}
-    {{ $topics := slice }}{{ $topicUrls := dict }}
-    {{ range $t := ($p.GetTerms "topics") }}
-        {{ $topics = $topics | append $t.LinkTitle }}
-        {{ $topicUrls = merge $topicUrls (dict $t.LinkTitle $t.RelPermalink) }}
-    {{ end }}
-    {{ $tags := slice }}
-    {{ range $t := ($p.GetTerms "tags") }}{{ $tags = $tags | append $t.LinkTitle }}{{ end }}
-    {{ $posts = $posts | append (dict
-        "id" (path.Base $p.RelPermalink)
-        "title" $p.Title
-        "description" (or $p.Description "")
-        "date" ($p.Date.Format "2006-01-02")
-        "url" $p.RelPermalink
-        "topics" $topics
-        "tags" $tags
-        "readingTime" $p.ReadingTime
-        "topicUrls" $topicUrls
-        "searchText" (lower (printf "%s %s %s %s" $p.Title (or $p.Description "") (delimit $topics " ") (delimit $tags " ")))
-    ) }}
-{{ end }}
-<script>
-class SimpleSearch {
-    constructor() {
-        this.allPosts = {{ $posts | jsonify | safeJS }};
-        this.searchQuery = '';
-        this.currentPage = 1;
-        this.postsPerPage = {{ $paginator.PagerSize }};
-        this.allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-        this.filteredPosts = [...this.allPosts];
-        this.setupEventListeners();
-        this.applySearch();
-    }
-
-    setupEventListeners() {
-        const searchInput = document.getElementById('search-input');
-        if (!searchInput) return;
-        let searchTimeout;
-        searchInput.addEventListener('input', (e) => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                this.searchQuery = e.target.value.trim().toLowerCase();
-                this.toggleClearButton();
-                this.applySearch();
-            }, 150);
-        });
-    }
-
-    applySearch() {
-        this.filteredPosts = this.searchQuery
-            ? this.allPosts.filter(post => post.searchText.includes(this.searchQuery))
-            : [...this.allPosts];
-        this.currentPage = 1;
-        this.updateDisplay();
-    }
-
-    updateDisplay() {
-        const container = document.getElementById('all-posts');
-        if (!container) return;
-
-        if (this.filteredPosts.length === 0) {
-            const message = this.searchQuery
-                ? `No logs found for "${this.searchQuery}". Try different keywords or check your spelling.`
-                : 'No logs available.';
-            container.innerHTML = `<div class="text-center py-12 text-faded italic">${message}</div>`;
-            this.hidePagination();
-            return;
-        }
-
-        const startIndex = (this.currentPage - 1) * this.postsPerPage;
-        const postsToShow = this.filteredPosts.slice(startIndex, startIndex + this.postsPerPage);
-        container.innerHTML = postsToShow.map(post => this.renderPost(post)).join('');
-        this.updatePagination();
-    }
-
-    renderPost(post) {
-        const topics = post.topics || [];
-        const topicUrls = post.topicUrls || {};
-        const topicsHtml = topics.length > 0 ? topics.map(topic =>
-            `<a href="${topicUrls[topic] || '#'}" class="font-serif text-xs text-faded hover:text-accent transition-colors whitespace-nowrap flex-shrink-0">${topic}</a>`
-        ).join('') : '';
-        const readingTime = post.readingTime
-            ? `<span aria-hidden="true">·</span><span>${post.readingTime} min</span>` : '';
-
-        let formattedDate = '';
-        if (post.date) {
-            const dateObj = new Date(post.date);
-            if (!isNaN(dateObj.getTime())) {
-                formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-            }
-        }
-
-        return `
-            <article class="py-4 sm:py-5 border-b border-line last:border-0">
-                <div class="flex items-start justify-between gap-4">
-                    <div class="flex-1 min-w-0">
-                        <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
-                            <a href="${post.url}" class="hover:text-accent transition-colors">${post.title}</a>
-                        </h2>
-                        <div class="flex items-center gap-2 dateline text-xs">
-                            <time datetime="${post.date || ''}">${formattedDate}</time>
-                            ${readingTime}
-                        </div>
-                    </div>
-                    ${topics.length > 0 ? `<div class="flex gap-2 flex-shrink-0 self-start">${topicsHtml}</div>` : ''}
-                </div>
-            </article>
-        `;
-    }
-
-    clearSearch() {
-        const searchInput = document.getElementById('search-input');
-        if (searchInput) {
-            searchInput.value = '';
-            this.searchQuery = '';
-            this.toggleClearButton();
-            this.applySearch();
-        }
-    }
-
-    updatePagination() {
-        const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
-        const nav = document.getElementById('pagination-nav');
-        if (!nav) return;
-        if (totalPages <= 1) { this.hidePagination(); return; }
-        nav.classList.remove('hidden');
-
-        const btn = (label, page) =>
-            `<button onclick="simpleSearch.goToPage(${page})" class="px-3 py-2 font-serif text-xs text-faded hover:text-ink transition-colors">${label}</button>`;
-        const cur = (label) =>
-            `<span class="px-3 py-2 font-serif text-xs bg-ink text-paper rounded-sm">${label}</span>`;
-        const gap = `<span class="px-2 py-2 font-serif text-xs text-faded/70">...</span>`;
-
-        let html = '<div class="flex items-center justify-center gap-1">';
-        if (this.currentPage > 1) html += btn('←', this.currentPage - 1);
-
-        if (totalPages <= 5) {
-            for (let i = 1; i <= totalPages; i++) html += (i === this.currentPage) ? cur(i) : btn(i, i);
-        } else if (this.currentPage <= 3) {
-            for (let i = 1; i <= 4; i++) html += (i === this.currentPage) ? cur(i) : btn(i, i);
-            html += gap + btn(totalPages, totalPages);
-        } else if (this.currentPage >= totalPages - 2) {
-            html += btn(1, 1) + gap;
-            for (let i = totalPages - 3; i <= totalPages; i++) html += (i === this.currentPage) ? cur(i) : btn(i, i);
-        } else {
-            html += btn(1, 1) + gap;
-            for (let i = this.currentPage - 1; i <= this.currentPage + 1; i++) html += (i === this.currentPage) ? cur(i) : btn(i, i);
-            html += gap + btn(totalPages, totalPages);
-        }
-
-        if (this.currentPage < totalPages) html += btn('→', this.currentPage + 1);
-        html += '</div>';
-        nav.innerHTML = html;
-    }
-
-    hidePagination() {
-        const nav = document.getElementById('pagination-nav');
-        if (nav) nav.classList.add('hidden');
-    }
-
-    goToPage(page) {
-        const totalPages = Math.ceil(this.filteredPosts.length / this.postsPerPage);
-        if (page >= 1 && page <= totalPages) {
-            this.currentPage = page;
-            this.updateDisplay();
-        }
-    }
-
-    toggleClearButton() {
-        const clearButton = document.getElementById('clear-search');
-        const searchInput = document.getElementById('search-input');
-        if (clearButton && searchInput) {
-            clearButton.classList.toggle('hidden', searchInput.value.trim().length === 0);
-        }
-    }
-}
-window.simpleSearch = new SimpleSearch();
-</script>
 {{ end }}

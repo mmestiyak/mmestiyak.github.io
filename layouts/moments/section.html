@@ -1,15 +1,17 @@
 {{ define "main" }}
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
     <header class="mb-8 sm:mb-10">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Moments</h1>
         <p class="text-base sm:text-lg text-faded">{{ or .Description "Small moments, in photos." }}</p>
+        <p class="dateline text-sm mt-3">Photographs and writing together, by date, in the <a href="{{ "/archive/" | relURL }}" class="text-faded hover:text-accent transition-colors underline decoration-line underline-offset-4">archive</a>.</p>
     </header>
 
     {{ $moments := .RegularPages }}
     {{ if not $moments }}
-    <p class="text-faded italic">Nothing here yet — the first moment is coming.</p>
+    <p class="text-faded italic">Nothing here yet. The first moment is coming.</p>
     {{ else }}
-    <div class="grid grid-cols-3 gap-1 sm:gap-1.5">
+    {{ $cols := len $moments }}
+    <div class="grid gap-1 sm:gap-1.5 {{ cond (eq $cols 1) "grid-cols-1 max-w-sm" (cond (eq $cols 2) "grid-cols-2" "grid-cols-3") }}">
         {{ range $moments }}
         {{ $cover := "" }}
         {{ with (.Resources.ByType "image") }}{{ $cover = partial "thumb.html" (dict "res" (index . 0) "size" 600) }}{{ end }}
@@ -20,20 +22,19 @@
         {{ $n := 0 }}
         {{ with .Resources.ByType "image" }}{{ $n = len . }}{{ end }}
         {{ if and (eq $n 0) .Params.extra.photos }}{{ $n = len .Params.extra.photos }}{{ end }}
-        <a href="{{ .RelPermalink }}" class="group relative block aspect-square overflow-hidden rounded-sm border border-line bg-tint">
+        <a href="{{ .RelPermalink }}" class="group relative block aspect-square overflow-hidden rounded-md border border-line bg-tint">
             {{ if $cover }}
             <img src="{{ $cover }}" alt="{{ .Title }}" loading="lazy" class="w-full h-full object-cover group-hover:opacity-90 transition-opacity">
             {{ else }}
             <span class="w-full h-full flex items-center justify-center p-3 text-center italic text-xs sm:text-base text-faded leading-snug">{{ .Title }}</span>
             {{ end }}
             {{ if gt $n 1 }}
-            <span class="absolute top-1.5 right-1.5 px-1.5 py-0.5 label text-ink bg-spark/85 rounded-sm leading-none" title="{{ $n }} photographs">{{ $n }}</span>
+            <span class="absolute top-1.5 right-1.5 px-1.5 py-0.5 label text-paper bg-ink/70 rounded-sm leading-none" title="{{ $n }} photographs">{{ $n }}</span>
             {{ end }}
-            {{ if not .Date.IsZero }}
-            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 dateline text-[10px] sm:text-xs text-paper bg-ink/50 opacity-0 group-hover:opacity-100 transition-opacity">
-                {{ .Date.Format "Jan 02, 2006" }}
+            <span class="absolute bottom-0 inset-x-0 px-2 py-1.5 text-paper bg-ink/60 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity">
+                <span class="block text-xs sm:text-sm leading-snug line-clamp-2">{{ .Title }}</span>
+                {{ if not .Date.IsZero }}<span class="block dateline text-[10px] sm:text-xs text-paper/80">{{ .Date.Format "Jan 02, 2006" }}</span>{{ end }}
             </span>
-            {{ end }}
         </a>
         {{ end }}
     </div>

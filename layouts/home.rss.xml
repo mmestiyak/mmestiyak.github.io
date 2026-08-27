@@ -8,7 +8,7 @@
     <title>{{ site.Title }}</title>
     <link>{{ site.Home.Permalink }}</link>
     <description>{{ site.Params.description }}</description>
-    <language>{{ or site.Language.LanguageCode "en" }}</language>
+    <language>{{ or site.Language.Locale "en" }}</language>
     <managingEditor>{{ site.Params.email }} ({{ site.Params.author }})</managingEditor>
     <webMaster>{{ site.Params.email }} ({{ site.Params.author }})</webMaster>
     <copyright>© {{ now.Format "2006" }} {{ site.Params.author }}</copyright>

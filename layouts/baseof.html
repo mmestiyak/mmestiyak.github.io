@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ or .Page.Language.LanguageCode "en" }}">
+<html lang="{{ or .Page.Language.Locale "en" }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     {{ $name := .Title }}
     {{ if eq .Kind "taxonomy" }}{{ $name = title .Title }}{{ end }}
-    {{ $title := cond .IsHome site.Title (printf "%s — %s" $name site.Title) }}
+    {{ $title := cond .IsHome site.Title (printf "%s · %s" $name site.Title) }}
     <title>{{ $title }}</title>
     {{ $desc := or .Description .Params.description site.Params.description }}
     <meta name="description" content="{{ $desc }}">
 
-    {{/* Social meta — absolute image URL, page image falling back to site default */}}
+    {{/* Social meta, absolute image URL, page image falling back to site default */}}
     {{ $ogImg := or .Params.extra.image site.Params.og_image }}
     {{ with $ogImg }}
       {{ $u := . }}
@@ -41,9 +41,11 @@
     {{ block "head_extra" . }}{{ end }}
 </head>
 <body class="bg-paper text-ink font-sans">
+    {{/* Visible only when focused, the standard skip affordance. */}}
+    <a href="#main" class="skip-link">Skip to content</a>
     {{ partial "nav.html" . }}
 
-    <main class="min-h-screen">
+    <main id="main" class="min-h-screen">
         {{ block "main" . }}{{ end }}
     </main>
 

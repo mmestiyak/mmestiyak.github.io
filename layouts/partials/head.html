@@ -1,4 +1,33 @@
-<!-- Typography: Newsreader + Noto Serif Bengali, self-hosted (no external requests) -->
+<!-- The page is paper, keep UA form controls and scrollbars light too -->
+<meta name="color-scheme" content="light">
+
+<!-- Icons: monogram "M." in the site's ink on paper -->
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon-32.png" | relURL }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
+
+<!-- Typography: two families, per the header of assets/css/style.css,
+     Alegreya for display, Alegreya Sans for body and small UI, plus Noto
+     Serif Bengali for Bangla. Self-hosted, no external requests.
+     Every face carries a unicode-range, so the browser fetches only the
+     subsets the page's characters actually need (latin here); the other 48
+     declared faces cost nothing at runtime.
+
+     Preload exactly the latin faces every page paints with. These were wrong
+     for a long time: they still preloaded Alegreya Sans 400 + 700 from when
+     the site had one family, so the display face carrying every heading and
+     the wordmark was discovered late, and the 700 weight was fetched on pages
+     that never use it. Verified against DevTools, not assumed, if you change
+     a font, re-check which files the network panel actually requests. -->
+{{/* Alegreya, variable 400–900: every heading and the wordmark, all weights
+     from one 44K file. */}}
+<link rel="preload" href="{{ "fonts/4UaBrEBBsBhlBjvfkSLhx6jj4JN0.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Alegreya Sans 400 roman: all body copy and small UI. */}}
+<link rel="preload" href="{{ "fonts/5aUz9_-1phKLFgshYDvh6Vwt7VptvWdUhm8.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Alegreya Sans 400 italic: .action and .dateline, which appear in the
+     first screen of nearly every template. Without this it renders as a
+     synthetic slant and then reflows. */}}
+<link rel="preload" href="{{ "fonts/5aUt9_-1phKLFgshYDvh6Vwt7V9dv21TpG1Lsw.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ "fonts/fonts.css" | relURL }}">
 
 {{/* Stylesheets are fingerprinted, so a design change can never serve stale CSS.

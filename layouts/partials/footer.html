@@ -1,15 +1,16 @@
 <footer class="mt-16 sm:mt-24 border-t border-line pb-safe-bottom">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-3 font-serif text-xs text-faded text-center sm:text-left">
+    <div class="page px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-3 font-sans text-xs text-faded text-center sm:text-left">
             <div>
-                <span>&copy; {{ now.Format "2006" }} Meer Estiyak — Bangladesh</span>
+                <span>&copy; {{ now.Format "2006" }} Meer Estiyak · Bangladesh</span>
             </div>
             <div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
                 <a href="mailto:{{ site.Params.email }}" class="hover:text-accent transition-colors">email</a>
                 <a href="https://github.com/{{ site.Params.github }}" class="hover:text-accent transition-colors">github</a>
                 <a href="https://linkedin.com/in/{{ site.Params.linkedin }}" class="hover:text-accent transition-colors">linkedin</a>
                 <a href="{{ site.Params.strava }}" class="hover:text-accent transition-colors">strava</a>
-                <a href="{{ "/experience/" | relURL }}" class="hover:text-accent transition-colors">experience</a>
+                <a href="{{ "/resume/" | relURL }}" class="hover:text-accent transition-colors">resume</a>
+                <a href="{{ "/archive/" | relURL }}" class="hover:text-accent transition-colors">archive</a>
                 <a href="{{ "/topics/" | relURL }}" class="hover:text-accent transition-colors">topics</a>
                 {{ with .OutputFormats.Get "rss" }}<a href="{{ .Permalink }}" class="hover:text-accent transition-colors">rss</a>{{ end }}
             </div>

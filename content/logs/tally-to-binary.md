@@ -13,7 +13,7 @@ image = "https://raw.githubusercontent.com/mmestiyak/mmestiyak.github.io/refs/he
 
 To write good software, you need a solid grip on data.
 
-Every video you watch, every song you listen to, every message you read — they all feel different on the surface.
+Every video you watch, every song you listen to, every message you read, they all feel different on the surface.
 But inside your device, they’re the same thing: binary, just 0s and 1s making everything come alive.
 
 This is a gentle walk from ancient counting to the heart of modern machines.
@@ -27,7 +27,7 @@ Let’s start where counting began.
 
 Imagine a shepherd at dusk. One sheep, one stone in the pouch. Two sheep, two stones. Counting was touch, memory, and trust.
 
-Soon, people carved **tally marks** instead: four lines for four apples—`||||`. At five, a diagonal slash grouped them. Cave walls, bones, wood—whatever held a scratch.
+Soon, people carved **tally marks** instead: four lines for four apples, `||||`. At five, a diagonal slash grouped them. Cave walls, bones, wood, whatever held a scratch.
 
 ![tally system representation](https://raw.githubusercontent.com/mmestiyak/mmestiyak.github.io/refs/heads/main/assets/images/tallytable.webp)
 
@@ -44,7 +44,7 @@ But unique symbols for every number? Chaos.
 
 The breakthrough: **reuse digits by position**.
 
-Enter **base 10**—ten symbols (0–9), each place a power of ten.  
+Enter **base 10**, ten symbols (0–9), each place a power of ten.  
 Rightmost digit: ×10⁰. Next: ×10¹. And so on.
 
 Let’s see it in action with **319**:
@@ -69,12 +69,12 @@ Why two? Because hardware is honest.
 
 At the switch level, a transistor is either conducting or not.
 Using two well‑separated voltage ranges (low and high) gives strong noise margins, making circuits faster, cheaper, and more reliable.
-More than two states are possible in theory, but they are harder to separate, more error‑prone, and waste more power—so base 2 wins in practice.
+More than two states are possible in theory, but they are harder to separate, more error‑prone, and waste more power, so base 2 wins in practice.
 
 A transistor is a switch: on or off.  
 A hard drive magnetizes a spot: north or south.  
 A Wi-Fi signal peaks or dips.  
-A pixel glows red, green, blue—at different strengths.
+A pixel glows red, green, blue, at different strengths.
 
 All of it: **0 or 1**.
 
@@ -85,7 +85,7 @@ That simplicity scales. Billions of switches breathe in unison, and from that rh
 - **Wireless**: 0s and 1s riding invisible waves.  
 - **Images**: Millions of pixels, each a mix of red, green, blue.
 
-Binary isn’t just low-level—it’s **universal**.
+Binary isn’t just low-level, it’s **universal**.
 
 ---
 
@@ -104,7 +104,7 @@ So `0x41` = `01000001` in binary = one byte.
 ### Text: From Codes to Characters
 - **ASCII** gave early English 128 characters. `A` = 65 = `0x41`.  
 - **Unicode** gave every script a number (a *code point*). `A` = U+0041.  
-- **UTF-8** packs those code points into 1–4 bytes—so the world’s writing fits in files.
+- **UTF-8** packs those code points into 1–4 bytes, so the world’s writing fits in files.
 
 Same `A`? Still `0x41` in UTF-8. Backward compatible. Smart.
 
@@ -122,7 +122,7 @@ That’s why your screen feels alive.
 ## Conclusion
 
 - We began with stones and scratches.  
-- Place value let us reuse digits—first in base 10, then base 2.  
+- Place value let us reuse digits, first in base 10, then base 2.  
 - Hardware speaks binary because it must: on or off, nothing in between.  
 - Storage, sound, images, and networks follow the same pattern.  
 - We compact with hex, encode text with UTF-8, paint with 24-bit color.  
@@ -131,7 +131,7 @@ That’s why your screen feels alive.
 The journey from tally mark to pixel is one of **compression, reuse, and translation**.
 
 Next time, we’ll put it into practice:  
-reading binary files, decoding UTF-8 by hand, building a tiny image from scratch—all in simple, runnable snippets.
+reading binary files, decoding UTF-8 by hand, building a tiny image from scratch, all in simple, runnable snippets.
 
 If this sparked curiosity, stick around. The fun is just beginning.
 

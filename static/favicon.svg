@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#F7F2ED"/>
+  <text x="29" y="47" font-family="Charter, Georgia, 'Times New Roman', serif" font-size="44" font-weight="600" fill="#2B2925" text-anchor="middle">M</text>
+  <circle cx="51.5" cy="43.5" r="5" fill="#0F766E"/>
+</svg>

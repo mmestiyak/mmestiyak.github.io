@@ -1,6 +1,6 @@
 {
   "name": "mmestiyak-blog",
-  "description": "Meer's Log — personal blog built with Zola",
+  "description": "Meer's Log — personal site built with Hugo",
   "version": "1.0.0",
   "private": true,
   "scripts": {

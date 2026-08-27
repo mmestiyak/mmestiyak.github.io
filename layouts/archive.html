@@ -1,15 +1,21 @@
 {{ define "main" }}
-<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+<div class="page px-4 sm:px-6 py-10 sm:py-16">
     <header class="mb-10 sm:mb-14">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">Archive</h1>
-        <p class="text-base sm:text-lg text-faded">Everything, in order — what I wrote and what I saw.</p>
+        <p class="text-base sm:text-lg text-faded">Everything in order: what I wrote and what I saw.</p>
+        {{ with site.Taxonomies.topics }}
+        <p class="dateline text-sm mt-3">
+            By subject:
+            {{ $i := 0 }}{{ range $name, $taxonomy := . }}{{ if $i }}, {{ end }}<a href="{{ $taxonomy.Page.RelPermalink }}" class="text-faded hover:text-accent transition-colors underline decoration-line underline-offset-4">{{ $taxonomy.Page.LinkTitle }}</a>{{ $i = add $i 1 }}{{ end }}.
+        </p>
+        {{ end }}
     </header>
 
     {{/* Writing and photographs, merged into one chronological stream */}}
     {{ $entries := where site.RegularPages "Section" "in" (slice "logs" "moments") }}
     {{ $entries = where $entries "Params.unlisted" "!=" true }}
     {{ if not $entries }}
-    <p class="text-faded italic">The archive is empty — for now.</p>
+    <p class="text-faded italic">The archive is empty, for now.</p>
     {{ else }}
     {{ range $entries.GroupByDate "2006" }}
     <section class="mb-12 sm:mb-16">
@@ -24,7 +30,7 @@
                 {{ with (.Resources.ByType "image") }}{{ $thumb = partial "thumb.html" (dict "res" (index . 0) "size" 96) }}{{ end }}
                 {{ if and (not $thumb) .Params.extra.photos }}{{ $thumb = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 96) }}{{ end }}
                 {{ with $thumb }}
-                <img src="{{ . }}" alt="" loading="lazy" class="w-8 h-8 object-cover rounded-sm border border-line flex-shrink-0">
+                <img src="{{ . }}" alt="" loading="lazy" class="w-8 h-8 object-cover rounded border border-line flex-shrink-0">
                 {{ end }}
                 {{ end }}
                 <a href="{{ .RelPermalink }}" class="text-base sm:text-lg text-ink hover:text-accent transition-colors">{{ .Title }}</a>

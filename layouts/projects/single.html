@@ -1,0 +1,105 @@
+{{/* ==========================================================================
+     A single project. These pages are in the sitemap and indexable, but until
+     now they rendered only a title, one sentence and a tag list — every real
+     detail (role, status, highlights, stack, live URL) sat unused in the
+     frontmatter because /work/ was the only template reading it.
+
+     Same fields, same source of truth as /work/ and /resume/. Nothing here is
+     duplicated content: this is the detail view, /work/ is the index.
+     ========================================================================== */}}
+{{ define "head_extra" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": {{ .Title | jsonify }},
+  "description": {{ (or .Description "") | jsonify }},
+  "url": "{{ .Permalink }}",
+  {{ with .Params.extra.live_url }}"sameAs": {{ . | jsonify }},{{ end }}
+  "author": { "@type": "Person", "name": {{ site.Params.author | jsonify }}, "url": "{{ site.BaseURL }}" }
+}
+</script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+
+    <header class="mb-9 pb-7 border-b border-line">
+        <a href="{{ "/work/" | relURL }}" class="action text-sm">← all work</a>
+
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink leading-tight mt-4 mb-3">{{ .Title }}</h1>
+
+        {{ with .Description }}
+        <p class="max-w-[34rem] text-lg sm:text-xl text-ink leading-relaxed">{{ . }}</p>
+        {{ end }}
+
+        {{/* Role, year and status on one meta line rather than three stacked
+             paragraphs: at this size they read as one fact about the project. */}}
+        {{ $meta := slice }}
+        {{ with .Params.extra.role }}{{ $meta = $meta | append . }}{{ end }}
+        {{ with .Params.extra.year }}{{ $meta = $meta | append (printf "%v" .) }}{{ end }}
+        {{ with $meta }}
+        <p class="font-sans text-xs text-faded mt-4">
+            {{ delimit . " · " }}{{ with $.Params.extra.status }} · <span class="text-accent">{{ . }}</span>{{ end }}
+        </p>
+        {{ end }}
+
+        {{ $links := slice }}
+        {{ with .Params.extra.live_url }}{{ $links = $links | append (dict "label" "live" "url" .) }}{{ end }}
+        {{ with .Params.extra.source_url }}{{ $links = $links | append (dict "label" "source" "url" .) }}{{ end }}
+        {{ range .Params.extra.links }}{{ $links = $links | append (dict "label" .label "url" .url) }}{{ end }}
+        {{ with $links }}
+        <div class="flex items-center flex-wrap gap-5 mt-4 font-sans text-sm">
+            {{ range . }}
+            <a href="{{ .url }}" target="_blank" rel="noopener" class="text-ink link">{{ .label }} ↗</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </header>
+
+    {{ with .Params.extra.image }}
+    {{ $hero := partial "img-src.html" (dict "path" . "width" 1600) }}
+    <img src="{{ $hero }}" alt="{{ $.Title }}" loading="lazy"
+         class="w-full max-h-[26rem] object-cover rounded-md border border-line mb-9">
+    {{ end }}
+
+    {{ with .Params.extra.highlights }}
+    <section class="mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">What it does</h2>
+        <ul class="space-y-2 max-w-[34rem]">
+            {{ range . }}
+            <li class="text-base text-faded leading-relaxed flex items-start gap-2.5">
+                <span class="text-accent flex-shrink-0">·</span><span>{{ . }}</span>
+            </li>
+            {{ end }}
+        </ul>
+    </section>
+    {{ end }}
+
+    {{/* The body is optional. Most of these projects say everything they need
+         to in frontmatter, so an empty markdown body renders nothing rather
+         than an empty region. */}}
+    {{ with .Content }}
+    <section class="mb-9">
+        <div class="prose prose-start">{{ . }}</div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.extra.tech_stack }}
+    <section class="mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Built with</h2>
+        <p class="font-sans text-sm text-faded">{{ delimit . ", " }}</p>
+    </section>
+    {{ end }}
+
+    {{ with .GetTerms "topics" }}
+    <section class="pt-6 border-t border-line">
+        <p class="font-sans text-xs text-faded">
+            Filed under
+            {{ range $i, $t := . }}{{ if $i }}, {{ end }}<a href="{{ $t.RelPermalink }}" class="text-ink link">{{ $t.LinkTitle }}</a>{{ end }}
+        </p>
+    </section>
+    {{ end }}
+
+</div>
+{{ end }}

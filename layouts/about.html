@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Meer Estiyak",
-  "jobTitle": "Software Developer & Founder",
+  "jobTitle": "Software Engineer",
   "description": "Software developer, cattle farmer, cyclist, and fighter from Bangladesh. Builder of Kommercly.",
   "url": "{{ site.BaseURL }}",
   "sameAs": [
@@ -18,86 +18,89 @@
 {{ end }}
 
 {{ define "main" }}
-<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+<div class="page px-4 sm:px-6 py-10 sm:py-16">
 
     <section class="mb-12 sm:mb-16">
         {{ with site.Params.portrait }}
         {{ $src := partial "img-src.html" (dict "path" . "width" 400) }}
-        <img src="{{ $src }}" alt="Meer Estiyak" class="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-sm border border-line mb-6">
+        <img src="{{ $src }}" alt="Meer Estiyak" width="1400" height="1750"
+             class="w-36 sm:w-48 aspect-[4/5] object-cover rounded-md border border-line mb-7">
         {{ end }}
-        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-6 leading-tight">Hi, I'm Meer.</h1>
-        <div class="space-y-5 text-lg sm:text-xl text-ink leading-relaxed">
-            <p>
-                I write software, raise cattle, run a silage business, ride long distances, and train to fight.
-                That list sounds scattered until you notice it's all the same thing: systems that only work
-                if you show up every day.
-            </p>
-            <p class="text-faded">
-                You can't cram a harvest. You can't skip feeding cattle. You can't fake a fight camp.
-                Software is no different — real products come from patient, daily, unglamorous work.
-                That's how I build.
-            </p>
-            <p>
-                By profession I'm a full-stack JavaScript developer — 5+ years of Node.js, React, Next.js and
-                TypeScript in production for startups and growing companies (the
-                <a href="{{ "/experience/" | relURL }}" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">full history</a>
-                is here). I also build my own things:
-                <a href="https://kommercly.com" target="_blank" rel="noopener" class="underline decoration-accent decoration-1 underline-offset-4 hover:text-accent transition-colors">Kommercly</a>,
-                a WhatsApp-first store builder made for entrepreneurs like the ones I grew up around in Bangladesh —
-                because I'm not just the developer of that customer, I <em>am</em> that customer.
-            </p>
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-4 leading-tight">Hi, I'm Meer.</h1>
+
+        {{/* The short answer, before the long one. Someone who reads only the
+             next two lines should still leave knowing what I do and whether
+             I'm available; the story below is for whoever wants it. */}}
+        <p class="text-lg sm:text-xl text-ink leading-relaxed mb-2 max-w-[34rem]">
+            Full-stack engineer, five years in production: Node.js, React, Next.js,
+            TypeScript, Postgres, plus hardware integration work at IDEEZA. Remote from
+            Bangladesh. I also run a cattle and silage farm, which is where most of what
+            I believe about software came from.
+        </p>
+        {{ with site.Params.availability }}
+        <p class="font-sans text-sm text-faded mb-8 max-w-[34rem]">
+            <span class="text-accent">·</span> {{ . }}
+            <a href="{{ "/resume/" | relURL }}" class="ml-1 text-ink link">resume</a>
+        </p>
+        {{ end }}
+
+        {{/* The story lives in content/about.md, edit it there (or in /admin/),
+             never here. Prose styling, pinned to the page's left axis. */}}
+        <div class="prose prose-start">
+            {{ .Content }}
         </div>
     </section>
 
     {{ with site.Params.about_photos }}
     <section class="mb-12 sm:mb-16">
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+        <div class="grid grid-cols-3 gap-2 sm:gap-3">
             {{ range . }}
             {{ $src := partial "img-src.html" (dict "path" . "width" 600) }}
-            <img src="{{ $src }}" alt="Life of Meer" loading="lazy" class="aspect-square w-full object-cover rounded-sm border border-line">
+            <img src="{{ $src }}" alt="Life of Meer" loading="lazy" class="aspect-square w-full object-cover rounded-md border border-line">
             {{ end }}
         </div>
     </section>
     {{ end }}
 
     <section class="mb-12 sm:mb-16">
-        <h2 class="label text-faded mb-6 pb-3 border-b border-line">What working with me looks like</h2>
+        <h2 class="label text-faded mb-6 pb-3 border-b border-line">How I work</h2>
         <div class="space-y-6">
             <div>
-                <h3 class="text-lg font-semibold text-ink mb-1">Full-stack ownership</h3>
-                <p class="text-base text-faded leading-relaxed">Clean, maintainable code across the stack — modular, documented, and built for long-term stability and easy handoff.</p>
+                <h3 class="text-lg font-semibold text-ink mb-1">No skipped days</h3>
+                <p class="text-base text-faded leading-relaxed">Cattle, fight camps, and production systems all fail the day you skip. So I don't skip.</p>
             </div>
             <div>
-                <h3 class="text-lg font-semibold text-ink mb-1">Backends that don't fall over</h3>
-                <p class="text-base text-faded leading-relaxed">Node.js APIs with proper authentication, error handling, and database design (MongoDB, PostgreSQL) that grow without breaking.</p>
+                <h3 class="text-lg font-semibold text-ink mb-1">End to end, whatever it is</h3>
+                <p class="text-base text-faded leading-relaxed">From database to deployment; from seed to silage to doorstep. I own the whole path, not a slice of it.</p>
             </div>
             <div>
-                <h3 class="text-lg font-semibold text-ink mb-1">Frontends that feel fast</h3>
-                <p class="text-base text-faded leading-relaxed">React and Next.js (SSR/SSG/ISR), mobile-first, optimized for performance and SEO.</p>
+                <h3 class="text-lg font-semibold text-ink mb-1">Simple survives</h3>
+                <p class="text-base text-faded leading-relaxed">Minimal code, minimal business, minimal life. Whatever cannot stay simple eventually breaks, or breaks you.</p>
             </div>
             <div>
-                <h3 class="text-lg font-semibold text-ink mb-1">End-to-end delivery</h3>
-                <p class="text-base text-faded leading-relaxed">Integration, deployment, and the edge cases — I handle the whole path to production, like someone who has to fix things at 5 a.m. before the cattle are fed.</p>
+                <h3 class="text-lg font-semibold text-ink mb-1">Built for seasons</h3>
+                <p class="text-base text-faded leading-relaxed">Products that outlive their launch week, a farm that outlasts the season, fitness that outlasts one fight. The long run is the only run.</p>
             </div>
         </div>
     </section>
 
     <section class="mb-12 sm:mb-16">
-        <h2 class="label text-faded mb-6 pb-3 border-b border-line">Toolkit</h2>
-        <div class="flex flex-wrap gap-x-4 gap-y-2 font-serif text-sm text-faded">
-            {{ range slice "Node.js (Express/NestJS)" "React & Next.js" "TypeScript" "MongoDB" "PostgreSQL" "React Native" "JWT / OAuth" "AWS / Vercel" "Docker" "REST APIs" "Vue.js" "Blockly / Arduino" "Git / CI/CD" "AI-assisted workflows" }}
-            <span>{{ . }}</span>
-            {{ end }}
+        <h2 class="label text-faded mb-6 pb-3 border-b border-line">The worlds I move in</h2>
+        <div class="space-y-4">
+            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">Software.</strong> Node.js, React and Next.js, TypeScript, MongoDB, PostgreSQL. Full-stack and production-grade, five-plus years of it.</p>
+            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">Business.</strong> <a href="https://kommercly.com" target="_blank" rel="noopener" class="link">Kommercly</a> for WhatsApp commerce; <a href="https://khamarvest.com" target="_blank" rel="noopener" class="link">Khamarvest</a> and its <a href="https://silage.khamarvest.com" target="_blank" rel="noopener" class="link">silage supply</a> on the agro side.</p>
+            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">The land.</strong> Cattle and maize silage today; a village of tech-integrated farming someday.</p>
+            <p class="text-base text-faded leading-relaxed"><strong class="text-ink font-semibold">The body.</strong> Long rides, MMA (two club fights, two wins), swimming. Horses and marksmanship are next.</p>
         </div>
     </section>
 
     <section class="pt-8 border-t border-line">
         <h2 class="text-xl sm:text-2xl font-semibold text-ink mb-3">Let's build something</h2>
         <p class="text-base sm:text-lg text-faded mb-5 leading-relaxed">
-            If you want a developer who takes ownership and treats your product like a working farm —
-            something that has to keep running, season after season — let's talk.
+            If you want a builder who takes ownership and treats your product like a working farm,
+            something that has to keep running season after season, let's talk.
         </p>
-        <div class="flex flex-wrap items-center gap-5 font-serif text-sm">
+        <div class="flex flex-wrap items-center gap-5 font-sans text-sm">
             <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
             <a href="https://linkedin.com/in/{{ site.Params.linkedin }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">linkedin</a>
             <a href="https://github.com/{{ site.Params.github }}" target="_blank" rel="noopener" class="text-faded underline underline-offset-4 hover:text-accent transition-colors">github</a>

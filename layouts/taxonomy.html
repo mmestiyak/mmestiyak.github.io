@@ -1,14 +1,14 @@
 {{ define "main" }}
-<div class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+<div class="page px-4 sm:px-6 py-10 sm:py-16">
     <header class="mb-10 sm:mb-12">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title | title }}</h1>
         <p class="text-base sm:text-lg text-faded">Everything on this site, by {{ .Data.Plural }}.</p>
     </header>
 
-    <div class="flex flex-wrap gap-x-5 gap-y-3 font-serif text-sm">
+    <div class="flex flex-wrap gap-x-5 gap-y-3 font-sans text-sm">
         {{ range .Pages }}
         <a href="{{ .RelPermalink }}" class="group inline-flex items-baseline gap-1.5 text-ink hover:text-accent transition-colors">
-            <span class="underline decoration-line group-hover:decoration-accent underline-offset-4">{{ .LinkTitle }}</span>
+            <span class="underline decoration-line group-hover:decoration-accent-bright group-hover:decoration-2 underline-offset-4">{{ .LinkTitle }}</span>
             {{ $vis := where .Pages "Params.unlisted" "!=" true }}<span class="text-xs text-faded">({{ len $vis }})</span>
         </a>
         {{ end }}

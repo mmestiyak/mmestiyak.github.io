@@ -37,7 +37,7 @@ moment: ## New photo moment: make moment t="Caption title" (then drop photos in 
 	mkdir -p "$$dir"; \
 	printf '+++\ntitle = "%s"\ndate = "%s"\ntags = []\ntopics = []\n+++\n\nCaption goes here (optional).\n' "$(t)" "$$d" > "$$dir/index.md"; \
 	echo "created $$dir"; \
-	echo "→ now drop your photo(s) in that folder (any size — Hugo resizes them)"
+	echo "→ now drop your photo(s) in that folder (any size, Hugo resizes them)"
 
 clean: ## Remove build artifacts and the image cache
 	rm -rf public resources

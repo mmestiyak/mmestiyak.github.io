@@ -1,0 +1,181 @@
+{{/* ==========================================================================
+     Resume. Two audiences, one document: a person skimming it in a browser,
+     and the same person hitting Cmd-P to get a PDF into an applicant tracking
+     system. So it is real text in document order, no columns, no tables, no
+     icons, which is also what an ATS parser can actually read.
+
+     Every fact comes from content/experience/ and content/projects/, the same
+     pages /work/ renders. Editing a role updates both.
+     ========================================================================== */}}
+{{ define "main" }}
+<div class="resume-sheet page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+
+    {{/* Masthead. The name is an h1 because on a resume it genuinely is the
+         document title, and screen readers should announce it that way. */}}
+    <header class="mb-9 pb-6 border-b border-line">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+                <h1 class="display font-serif font-semibold text-3xl sm:text-4xl text-ink leading-tight mb-1.5">{{ site.Params.author }}</h1>
+                {{ with .Params.extra.headline }}<p class="text-base sm:text-lg text-ink leading-snug">{{ . }}</p>{{ end }}
+                {{ with .Params.extra.location }}<p class="font-sans text-sm text-faded mt-1">{{ . }}</p>{{ end }}
+            </div>
+            <address class="font-sans text-sm not-italic space-y-1 sm:text-right">
+                <p><a href="mailto:{{ site.Params.email }}" class="text-ink link">{{ site.Params.email }}</a></p>
+                <p><a href="{{ site.BaseURL }}" class="text-ink link">{{ strings.TrimPrefix "https://" (strings.TrimSuffix "/" site.BaseURL) }}</a></p>
+                <p><a href="https://github.com/{{ site.Params.github }}" class="text-ink link">github.com/{{ site.Params.github }}</a></p>
+                <p><a href="https://linkedin.com/in/{{ site.Params.linkedin }}" class="text-ink link">linkedin.com/in/{{ site.Params.linkedin }}</a></p>
+            </address>
+        </div>
+
+        {{ with site.Params.availability }}
+        <p class="font-sans text-sm text-ink mt-5"><span class="text-accent">·</span> {{ . }}</p>
+        {{ end }}
+
+        {{/* Screen-only. Two ways to walk away with a file: Meer's own designed
+             CV when params.resume_pdf is set, and failing that the browser's
+             print dialog, which this page is laid out for. */}}
+        <div class="no-print mt-4 font-sans text-xs text-faded">
+            {{ with site.Params.resume_pdf }}
+            <p>
+                <a href="{{ . | relURL }}" download class="text-ink link">Download CV (PDF)</a>
+                <span class="mx-1">·</span>or print this page with <kbd class="font-sans">⌘P</kbd>
+            </p>
+            {{ else }}
+            <p>Print or save as PDF with <kbd class="font-sans">⌘P</kbd>. This page is laid out for it.</p>
+            {{ end }}
+        </div>
+    </header>
+
+    {{/* Skills before experience: it is the section a recruiter scans for
+         keywords, and burying it costs more than it saves. */}}
+    {{ with .Params.extra.skills }}
+    <section class="resume-section mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Skills</h2>
+        <dl class="space-y-2">
+            {{ range . }}
+            <div class="sm:grid sm:grid-cols-[7.5rem_1fr] sm:gap-4">
+                <dt class="font-sans text-sm text-ink">{{ .group }}</dt>
+                <dd class="font-sans text-sm text-faded leading-relaxed">{{ .items }}</dd>
+            </div>
+            {{ end }}
+        </dl>
+    </section>
+    {{ end }}
+
+    {{/* Experience. ByWeight matches /work/, so the ordering is decided in one
+         place (the weight field) rather than twice. */}}
+    {{ with site.GetPage "/experience" }}
+    <section class="resume-section mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Experience</h2>
+        <div class="space-y-7">
+            {{ range .RegularPages.ByWeight }}
+            <article class="resume-entry">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+                    <h3 class="text-lg sm:text-xl font-semibold text-ink leading-snug">
+                        {{ with .Params.extra.role }}{{ . }}{{ else }}{{ .Title }}{{ end }}{{ with .Params.extra.company }}<span class="text-faded font-normal">, {{ . }}</span>{{ end }}
+                    </h3>
+                    <p class="dateline font-sans text-xs whitespace-nowrap">{{ or .Params.extra.date_start "" }} – {{ or .Params.extra.date_end "present" }}</p>
+                </div>
+                {{ $meta := slice }}
+                {{ with .Params.extra.employment }}{{ $meta = $meta | append . }}{{ end }}
+                {{ with .Params.extra.location }}{{ $meta = $meta | append . }}{{ end }}
+                {{ with $meta }}<p class="font-sans text-xs text-faded mt-0.5">{{ delimit . " · " }}</p>{{ end }}
+                {{ with .Description }}<p class="text-sm sm:text-base text-ink leading-relaxed mt-2">{{ . }}</p>{{ end }}
+                {{ with .Params.extra.highlights }}
+                <ul class="mt-2 space-y-1">
+                    {{ range . }}
+                    <li class="text-sm text-faded leading-relaxed flex items-start gap-2">
+                        <span class="text-accent flex-shrink-0">·</span><span>{{ . }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+                {{ with .Params.tags }}
+                <p class="font-sans text-xs text-faded mt-2">{{ delimit . ", " }}</p>
+                {{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* Projects. Same source as /work/, trimmed: the description and the two
+         highlights that carry a number, because a resume is not the place for
+         all five. */}}
+    {{ with site.GetPage "/projects" }}
+    <section class="resume-section mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Projects</h2>
+        <div class="space-y-6">
+            {{ range sort .RegularPages "Params.extra.year" "desc" }}
+            <article class="resume-entry">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+                    <h3 class="text-lg sm:text-xl font-semibold text-ink leading-snug">
+                        {{ .Title }}{{ with .Params.extra.role }}<span class="text-faded font-normal">, {{ . }}</span>{{ end }}
+                    </h3>
+                    {{ $stamp := slice }}
+                    {{ with .Params.extra.year }}{{ $stamp = $stamp | append (printf "%v" .) }}{{ end }}
+                    {{ with .Params.extra.status }}{{ $stamp = $stamp | append . }}{{ end }}
+                    <p class="dateline font-sans text-xs whitespace-nowrap">{{ delimit $stamp " · " }}</p>
+                </div>
+                {{ with .Params.extra.live_url }}
+                <p class="font-sans text-xs mt-0.5"><a href="{{ . }}" class="text-ink link">{{ strings.TrimPrefix "https://" . }}</a></p>
+                {{ end }}
+                {{ with .Description }}<p class="text-sm sm:text-base text-ink leading-relaxed mt-2">{{ . }}</p>{{ end }}
+                {{ with .Params.extra.highlights }}
+                <ul class="mt-2 space-y-1">
+                    {{ range first 3 . }}
+                    <li class="text-sm text-faded leading-relaxed flex items-start gap-2">
+                        <span class="text-accent flex-shrink-0">·</span><span>{{ . }}</span>
+                    </li>
+                    {{ end }}
+                </ul>
+                {{ end }}
+                {{ with .Params.extra.tech_stack }}
+                <p class="font-sans text-xs text-faded mt-2">{{ delimit . ", " }}</p>
+                {{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{/* Education and languages. Both render only when the frontmatter field
+         exists, so an empty resume.md simply omits them rather than leaving a
+         heading over nothing. */}}
+    {{ with .Params.extra.education }}
+    <section class="resume-section mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Education</h2>
+        <div class="space-y-4">
+            {{ range . }}
+            <article class="resume-entry">
+                <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+                    <h3 class="text-lg font-semibold text-ink leading-snug">
+                        {{ with .credential }}{{ . }}{{ end }}{{ with .school }}<span class="text-faded font-normal">, {{ . }}</span>{{ end }}
+                    </h3>
+                    {{ with .years }}<p class="dateline font-sans text-xs whitespace-nowrap">{{ . }}</p>{{ end }}
+                </div>
+                {{ with .note }}<p class="text-sm text-faded leading-relaxed mt-1">{{ . }}</p>{{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with .Params.extra.languages }}
+    <section class="resume-section mb-9">
+        <h2 class="label text-faded mb-4 pb-2 border-b border-line">Languages</h2>
+        <p class="font-sans text-sm text-faded">
+            {{ range $i, $l := . }}{{ if $i }} · {{ end }}<span class="text-ink">{{ $l.name }}</span>{{ with $l.level }} ({{ . }}){{ end }}{{ end }}
+        </p>
+    </section>
+    {{ end }}
+
+    <section class="no-print pt-6 border-t border-line">
+        <p class="text-base text-faded leading-relaxed">
+            The longer version of all of this is on <a href="{{ "/work/" | relURL }}" class="text-ink link">work</a>,
+            and the person behind it is on <a href="{{ "/about/" | relURL }}" class="text-ink link">about</a>.
+        </p>
+    </section>
+
+</div>
+{{ end }}

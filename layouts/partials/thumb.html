@@ -1,6 +1,6 @@
 {{- /* Square thumbnail from a page-bundle resource.
        Note: reading .RelPermalink on a resource publishes that file, so the
-       original is only touched in the passthrough branch — otherwise every
+       original is only touched in the passthrough branch, otherwise every
        full-size original would ship in the built site. */ -}}
 {{- $r := .res -}}
 {{- $size := .size | default 600 -}}

@@ -1,8 +1,8 @@
 baseURL = "https://mmestiyak.com"
-title = "Meer's Log"
-languageCode = "en"
+title = "Meer Estiyak"
+locale = "en"
 # Dates in frontmatter are written in local time, so parse them that way.
-# Without this, a post dated "today" is read as midnight UTC — which is still
+# Without this, a post dated "today" is read as midnight UTC, which is still
 # the future in Bangladesh (UTC+6), and Hugo silently refuses to build it.
 timeZone = "Asia/Dhaka"
 defaultContentLanguage = "en"
@@ -17,8 +17,10 @@ capitalizeListTitles = false
   mediaType = "application/rss+xml"
   baseName = "atom"
 
+# One page until there's a real archive's worth of posts, pagination
+# machinery on a handful of entries reads as clutter, not order.
 [pagination]
-  pagerSize = 3
+  pagerSize = 24
 
 [taxonomies]
   tag = "tags"
@@ -37,7 +39,7 @@ capitalizeListTitles = false
   startLevel = 2
   endLevel = 4
 
-# Publish only the derivatives Hugo generates for each use — never the
+# Publish only the derivatives Hugo generates for each use, never the
 # full-size originals sitting in moment folders. Keeps the built site light
 # however big the photos you drop in are.
 [[cascade]]
@@ -47,7 +49,7 @@ capitalizeListTitles = false
     path = "{/moments/**}"
 
 [params]
-description = "The logbook of Meer Estiyak — software, farming, cycling, and fighting, from Bangladesh."
+description = "The logbook of Meer Estiyak: software, farming, cycling, and fighting, from Bangladesh."
 author = "Meer Estiyak"
 keywords = [
   "Meer Estiyak", "meer estiyak", "mmestiyak", "teammeer",
@@ -61,15 +63,33 @@ linkedin = "mmestiyak"
 strava = "https://www.strava.com/athletes/111868234"
 email = "mmestiyak@gmail.com"
 
-# Portrait on home + about (e.g. "/images/portrait.jpg"). Empty = hidden.
-portrait = ""
+# Portrait on home + about. Empty = hidden. Square crops only, both
+# placements render it in a fixed square, so the framing has to survive
+# being 144px wide. Other candidates in assets/images: fight-win.jpg,
+# fight-night.jpg, ride-tree.jpg.
+portrait = "/images/portrait.jpg"
 
-# Photo strip on the about page. Empty = hidden.
-about_photos = []
+# Photo strip on the about page, rendered as a square 3-up. Empty = hidden.
+# One from each world the about page claims: the work, the road, the cold.
+about_photos = [
+  "/images/street-office.jpg",
+  "/images/ride-railway.jpg",
+  "/images/snow-ridge.jpg",
+]
+
+# Hiring signal. availability shows on the home page and /work/; leaving it
+# empty hides both, which is the right move once the answer is "not looking".
+availability = "Open to senior full-stack roles, remote, from Bangladesh."
+
+# Your own designed CV, for people who want the file rather than the page.
+# Drop the PDF in static/ and name it here (e.g. "/meer-estiyak-cv.pdf") and a
+# download link appears on /resume/. Empty = the link is hidden and /resume/
+# stands on its own, which is why the page is never just a PDF wrapper.
+resume_pdf = ""
 
 # Where photos are served from. Empty = from this repo.
 # Set to a CDN origin (e.g. "https://img.mmestiyak.com") and every
-# repo-relative photo path is served from there — no post edits needed.
+# repo-relative photo path is served from there, no post edits needed.
 # NOTE: setting this also skips Hugo's image processing for those paths.
 image_base = ""
 

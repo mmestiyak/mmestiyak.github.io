@@ -1,18 +1,19 @@
 +++
 title = "Kommercly"
-description = "WhatsApp-first no-code store builder — turn a Google Sheet into a live store in minutes"
+description = "“Stop building, start selling.” A WhatsApp-first store builder that turns your Google Sheet into a live store in minutes. A lighter Shopify, made for WhatsApp."
 tags = ["ecommerce", "no-code", "whatsapp", "product"]
 topics = ["project"]
 [extra]
 year = 2025
 live_url = "https://kommercly.com"
 status = "Live"
-role = "Creator & Developer"
+role = "Founder"
 tech_stack = ["Node.js", "Google Sheets API", "WhatsApp API", "React"]
 highlights = [
+    "Founded and built together with my brother",
     "0% commission, free 3-month trial",
     "Average setup time under 2 minutes",
-    "Google Sheet as source of truth — no coding required",
+    "Google Sheet as source of truth, no coding required",
     "Built for Bangladesh market and beyond"
 ]
 image = ""

@@ -1,24 +1,20 @@
 +++
-title = "Silage Business"
-description = "Feed production and supply — agriculture as a supply-chain business"
-draft = true
+title = "Khamarvest Silage"
+description = "Pure maize silage, produced and delivered across Bangladesh. More milk, less feed cost: that is the whole pitch."
 tags = ["farming", "silage", "operations"]
 topics = ["farm"]
 [extra]
-year = 2023
 status = "Operating"
-role = "Owner & Operator"
-tech_stack = ["Sourcing", "Production", "Distribution"]
+role = "Co-founder"
+live_url = "https://silage.khamarvest.com"
 highlights = [
-    "TODO: tons produced or sold per season",
-    "TODO: number of farms/customers supplied",
-    "TODO: since what year",
+    "Maize silage production and nationwide delivery",
+    "Feeds the Khamarvest herd first, then other farms",
+    "WhatsApp-first ordering, like everything I build",
 ]
+tech_stack = ["Maize silage", "Production", "Nationwide delivery"]
 +++
 
-<!-- TODO: fill in the real numbers above, write 2-3 honest sentences here
-about the silage operation, then remove `draft = true` to publish. -->
-
-Silage is inventory, logistics, and seasonal demand — the same problems software
-startups have, with heavier bags. Running it is why I build business software
-the way I do.
+The silage arm of Khamarvest: grow and chop maize, ferment it right, and get
+honest feed to farms across Bangladesh. Inventory, logistics, and seasonal
+demand, the same problems software startups have, with heavier bags.
