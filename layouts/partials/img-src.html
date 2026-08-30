@@ -7,6 +7,13 @@
 {{- $out := $path -}}
 {{- if strings.HasPrefix $path "http" -}}
   {{- $out = $path -}}
+  {{- /* Images on the R2 CDN domain get resized on the fly by Cloudflare
+         Image Transformations (must be enabled on the zone). */ -}}
+  {{- $cdn := site.Params.image_cdn -}}
+  {{- if and $cdn (strings.HasPrefix $path $cdn) (gt $w 0) -}}
+    {{- $obj := strings.TrimPrefix $cdn $path -}}
+    {{- $out = printf "%s/cdn-cgi/image/width=%d,quality=82,format=auto%s" $cdn $w $obj -}}
+  {{- end -}}
 {{- else if site.Params.image_base -}}
   {{- $out = printf "%s%s" (strings.TrimSuffix "/" site.Params.image_base) $path -}}
 {{- else -}}

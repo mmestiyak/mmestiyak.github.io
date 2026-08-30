@@ -93,5 +93,11 @@ resume_pdf = ""
 # NOTE: setting this also skips Hugo's image processing for those paths.
 image_base = ""
 
+# The R2 bucket's custom domain (CMS uploads land there). Image URLs on
+# this domain get resized on the fly via Cloudflare Image Transformations
+# (/cdn-cgi/image/...), which must be enabled on the mmestiyak.com zone:
+# dashboard -> Images -> Transformations -> enable for the zone.
+image_cdn = "https://images.mmestiyak.com"
+
 og_image = "https://mmestiyak.com/og-image.jpg"
 google_analytics = "G-33V0WBXVRM"
