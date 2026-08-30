@@ -42,6 +42,18 @@ public_folder: /images
 #     AllowedOrigins https://mmestiyak.com and http://localhost:1313;
 #     AllowedHeaders *; ExposeHeaders ETag
 media_libraries:
+  # Optimize every image in the browser before upload (applies to R2 too):
+  # JPEG/PNG become WebP at q85, capped at 2048px on the long side, EXIF
+  # stripped. SVGs get minified.
+  all:
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
+      svg:
+        optimize: true
   cloudflare_r2:
     account_id: 82a26e13a5f2f26104ed700c8e2eab5e
     bucket: mmestiyak
