@@ -1,0 +1,228 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>We Wired Our Farm Ourselves · Meer Estiyak</title><meta name=description content="We skipped the sealed NVR box and built the farm's camera system by hand: a PoE switch, Frigate, a Cloudflare Tunnel, and a Telegram guard that knows the difference between someone arriving and someone lingering."><meta property="og:image" content="https://mmestiyak.com/images/farm-cam-shed-night.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="We Wired Our Farm Ourselves"><meta name=twitter:image content="https://mmestiyak.com/images/farm-cam-shed-night.jpg"><meta property="og:title" content="We Wired Our Farm Ourselves · Meer Estiyak"><meta property="og:description" content="We skipped the sealed NVR box and built the farm's camera system by hand: a PoE switch, Frigate, a Cloudflare Tunnel, and a Telegram guard that knows the difference between someone arriving and someone lingering."><meta property="og:type" content="article"><meta property="og:url" content="https://mmestiyak.com/logs/we-wired-our-farm-ourselves/"><meta property="og:site_name" content="Meer Estiyak"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="@mmestiyak"><meta name=twitter:creator content="@mmestiyak"><meta name=twitter:title content="We Wired Our Farm Ourselves · Meer Estiyak"><meta name=twitter:description content="We skipped the sealed NVR box and built the farm's camera system by hand: a PoE switch, Frigate, a Cloudflare Tunnel, and a Telegram guard that knows the difference between someone arriving and someone lingering."><meta name=author content="Meer Estiyak"><meta name=robots content="index, follow"><link rel=canonical href=https://mmestiyak.com/logs/we-wired-our-farm-ourselves/><meta name=color-scheme content="light"><link rel=icon href=/favicon.svg type=image/svg+xml><link rel=icon href=/favicon-32.png sizes=32x32 type=image/png><link rel=apple-touch-icon href=/apple-touch-icon.png><link rel=preload href=/fonts/4UaBrEBBsBhlBjvfkSLhx6jj4JN0.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/5aUz9_-1phKLFgshYDvh6Vwt7VptvWdUhm8.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/5aUt9_-1phKLFgshYDvh6Vwt7V9dv21TpG1Lsw.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/fonts/fonts.css><link rel=stylesheet href=/css/tailwind.dccac0a083e55523c54564dff6f0ef0da0a2522721793f1c8a5764497f488b09.css integrity="sha256-3MrAoIPlVSPFRWTf9vDvDaCiUicheT8cildkSX9Iiwk="><link rel=stylesheet href=/css/style.min.d138c33250037f777a79e96913a3d89da8aaf034f55ecc4f22656d46d729345d.css integrity="sha256-0TjDMlADf3d6eelpE6PYnaiq8DT1XsxPImVtRtcpNF0="><script async src="https://www.googletagmanager.com/gtag/js?id=G-33V0WBXVRM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-33V0WBXVRM")</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/mmestiyak.com\/logs\/we-wired-our-farm-ourselves\/"},"headline":"\"We Wired Our Farm Ourselves\"","description":"\"We skipped the sealed NVR box and built the farm's camera system by hand: a PoE switch, Frigate, a Cloudflare Tunnel, and a Telegram guard that knows the difference between someone arriving and someone lingering.\"","datePublished":"2026-08-27","author":{"@type":"Person","name":"\"Meer Estiyak\"","url":"https:\/\/mmestiyak.com\/"},"image":"\"/images/farm-cam-shed-night.jpg\""}</script></head><body class="bg-paper text-ink font-sans"><a href=#main class=skip-link>Skip to content</a><header class="bg-paper/95 backdrop-blur-sm sm:sticky sm:top-0 z-50 pt-safe-top border-b border-line"><div class="page px-4 sm:px-6 lg:px-8"><nav class="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-4 py-3 sm:py-4"><a href=/ class="font-serif font-bold text-xl sm:text-2xl text-ink hover:text-accent transition-colors tracking-tight py-1">Meer Estiyak<span class=text-accent>.</span></a><div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-sans text-[13px] sm:text-sm"><a href=/work/ class="px-2 sm:px-2.5 py-2 text-[13px] sm:text-sm transition-colors text-faded hover:text-ink">work</a>
+<a href=/logs/ class="px-2 sm:px-2.5 py-2 text-[13px] sm:text-sm transition-colors text-accent underline underline-offset-4">logs</a>
+<a href=/moments/ class="px-2 sm:px-2.5 py-2 text-[13px] sm:text-sm transition-colors text-faded hover:text-ink">moments</a>
+<a href=/about/ class="px-2 sm:px-2.5 py-2 text-[13px] sm:text-sm transition-colors text-faded hover:text-ink">about</a></div></nav></div></header><main id=main class=min-h-screen><div class="page px-4 sm:px-6 py-6 sm:py-10"><article><header class="mb-8 sm:mb-10 max-w-[34rem] mx-auto"><div class="mb-6 sm:mb-8 -mx-4 sm:mx-0"><img src=/images/farm-cam-shed-night_hu_b214c8f5edef33bc.webp alt="We Wired Our Farm Ourselves" class="w-full max-h-[28rem] object-cover rounded-none sm:rounded-md border-y sm:border border-line"></div><div class="dateline text-sm flex flex-wrap items-center gap-x-3 gap-y-1 mb-3"><time datetime=2026-08-27>August 27, 2026</time>
+<span aria-hidden=true>·</span><span>18 min read</span>
+<span aria-hidden=true>·</span>
+<a href=/topics/farm/ class="text-faded hover:text-accent transition-colors">farm</a>
+<span aria-hidden=true>·</span>
+<a href=/topics/project/ class="text-faded hover:text-accent transition-colors">project</a></div><h1 class="display text-4xl sm:text-[2.75rem] font-semibold text-ink leading-[1.12]">We Wired Our Farm Ourselves</h1></header><div class=prose id=post-content><p><a href=https://www.facebook.com/khamarvest/>Khamarvest</a> is our farm, built by a
+small founding team, our cows, our work, our mistakes. It has four cameras
+now. They are live at <a href=https://cam.khamarvest.com>cam.khamarvest.com</a>, behind
+a Google login, and the people who put money into this farm can open that page
+from anywhere and see the cows.</p><p>We could have bought an NVR. The shop sells a sealed box: plug the cameras in,
+plug a monitor in, done. Instead my younger brother <strong>Meer Tahmid</strong> and I ran
+the cable ourselves, wired every connection ourselves, and built the whole thing out
+of parts we understand.</p><p>It took longer. It was much more fun. And I learned more about networking in
+those weeks than in years of writing web apps on top of it.</p><p><img src=/images/farm-cam-live_hu_f817e008b1b5f259.webp alt="Cow Shed 2, live at cam.khamarvest.com, one click out of the four-camera grid, full resolution" loading=lazy decoding=async class="w-full h-auto rounded-md border border-line my-8"></p><p><img src=/images/farm-cam-shed-night_hu_e999c4680ef06ce5.webp alt="Meer working in the cow shed at night" loading=lazy decoding=async class="w-full h-auto rounded-md border border-line my-8"></p><hr><h2 id=the-whole-thing-in-plain-words>The whole thing, in plain words</h2><p>Before any of the technical parts, here is what actually exists now.</p><p>Four cameras in the sheds and at the gate. One cable runs to each one, and that
+single cable carries both the electricity and the picture, so there is no
+adapter hanging in the rain at the far end, and nothing extra to fail. All four
+feed into one small second-hand computer sitting on a shelf in the shed.</p><p>That computer does four things. It records everything, and keeps a week. It
+watches the picture and recognises when a <em>person</em> is there, as opposed to a cow
+or a moving branch. It puts a webpage on the internet that only invited people
+can open. And if someone walks into the feed store at two in the morning, it
+sends a photograph to my phone before I have any way of knowing on my own.</p><p>Nothing on the farm is exposed to the internet. The computer reaches out; the
+internet never reaches in. And if the power cuts, which it does, the whole
+thing wakes up and repairs itself when the power comes back, and sends a message
+to say so.</p><p>That is the entire system. Everything after this is how it came to exist, how
+each of those sentences works, and what building it taught me.</p><hr><h2 id=why-not-just-buy-the-nvr>Why not just buy the NVR</h2><p>A retail NVR is a closed appliance. It records, it shows you a grid, and that
+is the end of the conversation. You cannot ask it to message you on Telegram
+when someone walks into the feed store at 2 AM. You cannot ask it to tell you
+that a camera has gone dark. You cannot put your own page in front of it and
+give five specific people access by email.</p><p>More honestly: a box you cannot open teaches you nothing.</p><p>So the shape became this, and every arrow is something we had to actually
+understand:</p><pre tabindex=0><code>Dahua IR cameras → PoE switch → farm PC → Frigate (record + detect)
+                                        → go2rtc (restream)
+                                        → Cloudflare Tunnel → the internet
+                                        → Telegram bot (alerts)
+</code></pre><hr><h2 id=the-moment-the-screen-showed-cows>The moment the screen showed cows</h2><p>I built the whole thing at home first.</p><p>The cameras sat on my desk in Dhaka, pointed at nothing in particular: a wall,
+a doorway, me walking past. I configured them there, installed Ubuntu Server on
+the box there, brought up Frigate, the tunnel, the notifier, all of it, against
+a wall I did not care about. By the time it left the house, every piece had
+already worked at least once.</p><p>Then we carried it to the farm and mounted it for real.</p><p>Connected the cable. Powered it up.</p><p>And it just <em>worked</em>. First try. The screen filled with our own cows, standing
+at the feed trough, one lying down, the green of the entrance path in the corner
+of the frame.</p><p>I have shipped a lot of software. Deploys, releases, features going live to
+users I would never meet. Nothing has ever felt like that. This time the code
+came out the other side and touched something physical: animals we feed,
+a shed I have stood in, a farm we built. Programming went <em>through</em> the
+computer and landed in the world. Shanto, Tushar, Tahmid and I just stood there
+looking at the screen.</p><p>I felt extraordinarily good that evening, in a way I did not entirely expect,
+and I still feel it every time I open the page.</p><p>The investors felt it too, and their reaction is my favourite detail in this
+whole project. Almost all of them are my colleagues and ex-colleagues from
+software, career engineers. Which means their day now contains this: they set
+an agentic AI running on some task, and while it writes code, they open another
+tab and watch cows. Moving, sleeping, eating. The lush green view at the
+entrance with the palms behind it.</p><p>Engineers, waiting on a model, watching a herd. They love it. I have never had
+a feature received like that.</p><hr><h2 id=the-switch-and-the-part-i-did-not-expect-to-love>The switch, and the part I did not expect to love</h2><p>The single best thing in this build is the least glamorous: a <strong>PoE switch</strong>.</p><p>One Cat6 run to each camera. That one cable carries the video <em>and</em> the power.
+No electrician at the shed, no separate 12V adapter hanging in the rain, no
+second thing to fail. Pull one wire, get a working camera.</p><p>I thought a switch was just a box you plug things into. Sitting on the shed
+floor with a laptop, watching ports come up, it turned into the clearest
+lesson in network layers I have ever had, because on a PoE switch, <em>three
+layers are visible at once</em>.</p><h3 id=layer-1-the-switch-decides-whether-to-send-power-at-all>Layer 1: the switch decides whether to send power at all</h3><p>A PoE port does not just push 48V down the copper and hope. It negotiates.</p><p>Under <strong>IEEE 802.3af</strong>, the switch (the <em>PSE</em>, power sourcing equipment) first
+probes the line at a low voltage and looks for a signature, a ~25 kΩ
+resistance that says &ldquo;there is a real powered device here, not a laptop.&rdquo;
+Only if it sees that signature does it raise the voltage and <em>classify</em> the
+device into one of five power classes, by measuring how much current the
+device draws.</p><p>That is why plugging your laptop into a PoE port does not fry it. The port
+never gets past detection.</p><table><thead><tr><th>Standard</th><th>Switch supplies</th><th>Device may draw</th></tr></thead><tbody><tr><td>802.3af (PoE)</td><td>15.4 W</td><td>up to 12.95 W</td></tr><tr><td>802.3at (PoE+)</td><td>30 W</td><td>up to 25.5 W</td></tr><tr><td>802.3bt (PoE++)</td><td>60–100 W</td><td>up to ~71 W</td></tr></tbody></table><p>A device gets less than the switch supplies because the cable itself eats the
+difference as heat over up to 100 metres of copper. Physics takes its cut.</p><p>An IR camera with the night LEDs on sits comfortably in 802.3af. Which is
+exactly why the cheap switch works.</p><h3 id=layer-2-the-switch-learns-who-lives-where>Layer 2: the switch learns who lives where</h3><p>This is the part I keep thinking about.</p><p>A switch starts knowing nothing. When the first frame arrives on port 3, the
+switch reads the <strong>source MAC address</strong>, the camera&rsquo;s permanent hardware
+identity burned in at the factory, and writes it into a table: <em>this MAC
+lives on port 3</em>.</p><p>From then on, any frame addressed to that MAC goes out port 3 <strong>and nowhere
+else</strong>. Not to the other ports. Not to my laptop.</p><p>That table is the whole difference between a switch and the old hubs, which
+simply shouted every frame out of every port and let the machines sort it out.
+A switch listens, learns, and then stops wasting the wire. It is a tiny
+learning system built out of nothing but &ldquo;who talked to me last, and where.&rdquo;</p><p>And it never had to be told anything. Nobody configures a MAC table. It fills
+itself in from traffic.</p><h3 id=layer-3-where-mac-meets-ip>Layer 3: where MAC meets IP</h3><p>The cameras need fixed addresses, or Frigate loses them the first time the
+power blinks and DHCP hands out different numbers.</p><p>The fix is a <strong>DHCP reservation</strong>: on the router, you pin an IP to a MAC
+address. &ldquo;Whoever has this hardware address always gets 192.168.1.x.&rdquo;</p><p>That one setting is the whole seam between layer 2 and layer 3 in a single
+line of config: a permanent hardware identity on one side, a logical,
+assignable address on the other, and ARP shuttling between them. I had read
+that sentence a hundred times. Sitting on a shed floor watching a camera come
+back at the same address after a power cut is when it stopped being a
+sentence.</p><hr><h2 id=frigate-and-pulling-the-stream-only-once>Frigate, and pulling the stream only once</h2><p>Every camera sends out two pictures of the same scene at once: a big sharp one
+and a small rough one. That sounds wasteful. It is the single cleverest thing in
+the build, and it is free.</p><p>Each camera speaks <strong>RTSP</strong>. It is worth knowing that RTSP is mostly a remote
+control, not the video itself: the client sends <code>DESCRIBE</code>, <code>SETUP</code>, <code>PLAY</code>,
+and the actual frames arrive as RTP. The camera&rsquo;s URL takes a <code>subtype</code>
+parameter, and that little number matters more than it looks:</p><ul><li><code>subtype=0</code>, the <strong>main</strong> stream, full resolution. Used for recording and
+for fullscreen.</li><li><code>subtype=1</code>, the <strong>sub</strong> stream, small and cheap. Used for the four-up grid
+and for object detection.</li></ul><p>Cameras generate both themselves, for free. Detecting cows and people on a
+low-res stream costs a fraction of the computer&rsquo;s effort and finds exactly the
+same cow. You do not need a sharp picture to notice that a person is standing
+in a doorway. You only need it once you want to know <em>who</em>.</p><p><a href=https://frigate.video>Frigate</a> does the recording and the detection.
+Recording is a <strong>stream copy</strong>. The camera already encoded H.264, so we write
+those bytes straight to disk rather than decoding and re-encoding them. Seven
+days retained, oldest deleted automatically.</p><p>Bundled inside it is <strong>go2rtc</strong>, which solves the problem I had not thought
+about: what happens when four people open the page at once. Without it, every
+viewer opens their own RTSP session against the camera, and a small IP camera
+falls over at about three. go2rtc pulls each camera <strong>once</strong> and fans that one
+pull out to as many browsers as ask for it.</p><hr><h2 id=getting-it-out-to-the-internet-without-opening-a-single-port>Getting it out to the internet without opening a single port</h2><p>The farm&rsquo;s internet is an ordinary connection. No static IP, no business plan,
+and I am not going to punch a port-forward through to a camera system on a
+farm I cannot reach in twenty minutes.</p><p><strong>Cloudflare Tunnel</strong> removes the question. A small <code>cloudflared</code> container on
+the farm PC dials <em>outbound</em> to Cloudflare and holds that connection open.
+Traffic for <code>cam.khamarvest.com</code> arrives at Cloudflare and comes back down the
+pipe the farm already opened.</p><p>The router has <strong>no inbound ports open at all</strong>. There is nothing at the farm&rsquo;s
+IP address to find, port-scan, or brute force. The most secure port really is
+the one that does not exist.</p><h3 id=the-latency-tradeoff-nobody-warns-you-about>The latency tradeoff nobody warns you about</h3><p>Here is the honest cost, and it is a nice lesson in transport protocols.</p><p>Plainly: safety made the video about a second slower, and a second is a price
+worth paying. The reason why is the interesting part.</p><p>WebRTC, the thing that makes video calls feel instant, needs <strong>UDP</strong>. The
+tunnel serves HTTPS over <strong>TCP</strong>. So WebRTC&rsquo;s UDP simply cannot make the trip,
+and the player falls back a rung.</p><table><thead><tr><th>Transport</th><th>Latency</th><th>Survives the tunnel</th></tr></thead><tbody><tr><td>WebRTC (UDP)</td><td>0.1–0.5 s</td><td>✗</td></tr><tr><td>MSE (TCP)</td><td>0.5–1.5 s</td><td>✓</td></tr><tr><td>LL-HLS (TCP)</td><td>2–4 s</td><td>✓</td></tr><tr><td>HLS (TCP)</td><td>5–10 s</td><td>✓</td></tr></tbody></table><p>The viewer page uses go2rtc&rsquo;s player, which negotiates down that list by
+itself and lands on <strong>MSE, around one second</strong> through the tunnel. For
+watching cows, one second is indistinguishable from live.</p><p>The satisfying part: when I open the <em>same page</em> over Tailscale instead, UDP
+works, WebRTC wins the negotiation, and it drops to ~0.3 s. Same HTML, same
+server, no flags. The network conditions choose the protocol.</p><hr><h2 id=who-gets-in>Who gets in</h2><p>Login is <strong>Cloudflare Access</strong>, sitting in front of the tunnel. An investor
+signs in with Google; if their email is not on the policy, they never reach
+the farm at all. The rejection happens in Cloudflare&rsquo;s network, long before
+any packet touches the farm PC.</p><p>Think of it as a doorman who checks the guest list in the street outside,
+before anyone reaches the building.</p><p>Once a request passes, Access stamps a header onto it:
+<code>Cf-Access-Authenticated-User-Email</code>. Every location in our nginx config
+refuses any request arriving without it. That is belt-and-braces, since anything
+that somehow reached nginx without passing Access gets a 403. But writing
+that rule is what forced me to understand that <em>the header is only trustworthy
+because nothing can reach nginx except through the tunnel</em>. Trust a header
+that a user could set themselves and you have built a lock with the key taped
+to it.</p><p>We also went back and <strong>closed ports we had originally published</strong>. The early
+compose file exposed go2rtc&rsquo;s RTSP and WebRTC ports on the host, which quietly
+meant every camera stream was reachable, unauthenticated, by anything on the
+farm LAN. Nothing was consuming them. They are gone now. Frigate talks to
+go2rtc over localhost inside its own container.</p><p>A small thing I enjoy more than I should: a tiny presence service reads that
+same email header, and the page shows <strong>who else is watching right now</strong>. When
+an investor opens the cam, the Telegram group gets a line: <em>someone started
+watching the farm cam.</em> One of them is in Malaysia, a brother from
+JoulesLabs who I was introduced to, and when his name appears at odd hours,
+the farm feels a great deal less remote than it is.</p><hr><h2 id=the-telegram-guard>The Telegram guard</h2><p>This is the part a retail NVR was never going to give me, and the part I am
+proudest of.</p><p>A small Python service (standard library only, no dependencies) polls Frigate&rsquo;s
+event API and sends alerts to a Telegram group with the snapshot attached.</p><p>The naive version of this is unusable. A person standing in the entrance
+generates events continuously, and your phone buzzes forty times. So the
+notifier is a <strong>state machine per camera</strong>, not an event forwarder:</p><ul><li><strong>Entry.</strong> Someone appears in an area that was clear. Alert.</li><li><strong>Loiter.</strong> They are <em>still there</em> after N seconds. Re-alert, because that
+is the case that actually matters.</li><li><strong>Clear.</strong> No detections for 60 seconds, the area is considered empty
+again.</li><li><strong>Re-entry.</strong> They left and came back. That is a new alert, not a
+continuation.</li></ul><p>And the rules differ per camera, because the farm differs per camera:</p><table><thead><tr><th>Camera</th><th>Alerts on</th><th>When</th></tr></thead><tbody><tr><td>Entrance</td><td>person, car, truck</td><td>24/7, re-alert every 3 min</td></tr><tr><td>Feed store</td><td>person</td><td>24/7, re-alert every 5 min</td></tr><tr><td>Cow shed 1 & 2</td><td>person</td><td><strong>night only</strong></td></tr></tbody></table><p>A person in a cow shed at 11 AM is a farmhand doing his job. The same person
+at 2 AM is the only message I want to receive that night.</p><h3 id=watching-the-watchman>Watching the watchman</h3><p>Any monitoring system has one obvious failure mode: it fails, and by failing,
+stops telling you anything. Silence looks exactly like peace.</p><p>So the notifier also watches itself:</p><ul><li>A camera reporting <strong>0 fps for 90 seconds</strong> → <em>camera offline: check power,
+network, or tampering.</em></li><li>Frigate unreachable for <strong>3 minutes</strong> → <em>recording and detection may be
+down.</em></li><li>Disk below 15% free → warn, once a day, before old recordings start getting
+deleted.</li><li>A <strong>daily heartbeat</strong>: <em>4/4 cameras online, storage 62% free.</em> Boring by
+design. Its whole job is to prove the alert pipe still works on the days
+nothing happens.</li></ul><p>But none of that can survive the farm PC dying, or the power going, or the
+internet dropping. A dead machine cannot report that it is dead. So the
+notifier also pings a <a href=https://healthchecks.io>healthchecks.io</a> URL every
+five minutes. If those pings <em>stop</em>, healthchecks.io alerts me from the
+outside. A dead man&rsquo;s switch. The absence of a message becomes the message.</p><p>And when something is genuinely stuck, I can send <strong><code>/reboot</code></strong> to the bot. Only
+my personal Telegram user ID is accepted. Everyone else&rsquo;s is logged and
+ignored. The container cannot reboot the host (containers should not have that
+power, and I did not want to grant it), so the bot writes a request file into a
+shared folder, and a one-line cron job on the host picks it up within the
+minute and reboots. The privilege stays on the host side of the wall. Fixing
+the farm from my phone in Dhaka never gets old.</p><p>Push-to-talk goes the other way: browser microphone → WebSocket → a USB
+speaker in the shed. Hold the button, talk to whoever is out there.</p><hr><h2 id=the-boring-hardware-that-makes-it-real>The boring hardware that makes it real</h2><p>The first version ran on my MacBook, sitting in the shed, plugged in. That is
+a demo, not infrastructure.</p><p>It now lives on a <strong>Dell OptiPlex 9020 Micro</strong>, a used office desktop, i3,
+8 GB of RAM. A 120 GB SSD for the OS and Frigate&rsquo;s database, a 1 TB HDD for
+recordings only.</p><p>Two settings do most of the heavy lifting:</p><p><strong>Intel VAAPI hardware decode.</strong> The chip has a video decoder sitting right
+there in the iGPU. Handing decoding to it instead of the CPU is the difference
+between four cameras running comfortably and an i3 pinned at 100%.</p><p><strong>BIOS → AC Recovery → Power On.</strong> Village power cuts out. With this set, the
+box boots itself when power returns, Docker starts on boot, and Frigate, the
+tunnel, and the notifier all come back on their own. Then a <em>&ldquo;Farm guard
+online&rdquo;</em> message lands in Telegram, and I know the farm healed itself while I
+was asleep. That one BIOS setting is worth more than any code in the repo.</p><p>Backups run nightly: a consistent snapshot of Frigate&rsquo;s SQLite database taken
+with SQLite&rsquo;s own online backup API, safe while it is running, no stopping
+anything, plus every config file, seven archives retained. The recordings are
+deliberately <em>not</em> backed up. They are seven-day rolling footage; the event
+clips are the evidence that matters, and a terabyte of cows sleeping is not
+worth protecting.</p><hr><h2 id=ssh-farm><code>ssh farm</code></h2><p>The box runs <strong>Ubuntu Server 24.04</strong>. No desktop, no monitor, no keyboard. It
+sits on a shelf in the shed with two cables in it, power and ethernet, and
+that is the entire physical interface. If you walked past it you would think
+somebody left an old office computer behind.</p><p>Two lines in <code>~/.ssh/config</code> on my Mac:</p><pre tabindex=0><code>Host farm
+    HostName &lt;the box&gt;
+    User khamarvest
+</code></pre><p>And now the farm is a word.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>ssh farm
+</span></span></code></pre></div><p>I still find this genuinely wonderful. I type four letters at a café table in
+Dhaka, and the prompt changes, and I am standing inside a machine in a cow shed
+in the village. Same terminal, same font, same muscle memory as any other
+server I have ever worked on. The cows are forty kilometres away and I can read
+the logs of the thing that is watching them.</p><p>Everything on it is dockerized, which means the farm has no secrets and no
+snowflakes. Every service, Frigate, the tunnel, the viewer and the Telegram guard,
+is a few lines in one <code>docker-compose.yml</code> in a git repo. Updating the farm
+is the same motion as updating any project I have ever shipped:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>ssh farm
+</span></span><span style=display:flex><span>cd farm-cam
+</span></span><span style=display:flex><span>git pull
+</span></span><span style=display:flex><span>docker compose up -d
+</span></span></code></pre></div><p>That is it. That is the whole deployment process for a working farm
+surveillance system. Docker pulls what changed, restarts only what needs
+restarting, leaves the recordings alone. Ten seconds, and the cameras never
+stop watching.</p><p>I went further and mounted the notifier&rsquo;s and authgate&rsquo;s source code into their
+containers <strong>read-only</strong>, so editing the alert rules does not even need a
+rebuild. Change the file, <code>docker compose restart notifier</code>, done. When I
+decided the cow sheds should only alert at night, that was one line and one
+restart, from my bed.</p><p>And because it is all a git repo plus one <code>.env</code> file that never leaves the
+farm, the box is disposable. If that OptiPlex died tomorrow, a fresh machine
+would be an evening&rsquo;s work: install Ubuntu, install Docker, clone, copy the
+<code>.env</code>, <code>docker compose up -d</code>. The farm&rsquo;s brain is not in the hardware. The
+hardware is just where it happens to be running this month.</p><p>That is the part that still makes me grin. A farm, mud and feed and animals, the
+oldest work there is, now has a deploy pipeline.</p><hr><h2 id=what-comes-next>What comes next</h2><p>The cameras are the first sensor, not the last one. What I actually want is for
+the farm to <em>report itself</em>, and I want to write that code myself.</p><p>The one I am chasing first is <strong>weight, without the weighing.</strong></p><p>Traditional scales mean pushing an animal onto a platform, which is work, which
+means it happens rarely, which means you find out too late that one cow stopped
+gaining. Instead: a load cell built into a
+walkway they already use. The cow walks over on her own, and the software
+records the weight. Do that daily and weight gain becomes a graph instead of a
+guess, and a cow going off her feed shows up in the data days before it shows
+up to the eye.</p><p>That is the direction. Traditional farming underneath, sensors on top, and every
+layer of it something we built and can open up.</p><p>I intend to document those moments as they happen, the same way as this one.</p><hr><h2 id=what-it-actually-taught-me>What it actually taught me</h2><p>I write software for a living. I have used sockets, and load balancers, and
+HTTP for years, always from comfortably above.</p><p>Doing it with my hands, that stack came apart into things I could touch. Power negotiated by a resistance value. A frame carrying a MAC
+address to a switch that learns where things live. A reservation binding
+hardware identity to an IP. A codec choosing its transport because UDP could
+not survive the trip. A header that is only trustworthy because of what cannot
+reach it.</p><p>That is the whole OSI model, and I did not learn it from a diagram. I learned
+it from a cable I ran myself, into a port that lit up in a cow shed.</p><p>The best part is where it ended up. The people who backed this farm are
+scattered across countries, and a farm is the least legible thing in the world
+to someone who cannot visit it. Now they open a link and see the cows breathing.</p><p>Trust, delivered over a wire we pulled ourselves.</p><hr><p><em>Everything here is open: <a href=https://github.com/mmestiyak/khamarvest-cam>github.com/mmestiyak/khamarvest-cam</a>.
+<a href=/projects/khamarvest/>Khamarvest</a> is our farm, and our page:
+<a href=https://www.facebook.com/khamarvest/>facebook.com/khamarvest</a>.</em></p></div><script>(function(){const e=document.getElementById("post-content");if(!e)return;const n=100,s=e=>e.toLowerCase().trim().replace(/[^\w\s-]/g,"").replace(/[\s_-]+/g,"-").replace(/^-+|-+$/g,"");e.querySelectorAll("h2, h3, h4, h5, h6").forEach(e=>{if(e.id||(e.id=s(e.textContent)),e.querySelector(".anchor-link"))return;const t=document.createElement("a");t.href=`#${e.id}`,t.className="anchor-link",t.setAttribute("aria-label","Copy link to this section"),t.textContent="#",e.appendChild(t)});function t(e){const t=document.getElementById(e);if(!t)return;const s=window.pageYOffset+t.getBoundingClientRect().top-n;window.scrollTo({top:s,behavior:"smooth"}),t.tabIndex=-1,t.focus({preventScroll:!0})}if(e.addEventListener("click",e=>{const n=e.target.closest("a.anchor-link");if(!n)return;e.preventDefault();const s=n.getAttribute("href").slice(1);window.history.replaceState(null,"",`#${s}`),t(s)}),window.location.hash){const e=decodeURIComponent(window.location.hash.slice(1));setTimeout(()=>t(e),0)}window.addEventListener("hashchange",()=>{const e=decodeURIComponent(window.location.hash.slice(1));e&&t(e)})})()</script><div class="mt-8 pt-5 border-t border-line max-w-[34rem] mx-auto"><p class="dateline text-sm">Filed under
+<a href=/tags/networking/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">networking</a>, <a href=/tags/poe/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">poe</a>, <a href=/tags/frigate/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">frigate</a>, <a href=/tags/cloudflare/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">cloudflare</a>, <a href=/tags/self-hosting/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">self-hosting</a>, <a href=/tags/khamarvest/ class="hover:text-accent transition-colors underline decoration-line underline-offset-4">khamarvest</a>.</p></div><footer class="mt-8 pt-5 border-t border-line max-w-[34rem] mx-auto"><p class="font-sans text-xs text-faded">Published <time datetime=2026-08-27>August 27, 2026</time></p></footer></article></div></main><footer class="mt-16 sm:mt-24 border-t border-line pb-safe-bottom"><div class="page px-4 sm:px-6 lg:px-8 py-6 sm:py-8"><div class="flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-3 font-sans text-xs text-faded text-center sm:text-left"><div><span>&copy; 2026 Meer Estiyak · Bangladesh</span></div><div class="flex items-center gap-3 sm:gap-4 flex-wrap justify-center"><a href=mailto:mmestiyak@gmail.com class="hover:text-accent transition-colors">email</a>
+<a href=https://github.com/mmestiyak class="hover:text-accent transition-colors">github</a>
+<a href=https://linkedin.com/in/mmestiyak class="hover:text-accent transition-colors">linkedin</a>
+<a href=https://www.strava.com/athletes/111868234 class="hover:text-accent transition-colors">strava</a>
+<a href=/resume/ class="hover:text-accent transition-colors">resume</a>
+<a href=/archive/ class="hover:text-accent transition-colors">archive</a>
+<a href=/topics/ class="hover:text-accent transition-colors">topics</a></div></div></div></footer></body></html>

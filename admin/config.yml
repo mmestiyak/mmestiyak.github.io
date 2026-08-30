@@ -1,0 +1,187 @@
+# Sveltia CMS configuration (Decap-compatible)
+#
+# THREE WAYS TO SIGN IN
+#
+# 1. On this Mac, no auth at all:
+#    `make serve`, open http://localhost:1313/admin/ in Chrome/Edge, click
+#    "Work with Local Repository", pick the repo folder once. Edits are
+#    written straight to disk; review with `git diff`, publish with `git push`.
+#
+# 2. From anywhere (phone included), access token, no server needed:
+#    open https://mmestiyak.com/admin/ and click "Sign In Using Access Token".
+#    Create the token at github.com → Settings → Developer settings →
+#    Personal access tokens → Fine-grained tokens:
+#      Repository access: only mmestiyak/mmestiyak.github.io
+#      Permissions: Contents = Read and write
+#      Expiration: 1 year (re-create it when it lapses)
+#    Paste it once per device. Nothing else to set up.
+#
+# 3. From anywhere, real "Sign in with GitHub" button (optional, ~20 min):
+#    a static site cannot keep an OAuth client secret, so this needs one tiny
+#    free proxy. Deploy https://github.com/sveltia/sveltia-cms-auth to
+#    Cloudflare Workers, create a GitHub OAuth App whose callback is that
+#    worker URL, set the worker's GITHUB_CLIENT_ID / GITHUB_CLIENT_SECRET /
+#    ALLOWED_DOMAINS(=mmestiyak.com), then uncomment base_url below.
+
+backend:
+  name: github
+  repo: mmestiyak/mmestiyak.github.io
+  branch: master
+  # base_url: https://YOUR-WORKER-NAME.workers.dev   # option 3 only
+
+site_url: https://mmestiyak.com
+media_folder: assets/images
+public_folder: /images
+
+# Cloudflare R2 media storage. Uploads go straight from the browser to the
+# bucket; images are served from the custom domain below. The Secret Access
+# Key is NOT stored here: Sveltia asks for it once per device and keeps it
+# in the browser's local storage. Requirements on the Cloudflare side:
+#   - R2 API token with Object Read & Write on the mmestiyak bucket
+#   - CORS rule on the bucket: AllowedMethods GET,PUT,HEAD;
+#     AllowedOrigins https://mmestiyak.com and http://localhost:1313;
+#     AllowedHeaders *; ExposeHeaders ETag
+media_libraries:
+  # Optimize every image in the browser before upload (applies to R2 too):
+  # JPEG/PNG become WebP at q85, capped at 2048px on the long side, EXIF
+  # stripped. SVGs get minified.
+  all:
+    transformations:
+      raster_image:
+        format: webp
+        quality: 85
+        width: 2048
+        height: 2048
+      svg:
+        optimize: true
+  cloudflare_r2:
+    account_id: 82a26e13a5f2f26104ed700c8e2eab5e
+    bucket: mmestiyak
+    access_key_id: 1db562809b49c62eae28eb116e8c4f83  # safe to commit, not the secret
+    public_url: https://images.mmestiyak.com
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      - label: "About, the story"
+        name: about
+        file: content/about.md
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: "Meta description (search results / link previews)", name: description, widget: text }
+          - { label: Layout, name: layout, widget: hidden, default: about }
+          - { label: "The story", name: body, widget: markdown }
+
+  - name: moments
+    label: Moments
+    label_singular: Moment
+    folder: content/moments
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: "Topics (farm, training, project, work…)", name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - label: Photos
+        name: extra
+        widget: object
+        fields:
+          - label: "Photos (first is the cover)"
+            name: photos
+            widget: list
+            required: false
+            field: { label: Photo, name: photo, widget: image }
+      - { label: Caption, name: body, widget: markdown, required: false }
+
+  - name: logs
+    label: Logs
+    label_singular: Log
+    folder: content/logs
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: "Description (lists + SEO)", name: description, widget: text, required: false }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - label: Extras
+        name: extra
+        widget: object
+        required: false
+        fields:
+          - { label: "Header image (optional)", name: image, widget: image, required: false }
+      - { label: Post, name: body, widget: markdown }
+
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: content/projects
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: Name, name: title, widget: string }
+      - { label: "One-line description", name: description, widget: text }
+      - { label: "Draft (hidden while checked)", name: draft, widget: boolean, required: false }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - label: Details
+        name: extra
+        widget: object
+        fields:
+          - { label: "Year started", name: year, widget: number, value_type: int }
+          - { label: "Status (Live, Operating, Building…)", name: status, widget: string, required: false }
+          - { label: "Your role", name: role, widget: string, required: false }
+          - { label: "Live URL", name: live_url, widget: string, required: false }
+          - { label: "Source URL", name: source_url, widget: string, required: false }
+          - label: "Extra links (e.g. a sub-site)"
+            name: links
+            widget: list
+            required: false
+            fields:
+              - { label: "Label", name: label, widget: string }
+              - { label: "URL", name: url, widget: string }
+          - { label: "Stack / tools", name: tech_stack, widget: list, required: false }
+          - { label: "Highlights (numbers beat adjectives)", name: highlights, widget: list, required: false }
+          - { label: "Cover image", name: image, widget: image, required: false }
+      - { label: "Longer story", name: body, widget: markdown, required: false }
+
+  - name: experience
+    label: Experience
+    label_singular: Role
+    folder: content/experience
+    create: true
+    extension: md
+    format: toml-frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Title (e.g. Software Developer, Company)", name: title, widget: string }
+      - { label: "One-line summary", name: description, widget: text, required: false }
+      - { label: "Order (1 shows first)", name: weight, widget: number, value_type: int }
+      - { label: Topics, name: topics, widget: list, required: false }
+      - { label: Tags, name: tags, widget: list, required: false }
+      - label: Details
+        name: extra
+        widget: object
+        fields:
+          - { label: Company, name: company, widget: string }
+          - { label: Role, name: role, widget: string, required: false }
+          - { label: "Started (e.g. 2022-08)", name: date_start, widget: string }
+          - { label: "Ended (or present)", name: date_end, widget: string, default: present }
+          - { label: Location, name: location, widget: string, required: false }
+          - { label: Highlights, name: highlights, widget: list, required: false }
+      - { label: "Longer story", name: body, widget: markdown, required: false }
