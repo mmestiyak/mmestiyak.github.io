@@ -33,6 +33,21 @@ site_url: https://mmestiyak.com
 media_folder: assets/images
 public_folder: /images
 
+# Cloudflare R2 media storage. Uploads go straight from the browser to the
+# bucket; images are served from the custom domain below. The Secret Access
+# Key is NOT stored here: Sveltia asks for it once per device and keeps it
+# in the browser's local storage. Requirements on the Cloudflare side:
+#   - R2 API token with Object Read & Write on the mmestiyak bucket
+#   - CORS rule on the bucket: AllowedMethods GET,PUT,HEAD;
+#     AllowedOrigins https://mmestiyak.com and http://localhost:1313;
+#     AllowedHeaders *; ExposeHeaders ETag
+media_libraries:
+  cloudflare_r2:
+    account_id: 82a26e13a5f2f26104ed700c8e2eab5e
+    bucket: mmestiyak
+    access_key_id: 1db562809b49c62eae28eb116e8c4f83  # safe to commit, not the secret
+    public_url: https://images.mmestiyak.com
+
 collections:
   - name: pages
     label: Pages
