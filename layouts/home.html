@@ -55,8 +55,8 @@
                      Hidden entirely when params.availability is empty. */}}
                 {{ with site.Params.availability }}
                 <div class="mt-10 pt-8 border-t border-line">
-                    <p class="font-sans text-sm text-ink mb-2 flex items-center gap-2.5">
-                        <span class="status-dot" aria-hidden="true"></span>{{ . }}
+                    <p class="font-sans text-sm text-ink mb-2 flex items-start gap-2.5">
+                        <span class="status-dot mt-[0.42em]" aria-hidden="true"></span>{{ . }}
                     </p>
                     {{ with site.Params.freelance }}
                     <p class="font-sans text-sm text-faded mb-5 pl-[1.125rem]">{{ . }}</p>
