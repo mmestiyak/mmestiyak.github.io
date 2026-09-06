@@ -4,13 +4,18 @@
             line #E6E0D8, one accent hue, a deep muted ink-blue, plus a
             desaturated teal-blue reserved for translucent underlines and
             the selection highlight only.
-   Type: two families, on purpose. Source Serif 4 (display, serif) carries
-   every heading and the wordmark, a calm classic book face rather than a
-   decorative one. Inter (a neutral, text-first sans) carries body copy and
-   every small UI element: nav, footer, tags, dates, meta. A display face
-   goes mushy at 12-14px, so small text never gets it, whatever a template's
-   font-serif/font-sans class says. Noto Serif Bengali for Bangla, in both
-   roles.
+   Type: two families from one superfamily, on purpose. Source Serif 4
+   (display, serif) carries every heading and the wordmark, a calm classic
+   book face rather than a decorative one. Source Sans 3 carries body copy and
+   every small UI element: nav, footer, tags, dates, meta. Adobe drew the two
+   to share a skeleton, so they set together instead of merely coexisting. A
+   display face goes mushy at 12-14px, so small text never gets it, whatever a
+   template's font-serif/font-sans class says. Noto Serif Bengali for Bangla,
+   in both roles.
+   Both are self-hosted builds that keep their OpenType features (see
+   static/fonts/fonts.css). The previous pairing could not do what the rules
+   below ask for: Inter has no oldstyle figures and no small caps at all, at
+   any version, so every font-variant-numeric declaration here was inert.
    Rule: every colour comes from the variables below; every font-family from
    --font-serif or --font-sans. If either appears as a raw value past this
    header, it is a bug.
@@ -47,7 +52,7 @@
     --c-accent-bright: 40 130 165; /* muted teal-blue, decorative only: link
                                     underlines and the text-selection tint */
     --font-serif: 'Source Serif 4', 'Noto Serif Bengali', Georgia, serif;
-    --font-sans: 'Inter', 'Noto Serif Bengali', system-ui, sans-serif;
+    --font-sans: 'Source Sans 3', 'Noto Serif Bengali', system-ui, sans-serif;
 }
 
 
@@ -96,7 +101,7 @@ body {
     font-variant-caps: all-small-caps;
     font-variant-numeric: oldstyle-nums;
     letter-spacing: 0.09em;
-    font-size: 0.9375rem;
+    font-size: 1.0625rem;      /* x-height matched, as with .prose */
     line-height: 1;
 }
 
@@ -284,8 +289,8 @@ body {
 .prose {
     color: rgb(var(--c-prose));
     font-family: var(--font-sans);
-    font-size: 1.0625rem;      /* 18.3px after the 107.5% root */
-    line-height: 1.62;
+    font-size: 1.1875rem;      /* 20.4px; sized by x-height, not by px, see below */
+    line-height: 1.6;
     font-weight: 400;
     /* Measure in rem, not ch: character width varies by font, so a fixed
        pixel-equivalent measure survives a typeface change. 34rem is 585px
@@ -301,13 +306,17 @@ body {
 
 /* Sizes are in rem and the root is 107.5%, so the real pixel values are
    ~7.5% above the rem numbers. Stated here in the size the browser actually
-   paints, measured, not assumed. */
+   paints, measured, not assumed.
+   These are ~14% larger than the Inter-era numbers on purpose: Source Sans 3
+   has a smaller x-height (0.478em vs Inter's 0.546em), so the same px reads
+   visibly smaller. Matched on x-height instead, which is what the eye
+   actually judges, the rendered text is the size it always was. */
 @media (min-width: 640px) {
-    .prose { font-size: 1.1875rem; line-height: 1.6; }  /* 20.4px */
+    .prose { font-size: 1.3125rem; line-height: 1.6; }  /* 22.6px */
 }
 
 @media (min-width: 1024px) {
-    .prose { font-size: 1.25rem; line-height: 1.62; }   /* 21.5px */
+    .prose { font-size: 1.4375rem; line-height: 1.62; } /* 24.7px */
 }
 
 /* Prose pinned to the page's left axis (e.g. the about story) instead of

@@ -28,16 +28,19 @@ module.exports = {
            audited to confirm it's on an actual heading-scale element, not
            small text: that mismatch was the "small titles look bad" bug. */
         'serif': ['Source Serif 4', 'Noto Serif Bengali', 'Georgia', 'serif'],
-        'sans': ['Inter', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
+        'sans': ['Source Sans 3', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
         'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
       },
       fontSize: {
         /* The meta tier: datelines, tags, footer nav, employment type. Tailwind
            ships xs at 12px, which is a touch small for text set in --c-faded
-           and doing actual work. 13px reads easier without reading louder.
-           Everything above this is Tailwind's default scale. */
-        'xs': ['0.8125rem', { lineHeight: '1.15rem' }],
+           and doing actual work. Both steps are also x-height corrected for
+           Source Sans 3, whose 0.478em x-height renders ~14% smaller than
+           Inter's at equal px; without this the whole meta layer shrank when
+           the typeface changed. Everything above this is Tailwind's default. */
+        'xs': ['0.9375rem', { lineHeight: '1.3rem' }],
+        'sm': ['1rem', { lineHeight: '1.5rem' }],
       },
       spacing: {
         'safe-top': 'env(safe-area-inset-top)',

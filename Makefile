@@ -1,4 +1,4 @@
-.PHONY: build serve deploy css css-watch clean check check-media help log moment build-full
+.PHONY: build serve deploy css css-watch clean check check-media fonts help log moment build-full
 
 help: ## Show this command list
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
@@ -69,6 +69,9 @@ clean: ## Remove build artifacts and the image cache
 # --- Tailwind CLI pipeline (compiled CSS, no CDN) ---
 # assets/css/tailwind.css is committed because CI does not run npm.
 # After changing Tailwind classes in layouts/, run `make css` and commit it.
+
+fonts: ## Rebuild the self-hosted webfonts (needs python3 + network)
+	./scripts/build-fonts.sh
 
 css: ## Build Tailwind CSS (requires npm install first)
 	npx tailwindcss -i ./src/input.css -o ./assets/css/tailwind.css --minify

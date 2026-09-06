@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 
 <!-- Typography: two families, per the header of assets/css/style.css,
-     Source Serif 4 for display, Inter for body and small UI, plus Noto
+     Source Serif 4 for display, Source Sans 3 for body and small UI, plus Noto
      Serif Bengali for Bangla. Self-hosted, no external requests.
      Every face carries a unicode-range, so the browser fetches only the
      subsets the page's characters actually need (latin here); the other
@@ -19,16 +19,22 @@
      the wordmark was discovered late, and the 700 weight was fetched on pages
      that never use it. Verified against DevTools, not assumed, if you change
      a font, re-check which files the network panel actually requests. -->
-{{/* Source Serif 4, variable 400-700: every heading and the wordmark, all
-     weights from one file. */}}
-<link rel="preload" href="{{ "fonts/vEFI2_tTDB4M7-auWDN0ahZJW1gb8te1Xb7G.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{/* Inter, variable 400-700: all body copy and small UI. */}}
-<link rel="preload" href="{{ "fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{/* Inter 400 italic: .action and .dateline, which appear in the first
+{{/* Source Serif 4 roman, variable 400-700: every heading and the wordmark. */}}
+<link rel="preload" href="{{ "fonts/source-serif-4-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Source Sans 3 roman, variable 400-700: all body copy and small UI. */}}
+<link rel="preload" href="{{ "fonts/source-sans-3-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Source Sans 3 italic 400: .action and .dateline, which appear in the first
      screen of nearly every template. Without this it renders as a synthetic
      slant and then reflows. */}}
-<link rel="preload" href="{{ "fonts/UcCM3FwrK3iLTcvneQg7Ca725JhhKnNqk4j1ebLhAm8SrXTc2dtRipWFsevceSGM.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{{ "fonts/fonts.css" | relURL }}">
+<link rel="preload" href="{{ "fonts/source-sans-3-italic-latin.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Fingerprinted like the other stylesheets. It used to be a plain file in
+     static/, which meant a browser that had cached it kept loading the
+     previous release's font files: swapping a typeface silently did nothing
+     for returning visitors until the cache expired. */}}
+{{ with resources.Get "css/fonts.css" }}
+  {{ $f := . | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $f.RelPermalink }}" integrity="{{ $f.Data.Integrity }}">
+{{ end }}
 
 {{/* Stylesheets are fingerprinted, so a design change can never serve stale CSS.
      Tokens live in tailwind.config.js; after editing layout classes run: make css */}}
