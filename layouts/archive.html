@@ -28,7 +28,7 @@
                 {{ if $isPhoto }}
                 {{ $thumb := "" }}
                 {{ with (.Resources.ByType "image") }}{{ $thumb = partial "thumb.html" (dict "res" (index . 0) "size" 96) }}{{ end }}
-                {{ if and (not $thumb) .Params.extra.photos }}{{ $thumb = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 96) }}{{ end }}
+                {{ if and (not $thumb) .Params.extra.photos }}{{ $thumb = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 96 "height" 96) }}{{ end }}
                 {{ with $thumb }}
                 <img src="{{ . }}" alt="" loading="lazy" class="w-8 h-8 object-cover rounded border border-line flex-shrink-0">
                 {{ end }}

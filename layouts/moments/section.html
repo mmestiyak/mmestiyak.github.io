@@ -16,7 +16,7 @@
         {{ $cover := "" }}
         {{ with (.Resources.ByType "image") }}{{ $cover = partial "thumb.html" (dict "res" (index . 0) "size" 600) }}{{ end }}
         {{ if and (not $cover) .Params.extra.photos }}
-          {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 600) }}
+          {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 600 "height" 600) }}
         {{ end }}
         {{/* how many photos this moment holds, so the grid can say so */}}
         {{ $n := 0 }}

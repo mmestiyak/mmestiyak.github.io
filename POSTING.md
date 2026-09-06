@@ -205,11 +205,47 @@ One file per role in `content/experience/`. `weight = 1` shows first.
 Custom fields under `[extra]`: `company`, `role`, `date_start`, `date_end`,
 `location`, `highlights`.
 
-## Photos, the three mechanisms
+## Photos, the four mechanisms
 
-1. `assets/images/foo.jpg` → referenced as `/images/foo.jpg` (auto-resized)
-2. Colocated: image files next to a post's `index.md` (how moments work)
-3. `[extra] image = "..."` in frontmatter → header image + social share card
+1. **Pick it in `/admin/`** → uploads straight to Cloudflare R2, served from
+   `images.mmestiyak.com`. Nothing lands in the repo but the URL. See below.
+2. `assets/images/foo.jpg` → referenced as `/images/foo.jpg` (auto-resized)
+3. Colocated: image files next to a post's `index.md` (how moments work)
+4. `[extra] image = "..."` in frontmatter → header image + social share card
+
+### Picking images in /admin/ (the R2 route)
+
+This is the "just pick a photo" path, and it works for both logs and moments:
+
+- **A moment:** `/admin/` → Moments → New → *Photos* → add as many as you
+  like. First one is the cover.
+- **A log's header image:** `/admin/` → Logs → *Extras → Header image*.
+- **An image inside a post:** in the markdown body, use the image button.
+
+Each upload goes from the browser straight to the R2 bucket, shrunk on the way
+(WebP, q85, capped at 2048px, EXIF stripped), and the post records the full
+`https://images.mmestiyak.com/...` URL. The repo stays small: no photos in git.
+
+**One-time per device:** the CMS asks for the R2 *Secret Access Key* once and
+keeps it in that browser's local storage. Create it at Cloudflare → R2 → API
+tokens, with Object Read & Write on the `mmestiyak` bucket. The bucket also
+needs a CORS rule allowing `PUT` from `https://mmestiyak.com` and
+`http://localhost:1313`.
+
+**On sizing:** photos are served at whatever size they were uploaded, which is
+fine, the browser upload already caps them. Cloudflare can additionally cut
+per-size derivatives and true square crops for the photo tiles, but
+**Image Transformations is currently off on the zone**, and while it is off
+every `/cdn-cgi/image/` URL returns a Cloudflare 404. So `image_cdn_transform`
+in `hugo.toml` is `false`. To switch it on:
+
+```bash
+make check-media
+```
+
+Enable it at Cloudflare → the `mmestiyak.com` zone → Images → Transformations,
+re-run that command until it reports ENABLED, then set
+`image_cdn_transform = true` and rebuild. Do not set it to true before then.
 
 **No need to resize anything.** Hugo generates WebP derivatives at the sizes
 each page needs (grid thumbnails, full-width views, archive thumbs), so a 4 MB

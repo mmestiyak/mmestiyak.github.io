@@ -1,4 +1,4 @@
-.PHONY: build serve deploy css css-watch clean check help log moment build-full
+.PHONY: build serve deploy css css-watch clean check check-media help log moment build-full
 
 help: ## Show this command list
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | \
@@ -18,6 +18,30 @@ deploy: ## Build and print deploy instructions
 
 check: ## Print build stats and warn on broken internal refs
 	hugo --printPathWarnings --printUnusedTemplates
+
+check-media: ## Test whether Cloudflare Image Transformations is live on the zone
+	@zone=$$(sed -n 's/^baseURL = "https:\/\/\(.*\)"/\1/p' hugo.toml); \
+	img=$$(sed -n 's/.*src="\(\/images\/[^"]*\)".*/\1/p' public/index.html | head -1); \
+	if [ -z "$$img" ]; then echo "run 'hugo' first, no built image to test with"; exit 1; fi; \
+	echo "zone:   $$zone"; \
+	echo "sample: $$img"; \
+	origin=$$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "https://$$zone$$img"); \
+	echo "origin image:          HTTP $$origin"; \
+	hdrs=$$(curl -s -D - -o /dev/null --max-time 15 "https://$$zone/cdn-cgi/image/width=120,quality=82,format=auto$$img"); \
+	code=$$(printf '%s' "$$hdrs" | sed -n 's/^HTTP\/[0-9.]* \([0-9]*\).*/\1/p' | head -1); \
+	resized=$$(printf '%s' "$$hdrs" | grep -ic 'cf-resized' || true); \
+	echo "transformation URL:    HTTP $$code (cf-resized headers: $$resized)"; \
+	echo; \
+	if [ "$$origin" = "200" ] && [ "$$resized" -gt 0 ]; then \
+		echo "ENABLED. Set image_cdn_transform = true in hugo.toml and rebuild."; \
+	elif [ "$$origin" = "200" ]; then \
+		echo "NOT ENABLED: the origin image serves but the transformation URL does not."; \
+		echo "Enable it at Cloudflare -> $$zone zone -> Images -> Transformations."; \
+		echo "Keep image_cdn_transform = false until this reports ENABLED."; \
+	else \
+		echo "Inconclusive: the sample image did not serve from the origin ($$origin)."; \
+		echo "The site may not be deployed yet. Try again after a deploy."; \
+	fi
 
 log: ## New log post: make log t="My post title"
 	@test -n "$(t)" || { echo 'usage: make log t="My post title"'; exit 1; }

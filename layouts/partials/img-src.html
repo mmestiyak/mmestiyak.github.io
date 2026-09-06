@@ -1,18 +1,32 @@
 {{- /* A photo referenced by path (frontmatter extra.photos / extra.image /
        config params). Absolute URLs pass through; image_base wins when set;
        otherwise files under assets/ get resized and anything else passes
-       through as a plain path. */ -}}
+       through as a plain path.
+
+       Params: path (required), width, height. Passing height asks the CDN for
+       a centre-cropped rectangle (fit=cover), which is what the square photo
+       tiles want; without it the image is only width-constrained. */ -}}
 {{- $path := .path -}}
 {{- $w := .width | default 0 -}}
+{{- $h := .height | default 0 -}}
 {{- $out := $path -}}
 {{- if strings.HasPrefix $path "http" -}}
   {{- $out = $path -}}
-  {{- /* Images on the R2 CDN domain get resized on the fly by Cloudflare
-         Image Transformations (must be enabled on the zone). */ -}}
+  {{- /* Images on the R2 CDN domain can be resized on the fly by Cloudflare
+         Image Transformations, but ONLY if that is enabled for the zone
+         (dashboard -> Images -> Transformations). While it is off, every
+         /cdn-cgi/image/ URL returns Cloudflare's own 404, which would break
+         every photo on the site, so the rewrite is behind a flag and the
+         plain object URL is served instead. See image_cdn_transform in
+         hugo.toml, and `make check-media` to test the zone. */ -}}
   {{- $cdn := site.Params.image_cdn -}}
-  {{- if and $cdn (strings.HasPrefix $path $cdn) (gt $w 0) -}}
+  {{- if and $cdn site.Params.image_cdn_transform (strings.HasPrefix $path $cdn) (gt $w 0) -}}
     {{- $obj := strings.TrimPrefix $cdn $path -}}
-    {{- $out = printf "%s/cdn-cgi/image/width=%d,quality=82,format=auto%s" $cdn $w $obj -}}
+    {{- $opts := printf "width=%d,quality=82,format=auto" $w -}}
+    {{- if gt $h 0 -}}
+      {{- $opts = printf "width=%d,height=%d,fit=cover,quality=82,format=auto" $w $h -}}
+    {{- end -}}
+    {{- $out = printf "%s/cdn-cgi/image/%s%s" $cdn $opts $obj -}}
   {{- end -}}
 {{- else if site.Params.image_base -}}
   {{- $out = printf "%s%s" (strings.TrimSuffix "/" site.Params.image_base) $path -}}

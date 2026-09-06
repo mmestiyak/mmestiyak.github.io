@@ -100,11 +100,24 @@ resume_pdf = ""
 # NOTE: setting this also skips Hugo's image processing for those paths.
 image_base = ""
 
-# The R2 bucket's custom domain (CMS uploads land there). Image URLs on
-# this domain get resized on the fly via Cloudflare Image Transformations
-# (/cdn-cgi/image/...), which must be enabled on the mmestiyak.com zone:
-# dashboard -> Images -> Transformations -> enable for the zone.
+# The R2 bucket's custom domain (CMS uploads land there). Images picked in
+# /admin/ upload straight to the bucket and are referenced by their full URL
+# on this domain, so nothing needs committing but the markdown.
 image_cdn = "https://images.mmestiyak.com"
+
+# Resize R2 images on the fly via Cloudflare Image Transformations
+# (/cdn-cgi/image/...). OFF because the feature is not enabled on this zone:
+# verified 2026-09-06 that a transformation URL for an image that serves 200
+# at its origin returns Cloudflare's own 404, with no cf-resized header. While
+# it is off, this MUST stay false, or every photo served from R2 breaks.
+#
+# To turn it on: Cloudflare dashboard -> the mmestiyak.com zone -> Images ->
+# Transformations -> enable, then run `make check-media`. When that reports
+# the zone is live, set this to true and rebuild. Uploads are already capped
+# at 2048px WebP q85 in the browser by the CMS, so the site is fine without
+# it; this just buys per-size derivatives and real square crops for the
+# photo tiles.
+image_cdn_transform = false
 
 og_image = "https://mmestiyak.com/og-image.jpg"
 google_analytics = "G-33V0WBXVRM"

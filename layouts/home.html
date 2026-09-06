@@ -169,7 +169,7 @@
             {{ $cover := "" }}
             {{ with (.Resources.ByType "image") }}{{ $cover = partial "thumb.html" (dict "res" (index . 0) "size" 400) }}{{ end }}
             {{ if and (not $cover) .Params.extra.photos }}
-              {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 400) }}
+              {{ $cover = partial "img-src.html" (dict "path" (index .Params.extra.photos 0) "width" 400 "height" 400) }}
             {{ end }}
             <a href="{{ .RelPermalink }}" class="group block aspect-square overflow-hidden rounded-md border border-line bg-tint">
                 {{ if $cover }}
