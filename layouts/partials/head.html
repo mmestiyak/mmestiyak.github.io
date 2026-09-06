@@ -7,10 +7,10 @@
 <link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 
 <!-- Typography: two families, per the header of assets/css/style.css,
-     Alegreya for display, Alegreya Sans for body and small UI, plus Noto
+     Source Serif 4 for display, Inter for body and small UI, plus Noto
      Serif Bengali for Bangla. Self-hosted, no external requests.
      Every face carries a unicode-range, so the browser fetches only the
-     subsets the page's characters actually need (latin here); the other 48
+     subsets the page's characters actually need (latin here); the other
      declared faces cost nothing at runtime.
 
      Preload exactly the latin faces every page paints with. These were wrong
@@ -19,15 +19,15 @@
      the wordmark was discovered late, and the 700 weight was fetched on pages
      that never use it. Verified against DevTools, not assumed, if you change
      a font, re-check which files the network panel actually requests. -->
-{{/* Alegreya, variable 400–900: every heading and the wordmark, all weights
-     from one 44K file. */}}
-<link rel="preload" href="{{ "fonts/4UaBrEBBsBhlBjvfkSLhx6jj4JN0.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{/* Alegreya Sans 400 roman: all body copy and small UI. */}}
-<link rel="preload" href="{{ "fonts/5aUz9_-1phKLFgshYDvh6Vwt7VptvWdUhm8.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
-{{/* Alegreya Sans 400 italic: .action and .dateline, which appear in the
-     first screen of nearly every template. Without this it renders as a
-     synthetic slant and then reflows. */}}
-<link rel="preload" href="{{ "fonts/5aUt9_-1phKLFgshYDvh6Vwt7V9dv21TpG1Lsw.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Source Serif 4, variable 400-700: every heading and the wordmark, all
+     weights from one file. */}}
+<link rel="preload" href="{{ "fonts/vEFI2_tTDB4M7-auWDN0ahZJW1gb8te1Xb7G.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Inter, variable 400-700: all body copy and small UI. */}}
+<link rel="preload" href="{{ "fonts/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7W0Q5nw.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
+{{/* Inter 400 italic: .action and .dateline, which appear in the first
+     screen of nearly every template. Without this it renders as a synthetic
+     slant and then reflows. */}}
+<link rel="preload" href="{{ "fonts/UcCM3FwrK3iLTcvneQg7Ca725JhhKnNqk4j1ebLhAm8SrXTc2dtRipWFsevceSGM.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ "fonts/fonts.css" | relURL }}">
 
 {{/* Stylesheets are fingerprinted, so a design change can never serve stale CSS.

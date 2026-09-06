@@ -1,16 +1,16 @@
 /* ==========================================================================
    mmestiyak.com: timeless editorial styles
-   Palette: paper #F7F2ED, ink #2B2925, prose #57534E, faded #6C675F,
-            line #E6E0D8, one accent hue, a deep muted ink-blue, in three
-            strengths (legible text, darker hover, and the exact bright
-            #0af reserved for translucent underlines and highlights only).
-   Type: two families, on purpose. Alegreya (display, serif) carries every
-   heading and the wordmark, big enough that its calligraphic detail reads
-   as character, not noise. Alegreya Sans (a humanist, text-first sans)
-   carries body copy and every small UI element: nav, footer, tags, dates,
-   meta. A display face goes mushy at 12-14px, so small text never gets it,
-   whatever a template's font-serif/font-sans class says. Noto Serif Bengali
-   for Bangla, in both roles.
+   Palette: paper #F7F2ED, ink #2A2723, prose #403C37, faded #5A554E,
+            line #E6E0D8, one accent hue, a deep muted ink-blue, plus a
+            desaturated teal-blue reserved for translucent underlines and
+            the selection highlight only.
+   Type: two families, on purpose. Source Serif 4 (display, serif) carries
+   every heading and the wordmark, a calm classic book face rather than a
+   decorative one. Inter (a neutral, text-first sans) carries body copy and
+   every small UI element: nav, footer, tags, dates, meta. A display face
+   goes mushy at 12-14px, so small text never gets it, whatever a template's
+   font-serif/font-sans class says. Noto Serif Bengali for Bangla, in both
+   roles.
    Rule: every colour comes from the variables below; every font-family from
    --font-serif or --font-sans. If either appears as a raw value past this
    header, it is a bug.
@@ -25,24 +25,29 @@
     color-scheme: light;         /* paper only, keep UA controls/scrollbars light */
     --c-paper: 247 242 237;      /* warm cream, noticeably not white, which
                                     is most of why a page feels calm         */
-    --c-ink:    43  41  37;      /* headings and UI: warm near-black, 13:1   */
-    --c-prose:  87  83  78;      /* body copy: a soft warm grey at 6.9:1, not
-                                    near-black. Softness is the calm.        */
-    --c-faded: 108 103  95;      /* meta text, 5.0:1, the AA floor with room */
+    --c-ink:    42  39  35;      /* headings and UI: warm charcoal, 13.2:1,
+                                    dark enough to read as crisp text, still
+                                    visibly warm rather than flat #000       */
+    --c-prose:  64  60  55;      /* body copy: warm dark grey at 9.8:1, one
+                                    clear step lighter than ink, not washed  */
+    --c-faded:  90  85  78;      /* meta text, 6.6:1, clearly tertiary but
+                                    still comfortably legible on its own     */
     --c-line:  230 224 216;      /* hairlines                                */
     --c-tint:  240 240 234;      /* fills                                    */
-    /* One accent hue, ink-blue, in three strengths. The requested #0af
-       itself (0,170,255) only measures 2.3:1 on paper: too low for text or
-       a button fill, and too saturated to read as calm. So it lives as
-       --c-accent-bright, used exclusively at partial opacity for underlines
-       and the text-selection highlight, never as a solid text or fill
-       colour. Everywhere else uses a deep, desaturated shade of the same
-       hue: petrol and ink rather than sky and app-icon. */
+    /* One accent hue, ink-blue, in three strengths. The originally requested
+       #0af (0,170,255) only measures 2.3:1 on paper: too low for text or a
+       button fill, and too saturated to read as calm, it sat on the page as
+       a highlighter rather than an accent. So the underline/selection tone
+       is a desaturated version of the same hue, still recognisably blue but
+       muted enough to blend, kept at partial opacity, never as a solid text
+       or fill colour. Everywhere else uses a deep, desaturated shade of the
+       same hue: petrol and ink rather than sky and app-icon. */
     --c-accent: 33 68 95;         /* muted ink-blue text, 9.2:1, links, tags, code */
     --c-accent-strong: 18 42 60;  /* hover/emphasis, 13.3:1 */
-    --c-accent-bright: 0 170 255; /* the exact requested #0af, decorative only */
-    --font-serif: 'Alegreya', 'Noto Serif Bengali', Georgia, serif;
-    --font-sans: 'Alegreya Sans', 'Noto Serif Bengali', system-ui, sans-serif;
+    --c-accent-bright: 40 130 165; /* muted teal-blue, decorative only: link
+                                    underlines and the text-selection tint */
+    --font-serif: 'Source Serif 4', 'Noto Serif Bengali', Georgia, serif;
+    --font-sans: 'Inter', 'Noto Serif Bengali', system-ui, sans-serif;
 }
 
 
@@ -54,6 +59,15 @@
 @supports (padding: max(0px)) {
     .pt-safe-top { padding-top: max(0.5rem, env(safe-area-inset-top)); }
     .pb-safe-bottom { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+}
+
+/* Root size: every rem value on the site (Tailwind utilities and the custom
+   rules below) scales off this, so nudging it here raises body copy,
+   headings, nav, labels and spacing together, in the same proportion,
+   rather than hand-editing every text-* class across the templates. 16px
+   browser default -> ~17.2px. */
+html {
+    font-size: 107.5%;
 }
 
 /* Ground */
@@ -124,14 +138,12 @@ body {
 }
 
 .page {
-    /* 52rem, arrived at by measurement rather than taste. The list rows no
-       longer depend on this number, their text is capped at 30rem, which is
-       what actually fixed their line length, so the axis is now free to serve
-       the two things that do depend on it: the intro paragraph beside the
-       portrait, and the moments grid. At 46rem the intro fell to 43 characters
-       a line, below the readable floor. Widened again to 58rem when the
-       portrait grew: the intro paragraph and the photo both need room, and
-       nothing else on the site depends on this number any more. */
+    /* 58rem, set by the one layout that genuinely needs the room: the home
+       hero, where the intro column (max-w-xl, 36rem) sits beside the portrait
+       (lg:w-72, 18rem) with a 2rem gap, which is 56rem before padding. The
+       moments grid uses it too. Narrowing this breaks the hero first, so
+       measure that page before changing the number. Everything else is a
+       left-aligned block inside it, capped at its own reading measure. */
     max-width: 58rem;
     margin-left: auto;
     margin-right: auto;
@@ -146,7 +158,7 @@ body {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    text-decoration-color: rgb(var(--c-accent-bright) / 0.4);
+    text-decoration-color: rgb(var(--c-accent-bright) / 0.35);
     transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 .link:hover { color: rgb(var(--c-accent)); }
@@ -165,7 +177,7 @@ body {
 }
 
 ::selection {
-    background: rgb(var(--c-accent-bright) / 0.28);
+    background: rgb(var(--c-accent-bright) / 0.18);
     color: rgb(var(--c-ink));
 }
 
@@ -272,14 +284,14 @@ body {
 .prose {
     color: rgb(var(--c-prose));
     font-family: var(--font-sans);
-    font-size: 1.1875rem;      /* 19px */
-    line-height: 1.6;
+    font-size: 1.0625rem;      /* 18.3px after the 107.5% root */
+    line-height: 1.62;
     font-weight: 400;
     /* Measure in rem, not ch: character width varies by font, so a fixed
-       pixel-equivalent measure survives a typeface change. 34rem (544px)
-       holds the line to the readable range at these sizes. Article headers
-       share this width (the max-w-[34rem] classes in templates) so title
-       and text sit on one axis. */
+       pixel-equivalent measure survives a typeface change. 34rem is 585px
+       against the 107.5% root, which holds the line to roughly 66 characters
+       at the desktop size. Article headers share this width (the
+       max-w-[34rem] classes in templates) so title and text sit on one axis. */
     max-width: 34rem;
     margin-left: auto;
     margin-right: auto;
@@ -287,12 +299,15 @@ body {
     hanging-punctuation: first last;
 }
 
+/* Sizes are in rem and the root is 107.5%, so the real pixel values are
+   ~7.5% above the rem numbers. Stated here in the size the browser actually
+   paints, measured, not assumed. */
 @media (min-width: 640px) {
-    .prose { font-size: 1.25rem; line-height: 1.6; }    /* 20px */
+    .prose { font-size: 1.1875rem; line-height: 1.6; }  /* 20.4px */
 }
 
 @media (min-width: 1024px) {
-    .prose { font-size: 1.3125rem; line-height: 1.62; } /* 21px */
+    .prose { font-size: 1.25rem; line-height: 1.62; }   /* 21.5px */
 }
 
 /* Prose pinned to the page's left axis (e.g. the about story) instead of
@@ -300,16 +315,22 @@ body {
 .prose.prose-start { margin-left: 0; }
 
 /* Bengali text inherits the serif Bengali face via the font stack; tune rhythm */
-.prose *[lang="bn"].prose [data-lang="bn"] {
+.prose *[lang="bn"],
+.prose [data-lang="bn"] {
     font-family: 'Noto Serif Bengali', Georgia, serif;
     line-height: 1.95;
 }
 
-.prose h1.prose h2.prose h3.prose h4.prose h5.prose h6 {
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
     color: rgb(var(--c-ink));
     font-family: var(--font-serif);
     font-weight: 600;
-    letter-spacing: -0.004em;   /* Alegreya sets tight already */
+    letter-spacing: -0.004em;   /* barely tightens large display sizes */
     line-height: 1.25;
     text-wrap: balance;
     margin-top: 2.1em;         /* clear air above a heading, little below,
@@ -334,14 +355,14 @@ body {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3.5px;
-    text-decoration-color: rgb(var(--c-accent-bright) / 0.4);
+    text-decoration-color: rgb(var(--c-accent-bright) / 0.35);
     font-weight: 500;
     transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 .prose a:hover {
     color: rgb(var(--c-accent));
-    text-decoration-color: rgb(var(--c-accent-bright) / 0.7);
+    text-decoration-color: rgb(var(--c-accent-bright) / 0.6);
 }
 
 .prose strong { color: rgb(var(--c-ink)); font-weight: 700; }
@@ -362,7 +383,8 @@ body {
 .prose blockquote p:first-child { margin-top: 0; }
 .prose blockquote p:last-child { margin-bottom: 0; }
 
-.prose ul.prose ol {
+.prose ul,
+.prose ol {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     padding-left: 1.5rem;
@@ -516,7 +538,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     @page { margin: 14mm 15mm; }
 
     .prose { font-size: 12pt; line-height: 1.6; }
-    .prose h1.prose h2.prose h3.prose h4 { page-break-after: avoid; }
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4 { page-break-after: avoid; }
 
     /* Links: keep them clickable in the PDF, but drop the coloured underline
        decoration so the page does not look striped. */
@@ -533,7 +558,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     .resume-sheet h1 { font-size: 22pt; }
     .resume-sheet h2 { font-size: 10pt; }
     .resume-sheet h3 { font-size: 12pt; }
-    .resume-sheet p.resume-sheet li.resume-sheet dd.resume-sheet dt { font-size: 9.5pt; line-height: 1.45; }
+    .resume-sheet p,
+    .resume-sheet li,
+    .resume-sheet dd,
+    .resume-sheet dt { font-size: 9.5pt; line-height: 1.45; }
 }
 
 /* High contrast */
@@ -557,7 +585,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
    Everything else (labels, datelines, actions, small UI text) inherits
    --font-sans from body and never opts into this rule.
    ========================================================================== */
-h1, h2, h3, h4, h5, h6.display {
+h1, h2, h3, h4, h5, h6,
+.display {
     font-family: var(--font-serif);
     font-variant-numeric: normal;
 }

@@ -27,11 +27,11 @@
          Scale first, then what I own, then how to reach me. The off-the-clock
          line stays, but below the fold of the sentence that matters.
          ====================================================================== */}}
-    <section class="mb-14 sm:mb-20">
+    <section class="mb-14 sm:mb-20 last:mb-0">
         <div class="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-8">
             <div class="max-w-xl">
                 <h1 class="display font-serif font-semibold text-4xl sm:text-5xl text-ink leading-[1.1] mb-7">I'm Meer Estiyak.</h1>
-                <p class="text-xl sm:text-2xl text-ink leading-relaxed mb-7">
+                <p class="text-lg sm:text-xl text-ink leading-relaxed mb-7">
                     Full-stack software engineer, five years in production. I build
                     hardware-integrated and no-code systems at <a href="{{ "/work/" | relURL }}" class="link">IDEEZA</a>.
                     Before that I built the frontend for FundedNext, a prop trading firm
@@ -40,7 +40,7 @@
                 <p class="text-lg sm:text-xl text-faded leading-relaxed mb-7">
                     On my own time I build <a href="https://kommercly.com" target="_blank" rel="noopener" class="link">Kommercly</a>,
                     a WhatsApp-first store builder, with my brother, and co-founded
-                    <a href="https://khamarvest.com" target="_blank" rel="noopener" class="link">Khamarvest</a>,
+                    <a href="{{ "/farm/" | relURL }}" class="link">Khamarvest</a>,
                     a cattle and silage farm that actually has to turn a profit.
                 </p>
                 <p class="text-base sm:text-lg text-faded leading-relaxed">
@@ -49,12 +49,18 @@
                 </p>
 
                 {{/* Availability + the three things a hiring reader wants next.
+                     freelance is a second, separate signal underneath: a
+                     recruiter and a client are asking two different
+                     questions, so they get two lines, not one blended one.
                      Hidden entirely when params.availability is empty. */}}
                 {{ with site.Params.availability }}
                 <div class="mt-10 pt-8 border-t border-line">
-                    <p class="font-sans text-sm text-ink mb-5 flex items-center gap-2.5">
+                    <p class="font-sans text-sm text-ink mb-2 flex items-center gap-2.5">
                         <span class="status-dot" aria-hidden="true"></span>{{ . }}
                     </p>
+                    {{ with site.Params.freelance }}
+                    <p class="font-sans text-sm text-faded mb-5 pl-[1.125rem]">{{ . }}</p>
+                    {{ end }}
                     <div class="flex flex-wrap items-center gap-x-5 gap-y-3 font-sans text-sm">
                         <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
                         <a href="{{ "/resume/" | relURL }}" class="text-ink link">resume</a>
@@ -74,12 +80,15 @@
 
     {{/* ======================================================================
          Selected work, ahead of the writing. Logs and moments are why someone
-         comes back; work is why they get in touch, so it goes first.
+         comes back; work is why they get in touch, so it goes first. Tech
+         products only, filtered on `topics`: the farm has its own section
+         and its own mention a few lines up, it doesn't need a second card
+         here too.
          ====================================================================== */}}
     {{ with site.GetPage "/projects" }}
-    {{ $projects := first 3 (sort .RegularPages "Params.extra.year" "desc") }}
+    {{ $projects := first 3 (sort (where .RegularPages "Params.topics" "intersect" (slice "project")) "Params.extra.year" "desc") }}
     {{ if $projects }}
-    <section class="mb-14 sm:mb-20">
+    <section class="mb-14 sm:mb-20 last:mb-0">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
             <h2 class="label text-faded">Selected work</h2>
             <a href="{{ "/work/" | relURL }}" class="action text-sm">all work &amp; experience →</a>
@@ -89,11 +98,11 @@
             <article class="group border-b border-line last:border-0 py-4">
                 <a href="{{ .RelPermalink }}" class="block">
                     <div class="flex items-baseline justify-between gap-4">
-                        <div class="flex-1 min-w-0">
+                        <div class="flex-1 min-w-0 max-w-[34rem]">
                             <h3 class="text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
                                 {{ .Title }}
                             </h3>
-                            <p class="mt-1 max-w-[30rem] text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
+                            <p class="mt-1 text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
                                 {{ .Description }}
                             </p>
                         </div>
@@ -111,7 +120,7 @@
 
     <!-- Recent Logs -->
     {{ with site.GetPage "/logs" }}
-    <section class="mb-14 sm:mb-20">
+    <section class="mb-14 sm:mb-20 last:mb-0">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
             <h2 class="label text-faded">Recent logs</h2>
             <a href="{{ .RelPermalink }}" class="action text-sm">all logs →</a>
@@ -121,12 +130,12 @@
             <article class="group border-b border-line last:border-0 py-4">
                 <a href="{{ .RelPermalink }}" class="block">
                     <div class="flex items-baseline justify-between gap-4">
-                        <div class="flex-1 min-w-0">
+                        <div class="flex-1 min-w-0 max-w-[34rem]">
                             <h3 class="text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
                                 {{ .Title }}
                             </h3>
-                            <p class="mt-1 max-w-[30rem] text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
-                                {{ or .Description (.Summary | plainify | truncate 140) }}
+                            <p class="mt-1 text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
+                                {{ or .Description (.Summary | plainify) }}
                             </p>
                         </div>
                         {{ if not .Date.IsZero }}
@@ -150,7 +159,7 @@
     {{ if ge (len $moments) 3 }}
     {{ with $moments }}
     {{ $cols := len . }}
-    <section class="mb-8">
+    <section class="mb-8 last:mb-0">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
             <h2 class="label text-faded">Moments</h2>
             <a href="{{ $.RelPermalink }}" class="action text-sm">all moments →</a>

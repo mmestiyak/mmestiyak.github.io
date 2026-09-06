@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10 sm:mb-14 max-w-[34rem]">
+        <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
+        <p class="text-base sm:text-lg text-faded">{{ .Description }}</p>
+    </header>
+
+    {{/* The farm business itself, filtered off the same `topics` field
+         /work/ uses to keep software separate, no content duplicated or
+         moved: still lives in content/projects/, just shown here too. */}}
+    {{ with site.GetPage "/projects" }}
+    {{ $farm := where .RegularPages "Params.topics" "intersect" (slice "farm") }}
+    {{ if $farm }}
+    <section class="mb-14 sm:mb-20 last:mb-0">
+        <div>
+            {{ range sort $farm "Params.extra.year" "desc" }}
+            {{ partial "project-card.html" . }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+    {{ end }}
+
+    {{/* Writing tagged `farm`, e.g. the farm's own tech setup, kept out of
+         the /projects section itself so a farm log post doesn't get
+         mistaken for a second project card above. */}}
+    {{ $farmLogs := where (where site.RegularPages "Params.topics" "intersect" (slice "farm")) "Section" "logs" }}
+    {{ if $farmLogs }}
+    <section>
+        <h2 class="label text-faded pb-3 border-b border-line">Related writing</h2>
+        <div>
+            {{ range $farmLogs }}
+            <article class="group border-b border-line last:border-0 py-4">
+                <a href="{{ .RelPermalink }}" class="block">
+                    <div class="flex items-baseline justify-between gap-4">
+                        <div class="flex-1 min-w-0 max-w-[34rem]">
+                            <h3 class="text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
+                                {{ .Title }}
+                            </h3>
+                            <p class="mt-1 text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
+                                {{ or .Description (.Summary | plainify) }}
+                            </p>
+                        </div>
+                        {{ if not .Date.IsZero }}
+                        <span class="dateline text-xs whitespace-nowrap">
+                            {{ .Date.Format "Jan 02, 2006" }}
+                        </span>
+                        {{ end }}
+                    </div>
+                </a>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+</div>
+{{ end }}

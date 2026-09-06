@@ -63,13 +63,14 @@ linkedin = "mmestiyak"
 strava = "https://www.strava.com/athletes/111868234"
 email = "mmestiyak@gmail.com"
 
-# Portrait on home + about. Empty = hidden. Square crops only, both
-# placements render it in a fixed square, so the framing has to survive
-# being 144px wide. Other candidates in assets/images: fight-win.jpg,
-# fight-night.jpg, ride-tree.jpg.
+# Portrait on home + about. Empty = hidden. Both placements render it at
+# aspect-[4/5] with object-cover, so supply a 4:5 crop (the current file is
+# 1400x1750) and check the framing survives being 144px wide on mobile.
+# Other candidate in assets/images: ride-tree.jpg.
 portrait = "/images/portrait.jpg"
 
-# Photo strip on the about page, rendered as a square 3-up. Empty = hidden.
+# Photo strip on the about page, rendered as a square 3-up, so supply square
+# crops: ride-railway.jpg is 4:3 and gets centre-cropped. Empty = hidden.
 # One from each world the about page claims: the work, the road, the cold.
 about_photos = [
   "/images/street-office.jpg",
@@ -80,6 +81,12 @@ about_photos = [
 # Hiring signal. availability shows on the home page and /work/; leaving it
 # empty hides both, which is the right move once the answer is "not looking".
 availability = "Open to senior full-stack roles, remote, from Bangladesh."
+
+# Freelance/contract signal, separate from `availability` above: a job offer
+# and a freelance inquiry are different asks, so they get their own line
+# instead of being folded into one sentence. Shows under `availability` on
+# the home page and /work/. Empty = hidden.
+freelance = "Also open to freelance full-stack projects: startups, small teams, and small businesses."
 
 # Your own designed CV, for people who want the file rather than the page.
 # Drop the PDF in static/ and name it here (e.g. "/meer-estiyak-cv.pdf") and a

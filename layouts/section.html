@@ -1,11 +1,11 @@
 {{ define "main" }}
-<div class="page px-4 sm:px-6 py-10 sm:py-16">
-    <header class="mb-10 sm:mb-12">
+<div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+    <header class="mb-10 sm:mb-12 max-w-[34rem]">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
         {{ with .Description }}<p class="text-base sm:text-lg text-faded">{{ . }}</p>{{ end }}
     </header>
 
-    <div>
+    <div class="max-w-[34rem]">
         {{ range .RegularPagesRecursive }}
         <article class="py-4 sm:py-5 border-b border-line last:border-0">
             <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">

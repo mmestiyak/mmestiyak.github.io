@@ -3,7 +3,7 @@
 {{ $paginator := .Paginate $all }}
 <div class="page px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
 
-    <header class="mb-8 sm:mb-10">
+    <header class="mb-8 sm:mb-10 max-w-[34rem]">
         <h1 class="display text-3xl sm:text-4xl font-semibold text-ink mb-2">{{ .Title }}</h1>
         <p class="text-base sm:text-lg text-faded">{{ or .Description "Thoughts, lessons, and experiences, in chronological order." }}</p>
         {{/* The other ways in: everything by date, or by subject */}}
@@ -15,30 +15,26 @@
         </p>
     </header>
 
-    <div>
+    <div class="max-w-[34rem]">
         {{ range $paginator.Pages }}
         <article class="py-4 sm:py-5 border-b border-line last:border-0">
-            <div class="flex items-start justify-between gap-4">
-                <div class="flex-1 min-w-0">
-                    <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
-                        <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>
-                    </h2>
-                    <div class="flex items-center gap-2 dateline text-xs mb-1">
-                        {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>{{ end }}
-                        {{ with .ReadingTime }}<span aria-hidden="true">·</span><span>{{ . }} min</span>{{ end }}
-                    </div>
-                    {{ with or .Description (.Summary | plainify | truncate 140) }}
-                    <p class="max-w-[30rem] text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">{{ . }}</p>
-                    {{ end }}
-                </div>
+            <h2 class="text-lg sm:text-xl text-ink mb-1 leading-snug">
+                <a href="{{ .RelPermalink }}" class="hover:text-accent transition-colors">{{ .Title }}</a>
+            </h2>
+            <div class="flex flex-wrap items-center gap-x-2 gap-y-1 dateline text-xs mb-1">
+                {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>{{ end }}
+                {{ with .ReadingTime }}<span aria-hidden="true">·</span><span>{{ . }} min</span>{{ end }}
                 {{ with .GetTerms "topics" }}
-                <div class="flex gap-2 flex-shrink-0 self-start">
-                    {{ range . }}
-                    <a href="{{ .RelPermalink }}" class="font-sans text-xs text-faded hover:text-accent transition-colors whitespace-nowrap">{{ .LinkTitle }}</a>
-                    {{ end }}
-                </div>
+                <span aria-hidden="true">·</span>
+                {{ range $i, $t := . }}
+                {{ if $i }}<span aria-hidden="true">·</span>{{ end }}
+                <a href="{{ $t.RelPermalink }}" class="hover:text-accent transition-colors">{{ $t.LinkTitle }}</a>
+                {{ end }}
                 {{ end }}
             </div>
+            {{ with or .Description (.Summary | plainify) }}
+            <p class="text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">{{ . }}</p>
+            {{ end }}
         </article>
         {{ end }}
     </div>

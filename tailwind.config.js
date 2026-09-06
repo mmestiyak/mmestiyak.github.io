@@ -26,9 +26,9 @@ module.exports = {
            every small UI element. Must match --font-serif / --font-sans in
            style.css. Every font-serif class in the templates has been
            audited to confirm it's on an actual heading-scale element, not
-           small text — that mismatch was the "small titles look bad" bug. */
-        'serif': ['Alegreya', 'Noto Serif Bengali', 'Georgia', 'serif'],
-        'sans': ['Alegreya Sans', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
+           small text: that mismatch was the "small titles look bad" bug. */
+        'serif': ['Source Serif 4', 'Noto Serif Bengali', 'Georgia', 'serif'],
+        'sans': ['Inter', 'Noto Serif Bengali', 'system-ui', '-apple-system', 'sans-serif'],
         'bengali': ['Noto Serif Bengali', 'Georgia', 'serif'],
         'mono': ['ui-monospace', 'SFMono-Regular', 'SF Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace']
       },

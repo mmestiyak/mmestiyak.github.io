@@ -1,0 +1,47 @@
+<article class="py-8 sm:py-10 border-b border-line last:border-0">
+    <div class="grid sm:grid-cols-[1fr_2fr] gap-4 sm:gap-8">
+        <div>
+            <h3 class="text-xl sm:text-2xl font-semibold text-ink leading-snug mb-1">{{ .Title }}</h3>
+            <div class="font-sans text-xs text-faded space-y-0.5">
+                {{ with .Params.extra.year }}<p>{{ . }}</p>{{ end }}
+                {{ with .Params.extra.role }}<p>{{ . }}</p>{{ end }}
+                {{ with .Params.extra.status }}<p class="text-accent">{{ . }}</p>{{ end }}
+            </div>
+            <div class="flex items-center flex-wrap gap-4 mt-3 font-sans text-xs">
+                {{ with .Params.extra.live_url }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="text-ink link">live ↗</a>
+                {{ end }}
+                {{ with .Params.extra.source_url }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="text-ink link">source ↗</a>
+                {{ end }}
+                {{ range .Params.extra.links }}
+                <a href="{{ .url }}" target="_blank" rel="noopener" class="text-ink link">{{ .label }} ↗</a>
+                {{ end }}
+            </div>
+        </div>
+        <div>
+            {{ with .Params.extra.image }}
+            {{ $src := partial "img-src.html" (dict "path" . "width" 900) }}
+            <img src="{{ $src }}" alt="{{ $.Title }}" loading="lazy" class="w-full max-h-64 object-cover rounded-md border border-line mb-4">
+            {{ end }}
+            <p class="max-w-[36rem] text-base sm:text-lg text-ink leading-relaxed mb-3">{{ .Description }}</p>
+
+            {{ with .Params.extra.highlights }}
+            <ul class="space-y-1.5 mb-4">
+                {{ range . }}
+                <li class="text-sm sm:text-base text-faded leading-relaxed flex items-start gap-2">
+                    <span class="text-accent mt-0.5 flex-shrink-0">·</span>
+                    <span>{{ . }}</span>
+                </li>
+                {{ end }}
+            </ul>
+            {{ end }}
+
+            {{ with .Params.extra.tech_stack }}
+            <div class="flex flex-wrap gap-x-3 gap-y-1 font-sans text-xs text-faded">
+                {{ range . }}<span>{{ . }}</span>{{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</article>
