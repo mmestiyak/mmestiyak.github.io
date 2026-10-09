@@ -17,7 +17,6 @@ highlights = [
     "Raised a browser-based PCB and schematic editor toward commercial EDA quality: cross-probing, angle-locked 45°/90° routing, copper pours with thermal relief, and correct Gerber and PDF export, across about 200 tracked issues.",
     "Extracted the firmware tool from a large Next.js monolith into its own deployable product without disrupting existing users: host bridge with save handshakes, legacy product support, permission handling (approval and read-only), and its own CI/CD.",
     "Built custom Blockly block libraries and code generators for Arduino, ESP32, Raspberry Pi, LoRa, I2C, Bluetooth, motor shields, LCD and sensors, plus TensorFlow and blockchain blocks. This became the foundation the AI firmware work is built on.",
-    "Delivered a freelancer portal end to end: dashboard, offers, proposals, earnings charts, and full settings (profile, KYC, security, notifications, disputes, Get Paid), localized into multiple languages.",
 ]
 +++
 
