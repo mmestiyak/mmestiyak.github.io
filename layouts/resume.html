@@ -83,7 +83,7 @@
                 {{ with .Description }}<p class="text-sm sm:text-base text-ink leading-relaxed mt-2">{{ . }}</p>{{ end }}
                 {{ with .Params.extra.highlights }}
                 <ul class="mt-2 space-y-1">
-                    {{ range . }}
+                    {{ range first 3 . }}
                     <li class="text-sm text-faded leading-relaxed flex items-start gap-2">
                         <span class="text-accent flex-shrink-0">·</span><span>{{ . }}</span>
                     </li>
