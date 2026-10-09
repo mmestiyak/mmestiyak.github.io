@@ -12,8 +12,8 @@ date_start = "2021-08"
 date_end = "2021-12"
 highlights = [
     "Built and maintained the FundedNext mobile app in React Native and Redux",
-    "Shipped to production against a live trading product while still an intern",
+    "Shipped to a live trading product while still an intern",
 ]
 +++
 
-Engaged in the maintenance and development of the FundedNext Mobile App, leveraging React Native, Redux, and companion libraries to deliver a seamless mobile experience for traders.
+Maintained and developed the FundedNext mobile app in React Native and Redux while still an intern.
