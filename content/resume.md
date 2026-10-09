@@ -1,6 +1,6 @@
 +++
 title = "Resume"
-description = "Meer Estiyak, full-stack software engineer. Five years in production: Node.js, React, Next.js, TypeScript, PostgreSQL."
+description = "Meer Estiyak, software engineer. Five years in production: Node.js, React, Next.js, TypeScript, PostgreSQL."
 layout = "resume"
 [extra]
 # ---------------------------------------------------------------------------
@@ -15,7 +15,7 @@ layout = "resume"
 # things you really use (Python? Redis? Docker? AWS? Postgres depth?) and
 # delete anything you would not want to be interviewed on.
 # ---------------------------------------------------------------------------
-headline = "Full-stack software engineer · 5 years in production · Node.js, React, TypeScript"
+headline = "Software engineer · 5 years in production · Node.js, React, TypeScript"
 location = "Bangladesh · remote, UTC+6"
 skills = [
   { group = "Languages",  items = "TypeScript, JavaScript, SQL" },
