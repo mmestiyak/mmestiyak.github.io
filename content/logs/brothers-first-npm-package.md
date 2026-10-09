@@ -4,7 +4,7 @@ date = "2025-10-21"
 description = "Most 16-year-olds are busy with school. My brother just solved a real production problem and published his first open-source package. Here's how a self-taught developer turned frustration into innovation."
 reading_time = 5
 tags = ["personal", "programming", "open-source"]
-topics = ["programming"]
+topics = ["software"]
 +++
 
 Most 16-year-olds are busy with exams, friends, and figuring out life.

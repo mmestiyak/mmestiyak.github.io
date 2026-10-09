@@ -16,8 +16,8 @@
                 <p class="font-sans text-sm text-faded mt-1 pl-[1.125rem]">{{ . }}</p>
                 {{ end }}
             </div>
-            <div class="flex items-center gap-5 font-sans text-sm whitespace-nowrap">
-                <a href="{{ "/resume/" | relURL }}" class="text-ink link">one-page resume</a>
+            <div class="flex items-center gap-3 font-sans text-sm whitespace-nowrap">
+                <a href="{{ "/resume/" | relURL }}" class="px-4 py-2 text-ink border border-line rounded-sm hover:border-ink hover:text-accent transition-colors">one-page resume</a>
                 <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
             </div>
         </div>
@@ -29,7 +29,7 @@
          everything in /projects), so this stays tech-only if a non-tech
          project ever gets added here again. */}}
     {{ with site.GetPage "/projects" }}
-    {{ $products := where .RegularPages "Params.topics" "intersect" (slice "project") }}
+    {{ $products := where .RegularPages "Params.topics" "intersect" (slice "product") }}
 
     {{ if $products }}
     <section class="mb-14 sm:mb-20">

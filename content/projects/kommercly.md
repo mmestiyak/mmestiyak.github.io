@@ -2,7 +2,7 @@
 title = "Kommercly"
 description = "“Stop building, start selling.” A WhatsApp-first store builder that turns your Google Sheet into a live store in minutes. A lighter Shopify, made for WhatsApp."
 tags = ["ecommerce", "no-code", "whatsapp", "product"]
-topics = ["project"]
+topics = ["product"]
 [extra]
 year = 2025
 live_url = "https://kommercly.com"

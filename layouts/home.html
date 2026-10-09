@@ -45,7 +45,7 @@
                 </p>
                 <p class="text-base sm:text-lg text-faded leading-relaxed">
                     Off the clock: <a href="{{ site.Params.strava }}" target="_blank" rel="noopener" class="link">cycling</a>, MMA, running, swimming.
-                    The longer story is <a href="{{ "/about/" | relURL }}" class="link">here</a>.
+                    The longer story is <a href="{{ "/about/" | relURL }}#life" class="link">here</a>.
                 </p>
 
                 {{/* Availability + the three things a hiring reader wants next.
@@ -61,9 +61,9 @@
                     {{ with site.Params.freelance }}
                     <p class="font-sans text-sm text-faded mb-5 pl-[1.125rem]">{{ . }}</p>
                     {{ end }}
-                    <div class="flex flex-wrap items-center gap-x-5 gap-y-3 font-sans text-sm">
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-3 font-sans text-sm">
                         <a href="mailto:{{ site.Params.email }}" class="px-4 py-2 bg-ink text-paper rounded-sm hover:bg-accent transition-colors">email me</a>
-                        <a href="{{ "/resume/" | relURL }}" class="text-ink link">resume</a>
+                        <a href="{{ "/resume/" | relURL }}" class="px-4 py-2 text-ink border border-line rounded-sm hover:border-ink hover:text-accent transition-colors">resume</a>
                     </div>
                 </div>
                 {{ end }}
@@ -86,7 +86,7 @@
          here too.
          ====================================================================== */}}
     {{ with site.GetPage "/projects" }}
-    {{ $projects := first 3 (sort (where .RegularPages "Params.topics" "intersect" (slice "project")) "Params.extra.year" "desc") }}
+    {{ $projects := first 2 (sort (where .RegularPages "Params.topics" "intersect" (slice "product")) "Params.extra.year" "desc") }}
     {{ if $projects }}
     <section class="mb-14 sm:mb-20 last:mb-0">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
@@ -95,11 +95,11 @@
         </div>
         <div>
             {{ range $projects }}
-            <article class="group border-b border-line last:border-0 py-4">
+            <article class="group border-b border-line last:border-0 py-4 sm:py-5">
                 <a href="{{ .RelPermalink }}" class="block">
                     <div class="flex items-baseline justify-between gap-4">
                         <div class="flex-1 min-w-0 max-w-[34rem]">
-                            <h3 class="text-lg sm:text-xl text-ink group-hover:text-accent transition-colors leading-snug">
+                            <h3 class="text-xl sm:text-2xl text-ink group-hover:text-accent transition-colors leading-snug">
                                 {{ .Title }}
                             </h3>
                             <p class="mt-1 text-sm sm:text-base text-faded line-clamp-2 leading-relaxed">
@@ -127,7 +127,7 @@
         </div>
         <div>
             {{ range first 3 .RegularPagesRecursive }}
-            <article class="group border-b border-line last:border-0 py-4">
+            <article class="group border-b border-line last:border-0 py-4 sm:py-5">
                 <a href="{{ .RelPermalink }}" class="block">
                     <div class="flex items-baseline justify-between gap-4">
                         <div class="flex-1 min-w-0 max-w-[34rem]">
@@ -159,7 +159,7 @@
     {{ if ge (len $moments) 3 }}
     {{ with $moments }}
     {{ $cols := len . }}
-    <section class="mb-8 last:mb-0">
+    <section class="mb-14 sm:mb-20 last:mb-0">
         <div class="flex items-baseline justify-between mb-5 pb-3 border-b border-line">
             <h2 class="label text-faded">Moments</h2>
             <a href="{{ $.RelPermalink }}" class="action text-sm">all moments →</a>

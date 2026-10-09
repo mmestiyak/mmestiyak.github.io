@@ -6,16 +6,16 @@
                 Meer Estiyak<span class="text-accent">.</span>
             </a>
 
-            <!-- Navigation -->
+            <!-- Navigation. Places only: interests live in topics/tags, not here. -->
             <div class="flex items-center flex-wrap justify-center gap-x-1 sm:gap-x-2 font-sans text-[13px] sm:text-sm">
                 {{ $cur := .RelPermalink }}
                 {{/* Work first: it is the page that has to do a job. Farm
                      right after it: a separate space, not a subsection. */}}
-                {{ range $i, $item := slice (slice "work" "/work/") (slice "farm" "/farm/") (slice "logs" "/logs/") (slice "moments" "/moments/") (slice "about" "/about/") }}
+                {{ range $i, $item := slice (slice "work" "/work/") (slice "farm" "/farm/") (slice "logs" "/logs/") (slice "about" "/about/") }}
                     {{ $label := index $item 0 }}
                     {{ $url := index $item 1 }}
                     {{ $active := hasPrefix $cur $url }}
-                <a href="{{ $url | relURL }}" class="px-2 sm:px-2.5 py-2 text-[13px] sm:text-sm transition-colors {{ if $active }}text-accent underline underline-offset-4{{ else }}text-faded hover:text-ink{{ end }}">{{ $label }}</a>
+                <a href="{{ $url | relURL }}"{{ if $active }} aria-current="page"{{ end }} class="px-2 sm:px-2.5 py-2 transition-colors {{ if $active }}text-ink underline decoration-accent-bright decoration-2 underline-offset-4{{ else }}text-faded hover:text-ink{{ end }}">{{ $label }}</a>
                 {{ end }}
             </div>
         </nav>

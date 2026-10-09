@@ -4,7 +4,7 @@ date = "2026-08-27"
 description = "We skipped the sealed NVR box and built the farm's camera system by hand: a PoE switch, Frigate, a Cloudflare Tunnel, and a Telegram guard that knows the difference between someone arriving and someone lingering."
 reading_time = 18
 tags = ["networking", "poe", "frigate", "cloudflare", "self-hosting", "khamarvest"]
-topics = ["farm", "project"]
+topics = ["farm"]
 [extra]
 image = "/images/farm-cam-shed-night.jpg"
 +++

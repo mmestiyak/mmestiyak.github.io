@@ -4,7 +4,7 @@ date = "2025-03-11"
 description = "Upgrade your engineering by mastering data representation, from tally marks to binary, with practical insights ahead."
 reading_time = 9
 tags = ["binary", "data-representation"]
-topics = ["fundamentals"]
+topics = ["software"]
 [extra]
 image = "https://raw.githubusercontent.com/mmestiyak/mmestiyak.github.io/refs/heads/main/assets/images/tally-to-binary.webp"
 +++

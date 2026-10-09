@@ -34,7 +34,7 @@ content:
         type: date
         default: '{{ now }}'
       - name: topics
-        label: Topics (farm, training, project, work…)
+        label: Topics (farm, software, life, product, work…)
         type: string
         list: true
       - name: tags

@@ -10,6 +10,7 @@
                 <a href="https://linkedin.com/in/{{ site.Params.linkedin }}" class="hover:text-accent transition-colors">linkedin</a>
                 <a href="{{ site.Params.strava }}" class="hover:text-accent transition-colors">strava</a>
                 <a href="{{ "/resume/" | relURL }}" class="hover:text-accent transition-colors">resume</a>
+                <a href="{{ "/moments/" | relURL }}" class="hover:text-accent transition-colors">moments</a>
                 <a href="{{ "/archive/" | relURL }}" class="hover:text-accent transition-colors">archive</a>
                 <a href="{{ "/topics/" | relURL }}" class="hover:text-accent transition-colors">topics</a>
                 {{ with .OutputFormats.Get "rss" }}<a href="{{ .Permalink }}" class="hover:text-accent transition-colors">rss</a>{{ end }}
